@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F88ADBA183FA284004D8D48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88ADB9183FA284004D8D48 /* Foundation.framework */; };
+		4F88ADBC183FA284004D8D48 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88ADBB183FA284004D8D48 /* CoreGraphics.framework */; };
+		4F88ADBE183FA284004D8D48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88ADBD183FA284004D8D48 /* UIKit.framework */; };
+		4F88ADC0183FA284004D8D48 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88ADBF183FA284004D8D48 /* SpriteKit.framework */; };
+		4F88ADC6183FA284004D8D48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F88ADC4183FA284004D8D48 /* InfoPlist.strings */; };
+		4F88ADC8183FA284004D8D48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F88ADC7183FA284004D8D48 /* main.m */; };
+		4F88ADCC183FA284004D8D48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F88ADCB183FA284004D8D48 /* AppDelegate.m */; };
+		4F88ADCF183FA284004D8D48 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F88ADCD183FA284004D8D48 /* Main_iPhone.storyboard */; };
+		4F88ADD2183FA284004D8D48 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F88ADD0183FA284004D8D48 /* Main_iPad.storyboard */; };
+		4F88ADD5183FA284004D8D48 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F88ADD4183FA284004D8D48 /* ViewController.m */; };
+		4F88ADD8183FA284004D8D48 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F88ADD7183FA284004D8D48 /* MyScene.m */; };
+		4F88ADDA183FA284004D8D48 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F88ADD9183FA284004D8D48 /* Spaceship.png */; };
+		4F88ADDC183FA284004D8D48 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F88ADDB183FA284004D8D48 /* Images.xcassets */; };
+		4F88ADE3183FA285004D8D48 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88ADE2183FA285004D8D48 /* XCTest.framework */; };
+		4F88ADE4183FA285004D8D48 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88ADB9183FA284004D8D48 /* Foundation.framework */; };
+		4F88ADE5183FA285004D8D48 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F88ADBD183FA284004D8D48 /* UIKit.framework */; };
+		4F88ADED183FA285004D8D48 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F88ADEB183FA285004D8D48 /* InfoPlist.strings */; };
+		4F88ADEF183FA285004D8D48 /* mindSphereTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F88ADEE183FA285004D8D48 /* mindSphereTests.m */; };
+		4F88ADFA183FA768004D8D48 /* EasyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F88ADF9183FA767004D8D48 /* EasyScene.m */; };
+		4F88AE00183FA789004D8D48 /* MediumScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F88ADFF183FA789004D8D48 /* MediumScene.m */; };
+		4F88AE03183FA7A2004D8D48 /* HardScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F88AE02183FA7A2004D8D48 /* HardScene.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F88ADE6183FA285004D8D48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F88ADAE183FA284004D8D48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F88ADB5183FA284004D8D48;
+			remoteInfo = mindSphere;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4F88ADB6183FA284004D8D48 /* mindSphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mindSphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F88ADB9183FA284004D8D48 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4F88ADBB183FA284004D8D48 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4F88ADBD183FA284004D8D48 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4F88ADBF183FA284004D8D48 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		4F88ADC3183FA284004D8D48 /* mindSphere-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "mindSphere-Info.plist"; sourceTree = "<group>"; };
+		4F88ADC5183FA284004D8D48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4F88ADC7183FA284004D8D48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4F88ADC9183FA284004D8D48 /* mindSphere-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mindSphere-Prefix.pch"; sourceTree = "<group>"; };
+		4F88ADCA183FA284004D8D48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4F88ADCB183FA284004D8D48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4F88ADCE183FA284004D8D48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		4F88ADD1183FA284004D8D48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		4F88ADD3183FA284004D8D48 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4F88ADD4183FA284004D8D48 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4F88ADD6183FA284004D8D48 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		4F88ADD7183FA284004D8D48 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		4F88ADD9183FA284004D8D48 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		4F88ADDB183FA284004D8D48 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4F88ADE1183FA285004D8D48 /* mindSphereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mindSphereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F88ADE2183FA285004D8D48 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4F88ADEA183FA285004D8D48 /* mindSphereTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "mindSphereTests-Info.plist"; sourceTree = "<group>"; };
+		4F88ADEC183FA285004D8D48 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4F88ADEE183FA285004D8D48 /* mindSphereTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mindSphereTests.m; sourceTree = "<group>"; };
+		4F88ADF8183FA767004D8D48 /* EasyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyScene.h; sourceTree = "<group>"; };
+		4F88ADF9183FA767004D8D48 /* EasyScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyScene.m; sourceTree = "<group>"; };
+		4F88ADFE183FA789004D8D48 /* MediumScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediumScene.h; sourceTree = "<group>"; };
+		4F88ADFF183FA789004D8D48 /* MediumScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediumScene.m; sourceTree = "<group>"; };
+		4F88AE01183FA7A2004D8D48 /* HardScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardScene.h; sourceTree = "<group>"; };
+		4F88AE02183FA7A2004D8D48 /* HardScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardScene.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F88ADB3183FA284004D8D48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F88ADBC183FA284004D8D48 /* CoreGraphics.framework in Frameworks */,
+				4F88ADBE183FA284004D8D48 /* UIKit.framework in Frameworks */,
+				4F88ADC0183FA284004D8D48 /* SpriteKit.framework in Frameworks */,
+				4F88ADBA183FA284004D8D48 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F88ADDE183FA285004D8D48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F88ADE3183FA285004D8D48 /* XCTest.framework in Frameworks */,
+				4F88ADE5183FA285004D8D48 /* UIKit.framework in Frameworks */,
+				4F88ADE4183FA285004D8D48 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F88ADAD183FA284004D8D48 = {
+			isa = PBXGroup;
+			children = (
+				4F88ADC1183FA284004D8D48 /* mindSphere */,
+				4F88ADE8183FA285004D8D48 /* mindSphereTests */,
+				4F88ADB8183FA284004D8D48 /* Frameworks */,
+				4F88ADB7183FA284004D8D48 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4F88ADB7183FA284004D8D48 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F88ADB6183FA284004D8D48 /* mindSphere.app */,
+				4F88ADE1183FA285004D8D48 /* mindSphereTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F88ADB8183FA284004D8D48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F88ADB9183FA284004D8D48 /* Foundation.framework */,
+				4F88ADBB183FA284004D8D48 /* CoreGraphics.framework */,
+				4F88ADBD183FA284004D8D48 /* UIKit.framework */,
+				4F88ADBF183FA284004D8D48 /* SpriteKit.framework */,
+				4F88ADE2183FA285004D8D48 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F88ADC1183FA284004D8D48 /* mindSphere */ = {
+			isa = PBXGroup;
+			children = (
+				4F88ADCA183FA284004D8D48 /* AppDelegate.h */,
+				4F88ADCB183FA284004D8D48 /* AppDelegate.m */,
+				4F88ADCD183FA284004D8D48 /* Main_iPhone.storyboard */,
+				4F88ADD0183FA284004D8D48 /* Main_iPad.storyboard */,
+				4F88ADD3183FA284004D8D48 /* ViewController.h */,
+				4F88ADD4183FA284004D8D48 /* ViewController.m */,
+				4F88ADF8183FA767004D8D48 /* EasyScene.h */,
+				4F88ADF9183FA767004D8D48 /* EasyScene.m */,
+				4F88ADFE183FA789004D8D48 /* MediumScene.h */,
+				4F88ADFF183FA789004D8D48 /* MediumScene.m */,
+				4F88AE01183FA7A2004D8D48 /* HardScene.h */,
+				4F88AE02183FA7A2004D8D48 /* HardScene.m */,
+				4F88ADD6183FA284004D8D48 /* MyScene.h */,
+				4F88ADD7183FA284004D8D48 /* MyScene.m */,
+				4F88ADD9183FA284004D8D48 /* Spaceship.png */,
+				4F88ADDB183FA284004D8D48 /* Images.xcassets */,
+				4F88ADC2183FA284004D8D48 /* Supporting Files */,
+			);
+			path = mindSphere;
+			sourceTree = "<group>";
+		};
+		4F88ADC2183FA284004D8D48 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4F88ADC3183FA284004D8D48 /* mindSphere-Info.plist */,
+				4F88ADC4183FA284004D8D48 /* InfoPlist.strings */,
+				4F88ADC7183FA284004D8D48 /* main.m */,
+				4F88ADC9183FA284004D8D48 /* mindSphere-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F88ADE8183FA285004D8D48 /* mindSphereTests */ = {
+			isa = PBXGroup;
+			children = (
+				4F88ADEE183FA285004D8D48 /* mindSphereTests.m */,
+				4F88ADE9183FA285004D8D48 /* Supporting Files */,
+			);
+			path = mindSphereTests;
+			sourceTree = "<group>";
+		};
+		4F88ADE9183FA285004D8D48 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4F88ADEA183FA285004D8D48 /* mindSphereTests-Info.plist */,
+				4F88ADEB183FA285004D8D48 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F88ADB5183FA284004D8D48 /* mindSphere */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F88ADF2183FA285004D8D48 /* Build configuration list for PBXNativeTarget "mindSphere" */;
+			buildPhases = (
+				4F88ADB2183FA284004D8D48 /* Sources */,
+				4F88ADB3183FA284004D8D48 /* Frameworks */,
+				4F88ADB4183FA284004D8D48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mindSphere;
+			productName = mindSphere;
+			productReference = 4F88ADB6183FA284004D8D48 /* mindSphere.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4F88ADE0183FA285004D8D48 /* mindSphereTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F88ADF5183FA285004D8D48 /* Build configuration list for PBXNativeTarget "mindSphereTests" */;
+			buildPhases = (
+				4F88ADDD183FA285004D8D48 /* Sources */,
+				4F88ADDE183FA285004D8D48 /* Frameworks */,
+				4F88ADDF183FA285004D8D48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F88ADE7183FA285004D8D48 /* PBXTargetDependency */,
+			);
+			name = mindSphereTests;
+			productName = mindSphereTests;
+			productReference = 4F88ADE1183FA285004D8D48 /* mindSphereTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F88ADAE183FA284004D8D48 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Oliver Rodden";
+				TargetAttributes = {
+					4F88ADE0183FA285004D8D48 = {
+						TestTargetID = 4F88ADB5183FA284004D8D48;
+					};
+				};
+			};
+			buildConfigurationList = 4F88ADB1183FA284004D8D48 /* Build configuration list for PBXProject "mindSphere" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F88ADAD183FA284004D8D48;
+			productRefGroup = 4F88ADB7183FA284004D8D48 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F88ADB5183FA284004D8D48 /* mindSphere */,
+				4F88ADE0183FA285004D8D48 /* mindSphereTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F88ADB4183FA284004D8D48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F88ADDA183FA284004D8D48 /* Spaceship.png in Resources */,
+				4F88ADDC183FA284004D8D48 /* Images.xcassets in Resources */,
+				4F88ADD2183FA284004D8D48 /* Main_iPad.storyboard in Resources */,
+				4F88ADCF183FA284004D8D48 /* Main_iPhone.storyboard in Resources */,
+				4F88ADC6183FA284004D8D48 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F88ADDF183FA285004D8D48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F88ADED183FA285004D8D48 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F88ADB2183FA284004D8D48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F88ADD8183FA284004D8D48 /* MyScene.m in Sources */,
+				4F88AE00183FA789004D8D48 /* MediumScene.m in Sources */,
+				4F88ADD5183FA284004D8D48 /* ViewController.m in Sources */,
+				4F88AE03183FA7A2004D8D48 /* HardScene.m in Sources */,
+				4F88ADCC183FA284004D8D48 /* AppDelegate.m in Sources */,
+				4F88ADFA183FA768004D8D48 /* EasyScene.m in Sources */,
+				4F88ADC8183FA284004D8D48 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F88ADDD183FA285004D8D48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F88ADEF183FA285004D8D48 /* mindSphereTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F88ADE7183FA285004D8D48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F88ADB5183FA284004D8D48 /* mindSphere */;
+			targetProxy = 4F88ADE6183FA285004D8D48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4F88ADC4183FA284004D8D48 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F88ADC5183FA284004D8D48 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4F88ADCD183FA284004D8D48 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F88ADCE183FA284004D8D48 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		4F88ADD0183FA284004D8D48 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F88ADD1183FA284004D8D48 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		4F88ADEB183FA285004D8D48 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F88ADEC183FA285004D8D48 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F88ADF0183FA285004D8D48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4F88ADF1183FA285004D8D48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F88ADF3183FA285004D8D48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mindSphere/mindSphere-Prefix.pch";
+				INFOPLIST_FILE = "mindSphere/mindSphere-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4F88ADF4183FA285004D8D48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mindSphere/mindSphere-Prefix.pch";
+				INFOPLIST_FILE = "mindSphere/mindSphere-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4F88ADF6183FA285004D8D48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/mindSphere.app/mindSphere";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mindSphere/mindSphere-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "mindSphereTests/mindSphereTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4F88ADF7183FA285004D8D48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/mindSphere.app/mindSphere";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mindSphere/mindSphere-Prefix.pch";
+				INFOPLIST_FILE = "mindSphereTests/mindSphereTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F88ADB1183FA284004D8D48 /* Build configuration list for PBXProject "mindSphere" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F88ADF0183FA285004D8D48 /* Debug */,
+				4F88ADF1183FA285004D8D48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F88ADF2183FA285004D8D48 /* Build configuration list for PBXNativeTarget "mindSphere" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F88ADF3183FA285004D8D48 /* Debug */,
+				4F88ADF4183FA285004D8D48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4F88ADF5183FA285004D8D48 /* Build configuration list for PBXNativeTarget "mindSphereTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F88ADF6183FA285004D8D48 /* Debug */,
+				4F88ADF7183FA285004D8D48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F88ADAE183FA284004D8D48 /* Project object */;
+}

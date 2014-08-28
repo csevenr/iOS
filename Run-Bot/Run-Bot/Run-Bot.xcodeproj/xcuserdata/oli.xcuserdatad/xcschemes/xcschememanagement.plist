@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Run-Bot Extreme.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Run-Bot.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4F0E490B1923F65B00CF79CD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F1869B71922BAA600EAA31E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F4EA8FC18B36ED4004C7236</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F4EA92018B36ED4004C7236</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F877A2F1922B70B00EBDFF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F877A4E1922B70E00EBDFF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4F877A631922B8A900EBDFF6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

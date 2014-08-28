@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F23BF2318115CE200E080B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F23BF2218115CE200E080B0 /* Foundation.framework */; };
+		4F23BF2518115CE200E080B0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F23BF2418115CE200E080B0 /* CoreGraphics.framework */; };
+		4F23BF2718115CE200E080B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F23BF2618115CE200E080B0 /* UIKit.framework */; };
+		4F23BF2D18115CE200E080B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F23BF2B18115CE200E080B0 /* InfoPlist.strings */; };
+		4F23BF2F18115CE200E080B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F23BF2E18115CE200E080B0 /* main.m */; };
+		4F23BF3318115CE200E080B0 /* EiiRMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F23BF3218115CE200E080B0 /* EiiRMAppDelegate.m */; };
+		4F23BF3518115CE200E080B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F23BF3418115CE200E080B0 /* Images.xcassets */; };
+		4F23BF3C18115CE200E080B0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F23BF3B18115CE200E080B0 /* XCTest.framework */; };
+		4F23BF3D18115CE200E080B0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F23BF2218115CE200E080B0 /* Foundation.framework */; };
+		4F23BF3E18115CE200E080B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F23BF2618115CE200E080B0 /* UIKit.framework */; };
+		4F23BF4618115CE200E080B0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F23BF4418115CE200E080B0 /* InfoPlist.strings */; };
+		4F23BF4818115CE200E080B0 /* rssMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F23BF4718115CE200E080B0 /* rssMapTests.m */; };
+		4F23BF5518115DA800E080B0 /* EiiRMRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F23BF5418115DA800E080B0 /* EiiRMRootViewController.m */; };
+		4F4B9E4A181178CE00E3CC00 /* EiiRMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B9E49181178CE00E3CC00 /* EiiRMCell.m */; };
+		4F4B9E4F18118BEE00E3CC00 /* EiiRMArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B9E4E18118BEE00E3CC00 /* EiiRMArticleViewController.m */; };
+		4F4B9E521811941A00E3CC00 /* thumbNail45.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4B9E501811941A00E3CC00 /* thumbNail45.png */; };
+		4F4B9E531811941A00E3CC00 /* thumbNail280.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F4B9E511811941A00E3CC00 /* thumbNail280.png */; };
+		4FA313F218128982005336D8 /* EiiRMArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA313F118128982005336D8 /* EiiRMArticle.m */; };
+		4FD49A671813C6A100A62BFB /* EiiRMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD49A661813C6A100A62BFB /* EiiRMMapViewController.m */; };
+		4FD49A691813C7BB00A62BFB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD49A681813C7BB00A62BFB /* MapKit.framework */; };
+		4FD49A6D1813CB3200A62BFB /* EiiRMListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD49A6C1813CB3200A62BFB /* EiiRMListViewController.m */; };
+		4FD49A761813E91400A62BFB /* EiiRMAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD49A751813E91400A62BFB /* EiiRMAnnotation.m */; };
+		4FD49A7E181403F200A62BFB /* annotation.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD49A7D181403F200A62BFB /* annotation.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F23BF3F18115CE200E080B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F23BF1718115CE200E080B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F23BF1E18115CE200E080B0;
+			remoteInfo = rssMap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4F23BF1F18115CE200E080B0 /* rssMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rssMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F23BF2218115CE200E080B0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4F23BF2418115CE200E080B0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4F23BF2618115CE200E080B0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4F23BF2A18115CE200E080B0 /* rssMap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rssMap-Info.plist"; sourceTree = "<group>"; };
+		4F23BF2C18115CE200E080B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4F23BF2E18115CE200E080B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4F23BF3018115CE200E080B0 /* rssMap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rssMap-Prefix.pch"; sourceTree = "<group>"; };
+		4F23BF3118115CE200E080B0 /* EiiRMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EiiRMAppDelegate.h; sourceTree = "<group>"; };
+		4F23BF3218115CE200E080B0 /* EiiRMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EiiRMAppDelegate.m; sourceTree = "<group>"; };
+		4F23BF3418115CE200E080B0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4F23BF3A18115CE200E080B0 /* rssMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rssMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F23BF3B18115CE200E080B0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4F23BF4318115CE200E080B0 /* rssMapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rssMapTests-Info.plist"; sourceTree = "<group>"; };
+		4F23BF4518115CE200E080B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4F23BF4718115CE200E080B0 /* rssMapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rssMapTests.m; sourceTree = "<group>"; };
+		4F23BF5318115DA800E080B0 /* EiiRMRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EiiRMRootViewController.h; sourceTree = "<group>"; };
+		4F23BF5418115DA800E080B0 /* EiiRMRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EiiRMRootViewController.m; sourceTree = "<group>"; };
+		4F4B9E48181178CE00E3CC00 /* EiiRMCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EiiRMCell.h; sourceTree = "<group>"; };
+		4F4B9E49181178CE00E3CC00 /* EiiRMCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EiiRMCell.m; sourceTree = "<group>"; };
+		4F4B9E4D18118BEE00E3CC00 /* EiiRMArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EiiRMArticleViewController.h; sourceTree = "<group>"; };
+		4F4B9E4E18118BEE00E3CC00 /* EiiRMArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EiiRMArticleViewController.m; sourceTree = "<group>"; };
+		4F4B9E501811941A00E3CC00 /* thumbNail45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbNail45.png; sourceTree = "<group>"; };
+		4F4B9E511811941A00E3CC00 /* thumbNail280.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbNail280.png; sourceTree = "<group>"; };
+		4FA313F018128982005336D8 /* EiiRMArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EiiRMArticle.h; sourceTree = "<group>"; };
+		4FA313F118128982005336D8 /* EiiRMArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EiiRMArticle.m; sourceTree = "<group>"; };
+		4FD49A651813C6A100A62BFB /* EiiRMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EiiRMMapViewController.h; sourceTree = "<group>"; };
+		4FD49A661813C6A100A62BFB /* EiiRMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EiiRMMapViewController.m; sourceTree = "<group>"; };
+		4FD49A681813C7BB00A62BFB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4FD49A6B1813CB3200A62BFB /* EiiRMListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EiiRMListViewController.h; sourceTree = "<group>"; };
+		4FD49A6C1813CB3200A62BFB /* EiiRMListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EiiRMListViewController.m; sourceTree = "<group>"; };
+		4FD49A741813E91400A62BFB /* EiiRMAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EiiRMAnnotation.h; sourceTree = "<group>"; };
+		4FD49A751813E91400A62BFB /* EiiRMAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EiiRMAnnotation.m; sourceTree = "<group>"; };
+		4FD49A7D181403F200A62BFB /* annotation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = annotation.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F23BF1C18115CE200E080B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FD49A691813C7BB00A62BFB /* MapKit.framework in Frameworks */,
+				4F23BF2518115CE200E080B0 /* CoreGraphics.framework in Frameworks */,
+				4F23BF2718115CE200E080B0 /* UIKit.framework in Frameworks */,
+				4F23BF2318115CE200E080B0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F23BF3718115CE200E080B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F23BF3C18115CE200E080B0 /* XCTest.framework in Frameworks */,
+				4F23BF3E18115CE200E080B0 /* UIKit.framework in Frameworks */,
+				4F23BF3D18115CE200E080B0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F23BF1618115CE200E080B0 = {
+			isa = PBXGroup;
+			children = (
+				4F23BF2818115CE200E080B0 /* rssMap */,
+				4F23BF4118115CE200E080B0 /* rssMapTests */,
+				4F23BF2118115CE200E080B0 /* Frameworks */,
+				4F23BF2018115CE200E080B0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4F23BF2018115CE200E080B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F23BF1F18115CE200E080B0 /* rssMap.app */,
+				4F23BF3A18115CE200E080B0 /* rssMapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F23BF2118115CE200E080B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FD49A681813C7BB00A62BFB /* MapKit.framework */,
+				4F23BF2218115CE200E080B0 /* Foundation.framework */,
+				4F23BF2418115CE200E080B0 /* CoreGraphics.framework */,
+				4F23BF2618115CE200E080B0 /* UIKit.framework */,
+				4F23BF3B18115CE200E080B0 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F23BF2818115CE200E080B0 /* rssMap */ = {
+			isa = PBXGroup;
+			children = (
+				4F4B9E501811941A00E3CC00 /* thumbNail45.png */,
+				4F4B9E511811941A00E3CC00 /* thumbNail280.png */,
+				4FD49A7D181403F200A62BFB /* annotation.png */,
+				4F4B9E47181177E400E3CC00 /* CustomObjects */,
+				4F23BF3118115CE200E080B0 /* EiiRMAppDelegate.h */,
+				4F23BF3218115CE200E080B0 /* EiiRMAppDelegate.m */,
+				4F23BF5318115DA800E080B0 /* EiiRMRootViewController.h */,
+				4F23BF5418115DA800E080B0 /* EiiRMRootViewController.m */,
+				4FD49A6B1813CB3200A62BFB /* EiiRMListViewController.h */,
+				4FD49A6C1813CB3200A62BFB /* EiiRMListViewController.m */,
+				4F4B9E4D18118BEE00E3CC00 /* EiiRMArticleViewController.h */,
+				4F4B9E4E18118BEE00E3CC00 /* EiiRMArticleViewController.m */,
+				4FD49A651813C6A100A62BFB /* EiiRMMapViewController.h */,
+				4FD49A661813C6A100A62BFB /* EiiRMMapViewController.m */,
+				4F23BF3418115CE200E080B0 /* Images.xcassets */,
+				4F23BF2918115CE200E080B0 /* Supporting Files */,
+			);
+			path = rssMap;
+			sourceTree = "<group>";
+		};
+		4F23BF2918115CE200E080B0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4F23BF2A18115CE200E080B0 /* rssMap-Info.plist */,
+				4F23BF2B18115CE200E080B0 /* InfoPlist.strings */,
+				4F23BF2E18115CE200E080B0 /* main.m */,
+				4F23BF3018115CE200E080B0 /* rssMap-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F23BF4118115CE200E080B0 /* rssMapTests */ = {
+			isa = PBXGroup;
+			children = (
+				4F23BF4718115CE200E080B0 /* rssMapTests.m */,
+				4F23BF4218115CE200E080B0 /* Supporting Files */,
+			);
+			path = rssMapTests;
+			sourceTree = "<group>";
+		};
+		4F23BF4218115CE200E080B0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4F23BF4318115CE200E080B0 /* rssMapTests-Info.plist */,
+				4F23BF4418115CE200E080B0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F4B9E47181177E400E3CC00 /* CustomObjects */ = {
+			isa = PBXGroup;
+			children = (
+				4F4B9E48181178CE00E3CC00 /* EiiRMCell.h */,
+				4F4B9E49181178CE00E3CC00 /* EiiRMCell.m */,
+				4FA313F018128982005336D8 /* EiiRMArticle.h */,
+				4FA313F118128982005336D8 /* EiiRMArticle.m */,
+				4FD49A741813E91400A62BFB /* EiiRMAnnotation.h */,
+				4FD49A751813E91400A62BFB /* EiiRMAnnotation.m */,
+			);
+			name = CustomObjects;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F23BF1E18115CE200E080B0 /* rssMap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F23BF4B18115CE200E080B0 /* Build configuration list for PBXNativeTarget "rssMap" */;
+			buildPhases = (
+				4F23BF1B18115CE200E080B0 /* Sources */,
+				4F23BF1C18115CE200E080B0 /* Frameworks */,
+				4F23BF1D18115CE200E080B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rssMap;
+			productName = rssMap;
+			productReference = 4F23BF1F18115CE200E080B0 /* rssMap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4F23BF3918115CE200E080B0 /* rssMapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F23BF4E18115CE200E080B0 /* Build configuration list for PBXNativeTarget "rssMapTests" */;
+			buildPhases = (
+				4F23BF3618115CE200E080B0 /* Sources */,
+				4F23BF3718115CE200E080B0 /* Frameworks */,
+				4F23BF3818115CE200E080B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F23BF4018115CE200E080B0 /* PBXTargetDependency */,
+			);
+			name = rssMapTests;
+			productName = rssMapTests;
+			productReference = 4F23BF3A18115CE200E080B0 /* rssMapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F23BF1718115CE200E080B0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = EiiRM;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Oliver Rodden";
+				TargetAttributes = {
+					4F23BF3918115CE200E080B0 = {
+						TestTargetID = 4F23BF1E18115CE200E080B0;
+					};
+				};
+			};
+			buildConfigurationList = 4F23BF1A18115CE200E080B0 /* Build configuration list for PBXProject "rssMap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4F23BF1618115CE200E080B0;
+			productRefGroup = 4F23BF2018115CE200E080B0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F23BF1E18115CE200E080B0 /* rssMap */,
+				4F23BF3918115CE200E080B0 /* rssMapTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F23BF1D18115CE200E080B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4B9E521811941A00E3CC00 /* thumbNail45.png in Resources */,
+				4F4B9E531811941A00E3CC00 /* thumbNail280.png in Resources */,
+				4F23BF2D18115CE200E080B0 /* InfoPlist.strings in Resources */,
+				4F23BF3518115CE200E080B0 /* Images.xcassets in Resources */,
+				4FD49A7E181403F200A62BFB /* annotation.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F23BF3818115CE200E080B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F23BF4618115CE200E080B0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F23BF1B18115CE200E080B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4B9E4A181178CE00E3CC00 /* EiiRMCell.m in Sources */,
+				4F23BF2F18115CE200E080B0 /* main.m in Sources */,
+				4F4B9E4F18118BEE00E3CC00 /* EiiRMArticleViewController.m in Sources */,
+				4FD49A761813E91400A62BFB /* EiiRMAnnotation.m in Sources */,
+				4FD49A671813C6A100A62BFB /* EiiRMMapViewController.m in Sources */,
+				4FA313F218128982005336D8 /* EiiRMArticle.m in Sources */,
+				4FD49A6D1813CB3200A62BFB /* EiiRMListViewController.m in Sources */,
+				4F23BF5518115DA800E080B0 /* EiiRMRootViewController.m in Sources */,
+				4F23BF3318115CE200E080B0 /* EiiRMAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F23BF3618115CE200E080B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F23BF4818115CE200E080B0 /* rssMapTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F23BF4018115CE200E080B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F23BF1E18115CE200E080B0 /* rssMap */;
+			targetProxy = 4F23BF3F18115CE200E080B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4F23BF2B18115CE200E080B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F23BF2C18115CE200E080B0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4F23BF4418115CE200E080B0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F23BF4518115CE200E080B0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F23BF4918115CE200E080B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4F23BF4A18115CE200E080B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F23BF4C18115CE200E080B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rssMap/rssMap-Prefix.pch";
+				INFOPLIST_FILE = "rssMap/rssMap-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4F23BF4D18115CE200E080B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rssMap/rssMap-Prefix.pch";
+				INFOPLIST_FILE = "rssMap/rssMap-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4F23BF4F18115CE200E080B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/rssMap.app/rssMap";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rssMap/rssMap-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "rssMapTests/rssMapTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		4F23BF5018115CE200E080B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/rssMap.app/rssMap";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rssMap/rssMap-Prefix.pch";
+				INFOPLIST_FILE = "rssMapTests/rssMapTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F23BF1A18115CE200E080B0 /* Build configuration list for PBXProject "rssMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F23BF4918115CE200E080B0 /* Debug */,
+				4F23BF4A18115CE200E080B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F23BF4B18115CE200E080B0 /* Build configuration list for PBXNativeTarget "rssMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F23BF4C18115CE200E080B0 /* Debug */,
+				4F23BF4D18115CE200E080B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F23BF4E18115CE200E080B0 /* Build configuration list for PBXNativeTarget "rssMapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F23BF4F18115CE200E080B0 /* Debug */,
+				4F23BF5018115CE200E080B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4F23BF1718115CE200E080B0 /* Project object */;
+}

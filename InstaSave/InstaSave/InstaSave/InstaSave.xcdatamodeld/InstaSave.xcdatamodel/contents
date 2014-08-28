@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Picture" representedClassName="Picture" syncable="YES">
+        <attribute name="pictureData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="info" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PictureInfo" inverseName="pic" inverseEntity="PictureInfo" syncable="YES"/>
+    </entity>
+    <entity name="PictureInfo" representedClassName="PictureInfo" syncable="YES">
+        <attribute name="mediaCredit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pubDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pic" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Picture" inverseName="info" inverseEntity="Picture" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Picture" positionX="-27" positionY="207" width="128" height="73"/>
+        <element name="PictureInfo" positionX="162" positionY="198" width="128" height="103"/>
+    </elements>
+</model>
