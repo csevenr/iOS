@@ -14,7 +14,7 @@
 
 @end
 
-@interface CanvasViewController : UIViewController
+@interface CanvasViewController : UIViewController <UIScrollViewDelegate>
 
 @property id delegate;
 
@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *colourPickerView;
 
 @property (weak, nonatomic) IBOutlet UIView *currentColourView;
+@property (weak, nonatomic) IBOutlet UIView *eyeDropBtn;
 
 @property (weak, nonatomic) IBOutlet UISlider *rSlider;
 @property (weak, nonatomic) IBOutlet UISlider *gSlider;

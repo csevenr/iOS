@@ -10,17 +10,23 @@
 #import "Pixel.h"
 
 @interface CanvasViewController (){
+    UIScrollView *canvasScrollView;
+    UIView *scrollSubView;
+    
     NSMutableArray *pixels;
     BOOL menuIsShowing;
     
     int columns;
-    int rows;
+    float rows;
+    
+    BOOL eyeDropEnabled;
+    BOOL editModeEnabled;
 }
 
 @end
 
 typedef enum {
-    kGridBtn, kFillBtn, kEraseBtn, kSaveBtn, kShareBtn, kExitBtn
+    kGridBtn, kFillBtn, kEraseBtn, kSaveBtn, kShareBtn, kExitBtn, kEyeDropBtn
 } btnType;
 
 @implementation CanvasViewController
@@ -50,11 +56,26 @@ typedef enum {
     swipeLeft.numberOfTouchesRequired = 2;
     [self.view addGestureRecognizer:swipeLeft];
 
+    
     [self setUpView:_menuView];
     [self setUpView:_colourPickerView];
     [self setUpView:_currentColourView];
     
+    
+    canvasScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0, 0.0, 320.0, 568.0)];
+    canvasScrollView.delegate=self;
+    canvasScrollView.minimumZoomScale=1.0;
+    canvasScrollView.maximumZoomScale=3.0;
+    [self.view addSubview:canvasScrollView];
+    scrollSubView = [UIView new];
+    UIImageView *background = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 320.0, 568.0)];
+    background.image=[UIImage imageNamed:@"bg.png"];
+    [scrollSubView addSubview:background];
+    [canvasScrollView addSubview:scrollSubView];
+    
+    
     [self setupPixels];
+    
     
     [self.view bringSubviewToFront:_menuView];
     [self.view bringSubviewToFront:_colourPickerView];
@@ -63,17 +84,19 @@ typedef enum {
 }
 
 -(void)setupPixels{
-//    pixelSize=64;//8, 10, 16, 32, 64
     columns = self.view.frame.size.width/_pixelSize;
-    rows = (int)self.view.frame.size.height/_pixelSize;
+    rows = self.view.frame.size.height/_pixelSize;
     pixels = [NSMutableArray new];
 
-    for (int a=0; a<columns*(rows+1); a++) {
+    for (int a=0; a<columns*((int)rows+1); a++) {
         Pixel *px = [Pixel new];
         px.frame = CGRectMake(_pixelSize*(a%columns), ((int)a/columns)*_pixelSize, _pixelSize, _pixelSize);
-        [self.view addSubview:px];
+        [scrollSubView addSubview:px];
         [pixels addObject:px];
     }
+    //now rows and columns have values, setup scrollview accordingly
+    scrollSubView.frame=CGRectMake(0.0, 0.0, self.pixelSize*ceilf(columns), self.pixelSize*ceilf(rows));
+    canvasScrollView.contentSize = scrollSubView.frame.size;
 }
 
 -(void)setUpView:(UIView*)view{
@@ -84,23 +107,45 @@ typedef enum {
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self handleTouches:touches withEvent:event];
+    if (!editModeEnabled) {
+        [self handleTouches:touches withEvent:event];
+    }
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self handleTouches:touches withEvent:event];
+    if (!editModeEnabled) {
+        [self handleTouches:touches withEvent:event];
+    }
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    if (eyeDropEnabled) {
+        [self swipedUp];
+        eyeDropEnabled=NO;
+    }
 }
 
 -(void)handleTouches:(NSSet *)touches withEvent:(UIEvent *)event{
-    if (!menuIsShowing) {
+    if (!menuIsShowing&&!eyeDropEnabled) {
         UITouch *touch = [[event allTouches] anyObject];
         CGPoint location = [touch locationInView:self.view];
         
         if ([[event allTouches]count]==1) {
             NSInteger column = floorf(columns * location.x / self.view.bounds.size.width);
             NSInteger row = floorf(rows * location.y / self.view.bounds.size.height);
-            
+
             [[pixels objectAtIndex:column + columns*row] changeColor:_currentColour];
+        }
+    }else if (eyeDropEnabled){
+        UITouch *touch = [[event allTouches] anyObject];
+        CGPoint location = [touch locationInView:self.view];
+        
+        if ([[event allTouches]count]==1) {
+            NSInteger column = floorf(columns * location.x / self.view.bounds.size.width);
+            NSInteger row = floorf(rows * location.y / self.view.bounds.size.height);
+
+            _currentColour = [(Pixel*)[pixels objectAtIndex:column + columns*row] backgroundColor];
+            _currentColourView.backgroundColor = _currentColour;
         }
     }
 }
@@ -186,6 +231,9 @@ typedef enum {
         UIImageWriteToSavedPhotosAlbum(image1, nil, nil, nil);
     }else if ([sender tag]==kExitBtn){
         [self.delegate canvasExitBtnPressed];
+    }else if ([sender tag]==kEyeDropBtn){
+        [self swipedDown];
+        eyeDropEnabled=YES;
     }
 }
 
@@ -202,6 +250,35 @@ typedef enum {
 - (IBAction)colourSliderValueChanged:(UISlider *)sender {
     _currentColour = [UIColor colorWithRed:_rSlider.value green:_gSlider.value blue:_bSlider.value alpha:_aSlider.value];
     _currentColourView.backgroundColor = _currentColour;
+}
+
+-(UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
+    return scrollSubView;
+}
+
+#pragma mark shake shit
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self resignFirstResponder];
+    [super viewWillDisappear:animated];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+    if (motion == UIEventSubtypeMotionShake)
+    {
+//        NSLog(@"shaken not stirred");
+//        [[pixels objectAtIndex:1] setBackgroundColor:[UIColor blackColor]];
+        editModeEnabled=YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning

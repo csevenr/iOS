@@ -474,6 +474,7 @@
 				4F1EF33219AFAE9C00D318AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4F1EF33319AFAE9C00D318AC /* Build configuration list for PBXNativeTarget "PixelArtTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +483,7 @@
 				4F1EF33519AFAE9C00D318AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
