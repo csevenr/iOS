@@ -5,24 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>7C28E0D2-0C0D-4686-9C53-3D8A421B1075</string>
+	<string>5EF31AFD-B7A0-4153-BA79-D43D6EC2F3BD</string>
 	<key>IDESourceControlProjectName</key>
-	<string>PixelArt</string>
+	<string>Run-Bot</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>7DE6CFFF0836644E3E2BCC5D1B0CB565A45B6F22</key>
 		<string>https://github.com/olirodd/iOS.git</string>
-		<key>A425EA26-95BC-4B30-BCC1-5348F6C75B07</key>
-		<string>https://github.com/olirodd/objectivec.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>PixelArt/PixelArt/PixelArt.xcodeproj</string>
+	<string>Run-Bot/Run-Bot/Run-Bot.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7DE6CFFF0836644E3E2BCC5D1B0CB565A45B6F22</key>
 		<string>../../../..</string>
-		<key>A425EA26-95BC-4B30-BCC1-5348F6C75B07</key>
-		<string>../../../../../objectivec</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/olirodd/iOS.git</string>
@@ -39,14 +35,6 @@
 			<string>7DE6CFFF0836644E3E2BCC5D1B0CB565A45B6F22</string>
 			<key>IDESourceControlWCCName</key>
 			<string>iOS</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>A425EA26-95BC-4B30-BCC1-5348F6C75B07</string>
-			<key>IDESourceControlWCCName</key>
-			<string>objectivec</string>
 		</dict>
 	</array>
 </dict>
