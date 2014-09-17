@@ -45,8 +45,8 @@
 -(void)update{
     if (scoring) {
         score++;
-        
-        if (CGRectContainsPoint([self.topJaw.layer.presentationLayer frame], fingerLoc)||CGRectContainsPoint([self.topJaw.layer.presentationLayer frame], fingerLoc)) {
+        self.scoreLbl.text = [NSString stringWithFormat:@"%d", score];
+        if (CGRectContainsPoint([self.topJaw.layer.presentationLayer frame], fingerLoc)||CGRectContainsPoint([self.bottomJaw.layer.presentationLayer frame], fingerLoc)) {
             self.view.backgroundColor=[UIColor redColor];
         }else{
             self.view.backgroundColor=[UIColor grayColor];
