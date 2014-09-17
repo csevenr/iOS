@@ -22,6 +22,9 @@
 		661928FF19C9CDC200D9BBBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661928DE19C9CDC200D9BBBB /* UIKit.framework */; };
 		6619290719C9CDC200D9BBBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6619290519C9CDC200D9BBBB /* InfoPlist.strings */; };
 		6619290919C9CDC200D9BBBB /* Dont_Get_BittenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619290819C9CDC200D9BBBB /* Dont_Get_BittenTests.m */; };
+		CCC607F719CA4CF50015C110 /* bottomJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F419CA4CF50015C110 /* bottomJaw.png */; };
+		CCC607F819CA4CF50015C110 /* mouthBg.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F519CA4CF50015C110 /* mouthBg.png */; };
+		CCC607F919CA4CF50015C110 /* topJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F619CA4CF50015C110 /* topJaw.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		6619290419C9CDC200D9BBBB /* Dont Get BittenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dont Get BittenTests-Info.plist"; sourceTree = "<group>"; };
 		6619290619C9CDC200D9BBBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6619290819C9CDC200D9BBBB /* Dont_Get_BittenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dont_Get_BittenTests.m; sourceTree = "<group>"; };
+		CCC607F419CA4CF50015C110 /* bottomJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomJaw.png; sourceTree = "<group>"; };
+		CCC607F519CA4CF50015C110 /* mouthBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouthBg.png; sourceTree = "<group>"; };
+		CCC607F619CA4CF50015C110 /* topJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topJaw.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 		661928E119C9CDC200D9BBBB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CCC607F319CA4CE60015C110 /* Images */,
 				661928E219C9CDC200D9BBBB /* Dont Get Bitten-Info.plist */,
 				661928E319C9CDC200D9BBBB /* InfoPlist.strings */,
 				661928E619C9CDC200D9BBBB /* main.m */,
@@ -153,6 +160,16 @@
 				6619290519C9CDC200D9BBBB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CCC607F319CA4CE60015C110 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CCC607F419CA4CF50015C110 /* bottomJaw.png */,
+				CCC607F519CA4CF50015C110 /* mouthBg.png */,
+				CCC607F619CA4CF50015C110 /* topJaw.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +251,9 @@
 				661928F119C9CDC200D9BBBB /* Main_iPad.storyboard in Resources */,
 				661928F619C9CDC200D9BBBB /* Images.xcassets in Resources */,
 				661928EE19C9CDC200D9BBBB /* Main_iPhone.storyboard in Resources */,
+				CCC607F919CA4CF50015C110 /* topJaw.png in Resources */,
+				CCC607F719CA4CF50015C110 /* bottomJaw.png in Resources */,
+				CCC607F819CA4CF50015C110 /* mouthBg.png in Resources */,
 				661928E519C9CDC200D9BBBB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +490,7 @@
 				6619290E19C9CDC200D9BBBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6619290F19C9CDC200D9BBBB /* Build configuration list for PBXNativeTarget "Dont Get BittenTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +499,7 @@
 				6619291119C9CDC200D9BBBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
