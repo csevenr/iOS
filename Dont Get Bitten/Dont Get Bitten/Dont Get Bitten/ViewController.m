@@ -8,7 +8,18 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    //Game
+    NSTimer *updateTimer;
+    
+    //Player
+    BOOL scoring;
+    int score;
+    CGPoint fingerLoc;
+    
+    //Jaws
+    int biteCountDown;
+}
 
 @end
 
@@ -18,6 +29,71 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self newGame];
+}
+
+-(void)newGame{
+    self.view.backgroundColor=[UIColor grayColor];
+    
+    scoring = NO;
+    score = 0;
+    biteCountDown = (arc4random()%100)+50;
+    
+    updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(update) userInfo:nil repeats:YES];
+}
+
+-(void)update{
+    if (scoring) {
+        score++;
+        
+        if (CGRectContainsPoint([self.topJaw.layer.presentationLayer frame], fingerLoc)||CGRectContainsPoint([self.topJaw.layer.presentationLayer frame], fingerLoc)) {
+            self.view.backgroundColor=[UIColor redColor];
+        }else{
+            self.view.backgroundColor=[UIColor grayColor];
+        }
+        biteCountDown--;
+        if (biteCountDown<=0) {
+            [self bite];
+            biteCountDown = (arc4random()%100)+50;
+        }
+    }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    scoring=YES;
+    fingerLoc = [(UITouch*)[touches anyObject] locationInView:self.view];
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    fingerLoc = [(UITouch*)[touches anyObject] locationInView:self.view];
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    scoring=NO;
+    self.view.backgroundColor = [UIColor grayColor];
+}
+
+-(void)bite{
+    float speed = ((arc4random()%10)+20)/100.0;
+    [UIView animateWithDuration:speed
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.topJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.origin.y, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height/2, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                     }
+                     completion:^(BOOL finished){
+                         [UIView animateWithDuration:speed
+                                               delay:0.0
+                                             options:UIViewAnimationOptionCurveEaseOut
+                                          animations:^{
+                                              self.topJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.origin.y-self.topJaw.frame.size.height+80.0, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                                              self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-80.0, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                                          }
+                                          completion:^(BOOL finished){
+                                              
+                                          }];
+                     }];
 }
 
 - (void)didReceiveMemoryWarning

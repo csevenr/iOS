@@ -10,4 +10,6 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *topJaw;
+@property (weak, nonatomic) IBOutlet UIImageView *bottomJaw;
 @end
