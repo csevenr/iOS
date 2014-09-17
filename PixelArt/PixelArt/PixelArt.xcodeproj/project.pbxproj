@@ -18,13 +18,13 @@
 		4F1EF32319AFAE9C00D318AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1EF30219AFAE9C00D318AC /* UIKit.framework */; };
 		4F1EF32B19AFAE9C00D318AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F1EF32919AFAE9C00D318AC /* InfoPlist.strings */; };
 		4F1EF32D19AFAE9C00D318AC /* PixelArtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EF32C19AFAE9C00D318AC /* PixelArtTests.m */; };
-		4F1EF34119AFAF0900D318AC /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1EF33619AFAF0900D318AC /* bg.png */; };
 		4F1EF34219AFAF0900D318AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EF33819AFAF0900D318AC /* AppDelegate.m */; };
 		4F1EF34319AFAF0900D318AC /* ipad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1EF33919AFAF0900D318AC /* ipad.storyboard */; };
 		4F1EF34419AFAF0900D318AC /* iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1EF33A19AFAF0900D318AC /* iphone.storyboard */; };
 		4F1EF34519AFAF0900D318AC /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EF33C19AFAF0900D318AC /* MenuViewController.m */; };
 		4F1EF34619AFAF0900D318AC /* CanvasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EF33E19AFAF0900D318AC /* CanvasViewController.m */; };
 		4F1EF34719AFAF0900D318AC /* Pixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EF34019AFAF0900D318AC /* Pixel.m */; };
+		CCFD34A519C8DC7200D2D7BB /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CCFD34A419C8DC7200D2D7BB /* bg.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,6 @@
 		4F1EF32819AFAE9C00D318AC /* PixelArtTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PixelArtTests-Info.plist"; sourceTree = "<group>"; };
 		4F1EF32A19AFAE9C00D318AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4F1EF32C19AFAE9C00D318AC /* PixelArtTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PixelArtTests.m; sourceTree = "<group>"; };
-		4F1EF33619AFAF0900D318AC /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		4F1EF33719AFAF0900D318AC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4F1EF33819AFAF0900D318AC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4F1EF33919AFAF0900D318AC /* ipad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ipad.storyboard; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		4F1EF33E19AFAF0900D318AC /* CanvasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasViewController.m; sourceTree = "<group>"; };
 		4F1EF33F19AFAF0900D318AC /* Pixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pixel.h; sourceTree = "<group>"; };
 		4F1EF34019AFAF0900D318AC /* Pixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pixel.m; sourceTree = "<group>"; };
+		CCFD34A419C8DC7200D2D7BB /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 		4F1EF30419AFAE9C00D318AC /* PixelArt */ = {
 			isa = PBXGroup;
 			children = (
-				4F1EF33619AFAF0900D318AC /* bg.png */,
+				CCFD34A419C8DC7200D2D7BB /* bg.jpg */,
 				4F1EF33719AFAF0900D318AC /* AppDelegate.h */,
 				4F1EF33819AFAF0900D318AC /* AppDelegate.m */,
 				4F1EF33919AFAF0900D318AC /* ipad.storyboard */,
@@ -244,10 +244,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCFD34A519C8DC7200D2D7BB /* bg.jpg in Resources */,
 				4F1EF34319AFAF0900D318AC /* ipad.storyboard in Resources */,
 				4F1EF31A19AFAE9C00D318AC /* Images.xcassets in Resources */,
 				4F1EF30919AFAE9C00D318AC /* InfoPlist.strings in Resources */,
-				4F1EF34119AFAF0900D318AC /* bg.png in Resources */,
 				4F1EF34419AFAF0900D318AC /* iphone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,8 @@
     UIView *scrollSubView;
     
     NSMutableArray *pixels;
+    NSMutableArray *undoStack;
+    
     BOOL menuIsShowing;
     
     int columns;
@@ -28,6 +30,17 @@
 typedef enum {
     kGridBtn, kFillBtn, kEraseBtn, kSaveBtn, kShareBtn, kExitBtn, kEyeDropBtn
 } btnType;
+
+struct UndoBlob{
+    __unsafe_unretained UIColor *colour;
+    int pixelId;
+}undoBlob;
+
+//@interface UndoBlob : NSObject
+//@property UIColor *colour;
+//@property int pixelId;
+//
+//@end
 
 @implementation CanvasViewController
 
@@ -66,9 +79,10 @@ typedef enum {
     canvasScrollView.delegate=self;
     canvasScrollView.minimumZoomScale=1.0;
     canvasScrollView.maximumZoomScale=3.0;
+    canvasScrollView.userInteractionEnabled=NO;
     [self.view addSubview:canvasScrollView];
     scrollSubView = [UIView new];
-    UIImageView *background = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 320.0, 568.0)];
+    UIImageView *background = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, 320.0, 576.0)];
     background.image=[UIImage imageNamed:@"bg.png"];
     [scrollSubView addSubview:background];
     [canvasScrollView addSubview:scrollSubView];
@@ -76,6 +90,7 @@ typedef enum {
     
     [self setupPixels];
     
+    undoStack = [NSMutableArray new];
     
     [self.view bringSubviewToFront:_menuView];
     [self.view bringSubviewToFront:_colourPickerView];
@@ -135,6 +150,15 @@ typedef enum {
             NSInteger row = floorf(rows * location.y / self.view.bounds.size.height);
 
             [[pixels objectAtIndex:column + columns*row] changeColor:_currentColour];
+            
+            undoBlob.colour = _currentColour;
+            undoBlob.pixelId = column + columns*row;
+            NSValue* value = [NSValue value:&undoBlob withObjCType:@encode(undoBlob)];
+            [undoStack addObject:value];
+            
+            const CGFloat* components = CGColorGetComponents(undoBlob.colour.CGColor);
+
+            NSLog(@"%d %f %f %f %f %d", [undoStack count], components[0], components[1], components[2], CGColorGetAlpha(undoBlob.colour.CGColor), undoBlob.pixelId);
         }
     }else if (eyeDropEnabled){
         UITouch *touch = [[event allTouches] anyObject];
@@ -275,9 +299,30 @@ typedef enum {
 {
     if (motion == UIEventSubtypeMotionShake)
     {
-//        NSLog(@"shaken not stirred");
-//        [[pixels objectAtIndex:1] setBackgroundColor:[UIColor blackColor]];
-        editModeEnabled=YES;
+        //Name correctly and add image
+        UIImageView *edit = [[UIImageView alloc]initWithFrame:CGRectMake(60.0, 184.0, 200.0, 200.0)];
+        edit.backgroundColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.5];
+        edit.alpha = 0.0;
+        [self.view addSubview:edit];
+        
+        [UIView animateWithDuration:0.1
+                             delay:0.0
+                           options:UIViewAnimationOptionCurveEaseIn
+                        animations:^{
+                            edit.alpha = 1.0;
+                        }
+                         completion:^(BOOL finished){
+                             [UIView animateWithDuration:0.2
+                                                   delay:0.7
+                                                 options:UIViewAnimationOptionCurveEaseOut
+                                              animations:^{
+                                                   edit.alpha = 0.0;
+                                              }
+                                              completion:nil];
+                         }];
+        
+        editModeEnabled=!editModeEnabled;
+        canvasScrollView.userInteractionEnabled=editModeEnabled;
     }
 }
 
