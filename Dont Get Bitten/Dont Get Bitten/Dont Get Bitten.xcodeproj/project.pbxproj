@@ -22,6 +22,10 @@
 		661928FF19C9CDC200D9BBBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 661928DE19C9CDC200D9BBBB /* UIKit.framework */; };
 		6619290719C9CDC200D9BBBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6619290519C9CDC200D9BBBB /* InfoPlist.strings */; };
 		6619290919C9CDC200D9BBBB /* Dont_Get_BittenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6619290819C9CDC200D9BBBB /* Dont_Get_BittenTests.m */; };
+		663DF27B19CAF135004AC859 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DF27A19CAF135004AC859 /* iAd.framework */; };
+		663DF43119CB10F5004AC859 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DF43019CB10F5004AC859 /* FacebookSDK.framework */; };
+		663DF43419CB1B3C004AC859 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DF43219CB1B3C004AC859 /* Accounts.framework */; };
+		663DF43519CB1B3C004AC859 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DF43319CB1B3C004AC859 /* Twitter.framework */; };
 		CCC607F719CA4CF50015C110 /* bottomJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F419CA4CF50015C110 /* bottomJaw.png */; };
 		CCC607F819CA4CF50015C110 /* mouthBg.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F519CA4CF50015C110 /* mouthBg.png */; };
 		CCC607F919CA4CF50015C110 /* topJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F619CA4CF50015C110 /* topJaw.png */; };
@@ -58,6 +62,10 @@
 		6619290419C9CDC200D9BBBB /* Dont Get BittenTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dont Get BittenTests-Info.plist"; sourceTree = "<group>"; };
 		6619290619C9CDC200D9BBBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6619290819C9CDC200D9BBBB /* Dont_Get_BittenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dont_Get_BittenTests.m; sourceTree = "<group>"; };
+		663DF27A19CAF135004AC859 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		663DF43019CB10F5004AC859 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../iOS/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		663DF43219CB1B3C004AC859 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		663DF43319CB1B3C004AC859 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		CCC607F419CA4CF50015C110 /* bottomJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomJaw.png; sourceTree = "<group>"; };
 		CCC607F519CA4CF50015C110 /* mouthBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouthBg.png; sourceTree = "<group>"; };
 		CCC607F619CA4CF50015C110 /* topJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topJaw.png; sourceTree = "<group>"; };
@@ -68,6 +76,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				663DF43419CB1B3C004AC859 /* Accounts.framework in Frameworks */,
+				663DF43519CB1B3C004AC859 /* Twitter.framework in Frameworks */,
+				663DF27B19CAF135004AC859 /* iAd.framework in Frameworks */,
+				663DF43119CB10F5004AC859 /* FacebookSDK.framework in Frameworks */,
 				661928DD19C9CDC200D9BBBB /* CoreGraphics.framework in Frameworks */,
 				661928DF19C9CDC200D9BBBB /* UIKit.framework in Frameworks */,
 				661928DB19C9CDC200D9BBBB /* Foundation.framework in Frameworks */,
@@ -94,6 +106,7 @@
 				6619290219C9CDC200D9BBBB /* Dont Get BittenTests */,
 				661928D919C9CDC200D9BBBB /* Frameworks */,
 				661928D819C9CDC200D9BBBB /* Products */,
+				663DF43019CB10F5004AC859 /* FacebookSDK.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +122,9 @@
 		661928D919C9CDC200D9BBBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				663DF43219CB1B3C004AC859 /* Accounts.framework */,
+				663DF43319CB1B3C004AC859 /* Twitter.framework */,
+				663DF27A19CAF135004AC859 /* iAd.framework */,
 				661928DA19C9CDC200D9BBBB /* Foundation.framework */,
 				661928DC19C9CDC200D9BBBB /* CoreGraphics.framework */,
 				661928DE19C9CDC200D9BBBB /* UIKit.framework */,
@@ -231,6 +247,7 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = 661928CE19C9CDC200D9BBBB;
 			productRefGroup = 661928D819C9CDC200D9BBBB /* Products */;
@@ -410,6 +427,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
+					"$(PROJECT_DIR)",
+					/Users/oliverrodden/Development/iOS/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dont Get Bitten/Dont Get Bitten-Prefix.pch";
 				INFOPLIST_FILE = "Dont Get Bitten/Dont Get Bitten-Info.plist";
@@ -423,6 +447,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FacebookSDK",
+					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
+					"$(PROJECT_DIR)",
+					/Users/oliverrodden/Development/iOS/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dont Get Bitten/Dont Get Bitten-Prefix.pch";
 				INFOPLIST_FILE = "Dont Get Bitten/Dont Get Bitten-Info.plist";

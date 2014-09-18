@@ -45,5 +45,22 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>FacebookAppID</key>
+	<string>463277217147210</string>
+	<key>FacebookDisplayName</key>
+	<string>Bite me</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb463277217147210</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
