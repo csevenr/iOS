@@ -26,6 +26,7 @@
 		663DF43119CB10F5004AC859 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DF43019CB10F5004AC859 /* FacebookSDK.framework */; };
 		663DF43419CB1B3C004AC859 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DF43219CB1B3C004AC859 /* Accounts.framework */; };
 		663DF43519CB1B3C004AC859 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 663DF43319CB1B3C004AC859 /* Twitter.framework */; };
+		CC44B58119CB5C480019C59A /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC44B58019CB5C480019C59A /* FacebookSDK.framework */; };
 		CCC607F719CA4CF50015C110 /* bottomJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F419CA4CF50015C110 /* bottomJaw.png */; };
 		CCC607F819CA4CF50015C110 /* mouthBg.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F519CA4CF50015C110 /* mouthBg.png */; };
 		CCC607F919CA4CF50015C110 /* topJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = CCC607F619CA4CF50015C110 /* topJaw.png */; };
@@ -66,6 +67,7 @@
 		663DF43019CB10F5004AC859 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../iOS/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		663DF43219CB1B3C004AC859 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		663DF43319CB1B3C004AC859 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		CC44B58019CB5C480019C59A /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CCC607F419CA4CF50015C110 /* bottomJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomJaw.png; sourceTree = "<group>"; };
 		CCC607F519CA4CF50015C110 /* mouthBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouthBg.png; sourceTree = "<group>"; };
 		CCC607F619CA4CF50015C110 /* topJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topJaw.png; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				663DF27B19CAF135004AC859 /* iAd.framework in Frameworks */,
 				663DF43119CB10F5004AC859 /* FacebookSDK.framework in Frameworks */,
 				661928DD19C9CDC200D9BBBB /* CoreGraphics.framework in Frameworks */,
+				CC44B58119CB5C480019C59A /* FacebookSDK.framework in Frameworks */,
 				661928DF19C9CDC200D9BBBB /* UIKit.framework in Frameworks */,
 				661928DB19C9CDC200D9BBBB /* Foundation.framework in Frameworks */,
 			);
@@ -107,6 +110,7 @@
 				661928D919C9CDC200D9BBBB /* Frameworks */,
 				661928D819C9CDC200D9BBBB /* Products */,
 				663DF43019CB10F5004AC859 /* FacebookSDK.framework */,
+				CC44B58019CB5C480019C59A /* FacebookSDK.framework */,
 			);
 			sourceTree = "<group>";
 		};
