@@ -1,15 +1,12 @@
 //
 //  ViewController.m
-//  Dont Get Bitten
+//  Bite Me
 //
-//  Created by Oliver Rodden on 17/09/2014.
+//  Created by Oliver Rodden on 19/09/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
 #import "ViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
-#import <Twitter/Twitter.h>
-#import <Accounts/Accounts.h>
 
 @interface ViewController (){
     //Game
@@ -33,7 +30,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-//    [self facebook];
     [self newGame];
 }
 
@@ -53,16 +49,16 @@
     if (playing) {
         if (scoring) {
             score++;
-//            self.scoreLbl.text = [NSString stringWithFormat:@"%d", score];
-//            if (CGRectContainsPoint([self.topJaw.layer.presentationLayer frame], fingerLoc)||CGRectContainsPoint([self.bottomJaw.layer.presentationLayer frame], fingerLoc)) {
-//                [self gameOver];
-//            }else{
-//    //            self.view.backgroundColor=[UIColor grayColor];
-//            }
+            self.scoreLbl.text = [NSString stringWithFormat:@"%u", score];
+            if (CGRectContainsPoint([self.topJaw.layer.presentationLayer frame], fingerLoc)||CGRectContainsPoint([self.bottomJaw.layer.presentationLayer frame], fingerLoc)) {
+                [self gameOver];
+            }else{
+//                self.view.backgroundColor=[UIColor grayColor];
+            }
             biteCountDown--;
             if (biteCountDown<=0) {
                 [self bite];
-                biteCountDown = (arc4random()%100)+50;
+                biteCountDown = (arc4random()%100)+80;
             }
         }
     }
@@ -88,29 +84,26 @@
 }
 
 -(void)bite{
-    float speed = ((arc4random()%10)+20)/100.0;
+    float speed = ((arc4random()%5)+25)/100.0;
     [UIView animateWithDuration:speed
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         self.topJaw.frame=CGRectMake(0.0, 0.0, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, 287.0, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                        self.topJaw.frame=CGRectMake(0.0, 0.0, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                        self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, 287.0, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
                      }
                      completion:^(BOOL finished){
-                         if (!playing) {
-                             
-                         }else{
-                             [UIView animateWithDuration:speed
-                                                   delay:0.0
-                                                 options:UIViewAnimationOptionCurveEaseOut
-                                              animations:^{
-                                                  self.topJaw.frame=CGRectMake(self.topJaw.frame.origin.x, -204.0, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                                                  self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, 488.0, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
-                                              }
-                                              completion:^(BOOL finished){
-                                                  
-                                              }];
-                         }
+                         [UIView animateWithDuration:speed
+                                               delay:0.0
+                                             options:UIViewAnimationOptionCurveEaseIn
+                                          animations:^{
+                                            if (playing) {
+                                                self.topJaw.frame=CGRectMake(0.0, -204.0, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                                                self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-100.0, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                                            }
+                                          }
+                                          completion:nil
+                          ];
                      }];
 }
 
@@ -121,10 +114,8 @@
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         if (self.topJaw.frame.origin.y==-204.0) {
-                             self.topJaw.frame=CGRectMake(0.0, 0.0, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                             self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, 287.0, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
-                         }
+                         self.topJaw.frame=CGRectMake(0.0, 0.0, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, 287.0, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
                          self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y+90.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
                          for (UIView *v in self.gameOverCol) {
                              v.alpha=1.0;
@@ -135,12 +126,15 @@
 }
 
 -(void)checkHighscore{
-    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"highscore"]==nil){
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:[self.scoreLbl.text intValue]] forKey:@"highscore"];
-    }else if ([[NSUserDefaults standardUserDefaults]objectForKey:@"highscore"]<self.scoreLbl.text){
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:[self.scoreLbl.text intValue]] forKey:@"highscore"];
+    int highscore = [[[NSUserDefaults standardUserDefaults]objectForKey:@"highscore"] intValue];
+    int newScore = [self.scoreLbl.text intValue];
+    if (highscore==0||highscore<newScore){
+        highscore=newScore;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:highscore] forKey:@"highscore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"set new highscore: %d", highscore);
     }
-    self.highscoreLbl.text=[NSString stringWithFormat:@"%d",[[[NSUserDefaults standardUserDefaults] objectForKey:@"highscore"] intValue]];
+    self.highscoreLbl.text=[NSString stringWithFormat:@"%d",highscore];
 }
 
 - (IBAction)playAgainBtnPressed:(id)sender {
@@ -173,7 +167,7 @@
 }
 
 - (IBAction)twitterBtnPressed:(id)sender {
-
+    
 }
 
 #pragma mark iAd shizz

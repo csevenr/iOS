@@ -1,8 +1,8 @@
 //
 //  ViewController.h
-//  Dont Get Bitten
+//  Bite Me
 //
-//  Created by Oliver Rodden on 17/09/2014.
+//  Created by Oliver Rodden on 19/09/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
@@ -10,19 +10,14 @@
 #import <iAd/iAd.h>
 
 @interface ViewController : UIViewController <ADBannerViewDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *topJaw;
+@property (weak, nonatomic) IBOutlet UIImageView *bottomJaw;
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLbl;
 @property (weak, nonatomic) IBOutlet UILabel *highscoreLbl;
 
-@property (weak, nonatomic) IBOutlet UIImageView *topJaw;
-@property (weak, nonatomic) IBOutlet UIImageView *bottomJaw;
-
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *gameOverCol;
 
 @property (weak, nonatomic) IBOutlet UILabel *charCounter;
-
-- (IBAction)playAgainBtnPressed:(id)sender;
-- (IBAction)facebookBtnPressed:(id)sender;
-- (IBAction)twitterBtnPressed:(id)sender;
 
 @end
