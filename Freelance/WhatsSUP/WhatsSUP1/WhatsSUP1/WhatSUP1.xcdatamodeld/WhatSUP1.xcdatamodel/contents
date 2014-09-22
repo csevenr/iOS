@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="1.1" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.17" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AppSettings" representedClassName="AppSettings" syncable="YES">
+        <attribute name="autoPostToCloud" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="posttofacebook" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="posttotwitter" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="startdelay" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="useCloudStorage" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="usemagneticnorth" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="usemiles" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="PersonalBests" representedClassName="PersonalBests" syncable="YES">
+        <attribute name="totaldistance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="best1k" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SavedSUPPath" syncable="YES"/>
+        <relationship name="best1m" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedSUPPath" syncable="YES"/>
+        <relationship name="best5k" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SavedSUPPath" syncable="YES"/>
+        <relationship name="best5m" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SavedSUPPath" syncable="YES"/>
+        <relationship name="best10k" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SavedSUPPath" syncable="YES"/>
+        <relationship name="best10m" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SavedSUPPath" syncable="YES"/>
+        <relationship name="farthest" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SavedSUPPath" syncable="YES"/>
+        <relationship name="longest" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SavedSUPPath" syncable="YES"/>
+    </entity>
+    <entity name="SavedSUPPath" representedClassName="SavedSUPPath" syncable="YES">
+        <attribute name="averageSpeed" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="cloudKitId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="compressedPath" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="endLat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="endLon" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="eventCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="fullypostedtocloud" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="inCloud" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="inFaceBook" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="inTwitter" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="maxLat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="maxLon" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="minLat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="minLon" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="startLat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="startLon" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="topAltitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="topSpeed" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="uncompressedLength" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="uncompressedPath" optional="YES" transient="YES" syncable="YES"/>
+        <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="waveHeight" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="weather" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AppSettings" positionX="-225" positionY="-117" width="128" height="150"/>
+        <element name="SavedSUPPath" positionX="-432" positionY="-270" width="128" height="493"/>
+        <element name="PersonalBests" positionX="-324" positionY="-117" width="128" height="178"/>
+    </elements>
+</model>

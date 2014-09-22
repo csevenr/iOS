@@ -1,0 +1,733 @@
+SELECT
+    dmi_queue_item.r_object_id ,
+    dmi_queue_item.name ,
+    dmi_queue_item.stamp ,
+    dmi_queue_item.sent_by ,
+    dmi_queue_item.date_sent ,
+    dmi_queue_item.due_date ,
+    dmi_queue_item.event ,
+    dmi_queue_item.item_name ,
+    dmi_queue_item.item_id ,
+    dmi_queue_item.item_type ,
+    dmi_queue_item.content_type ,
+    dmi_queue_item.message ,
+    dmi_queue_item.router_id ,
+    dmi_queue_item.supervisor_name ,
+    dmi_queue_item.task_number ,
+    dmi_queue_item.task_name ,
+    dmi_queue_item.task_type ,
+    dmi_queue_item.task_state ,
+    dmi_queue_item.dependency_type ,
+    dmi_queue_item.next_tasks_type ,
+    dmi_queue_item.instruction_page ,
+    dmi_queue_item.plan_start_date ,
+    dmi_queue_item.actual_start_date,
+    dmi_queue_item.read_flag ,
+    dmi_queue_item.delete_flag ,
+    dmi_queue_item.priority ,
+    dmi_queue_item.position ,
+    dmi_queue_item.dequeued_by ,
+    dmi_queue_item.dequeued_date ,
+    dmi_queue_item.sign_off_required,
+    dmi_queue_item.sign_off_user ,
+    dmi_queue_item.sign_off_date ,
+    dmi_queue_item.a_content_type ,
+    dmi_queue_item.a_operations ,
+    dmi_queue_item.source_docbase ,
+    dmi_queue_item.target_docbase ,
+    dmi_queue_item.remote_pending ,
+    dmi_queue_item.source_event ,
+    dmi_queue_item.source_stamp ,
+    dmi_queue_item.task_subject ,
+    dmi_queue_item.i_is_replica ,
+    dmi_queue_item.i_vstamp ,
+    dm_sysobject.i_is_deleted ,
+    dm_sysobject.r_object_id ,
+    dm_sysobject.object_name ,
+    dm_sysobject.r_object_type ,
+    dm_sysobject.a_content_type ,
+    dm_sysobject.a_application_type ,
+    dm_sysobject.r_link_cnt ,
+    dm_sysobject.r_lock_owner ,
+    dm_sysobject.r_is_virtual_doc
+FROM
+    dmi_queue_item_s dmi_queue_item,
+    dmi_package_s ps ,
+    dmi_package_r pr ,
+    dm_sysobject_s dm_sysobject
+WHERE
+    (
+        dmi_queue_item.name = :P0
+    )
+    AND dmi_queue_item.delete_flag = 0
+    AND dmi_queue_item.dependency_type IN ('0', '1', '2', '3', '4', '5', '6')
+    AND dmi_queue_item.router_id = ps.r_workflow_id
+    AND dmi_queue_item.task_number = ps.r_act_seqno
+    AND ps.r_object_id = pr.r_object_id
+    AND mod(ps.r_package_flag, 2) = 1
+    AND pr.r_component_id = dm_sysobject.r_object_id
+    AND
+    (
+        dm_sysobject.owner_name = :P1
+        OR EXISTS
+        (
+            SELECT *
+            FROM dm_acl_sp,
+            dm_acl_rp
+            WHERE dm_acl_sp.r_object_id = dm_acl_rp.r_object_id
+            AND dm_sysobject.acl_domain = dm_acl_sp.owner_name
+            AND dm_sysobject.acl_name = dm_acl_sp.object_name
+            AND dm_acl_rp.r_accessor_permit >= 2
+            AND
+            (
+                dm_acl_rp.r_accessor_name = 'dm_world'
+                OR dm_acl_rp.r_accessor_name = :P2
+                OR
+                (
+                    dm_acl_rp.r_is_group = 1
+                    AND dm_acl_rp.r_accessor_name IN
+                    (
+                        SELECT
+                            DISTINCT gr1.i_supergroups_names
+                        FROM
+                            dm_group_r gr1,
+                            dm_group_r gr2
+                        WHERE
+                            gr1.r_object_id = gr2.r_object_id
+                        AND
+                            gr2.users_names = :P3
+                    )
+                )
+            )
+        )
+    )
+UNION ALL
+SELECT
+    dmi_queue_item.r_object_id ,
+    dmi_queue_item.name ,
+    dmi_queue_item.stamp ,
+    dmi_queue_item.sent_by ,
+    dmi_queue_item.date_sent ,
+    dmi_queue_item.due_date ,
+    dmi_queue_item.event ,
+    dmi_queue_item.item_name ,
+    dmi_queue_item.item_id ,
+    dmi_queue_item.item_type ,
+    dmi_queue_item.content_type ,
+    dmi_queue_item.message ,
+    dmi_queue_item.router_id ,
+    dmi_queue_item.supervisor_name ,
+    dmi_queue_item.task_number ,
+    dmi_queue_item.task_name ,
+    dmi_queue_item.task_type ,
+    dmi_queue_item.task_state ,
+    dmi_queue_item.dependency_type ,
+    dmi_queue_item.next_tasks_type ,
+    dmi_queue_item.instruction_page ,
+    dmi_queue_item.plan_start_date ,
+    dmi_queue_item.actual_start_date,
+    dmi_queue_item.read_flag ,
+    dmi_queue_item.delete_flag ,
+    dmi_queue_item.priority ,
+    dmi_queue_item.position ,
+    dmi_queue_item.dequeued_by ,
+    dmi_queue_item.dequeued_date ,
+    dmi_queue_item.sign_off_required,
+    dmi_queue_item.sign_off_user ,
+    dmi_queue_item.sign_off_date ,
+    dmi_queue_item.a_content_type ,
+    dmi_queue_item.a_operations ,
+    dmi_queue_item.source_docbase ,
+    dmi_queue_item.target_docbase ,
+    dmi_queue_item.remote_pending ,
+    dmi_queue_item.source_event ,
+    dmi_queue_item.source_stamp ,
+    dmi_queue_item.task_subject ,
+    dmi_queue_item.i_is_replica ,
+    dmi_queue_item.i_vstamp ,
+    1 ,
+    '0000000000000000' ,
+    '' ,
+    '' ,
+    '' ,
+    '' ,
+    0 ,
+    '' ,
+    0
+FROM
+    dmi_queue_item_s dmi_queue_item,
+    dmi_package_s ps ,
+    dmi_package_r pr ,
+    dm_sysobject_s dm_sysobject
+WHERE
+    (
+        dmi_queue_item.name = :P4
+    )
+    AND dmi_queue_item.delete_flag = 0
+    AND dmi_queue_item.dependency_type IN ('0', '1', '2', '3', '4', '5', '6')
+    AND dmi_queue_item.router_id = ps.r_workflow_id
+    AND dmi_queue_item.task_number = ps.r_act_seqno
+    AND ps.r_object_id = pr.r_object_id
+    AND mod(ps.r_package_flag, 2) = 1
+    AND pr.r_component_id = dm_sysobject.r_object_id
+    AND
+    (
+        dm_sysobject.owner_name != :P5
+        AND NOT EXISTS
+        (
+            SELECT *
+            FROM dm_acl_sp,
+            dm_acl_rp
+            WHERE dm_acl_sp.r_object_id = dm_acl_rp.r_object_id
+            AND dm_sysobject.acl_domain = dm_acl_sp.owner_name
+            AND dm_sysobject.acl_name = dm_acl_sp.object_name
+            AND dm_acl_rp.r_accessor_permit >= 2
+            AND
+            (
+                dm_acl_rp.r_accessor_name = 'dm_world'
+                OR dm_acl_rp.r_accessor_name = :P6
+                OR
+                (
+                    dm_acl_rp.r_is_group = 1
+                    AND dm_acl_rp.r_accessor_name IN
+                    (
+                        SELECT DISTINCT
+                            gr1.i_supergroups_names
+                        FROM
+                            dm_group_r gr1,
+                            dm_group_r gr2
+                        WHERE
+                            gr1.r_object_id = gr2.r_object_id
+                            AND gr2.users_names = :P7
+                    )
+                )
+            )
+        )
+    )
+UNION ALL
+SELECT
+    dmi_queue_item.r_object_id ,
+    dmi_queue_item.name ,
+    dmi_queue_item.stamp ,
+    dmi_queue_item.sent_by ,
+    dmi_queue_item.date_sent ,
+    dmi_queue_item.due_date ,
+    dmi_queue_item.event ,
+    dmi_queue_item.item_name ,
+    dmi_queue_item.item_id ,
+    dmi_queue_item.item_type ,
+    dmi_queue_item.content_type ,
+    dmi_queue_item.message ,
+    dmi_queue_item.router_id ,
+    dmi_queue_item.supervisor_name ,
+    dmi_queue_item.task_number ,
+    dmi_queue_item.task_name ,
+    dmi_queue_item.task_type ,
+    dmi_queue_item.task_state ,
+    dmi_queue_item.dependency_type ,
+    dmi_queue_item.next_tasks_type ,
+    dmi_queue_item.instruction_page ,
+    dmi_queue_item.plan_start_date ,
+    dmi_queue_item.actual_start_date,
+    dmi_queue_item.read_flag ,
+    dmi_queue_item.delete_flag ,
+    dmi_queue_item.priority ,
+    dmi_queue_item.position ,
+    dmi_queue_item.dequeued_by ,
+    dmi_queue_item.dequeued_date ,
+    dmi_queue_item.sign_off_required,
+    dmi_queue_item.sign_off_user ,
+    dmi_queue_item.sign_off_date ,
+    dmi_queue_item.a_content_type ,
+    dmi_queue_item.a_operations ,
+    dmi_queue_item.source_docbase ,
+    dmi_queue_item.target_docbase ,
+    dmi_queue_item.remote_pending ,
+    dmi_queue_item.source_event ,
+    dmi_queue_item.source_stamp ,
+    dmi_queue_item.task_subject ,
+    dmi_queue_item.i_is_replica ,
+    dmi_queue_item.i_vstamp ,
+    1 ,
+    '0000000000000000' ,
+    '' ,
+    '' ,
+    '' ,
+    '' ,
+    0 ,
+    '' ,
+    0
+FROM
+    dmi_queue_item_s dmi_queue_item,
+    dmi_package_s ps ,
+    dmi_package_r pr
+WHERE
+    (
+        dmi_queue_item.name = :P8
+    )
+    AND dmi_queue_item.delete_flag = 0
+    AND dmi_queue_item.dependency_type IN ('0', '1', '2', '3', '4', '5', '6')
+    AND dmi_queue_item.router_id = ps.r_workflow_id
+    AND dmi_queue_item.task_number = ps.r_act_seqno
+    AND ps.r_object_id = pr.r_object_id
+    AND mod(ps.r_package_flag, 2) = 1
+    AND NOT EXISTS
+    (
+        SELECT 1 FROM dm_sysobject_s WHERE r_object_id = pr.r_component_id
+    )
+UNION ALL
+SELECT
+    dmi_queue_item.r_object_id ,
+    dmi_queue_item.name ,
+    dmi_queue_item.stamp ,
+    dmi_queue_item.sent_by ,
+    dmi_queue_item.date_sent ,
+    dmi_queue_item.due_date ,
+    dmi_queue_item.event ,
+    dmi_queue_item.item_name ,
+    dmi_queue_item.item_id ,
+    dmi_queue_item.item_type ,
+    dmi_queue_item.content_type ,
+    dmi_queue_item.message ,
+    dmi_queue_item.router_id ,
+    dmi_queue_item.supervisor_name ,
+    dmi_queue_item.task_number ,
+    dmi_queue_item.task_name ,
+    dmi_queue_item.task_type ,
+    dmi_queue_item.task_state ,
+    dmi_queue_item.dependency_type ,
+    dmi_queue_item.next_tasks_type ,
+    dmi_queue_item.instruction_page ,
+    dmi_queue_item.plan_start_date ,
+    dmi_queue_item.actual_start_date,
+    dmi_queue_item.read_flag ,
+    dmi_queue_item.delete_flag ,
+    dmi_queue_item.priority ,
+    dmi_queue_item.position ,
+    dmi_queue_item.dequeued_by ,
+    dmi_queue_item.dequeued_date ,
+    dmi_queue_item.sign_off_required,
+    dmi_queue_item.sign_off_user ,
+    dmi_queue_item.sign_off_date ,
+    dmi_queue_item.a_content_type ,
+    dmi_queue_item.a_operations ,
+    dmi_queue_item.source_docbase ,
+    dmi_queue_item.target_docbase ,
+    dmi_queue_item.remote_pending ,
+    dmi_queue_item.source_event ,
+    dmi_queue_item.source_stamp ,
+    dmi_queue_item.task_subject ,
+    dmi_queue_item.i_is_replica ,
+    dmi_queue_item.i_vstamp ,
+    1 ,
+    '0000000000000000' ,
+    '' ,
+    '' ,
+    '' ,
+    '' ,
+    0 ,
+    '' ,
+    0
+FROM
+    dmi_queue_item_s dmi_queue_item
+WHERE
+    (
+        dmi_queue_item.name = :P9
+    )
+    AND dmi_queue_item.delete_flag = 0
+    AND dmi_queue_item.dependency_type IN ('0', '1', '2', '3', '4', '5', '6')
+    AND NOT EXISTS
+    (
+        SELECT 1
+        FROM
+            dmi_package_s ps
+        WHERE
+            dmi_queue_item.router_id = ps.r_workflow_id
+        AND
+            dmi_queue_item.task_number = ps.r_act_seqno
+    )
+UNION ALL
+SELECT
+    dmi_queue_item.r_object_id ,
+    dmi_queue_item.name ,
+    dmi_queue_item.stamp ,
+    dmi_queue_item.sent_by ,
+    dmi_queue_item.date_sent ,
+    dmi_queue_item.due_date ,
+    dmi_queue_item.event ,
+    dmi_queue_item.item_name ,
+    dmi_queue_item.item_id ,
+    dmi_queue_item.item_type ,
+    dmi_queue_item.content_type ,
+    dmi_queue_item.message ,
+    dmi_queue_item.router_id ,
+    dmi_queue_item.supervisor_name ,
+    dmi_queue_item.task_number ,
+    dmi_queue_item.task_name ,
+    dmi_queue_item.task_type ,
+    dmi_queue_item.task_state ,
+    dmi_queue_item.dependency_type ,
+    dmi_queue_item.next_tasks_type ,
+    dmi_queue_item.instruction_page ,
+    dmi_queue_item.plan_start_date ,
+    dmi_queue_item.actual_start_date,
+    dmi_queue_item.read_flag ,
+    dmi_queue_item.delete_flag ,
+    dmi_queue_item.priority ,
+    dmi_queue_item.position ,
+    dmi_queue_item.dequeued_by ,
+    dmi_queue_item.dequeued_date ,
+    dmi_queue_item.sign_off_required,
+    dmi_queue_item.sign_off_user ,
+    dmi_queue_item.sign_off_date ,
+    dmi_queue_item.a_content_type ,
+    dmi_queue_item.a_operations ,
+    dmi_queue_item.source_docbase ,
+    dmi_queue_item.target_docbase ,
+    dmi_queue_item.remote_pending ,
+    dmi_queue_item.source_event ,
+    dmi_queue_item.source_stamp ,
+    dmi_queue_item.task_subject ,
+    dmi_queue_item.i_is_replica ,
+    dmi_queue_item.i_vstamp ,
+    dm_sysobject.i_is_deleted ,
+    dm_sysobject.r_object_id ,
+    dm_sysobject.object_name ,
+    dm_sysobject.r_object_type ,
+    dm_sysobject.a_content_type ,
+    dm_sysobject.a_application_type ,
+    dm_sysobject.r_link_cnt ,
+    dm_sysobject.r_lock_owner ,
+    dm_sysobject.r_is_virtual_doc
+FROM
+    dmi_queue_item_s dmi_queue_item,
+    dmi_package_s ps ,
+    dmi_package_r pr ,
+    dm_sysobject_s dm_sysobject
+WHERE
+    (
+        dmi_queue_item.name IN
+        (
+            SELECT DISTINCT
+                gr2.i_supergroups_names
+            FROM
+                dm_group_r gr1,
+                dm_group_r gr2
+            WHERE
+                gr1.r_object_id = gr2.r_object_id
+                AND gr1.users_names = :P10
+        )
+    )
+    AND dmi_queue_item.delete_flag = 0
+    AND dmi_queue_item.dependency_type IN ('0', '1', '2', '3', '4', '5', '6')
+    AND dmi_queue_item.router_id = ps.r_workflow_id
+    AND dmi_queue_item.task_number = ps.r_act_seqno
+    AND ps.r_object_id = pr.r_object_id
+    AND mod(ps.r_package_flag, 2) = 1
+    AND pr.r_component_id = dm_sysobject.r_object_id
+    AND
+    (
+        dm_sysobject.owner_name = :P11
+        OR EXISTS
+        (
+            SELECT *
+            FROM dm_acl_sp,
+            dm_acl_rp
+            WHERE dm_acl_sp.r_object_id = dm_acl_rp.r_object_id
+            AND dm_sysobject.acl_domain = dm_acl_sp.owner_name
+            AND dm_sysobject.acl_name = dm_acl_sp.object_name
+            AND dm_acl_rp.r_accessor_permit >= 2
+            AND
+            (
+                dm_acl_rp.r_accessor_name = 'dm_world'
+                OR dm_acl_rp.r_accessor_name = :P12
+                OR
+                (
+                    dm_acl_rp.r_is_group = 1
+                    AND dm_acl_rp.r_accessor_name IN
+                    (
+                        SELECT DISTINCT
+                            gr1.i_supergroups_names
+                        FROM
+                            dm_group_r gr1,
+                            dm_group_r gr2
+                        WHERE
+                            gr1.r_object_id = gr2.r_object_id
+                        AND
+                            gr2.users_names = :P13
+                    )
+                )
+            )
+        )
+    )
+UNION ALL
+SELECT
+    dmi_queue_item.r_object_id ,
+    dmi_queue_item.name ,
+    dmi_queue_item.stamp ,
+    dmi_queue_item.sent_by ,
+    dmi_queue_item.date_sent ,
+    dmi_queue_item.due_date ,
+    dmi_queue_item.event ,
+    dmi_queue_item.item_name ,
+    dmi_queue_item.item_id ,
+    dmi_queue_item.item_type ,
+    dmi_queue_item.content_type ,
+    dmi_queue_item.message ,
+    dmi_queue_item.router_id ,
+    dmi_queue_item.supervisor_name ,
+    dmi_queue_item.task_number ,
+    dmi_queue_item.task_name ,
+    dmi_queue_item.task_type ,
+    dmi_queue_item.task_state ,
+    dmi_queue_item.dependency_type ,
+    dmi_queue_item.next_tasks_type ,
+    dmi_queue_item.instruction_page ,
+    dmi_queue_item.plan_start_date ,
+    dmi_queue_item.actual_start_date,
+    dmi_queue_item.read_flag ,
+    dmi_queue_item.delete_flag ,
+    dmi_queue_item.priority ,
+    dmi_queue_item.position ,
+    dmi_queue_item.dequeued_by ,
+    dmi_queue_item.dequeued_date ,
+    dmi_queue_item.sign_off_required,
+    dmi_queue_item.sign_off_user ,
+    dmi_queue_item.sign_off_date ,
+    dmi_queue_item.a_content_type ,
+    dmi_queue_item.a_operations ,
+    dmi_queue_item.source_docbase ,
+    dmi_queue_item.target_docbase ,
+    dmi_queue_item.remote_pending ,
+    dmi_queue_item.source_event ,
+    dmi_queue_item.source_stamp ,
+    dmi_queue_item.task_subject ,
+    dmi_queue_item.i_is_replica ,
+    dmi_queue_item.i_vstamp ,
+    1 ,
+    '0000000000000000' ,
+    '' ,
+    '' ,
+    '' ,
+    '' ,
+    0 ,
+    '' ,
+    0
+FROM
+    dmi_queue_item_s dmi_queue_item,
+    dmi_package_s ps ,
+    dmi_package_r pr ,
+    dm_sysobject_s dm_sysobject
+WHERE
+    (
+        dmi_queue_item.name IN
+        (
+            SELECT DISTINCT
+                gr2.i_supergroups_names
+            FROM
+                dm_group_r gr1,
+                dm_group_r gr2
+            WHERE
+                gr1.r_object_id = gr2.r_object_id
+                AND gr1.users_names = :P14
+        )
+    )
+    AND dmi_queue_item.delete_flag = 0
+    AND dmi_queue_item.dependency_type IN ('0', '1', '2', '3', '4', '5', '6')
+    AND dmi_queue_item.router_id = ps.r_workflow_id
+    AND dmi_queue_item.task_number = ps.r_act_seqno
+    AND ps.r_object_id = pr.r_object_id
+    AND mod(ps.r_package_flag, 2) = 1
+    AND pr.r_component_id = dm_sysobject.r_object_id
+    AND
+    (
+        dm_sysobject.owner_name != :P15
+        AND NOT EXISTS
+        (
+            SELECT *
+            FROM dm_acl_sp,
+            dm_acl_rp
+            WHERE dm_acl_sp.r_object_id = dm_acl_rp.r_object_id
+            AND dm_sysobject.acl_domain = dm_acl_sp.owner_name
+            AND dm_sysobject.acl_name = dm_acl_sp.object_name
+            AND dm_acl_rp.r_accessor_permit >= 2
+            AND
+            (
+                dm_acl_rp.r_accessor_name = 'dm_world'
+                OR dm_acl_rp.r_accessor_name = :P16
+                OR
+                (
+                    dm_acl_rp.r_is_group = 1
+                    AND dm_acl_rp.r_accessor_name IN
+                    (
+                        SELECT DISTINCT
+                            gr1.i_supergroups_names
+                        FROM
+                            dm_group_r gr1,
+                            dm_group_r gr2
+                        WHERE
+                            gr1.r_object_id = gr2.r_object_id
+                            AND gr2.users_names = :P17
+                    )
+                )
+            )
+        )
+    )
+UNION ALL
+SELECT
+    dmi_queue_item.r_object_id ,
+    dmi_queue_item.name ,
+    dmi_queue_item.stamp ,
+    dmi_queue_item.sent_by ,
+    dmi_queue_item.date_sent ,
+    dmi_queue_item.due_date ,
+    dmi_queue_item.event ,
+    dmi_queue_item.item_name ,
+    dmi_queue_item.item_id ,
+    dmi_queue_item.item_type ,
+    dmi_queue_item.content_type ,
+    dmi_queue_item.message ,
+    dmi_queue_item.router_id ,
+    dmi_queue_item.supervisor_name ,
+    dmi_queue_item.task_number ,
+    dmi_queue_item.task_name ,
+    dmi_queue_item.task_type ,
+    dmi_queue_item.task_state ,
+    dmi_queue_item.dependency_type ,
+    dmi_queue_item.next_tasks_type ,
+    dmi_queue_item.instruction_page ,
+    dmi_queue_item.plan_start_date ,
+    dmi_queue_item.actual_start_date,
+    dmi_queue_item.read_flag ,
+    dmi_queue_item.delete_flag ,
+    dmi_queue_item.priority ,
+    dmi_queue_item.position ,
+    dmi_queue_item.dequeued_by ,
+    dmi_queue_item.dequeued_date ,
+    dmi_queue_item.sign_off_required,
+    dmi_queue_item.sign_off_user ,
+    dmi_queue_item.sign_off_date ,
+    dmi_queue_item.a_content_type ,
+    dmi_queue_item.a_operations ,
+    dmi_queue_item.source_docbase ,
+    dmi_queue_item.target_docbase ,
+    dmi_queue_item.remote_pending ,
+    dmi_queue_item.source_event ,
+    dmi_queue_item.source_stamp ,
+    dmi_queue_item.task_subject ,
+    dmi_queue_item.i_is_replica ,
+    dmi_queue_item.i_vstamp ,
+    1 ,
+    '0000000000000000' ,
+    '' ,
+    '' ,
+    '' ,
+    '' ,
+    0 ,
+    '' ,
+    0
+FROM
+    dmi_queue_item_s dmi_queue_item,
+    dmi_package_s ps ,
+    dmi_package_r pr
+WHERE
+    (
+        dmi_queue_item.name IN
+        (
+            SELECT DISTINCT gr2.i_supergroups_names
+            FROM dm_group_r gr1,
+            dm_group_r gr2
+            WHERE gr1.r_object_id = gr2.r_object_id
+            AND gr1.users_names = :P18
+        )
+    )
+    AND dmi_queue_item.delete_flag = 0
+    AND dmi_queue_item.dependency_type IN ('0', '1', '2', '3', '4', '5', '6')
+    AND dmi_queue_item.router_id = ps.r_workflow_id
+    AND dmi_queue_item.task_number = ps.r_act_seqno
+    AND ps.r_object_id = pr.r_object_id
+    AND mod(ps.r_package_flag, 2) = 1
+    AND NOT EXISTS
+    (
+        SELECT 1 FROM dm_sysobject_s WHERE r_object_id = pr.r_component_id
+    )
+UNION ALL
+SELECT
+    dmi_queue_item.r_object_id ,
+    dmi_queue_item.name ,
+    dmi_queue_item.stamp ,
+    dmi_queue_item.sent_by ,
+    dmi_queue_item.date_sent ,
+    dmi_queue_item.due_date ,
+    dmi_queue_item.event ,
+    dmi_queue_item.item_name ,
+    dmi_queue_item.item_id ,
+    dmi_queue_item.item_type ,
+    dmi_queue_item.content_type ,
+    dmi_queue_item.message ,
+    dmi_queue_item.router_id ,
+    dmi_queue_item.supervisor_name ,
+    dmi_queue_item.task_number ,
+    dmi_queue_item.task_name ,
+    dmi_queue_item.task_type ,
+    dmi_queue_item.task_state ,
+    dmi_queue_item.dependency_type ,
+    dmi_queue_item.next_tasks_type ,
+    dmi_queue_item.instruction_page ,
+    dmi_queue_item.plan_start_date ,
+    dmi_queue_item.actual_start_date,
+    dmi_queue_item.read_flag ,
+    dmi_queue_item.delete_flag ,
+    dmi_queue_item.priority ,
+    dmi_queue_item.position ,
+    dmi_queue_item.dequeued_by ,
+    dmi_queue_item.dequeued_date ,
+    dmi_queue_item.sign_off_required,
+    dmi_queue_item.sign_off_user ,
+    dmi_queue_item.sign_off_date ,
+    dmi_queue_item.a_content_type ,
+    dmi_queue_item.a_operations ,
+    dmi_queue_item.source_docbase ,
+    dmi_queue_item.target_docbase ,
+    dmi_queue_item.remote_pending ,
+    dmi_queue_item.source_event ,
+    dmi_queue_item.source_stamp ,
+    dmi_queue_item.task_subject ,
+    dmi_queue_item.i_is_replica ,
+    dmi_queue_item.i_vstamp ,
+    1 ,
+    '0000000000000000' ,
+    '' ,
+    '' ,
+    '' ,
+    '' ,
+    0 ,
+    '' ,
+    0
+FROM
+    dmi_queue_item_s dmi_queue_item
+WHERE
+    (
+        dmi_queue_item.name IN
+        (
+            SELECT DISTINCT gr2.i_supergroups_names
+            FROM dm_group_r gr1,
+            dm_group_r gr2
+            WHERE gr1.r_object_id = gr2.r_object_id
+            AND gr1.users_names = :P19
+        )
+    )
+    AND dmi_queue_item.delete_flag = 0
+    AND dmi_queue_item.dependency_type IN ('0', '1', '2', '3', '4', '5', '6')
+    AND NOT EXISTS
+    (
+        SELECT 1
+        FROM dmi_package_s ps
+        WHERE dmi_queue_item.router_id = ps.r_workflow_id
+        AND dmi_queue_item.task_number = ps.r_act_seqno
+    )
+ORDER BY 5 ASC,
+1 ,
+44
+
+
