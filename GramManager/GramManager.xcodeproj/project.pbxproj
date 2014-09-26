@@ -14,6 +14,7 @@
 		6620BAAA19D4129E0095C9B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6620BAA919D4129E0095C9B7 /* Images.xcassets */; };
 		6620BAAD19D4129E0095C9B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6620BAAB19D4129E0095C9B7 /* LaunchScreen.xib */; };
 		6620BAB919D4129E0095C9B7 /* GramManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BAB819D4129E0095C9B7 /* GramManagerTests.m */; };
+		665EBBC919D5BA5600B23652 /* Insta.m in Sources */ = {isa = PBXBuildFile; fileRef = 665EBBC819D5BA5600B23652 /* Insta.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		6620BAB219D4129E0095C9B7 /* GramManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GramManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6620BAB719D4129E0095C9B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6620BAB819D4129E0095C9B7 /* GramManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GramManagerTests.m; sourceTree = "<group>"; };
+		665EBBC719D5BA5600B23652 /* Insta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insta.h; sourceTree = "<group>"; };
+		665EBBC819D5BA5600B23652 /* Insta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insta.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 		6620BA9B19D4129E0095C9B7 /* GramManager */ = {
 			isa = PBXGroup;
 			children = (
+				665EBBC719D5BA5600B23652 /* Insta.h */,
+				665EBBC819D5BA5600B23652 /* Insta.m */,
 				6620BAA019D4129E0095C9B7 /* AppDelegate.h */,
 				6620BAA119D4129E0095C9B7 /* AppDelegate.m */,
 				6620BAA319D4129E0095C9B7 /* ViewController.h */,
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6620BAA519D4129E0095C9B7 /* ViewController.m in Sources */,
+				665EBBC919D5BA5600B23652 /* Insta.m in Sources */,
 				6620BAA219D4129E0095C9B7 /* AppDelegate.m in Sources */,
 				6620BA9F19D4129E0095C9B7 /* main.m in Sources */,
 			);
@@ -414,6 +420,7 @@
 				6620BABE19D4129E0095C9B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6620BABF19D4129E0095C9B7 /* Build configuration list for PBXNativeTarget "GramManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +429,7 @@
 				6620BAC119D4129E0095C9B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

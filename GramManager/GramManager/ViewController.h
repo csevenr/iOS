@@ -12,6 +12,12 @@
 
 @property (weak, nonatomic) IBOutlet UIWebView *oAuthWebView;
 
+@property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
+
+@property (weak, nonatomic) IBOutlet UIImageView *firstImage;
+
+- (IBAction)searchBtnPressed:(id)sender;
+- (IBAction)likeBtnPressed:(id)sender;
 -(void)auth;
 
 @end
