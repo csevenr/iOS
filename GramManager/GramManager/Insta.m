@@ -64,7 +64,7 @@ static Insta *sharedInstance = nil;
             NSLog(@"Error");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"## %@", jsonDictionary);
+//            NSLog(@"## %@", jsonDictionary);
             
 //            NSLog(@"post with id: %@ liked",postId);
         }
@@ -72,7 +72,7 @@ static Insta *sharedInstance = nil;
 }
 
 -(void)getFollowersOfUser:(NSString*)userId{
-    NSLog(@"attempting follower get");
+//    NSLog(@"attempting follower get");
     NSString *tokenString = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
     NSString *urlForFollowers = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/followed-by?access_token=%@", userId, tokenString];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForFollowers]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -80,8 +80,8 @@ static Insta *sharedInstance = nil;
             NSLog(@"Error");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"!!! %d", [[jsonDictionary objectForKey:@"data" ] count]);
-            NSLog(@"!!! %@", jsonDictionary);
+//            NSLog(@"!!! %d", [[jsonDictionary objectForKey:@"data" ] count]);
+//            NSLog(@"!!! %@", jsonDictionary);
             [self.delegate userJSON:jsonDictionary];
         }
     }];

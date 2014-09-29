@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Insta.h"
 #import "ManualViewController.h"
+#import "ManualGridViewController.h"
 
-@interface AutoViewController : UIViewController <UIWebViewDelegate, instaDelegate, manualViewControllerDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface AutoViewController : UIViewController <UIWebViewDelegate, instaDelegate, manualViewControllerDelegate, manualGridViewControllerDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *oAuthWebView;
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;

@@ -11,11 +11,11 @@
 
 @protocol manualViewControllerDelegate <NSObject>
 
--(void)getRid;
+-(void)getRidMan;
 
 @end
 
-@interface ManualViewController : UIViewController <instaDelegate>
+@interface ManualViewController : UIViewController <instaDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) id<manualViewControllerDelegate> delegate;
 

@@ -7,7 +7,8 @@
 //
 
 #import "AutoViewController.h"
-#import "ManualViewController.h"
+//#import "ManualViewController.h"
+//#import "ManualGridViewController.h"
 #import "Post.h"
 
 @interface AutoViewController (){
@@ -16,6 +17,7 @@
     NSTimer *mainLoop;
     
     ManualViewController *manVc;
+    ManualGridViewController *manGridVc;
 }
 @end
 
@@ -34,6 +36,10 @@
     UISwipeGestureRecognizer *left = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipedLeft)];
     left.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:left];
+    
+    UISwipeGestureRecognizer *right = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipedRight)];
+    right.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:right];
     
     tokenString = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
     if (tokenString == nil) {
@@ -80,16 +86,41 @@
 
 -(void)swipedLeft{
     if (manVc==nil) {
-        manVc = [ManualViewController new];
-        manVc.delegate=self;
-        [self.view addSubview:manVc.view];
+        [self performSegueWithIdentifier:@"man" sender:nil];
+    }else{
+        [self.navigationController pushViewController:manVc animated:YES];
     }
     [mainLoop invalidate];
 }
 
--(void)getRid{
+-(void)swipedRight{
+    if (manGridVc==nil) {
+        [self performSegueWithIdentifier:@"manGrid" sender:nil];
+    }else{
+        [self.navigationController pushViewController:manGridVc animated:YES];
+    }
+    [mainLoop invalidate];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"man"]) {
+        manVc=segue.destinationViewController;
+        manVc.delegate=self;
+    }else if ([segue.identifier isEqualToString:@"manGrid"]) {
+        manGridVc=segue.destinationViewController;
+        manGridVc.delegate=self;
+    }
+}
+
+-(void)getRidMan{
     if (manVc!=nil) {
-        [manVc.view removeFromSuperview];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
+-(void)getRidManGrid{
+    if (manGridVc!=nil) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 

@@ -17,8 +17,9 @@
         self.lowResURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"low_resolution"] objectForKey:@"url"];
         self.standardResURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"];
         self.thumbnailURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"];
-        self.userId = [[JSONDictionary objectForKey:@"user"] objectForKey:@"id"];
         
+        self.userId = [[JSONDictionary objectForKey:@"user"] objectForKey:@"id"];
+        self.userName = [[JSONDictionary objectForKey:@"user"] objectForKey:@"username"];
 //        Insta *ig = [Insta new];
 //        ig.delegate=self;
 //        [ig getFollowersOfUser:self.userId];

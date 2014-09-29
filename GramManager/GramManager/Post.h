@@ -16,6 +16,7 @@
 @property NSString *standardResURL;
 @property NSString *thumbnailURL;
 @property NSString *userId;
+@property NSString *userName;
 
 -(id)initWithDictionary:(NSDictionary*)JSONDictionary;
 

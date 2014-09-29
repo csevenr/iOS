@@ -7,16 +7,30 @@
 //
 
 #import "ManualViewController.h"
+#import "Post.h"
+#import "PostTableViewCell.h"
+
+@interface ManualViewController (){
+    NSMutableArray *posts;
+}
+
+@end
 
 @implementation ManualViewController
 
--(id)init{
-    if (self=[super init]) {
-        UISwipeGestureRecognizer *right = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipedRight)];
-        right.direction = UISwipeGestureRecognizerDirectionRight;
-        [self.view addGestureRecognizer:right];
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    if (self=[super initWithCoder:aDecoder]) {
     }
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    UISwipeGestureRecognizer *right = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipedRight)];//check if already there
+    right.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:right];
+    
+    posts = [NSMutableArray new];
 }
 
 - (IBAction)searchBtnPressed:(id)sender {
@@ -24,7 +38,7 @@
 }
 
 -(void)swipedRight{
-    [self.delegate getRid];
+    [self.delegate getRidMan];
 }
 
 -(void)getJSON{
@@ -35,7 +49,39 @@
 }
 
 -(void)JSONReceived:(NSDictionary *)JSONDictionary{
+//    NSLog(@"%@",JSONDictionary);
+    for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
+        Post *post = [[Post alloc]initWithDictionary:postDict];
+        [posts addObject:post];
+    }
+    [self.postTableView reloadData];
+}
+
+
+
+#pragma Mark tableView methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;    //count of section
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [posts count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *MyIdentifier = @"MyIdentifier";
     
+    PostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    
+    if (cell == nil){
+        cell = [[PostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+    }
+
+    cell.post = [posts objectAtIndex:indexPath.row];
+
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@", [[posts objectAtIndex:indexPath.row] userName]];
+    return cell;
 }
 
 @end
