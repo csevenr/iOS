@@ -7,17 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Insta.h"
+#import "ManualViewController.h"
 
-@interface ViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface AutoViewController : UIViewController <UIWebViewDelegate, instaDelegate, manualViewControllerDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *oAuthWebView;
-
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
+@property (strong, nonatomic) IBOutlet UIImageView *lastLikedImage;
 
-@property (weak, nonatomic) IBOutlet UIImageView *firstImage;
-
-- (IBAction)searchBtnPressed:(id)sender;
-- (IBAction)likeBtnPressed:(id)sender;
 -(void)auth;
 
 @end

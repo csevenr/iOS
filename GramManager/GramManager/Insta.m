@@ -8,9 +8,12 @@
 
 #import "Insta.h"
 
-#define CLIENTID @"c4b88ed082c246b0bb4d12a0c1b8d59d"
-#define CLIENTSECRET @"6710fd780b504f9eb627eaf337d39759"
+#define CLIENTID1 @"c4b88ed082c246b0bb4d12a0c1b8d59d"
+#define CLIENTSECRET1 @"6710fd780b504f9eb627eaf337d39759"
 #define REDIRECTURI @"gManager://"
+
+#define CLIENTID2 @"8888ac39268049d5947fd0440f23ebbd"
+#define CLIENTSECRET2 @"61ee59e4e92e48b3898263c2933b6d66"
 
 @implementation Insta
 
@@ -28,37 +31,59 @@ static Insta *sharedInstance = nil;
     return sharedInstance;
 }
 
-+(NSString*)requestTokenIn:(UIWebView*)webview{
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID, REDIRECTURI]]];
++(void)requestTokenIn:(UIWebView*)webview{
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID1, REDIRECTURI]]];
     [webview loadRequest:requestObj];
-    
-    NSString *token;
-    return token;
 }
 
 -(void)getJsonForHashtag:(NSString*)hashtag{
     NSString *tokenString = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
     
-    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, CLIENTID, tokenString];
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, CLIENTID1, tokenString];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error");
-        } else {//  
-            NSLog(@"got the JSON");
+        } else { 
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            
+    
+//            NSLog(@"# %@", [[jsonDictionary objectForKey:@"data"]objectAtIndex:0]);
+//            NSLog(@"## %@", [[[[[jsonDictionary objectForKey:@"data"]objectAtIndex:0] objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"]);
+
             [self.delegate JSONReceived:jsonDictionary];
-            //            NSLog(@"%@",[[jsonDictionary objectForKey:@"data"]objectAtIndex:0]);//first post object
-            //            NSLog(@"%@",[[[jsonDictionary objectForKey:@"data"]objectAtIndex:0] objectForKey:@"id"]);//first post id
+        }
+    }];
+}
+
++ (void)likePost:(NSString*)postId withToken:(NSString*)token {
+    NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", postId, token];
+    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
+    [req setHTTPMethod:@"POST"];
+    [req addValue:@"" forHTTPHeaderField:@"X-Insta-Forwarded-For"];
+    [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@"Error");
+        } else {
+            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"## %@", jsonDictionary);
             
-            //            NSLog(@"%@",[[[jsonDictionary objectForKey:@"data"]objectAtIndex:0]objectForKey:@"images"]);//all image object for first post
-            //            NSLog(@"%@",[[[[jsonDictionary objectForKey:@"data"]objectAtIndex:0]objectForKey:@"images"]objectForKey:@"thumbnail"]);//thumbnail image object for first post
-            //            NSLog(@"%@",[[[[[jsonDictionary objectForKey:@"data"]objectAtIndex:0]objectForKey:@"images"]objectForKey:@"thumbnail"] objectForKey:@"url"]);//thumbnail image url for first post
-            //
-//            postId = [[[jsonDictionary objectForKey:@"data"]objectAtIndex:0] objectForKey:@"id"];
-            
-//            NSURL *thumbnailURL = [NSURL URLWithString:[[[[[jsonDictionary objectForKey:@"data"]objectAtIndex:0]objectForKey:@"images"]objectForKey:@"thumbnail"] objectForKey:@"url"]];
-            }
+//            NSLog(@"post with id: %@ liked",postId);
+        }
+    }]; 
+}
+
+-(void)getFollowersOfUser:(NSString*)userId{
+    NSLog(@"attempting follower get");
+    NSString *tokenString = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
+    NSString *urlForFollowers = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/followed-by?access_token=%@", userId, tokenString];
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForFollowers]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@"Error");
+        } else {
+            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"!!! %d", [[jsonDictionary objectForKey:@"data" ] count]);
+            NSLog(@"!!! %@", jsonDictionary);
+            [self.delegate userJSON:jsonDictionary];
+        }
     }];
 }
 

@@ -11,7 +11,11 @@
 
 @protocol instaDelegate <NSObject>
 
--(void)JSONReceived:(NSDictionary*)JSONDictionary;
+@optional
+-(void)JSONReceived:(NSDictionary*)JSONDictionary;//+++ refactor
+-(void)likedPost:(NSString*)thumbnailURL;
+
+-(void)userJSON:(NSDictionary*)JSONDictionary;
 
 @end
 
@@ -19,7 +23,10 @@
 
 @property (nonatomic, weak) id<instaDelegate> delegate;
 
-+(NSString*)requestTokenIn:(UIWebView*)webview;
++ (Insta *)sharedInstance ;
++(void)requestTokenIn:(UIWebView*)webview;
 -(void)getJsonForHashtag:(NSString*)hashtag;
++ (void)likePost:(NSString*)postId withToken:(NSString*)token;
+-(void)getFollowersOfUser:(NSString*)userId;
 
 @end
