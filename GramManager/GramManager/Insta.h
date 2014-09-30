@@ -23,10 +23,8 @@
 
 @property (nonatomic, weak) id<instaDelegate> delegate;
 
-+ (Insta *)sharedInstance ;
-+(void)requestTokenIn:(UIWebView*)webview;
 -(void)getJsonForHashtag:(NSString*)hashtag;
-+ (void)likePost:(NSString*)postId withToken:(NSString*)token;
+- (void)likePost:(NSString*)postId;
 -(void)getFollowersOfUser:(NSString*)userId;
 
 @end

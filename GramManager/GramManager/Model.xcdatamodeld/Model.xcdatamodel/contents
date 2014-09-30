@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="LikedPost" representedClassName="LikedPost" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="likedPosts" inverseEntity="UserProfile" syncable="YES"/>
+    </entity>
+    <entity name="UserProfile" representedClassName="UserProfile" syncable="YES">
+        <attribute name="totalLikesThroughApp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="likedPosts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LikedPost" inverseName="profile" inverseEntity="LikedPost" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="UserProfile" positionX="-2250" positionY="-1206" width="128" height="73"/>
+        <element name="LikedPost" positionX="-2007" positionY="-1206" width="128" height="73"/>
+    </elements>
+</model>

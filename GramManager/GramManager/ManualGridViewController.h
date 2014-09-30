@@ -7,17 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Insta.h"
+#import "MasterViewController.h"
 
-@protocol manualGridViewControllerDelegate <NSObject>
-
--(void)getRidManGrid;
-
-@end
-
-@interface ManualGridViewController : UIViewController <instaDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
-
-@property (nonatomic, weak) id<manualGridViewControllerDelegate> delegate;
+@interface ManualGridViewController : MasterViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *postCollView;

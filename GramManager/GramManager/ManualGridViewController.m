@@ -18,18 +18,9 @@
 
 @implementation ManualGridViewController
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    if (self=[super initWithCoder:aDecoder]) {
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UISwipeGestureRecognizer *right = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipedRight)];//check if already there
-    right.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:right];
-    
+        
     posts = [NSMutableArray new];
 }
 
@@ -37,18 +28,15 @@
     [self getJSON];
 }
 
--(void)swipedRight{
-    [self.delegate getRidManGrid];
-}
-
 -(void)getJSON{
     if (![self.hashtagTextField.text isEqualToString:@""]) {
-        [[Insta sharedInstance] getJsonForHashtag:self.hashtagTextField.text];
-        [[Insta sharedInstance] setDelegate:self];
+        [insta getJsonForHashtag:self.hashtagTextField.text];
+        [insta setDelegate:self];
     }
 }
 
 -(void)JSONReceived:(NSDictionary *)JSONDictionary{
+//    NSLog(@"JSON recived");
 //    NSLog(@"%@",JSONDictionary);
     for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
         Post *post = [[Post alloc]initWithDictionary:postDict];
@@ -93,10 +81,12 @@
     return cell;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self.postCollView deleteItemsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil]];
-    NSLog(@"%d", indexPath.row);
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    Post *selectedPost = [posts objectAtIndex:indexPath.row];
+    [insta likePost:selectedPost.postId];
+    
+    [posts removeObject:[posts objectAtIndex:indexPath.row]];
+    [self.postCollView reloadData];
 }
 
 @end
-

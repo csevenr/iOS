@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6617CE7219DAB8CA00436573 /* ClientController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6617CE7119DAB8CA00436573 /* ClientController.m */; };
+		6617CE7519DAC3C300436573 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6617CE7419DAC3C300436573 /* MasterViewController.m */; };
 		6620BA9F19D4129E0095C9B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BA9E19D4129E0095C9B7 /* main.m */; };
 		6620BAA219D4129E0095C9B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BAA119D4129E0095C9B7 /* AppDelegate.m */; };
 		6620BAA519D4129E0095C9B7 /* AutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BAA419D4129E0095C9B7 /* AutoViewController.m */; };
@@ -14,12 +16,16 @@
 		6620BAAA19D4129E0095C9B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6620BAA919D4129E0095C9B7 /* Images.xcassets */; };
 		6620BAAD19D4129E0095C9B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6620BAAB19D4129E0095C9B7 /* LaunchScreen.xib */; };
 		6620BAB919D4129E0095C9B7 /* GramManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BAB819D4129E0095C9B7 /* GramManagerTests.m */; };
-		663E610719D97A460070BDBE /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 663E610619D97A460070BDBE /* PostTableViewCell.m */; };
 		665EBBC919D5BA5600B23652 /* Insta.m in Sources */ = {isa = PBXBuildFile; fileRef = 665EBBC819D5BA5600B23652 /* Insta.m */; };
+		66A28DF819DB02340067CD5E /* manualIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A28DF719DB02340067CD5E /* manualIcon.png */; };
+		66A28DFC19DB02700067CD5E /* autoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A28DFB19DB02700067CD5E /* autoIcon.png */; };
+		66A28E6A19DB0BEE0067CD5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E6819DB0BEE0067CD5E /* Model.xcdatamodeld */; };
+		66A28E7519DB0E310067CD5E /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7419DB0E310067CD5E /* UserProfile.m */; };
+		66A28E7819DB0E690067CD5E /* LikedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7719DB0E690067CD5E /* LikedPost.m */; };
+		66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7A19DB114C0067CD5E /* ModelHelper.m */; };
 		66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06F919D998710081C68E /* ManualGridViewController.m */; };
 		66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */; };
 		CCAF95DD19D6E93300A92468 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAF95DC19D6E93300A92468 /* Post.m */; };
-		CCD690B019D61AA3004F020D /* ManualViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD690AF19D61AA3004F020D /* ManualViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +39,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6617CE7019DAB8CA00436573 /* ClientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientController.h; sourceTree = "<group>"; };
+		6617CE7119DAB8CA00436573 /* ClientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientController.m; sourceTree = "<group>"; };
+		6617CE7319DAC3C300436573 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		6617CE7419DAC3C300436573 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		6620BA9919D4129E0095C9B7 /* GramManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GramManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6620BA9D19D4129E0095C9B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6620BA9E19D4129E0095C9B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,18 +56,23 @@
 		6620BAB219D4129E0095C9B7 /* GramManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GramManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6620BAB719D4129E0095C9B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6620BAB819D4129E0095C9B7 /* GramManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GramManagerTests.m; sourceTree = "<group>"; };
-		663E610519D97A460070BDBE /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
-		663E610619D97A460070BDBE /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
 		665EBBC719D5BA5600B23652 /* Insta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insta.h; sourceTree = "<group>"; };
 		665EBBC819D5BA5600B23652 /* Insta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insta.m; sourceTree = "<group>"; };
+		66A28DF719DB02340067CD5E /* manualIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manualIcon.png; sourceTree = "<group>"; };
+		66A28DFB19DB02700067CD5E /* autoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoIcon.png; sourceTree = "<group>"; };
+		66A28E6919DB0BEE0067CD5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		66A28E7319DB0E310067CD5E /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		66A28E7419DB0E310067CD5E /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		66A28E7619DB0E690067CD5E /* LikedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikedPost.h; sourceTree = "<group>"; };
+		66A28E7719DB0E690067CD5E /* LikedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikedPost.m; sourceTree = "<group>"; };
+		66A28E7919DB114C0067CD5E /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelHelper.h; sourceTree = "<group>"; };
+		66A28E7A19DB114C0067CD5E /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
 		66FA06F819D998710081C68E /* ManualGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualGridViewController.h; sourceTree = "<group>"; };
 		66FA06F919D998710081C68E /* ManualGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualGridViewController.m; sourceTree = "<group>"; };
 		66FA06FB19D99C6D0081C68E /* PostCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCollectionViewCell.h; sourceTree = "<group>"; };
 		66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCollectionViewCell.m; sourceTree = "<group>"; };
 		CCAF95DB19D6E93300A92468 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		CCAF95DC19D6E93300A92468 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
-		CCD690AE19D61AA3004F020D /* ManualViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualViewController.h; sourceTree = "<group>"; };
-		CCD690AF19D61AA3004F020D /* ManualViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +98,6 @@
 			children = (
 				6620BA9B19D4129E0095C9B7 /* GramManager */,
 				6620BAB519D4129E0095C9B7 /* GramManagerTests */,
-				6620BA9A19D4129E0095C9B7 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,24 +108,19 @@
 				6620BAB219D4129E0095C9B7 /* GramManagerTests.xctest */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		6620BA9B19D4129E0095C9B7 /* GramManager */ = {
 			isa = PBXGroup;
 			children = (
+				66A28E7219DB0DF90067CD5E /* CoreData */,
 				6620BAA019D4129E0095C9B7 /* AppDelegate.h */,
 				6620BAA119D4129E0095C9B7 /* AppDelegate.m */,
 				66FA06FE19D99E700081C68E /* Utils */,
-				6620BAA319D4129E0095C9B7 /* AutoViewController.h */,
-				6620BAA419D4129E0095C9B7 /* AutoViewController.m */,
-				CCD690AE19D61AA3004F020D /* ManualViewController.h */,
-				CCD690AF19D61AA3004F020D /* ManualViewController.m */,
-				663E610519D97A460070BDBE /* PostTableViewCell.h */,
-				663E610619D97A460070BDBE /* PostTableViewCell.m */,
-				66FA06F819D998710081C68E /* ManualGridViewController.h */,
-				66FA06F919D998710081C68E /* ManualGridViewController.m */,
-				66FA06FB19D99C6D0081C68E /* PostCollectionViewCell.h */,
-				66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */,
+				66A28DF119DAF9100067CD5E /* UI */,
+				66A28DF219DAF91F0067CD5E /* Objects */,
+				66A28DFD19DB027C0067CD5E /* Resources */,
 				6620BAA619D4129E0095C9B7 /* Main.storyboard */,
 				6620BAA919D4129E0095C9B7 /* Images.xcassets */,
 				6620BAAB19D4129E0095C9B7 /* LaunchScreen.xib */,
@@ -132,6 +141,7 @@
 		6620BAB519D4129E0095C9B7 /* GramManagerTests */ = {
 			isa = PBXGroup;
 			children = (
+				6620BA9A19D4129E0095C9B7 /* Products */,
 				6620BAB819D4129E0095C9B7 /* GramManagerTests.m */,
 				6620BAB619D4129E0095C9B7 /* Supporting Files */,
 			);
@@ -146,13 +156,68 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		66A28DF119DAF9100067CD5E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6617CE7319DAC3C300436573 /* MasterViewController.h */,
+				6617CE7419DAC3C300436573 /* MasterViewController.m */,
+				6620BAA319D4129E0095C9B7 /* AutoViewController.h */,
+				6620BAA419D4129E0095C9B7 /* AutoViewController.m */,
+				66FA06F819D998710081C68E /* ManualGridViewController.h */,
+				66FA06F919D998710081C68E /* ManualGridViewController.m */,
+				66FA06FB19D99C6D0081C68E /* PostCollectionViewCell.h */,
+				66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		66A28DF219DAF91F0067CD5E /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				CCAF95DB19D6E93300A92468 /* Post.h */,
+				CCAF95DC19D6E93300A92468 /* Post.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		66A28DFD19DB027C0067CD5E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				66A28E6B19DB0BF70067CD5E /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		66A28E6B19DB0BF70067CD5E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				66A28DF719DB02340067CD5E /* manualIcon.png */,
+				66A28DFB19DB02700067CD5E /* autoIcon.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		66A28E7219DB0DF90067CD5E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				66A28E6819DB0BEE0067CD5E /* Model.xcdatamodeld */,
+				66A28E7619DB0E690067CD5E /* LikedPost.h */,
+				66A28E7719DB0E690067CD5E /* LikedPost.m */,
+				66A28E7319DB0E310067CD5E /* UserProfile.h */,
+				66A28E7419DB0E310067CD5E /* UserProfile.m */,
+				66A28E7919DB114C0067CD5E /* ModelHelper.h */,
+				66A28E7A19DB114C0067CD5E /* ModelHelper.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		66FA06FE19D99E700081C68E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				665EBBC719D5BA5600B23652 /* Insta.h */,
 				665EBBC819D5BA5600B23652 /* Insta.m */,
-				CCAF95DB19D6E93300A92468 /* Post.h */,
-				CCAF95DC19D6E93300A92468 /* Post.m */,
+				6617CE7019DAB8CA00436573 /* ClientController.h */,
+				6617CE7119DAB8CA00436573 /* ClientController.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -237,6 +302,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A28DF819DB02340067CD5E /* manualIcon.png in Resources */,
+				66A28DFC19DB02700067CD5E /* autoIcon.png in Resources */,
 				6620BAA819D4129E0095C9B7 /* Main.storyboard in Resources */,
 				6620BAAD19D4129E0095C9B7 /* LaunchScreen.xib in Resources */,
 				6620BAAA19D4129E0095C9B7 /* Images.xcassets in Resources */,
@@ -261,11 +328,15 @@
 				6620BAA519D4129E0095C9B7 /* AutoViewController.m in Sources */,
 				CCAF95DD19D6E93300A92468 /* Post.m in Sources */,
 				665EBBC919D5BA5600B23652 /* Insta.m in Sources */,
-				663E610719D97A460070BDBE /* PostTableViewCell.m in Sources */,
+				66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */,
+				66A28E7519DB0E310067CD5E /* UserProfile.m in Sources */,
+				66A28E7819DB0E690067CD5E /* LikedPost.m in Sources */,
 				66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */,
+				6617CE7519DAC3C300436573 /* MasterViewController.m in Sources */,
 				6620BAA219D4129E0095C9B7 /* AppDelegate.m in Sources */,
-				CCD690B019D61AA3004F020D /* ManualViewController.m in Sources */,
+				66A28E6A19DB0BEE0067CD5E /* Model.xcdatamodeld in Sources */,
 				6620BA9F19D4129E0095C9B7 /* main.m in Sources */,
+				6617CE7219DAB8CA00436573 /* ClientController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +543,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		66A28E6819DB0BEE0067CD5E /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				66A28E6919DB0BEE0067CD5E /* Model.xcdatamodel */,
+			);
+			currentVersion = 66A28E6919DB0BEE0067CD5E /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6620BA9119D4129E0095C9B7 /* Project object */;
 }

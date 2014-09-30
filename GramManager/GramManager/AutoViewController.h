@@ -7,17 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Insta.h"
-#import "ManualViewController.h"
+#import "MasterViewController.h"
+
 #import "ManualGridViewController.h"
 
-@interface AutoViewController : UIViewController <UIWebViewDelegate, instaDelegate, manualViewControllerDelegate, manualGridViewControllerDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface AutoViewController : MasterViewController
 
-@property (weak, nonatomic) IBOutlet UIWebView *oAuthWebView;
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *lastLikedImage;
-
--(void)auth;
 
 @end
 

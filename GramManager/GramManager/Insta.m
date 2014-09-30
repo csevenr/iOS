@@ -7,39 +7,12 @@
 //
 
 #import "Insta.h"
-
-#define CLIENTID1 @"c4b88ed082c246b0bb4d12a0c1b8d59d"
-#define CLIENTSECRET1 @"6710fd780b504f9eb627eaf337d39759"
-#define REDIRECTURI @"gManager://"
-
-#define CLIENTID2 @"8888ac39268049d5947fd0440f23ebbd"
-#define CLIENTSECRET2 @"61ee59e4e92e48b3898263c2933b6d66"
+#import "ClientController.h"
 
 @implementation Insta
 
-static Insta *sharedInstance = nil;
-
-// Get the shared instance and create it if necessary.
-+ (Insta *)sharedInstance {
-    if (sharedInstance == nil) {
-        sharedInstance = [[super allocWithZone:NULL] init];
-    }
-    static dispatch_once_t pred;        // Lock
-    dispatch_once(&pred, ^{             // This code is called at most once per app
-        sharedInstance = [[Insta alloc] init];
-    });
-    return sharedInstance;
-}
-
-+(void)requestTokenIn:(UIWebView*)webview{
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID1, REDIRECTURI]]];
-    [webview loadRequest:requestObj];
-}
-
 -(void)getJsonForHashtag:(NSString*)hashtag{
-    NSString *tokenString = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
-    
-    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, CLIENTID1, tokenString];
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], [[ClientController sharedInstance] getCurrentToken]];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error");
@@ -54,8 +27,8 @@ static Insta *sharedInstance = nil;
     }];
 }
 
-+ (void)likePost:(NSString*)postId withToken:(NSString*)token {
-    NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", postId, token];
+- (void)likePost:(NSString*)postId {
+    NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", postId, [[ClientController sharedInstance] getCurrentToken]];
     NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
     [req setHTTPMethod:@"POST"];
     [req addValue:@"" forHTTPHeaderField:@"X-Insta-Forwarded-For"];
@@ -64,7 +37,7 @@ static Insta *sharedInstance = nil;
             NSLog(@"Error");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//            NSLog(@"## %@", jsonDictionary);
+            NSLog(@"## %@", jsonDictionary);
             
 //            NSLog(@"post with id: %@ liked",postId);
         }
