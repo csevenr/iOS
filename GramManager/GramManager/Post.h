@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Insta.h"
 
-@interface Post : NSObject <instaDelegate>
+@interface Post : NSObject
 
 @property NSString *postId;
 @property NSString *lowResURL;

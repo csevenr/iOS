@@ -74,7 +74,6 @@ static ClientController *sharedInstance = nil;
 -(NSString*)getCurrentToken{
     count++;
     if (count==100) count=0;
-    NSLog(@"%d", count);
     
     if (count>=0&&count<25) return [self.tokens objectAtIndex:0];
     else if (count>=25&&count<50) return [self.tokens objectAtIndex:1];

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class Post;
+
 @protocol instaDelegate <NSObject>
 
 @optional
@@ -24,7 +26,7 @@
 @property (nonatomic, weak) id<instaDelegate> delegate;
 
 -(void)getJsonForHashtag:(NSString*)hashtag;
-- (void)likePost:(NSString*)postId;
--(void)getFollowersOfUser:(NSString*)userId;
+- (void)likePost:(Post*)post;
+//-(void)getFollowersOfUser:(NSString*)userId;
 
 @end

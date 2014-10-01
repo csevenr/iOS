@@ -8,6 +8,7 @@
 
 #import "Insta.h"
 #import "ClientController.h"
+#import "Post.h"
 
 @implementation Insta
 
@@ -27,8 +28,8 @@
     }];
 }
 
-- (void)likePost:(NSString*)postId {
-    NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", postId, [[ClientController sharedInstance] getCurrentToken]];
+- (void)likePost:(Post*)post {
+    NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentToken]];
     NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
     [req setHTTPMethod:@"POST"];
     [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -36,27 +37,29 @@
             NSLog(@"Error");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"## %@", jsonDictionary);
-            
-//            NSLog(@"post with id: %@ liked",postId);
+            if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 200) {
+                NSLog(@"200 successful like");
+            }else{
+                NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
+            }
         }
     }]; 
 }
 
--(void)getFollowersOfUser:(NSString*)userId{
-//    NSLog(@"attempting follower get");
-    NSString *tokenString = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
-    NSString *urlForFollowers = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/followed-by?access_token=%@", userId, tokenString];
-    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForFollowers]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if (error) {
-            NSLog(@"Error");
-        } else {
-            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//            NSLog(@"!!! %d", [[jsonDictionary objectForKey:@"data" ] count]);
-//            NSLog(@"!!! %@", jsonDictionary);
-            [self.delegate userJSON:jsonDictionary];
-        }
-    }];
-}
+//-(void)getFollowersOfUser:(NSString*)userId{
+////    NSLog(@"attempting follower get");
+//    NSString *tokenString = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
+//    NSString *urlForFollowers = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/followed-by?access_token=%@", userId, tokenString];
+//    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForFollowers]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//        if (error) {
+//            NSLog(@"Error");
+//        } else {
+//            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+////            NSLog(@"!!! %d", [[jsonDictionary objectForKey:@"data" ] count]);
+////            NSLog(@"!!! %@", jsonDictionary);
+//            [self.delegate userJSON:jsonDictionary];
+//        }
+//    }];
+//}
 
 @end

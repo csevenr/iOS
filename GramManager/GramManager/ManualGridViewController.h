@@ -12,6 +12,8 @@
 @interface ManualGridViewController : MasterViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
+@property (weak, nonatomic) IBOutlet UIButton *searchBtn;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndcator;
 @property (weak, nonatomic) IBOutlet UICollectionView *postCollView;
 
 - (IBAction)searchBtnPressed:(id)sender;

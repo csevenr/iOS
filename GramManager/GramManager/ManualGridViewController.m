@@ -20,11 +20,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    self.searchActivityIndcator.hidden=YES;//set this in code, because it didnt work on storyboard for some reason??
     posts = [NSMutableArray new];
 }
 
 - (IBAction)searchBtnPressed:(id)sender {
+    if ([posts count]>0) [posts removeAllObjects];
+    
+    [self searchingUi];
     [self getJSON];
 }
 
@@ -36,6 +39,7 @@
 }
 
 -(void)JSONReceived:(NSDictionary *)JSONDictionary{
+    [self performSelectorOnMainThread:@selector(searchingUi) withObject:nil waitUntilDone:NO];
 //    NSLog(@"JSON recived");
 //    NSLog(@"%@",JSONDictionary);
     for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
@@ -51,15 +55,22 @@
     [self.postCollView reloadData];
 }
 
+-(void)searchingUi{
+    self.searchBtn.hidden=!self.searchBtn.hidden;
+    self.searchActivityIndcator.hidden=!self.searchActivityIndcator.hidden;
+    
+    if ([self.searchActivityIndcator isAnimating])[self.searchActivityIndcator stopAnimating];
+    else [self.searchActivityIndcator startAnimating];
+}
+
 #pragma Mark collView methods
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     Post *selectedPost = [posts objectAtIndex:indexPath.row];
-    [insta likePost:selectedPost.postId];
+    [insta likePost:selectedPost];
     
     [posts removeObject:selectedPost];
     [self.postCollView reloadData];
-    NSLog(@"%d", [posts count]); 
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{

@@ -35,7 +35,7 @@
 //    NSLog(@"auth");
     self.authWebView.hidden=YES;
     if ([cc.tokens count]==4) {
-//        [self coreDataSetup];
+        [self coreDataSetup];
     }
 }
 

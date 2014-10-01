@@ -24,8 +24,4 @@
     return self;
 }
 
--(void)userJSON:(NSDictionary *)JSONDictionary{
-    NSLog(@"€€ %@",JSONDictionary);
-}
-
 @end
