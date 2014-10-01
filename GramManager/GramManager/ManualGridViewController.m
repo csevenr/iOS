@@ -53,6 +53,15 @@
 
 #pragma Mark collView methods
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    Post *selectedPost = [posts objectAtIndex:indexPath.row];
+    [insta likePost:selectedPost.postId];
+    
+    [posts removeObject:selectedPost];
+    [self.postCollView reloadData];
+    NSLog(@"%d", [posts count]); 
+}
+
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 20.0, 0, 10.0);
 }
@@ -79,14 +88,6 @@
     cell.post = [posts objectAtIndex:indexPath.row];
 
     return cell;
-}
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    Post *selectedPost = [posts objectAtIndex:indexPath.row];
-    [insta likePost:selectedPost.postId];
-    
-    [posts removeObject:[posts objectAtIndex:indexPath.row]];
-    [self.postCollView reloadData];
 }
 
 @end

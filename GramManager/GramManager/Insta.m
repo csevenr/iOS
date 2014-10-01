@@ -31,7 +31,6 @@
     NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", postId, [[ClientController sharedInstance] getCurrentToken]];
     NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
     [req setHTTPMethod:@"POST"];
-    [req addValue:@"" forHTTPHeaderField:@"X-Insta-Forwarded-For"];
     [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error");
