@@ -8,6 +8,7 @@
 
 + (NSEntityDescription *) createNewObjectForEntityName:(NSString *)entityName
 {
+    NSLog(@"Running on %@ thread", [NSThread currentThread]);
     return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:MOC];
 }
     
