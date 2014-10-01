@@ -20,9 +20,12 @@
 		66A28DF819DB02340067CD5E /* manualIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A28DF719DB02340067CD5E /* manualIcon.png */; };
 		66A28DFC19DB02700067CD5E /* autoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A28DFB19DB02700067CD5E /* autoIcon.png */; };
 		66A28E6A19DB0BEE0067CD5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E6819DB0BEE0067CD5E /* Model.xcdatamodeld */; };
-		66A28E7519DB0E310067CD5E /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7419DB0E310067CD5E /* UserProfile.m */; };
-		66A28E7819DB0E690067CD5E /* LikedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7719DB0E690067CD5E /* LikedPost.m */; };
 		66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7A19DB114C0067CD5E /* ModelHelper.m */; };
+		66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */; };
+		66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */; };
+		66EB661B19DC563D00C62A1D /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661A19DC563D00C62A1D /* HistoryViewController.m */; };
+		66EB661E19DC5AF900C62A1D /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661D19DC5AF900C62A1D /* UserProfile.m */; };
+		66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB662019DC5AF900C62A1D /* LikedPost.m */; };
 		66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06F919D998710081C68E /* ManualGridViewController.m */; };
 		66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */; };
 		CCAF95DD19D6E93300A92468 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAF95DC19D6E93300A92468 /* Post.m */; };
@@ -61,12 +64,18 @@
 		66A28DF719DB02340067CD5E /* manualIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manualIcon.png; sourceTree = "<group>"; };
 		66A28DFB19DB02700067CD5E /* autoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoIcon.png; sourceTree = "<group>"; };
 		66A28E6919DB0BEE0067CD5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		66A28E7319DB0E310067CD5E /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
-		66A28E7419DB0E310067CD5E /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
-		66A28E7619DB0E690067CD5E /* LikedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikedPost.h; sourceTree = "<group>"; };
-		66A28E7719DB0E690067CD5E /* LikedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikedPost.m; sourceTree = "<group>"; };
 		66A28E7919DB114C0067CD5E /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelHelper.h; sourceTree = "<group>"; };
 		66A28E7A19DB114C0067CD5E /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
+		66EB660D19DC4F8D00C62A1D /* LikedPost+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LikedPost+Helper.h"; sourceTree = "<group>"; };
+		66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LikedPost+Helper.m"; sourceTree = "<group>"; };
+		66EB661019DC4FDC00C62A1D /* UserProfile+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserProfile+Helper.h"; sourceTree = "<group>"; };
+		66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UserProfile+Helper.m"; sourceTree = "<group>"; };
+		66EB661919DC563D00C62A1D /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		66EB661A19DC563D00C62A1D /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		66EB661C19DC5AF900C62A1D /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		66EB661D19DC5AF900C62A1D /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		66EB661F19DC5AF900C62A1D /* LikedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikedPost.h; sourceTree = "<group>"; };
+		66EB662019DC5AF900C62A1D /* LikedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikedPost.m; sourceTree = "<group>"; };
 		66FA06F819D998710081C68E /* ManualGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualGridViewController.h; sourceTree = "<group>"; };
 		66FA06F919D998710081C68E /* ManualGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualGridViewController.m; sourceTree = "<group>"; };
 		66FA06FB19D99C6D0081C68E /* PostCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCollectionViewCell.h; sourceTree = "<group>"; };
@@ -167,6 +176,8 @@
 				66FA06F919D998710081C68E /* ManualGridViewController.m */,
 				66FA06FB19D99C6D0081C68E /* PostCollectionViewCell.h */,
 				66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */,
+				66EB661919DC563D00C62A1D /* HistoryViewController.h */,
+				66EB661A19DC563D00C62A1D /* HistoryViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -200,15 +211,35 @@
 		66A28E7219DB0DF90067CD5E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				66EB660919DC4EE600C62A1D /* Helpers */,
+				66EB660819DC4ED600C62A1D /* Generated Classes */,
 				66A28E6819DB0BEE0067CD5E /* Model.xcdatamodeld */,
-				66A28E7619DB0E690067CD5E /* LikedPost.h */,
-				66A28E7719DB0E690067CD5E /* LikedPost.m */,
-				66A28E7319DB0E310067CD5E /* UserProfile.h */,
-				66A28E7419DB0E310067CD5E /* UserProfile.m */,
-				66A28E7919DB114C0067CD5E /* ModelHelper.h */,
-				66A28E7A19DB114C0067CD5E /* ModelHelper.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		66EB660819DC4ED600C62A1D /* Generated Classes */ = {
+			isa = PBXGroup;
+			children = (
+				66EB661F19DC5AF900C62A1D /* LikedPost.h */,
+				66EB662019DC5AF900C62A1D /* LikedPost.m */,
+				66EB661C19DC5AF900C62A1D /* UserProfile.h */,
+				66EB661D19DC5AF900C62A1D /* UserProfile.m */,
+			);
+			name = "Generated Classes";
+			sourceTree = "<group>";
+		};
+		66EB660919DC4EE600C62A1D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				66A28E7919DB114C0067CD5E /* ModelHelper.h */,
+				66A28E7A19DB114C0067CD5E /* ModelHelper.m */,
+				66EB660D19DC4F8D00C62A1D /* LikedPost+Helper.h */,
+				66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */,
+				66EB661019DC4FDC00C62A1D /* UserProfile+Helper.h */,
+				66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		66FA06FE19D99E700081C68E /* Utils */ = {
@@ -327,16 +358,19 @@
 				66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */,
 				6620BAA519D4129E0095C9B7 /* AutoViewController.m in Sources */,
 				CCAF95DD19D6E93300A92468 /* Post.m in Sources */,
+				66EB661B19DC563D00C62A1D /* HistoryViewController.m in Sources */,
+				66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */,
+				66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */,
 				665EBBC919D5BA5600B23652 /* Insta.m in Sources */,
 				66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */,
-				66A28E7519DB0E310067CD5E /* UserProfile.m in Sources */,
-				66A28E7819DB0E690067CD5E /* LikedPost.m in Sources */,
 				66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */,
 				6617CE7519DAC3C300436573 /* MasterViewController.m in Sources */,
 				6620BAA219D4129E0095C9B7 /* AppDelegate.m in Sources */,
+				66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */,
 				66A28E6A19DB0BEE0067CD5E /* Model.xcdatamodeld in Sources */,
 				6620BA9F19D4129E0095C9B7 /* main.m in Sources */,
 				6617CE7219DAB8CA00436573 /* ClientController.m in Sources */,
+				66EB661E19DC5AF900C62A1D /* UserProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

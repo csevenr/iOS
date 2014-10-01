@@ -1,18 +1,13 @@
 //
-//  UserProfile.m
+//  HistoryViewController.h
 //  GramManager
 //
 //  Created by Oliver Rodden on 01/10/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
-#import "UserProfile.h"
-#import "LikedPost.h"
+#import <UIKit/UIKit.h>
 
-
-@implementation UserProfile
-
-@dynamic userName;
-@dynamic likedPosts;
+@interface HistoryViewController : UIViewController
 
 @end

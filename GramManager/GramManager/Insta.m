@@ -9,6 +9,9 @@
 #import "Insta.h"
 #import "ClientController.h"
 #import "Post.h"
+#import "UserProfile+Helper.h"
+#import "LikedPost+Helper.h"
+#import "ModelHelper.h"
 
 @implementation Insta
 
@@ -39,11 +42,18 @@
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 200) {
                 NSLog(@"200 successful like");
+                [self performSelectorOnMainThread:@selector(savePostInCoreData:) withObject:post waitUntilDone:NO];
             }else{
                 NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
             }
         }
-    }]; 
+    }];
+}
+
+-(void)savePostInCoreData:(Post*)post{
+    LikedPost *likedPost = [LikedPost createWithPost:post];
+    [[UserProfile getUserProfile] addLikedPostsObject:likedPost];
+    [ModelHelper saveManagedObjectContext];
 }
 
 //-(void)getFollowersOfUser:(NSString*)userId{

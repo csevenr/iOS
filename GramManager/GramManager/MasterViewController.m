@@ -8,12 +8,23 @@
 
 #import "MasterViewController.h"
 #import "ModelHelper.h"
-#import "UserProfile.h"
+#import "UserProfile+Helper.h"
+
+@interface MasterViewController(){
+    UserProfile *userProfile;
+}
+
+@end
 
 @implementation MasterViewController
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if (self==[super initWithCoder:aDecoder]) {
+        if ([UserProfile getUserProfile]==nil) {
+            [self coreDataSetup];
+        }else{
+            userProfile = [UserProfile getUserProfile];
+        }
         
         insta = [Insta new];
     }
@@ -31,17 +42,20 @@
     [cc setupTokensInWebView:self.authWebView];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
+}
+
 -(void)auth{
 //    NSLog(@"auth");
     self.authWebView.hidden=YES;
     if ([cc.tokens count]==4) {
-        [self coreDataSetup];
     }
 }
 
 -(void)coreDataSetup{
-    UserProfile *userProfile = (UserProfile*)[ModelHelper createNewObjectForEntityName:@"UserProfile"];
-    userProfile.totalLikesThroughApp = [NSNumber numberWithInt:0];
+    userProfile = [UserProfile create];
     [ModelHelper saveManagedObjectContext];
 }
 

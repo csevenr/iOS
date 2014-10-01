@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic) IBOutlet UIWebView *authWebView;
+@property (nonatomic) IBOutlet UILabel *likeCountLbl;
 
 -(void)auth;
 

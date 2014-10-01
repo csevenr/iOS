@@ -20,11 +20,19 @@
 
 @implementation AutoViewController
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    if (self==[super initWithCoder:aDecoder]) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     if (mainLoop==nil) {
         mainLoop = [NSTimer scheduledTimerWithTimeInterval:36.0 target:self selector:@selector(timerLike) userInfo:nil repeats:YES];
     }

@@ -1,18 +1,16 @@
 //
-//  UserProfile.m
+//  LikedPost+Helper.h
 //  GramManager
 //
 //  Created by Oliver Rodden on 01/10/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
-#import "UserProfile.h"
 #import "LikedPost.h"
+#import "Post.h"
 
+@interface LikedPost (Helper)
 
-@implementation UserProfile
-
-@dynamic userName;
-@dynamic likedPosts;
++ (LikedPost *)createWithPost:(Post*)post;
 
 @end

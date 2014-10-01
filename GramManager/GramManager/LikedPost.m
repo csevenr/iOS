@@ -2,7 +2,7 @@
 //  LikedPost.m
 //  GramManager
 //
-//  Created by Oliver Rodden on 30/09/2014.
+//  Created by Oliver Rodden on 01/10/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
@@ -12,7 +12,12 @@
 
 @implementation LikedPost
 
-@dynamic id;
+@dynamic postId;
+@dynamic lowResURL;
+@dynamic standardResURL;
+@dynamic thumbnailURL;
+@dynamic userId;
+@dynamic userName;
 @dynamic profile;
 
 @end
