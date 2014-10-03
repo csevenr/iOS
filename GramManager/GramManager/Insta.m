@@ -52,8 +52,23 @@
 
 -(void)savePostInCoreData:(Post*)post{
     LikedPost *likedPost = [LikedPost createWithPost:post];
-    [[UserProfile getUserProfile] addLikedPostsObject:likedPost];
+    [[UserProfile getActiveUserProfile] addLikedPostsObject:likedPost];
     [ModelHelper saveManagedObjectContext];
+}
+
+-(void)getUserInfo{
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/self?access_token=%@", [[ClientController sharedInstance] getCurrentToken]];
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@"Error");
+        } else {
+            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
+                [UserProfile getActiveUserProfile].userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
+                [self.delegate userInfoFinished];
+            }
+        }
+    }];
 }
 
 //-(void)getFollowersOfUser:(NSString*)userId{

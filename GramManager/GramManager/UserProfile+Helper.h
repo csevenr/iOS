@@ -11,6 +11,10 @@
 @interface UserProfile (Helper)
 
 + (UserProfile *)create;
-+ (UserProfile *)getUserProfile;
++ (NSArray *)getUserProfiles;
++ (UserProfile *)getActiveUserProfile;
++ (UserProfile *)getUserProfileWithUserName:(NSString*)userName;
++(NSString*)getToken:(NSInteger)tokenNo;
++(void)deactivateCurrentUserProfile;
 
 @end

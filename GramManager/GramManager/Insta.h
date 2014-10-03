@@ -17,7 +17,7 @@
 -(void)JSONReceived:(NSDictionary*)JSONDictionary;//+++ refactor
 -(void)likedPost:(NSString*)thumbnailURL;
 
--(void)userJSON:(NSDictionary*)JSONDictionary;
+-(void)userInfoFinished;
 
 @end
 
@@ -27,6 +27,7 @@
 
 -(void)getJsonForHashtag:(NSString*)hashtag;
 - (void)likePost:(Post*)post;
+-(void)getUserInfo;
 //-(void)getFollowersOfUser:(NSString*)userId;
 
 @end

@@ -11,8 +11,6 @@
 
 @interface ClientController : NSObject <UIWebViewDelegate>
 
-@property (nonatomic)NSMutableArray *tokens;
-
 + (ClientController *)sharedInstance;
 -(void)setupTokensInWebView:(UIWebView*)webview;
 -(NSString*)getCurrentToken;

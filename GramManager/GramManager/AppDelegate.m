@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
-
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -23,9 +23,10 @@
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-    MasterViewController* mainController = [nav.viewControllers objectAtIndex:0];
-    [mainController auth];
+//    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
+    
+    MasterViewController* mainController = (MasterViewController*)self.window.rootViewController;
+    [mainController.loginVc auth];
     
     return YES;
 }

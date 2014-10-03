@@ -7,6 +7,7 @@
 //
 
 #import "ClientController.h"
+#import "UserProfile+Helper.h"
 
 #define REDIRECTURI @"gManager://"
 
@@ -46,26 +47,26 @@ static ClientController *sharedInstance = nil;
 
 -(id)init{
     if (self==[super init]) {
-        self.tokens = [NSMutableArray new];
-        if ([[NSUserDefaults standardUserDefaults]objectForKey:@"tokens"]!=nil) {
-            self.tokens = [[NSUserDefaults standardUserDefaults]objectForKey:@"tokens"];
-        }
+//        self.tokens = [NSMutableArray new];
+//        if ([[NSUserDefaults standardUserDefaults]objectForKey:@"tokens"]!=nil) {
+//            self.tokens = [[NSUserDefaults standardUserDefaults]objectForKey:@"tokens"];
+//        }
     }
     return self;
 }
 
 -(void)setupTokensInWebView:(UIWebView*)webview{
     NSURLRequest *requestObj;
-    if ([self.tokens count] == 0) {
+    if ([UserProfile getActiveUserProfile].token1 == nil) {
         requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID1, REDIRECTURI]]];
         [webview loadRequest:requestObj];
-    }else if ([self.tokens count] == 1){
+    }else if ([UserProfile getActiveUserProfile].token2 == nil){
         requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID2, REDIRECTURI]]];
         [webview loadRequest:requestObj];
-    }else if ([self.tokens count] == 2){
+    }else if ([UserProfile getActiveUserProfile].token3 == nil){
         requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID3, REDIRECTURI]]];
         [webview loadRequest:requestObj];
-    }else if ([self.tokens count] == 3){
+    }else if ([UserProfile getActiveUserProfile].token4 == nil){
         requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID4, REDIRECTURI]]];
         [webview loadRequest:requestObj];
     }
@@ -75,11 +76,11 @@ static ClientController *sharedInstance = nil;
     count++;
     if (count==100) count=0;
     
-    if (count>=0&&count<25) return [self.tokens objectAtIndex:0];
-    else if (count>=25&&count<50) return [self.tokens objectAtIndex:1];
-    else if (count>=50&&count<75) return [self.tokens objectAtIndex:2];
-    else if (count>=75&&count<100) return [self.tokens objectAtIndex:3];
-    else return [self.tokens objectAtIndex:0];
+    if (count>=0&&count<25) return [[UserProfile getActiveUserProfile] token1];
+    else if (count>=25&&count<50) return [[UserProfile getActiveUserProfile] token2];
+    else if (count>=50&&count<75) return [[UserProfile getActiveUserProfile] token3];
+    else if (count>=75&&count<100) return [[UserProfile getActiveUserProfile] token4];
+    else return [[UserProfile getActiveUserProfile] token1];
 }
 
 -(NSString*)getCurrentClientId{

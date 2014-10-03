@@ -9,15 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "ClientController.h"
 #import "Insta.h"
+#import "Menu.h"
 
-@interface MasterViewController : UIViewController <instaDelegate, UIWebViewDelegate>{
+@class LoginViewController;
+
+@interface MasterViewController : UIViewController <instaDelegate, MenuDelegate/*, UIAlertViewDelegate, UIWebViewDelegate*/>{
     ClientController *cc;
     Insta *insta;
 }
 
-@property (nonatomic) IBOutlet UIWebView *authWebView;
+@property (nonatomic) LoginViewController *loginVc;
+//@property (nonatomic) IBOutlet UIWebView *authWebView;
 @property (nonatomic) IBOutlet UILabel *likeCountLbl;
 
--(void)auth;
+//-(void)auth;
 
 @end
