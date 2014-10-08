@@ -17,12 +17,13 @@
 		6620BAAD19D4129E0095C9B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6620BAAB19D4129E0095C9B7 /* LaunchScreen.xib */; };
 		6620BAB919D4129E0095C9B7 /* GramManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BAB819D4129E0095C9B7 /* GramManagerTests.m */; };
 		665EBBC919D5BA5600B23652 /* Insta.m in Sources */ = {isa = PBXBuildFile; fileRef = 665EBBC819D5BA5600B23652 /* Insta.m */; };
-		666C7D0019DD9CB6003B653C /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 666C7CFF19DD9CB6003B653C /* UserProfile.m */; };
 		667608BF19DD619F00E22208 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 667608BE19DD619F00E22208 /* Menu.m */; };
 		66A28DF819DB02340067CD5E /* manualIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A28DF719DB02340067CD5E /* manualIcon.png */; };
 		66A28DFC19DB02700067CD5E /* autoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A28DFB19DB02700067CD5E /* autoIcon.png */; };
 		66A28E6A19DB0BEE0067CD5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E6819DB0BEE0067CD5E /* Model.xcdatamodeld */; };
 		66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7A19DB114C0067CD5E /* ModelHelper.m */; };
+		66D1474719E56FB700A9FEC1 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D1474619E56FB700A9FEC1 /* UserProfile.m */; };
+		66D1474A19E584E200A9FEC1 /* LikeStatusLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D1474919E584E200A9FEC1 /* LikeStatusLabel.m */; };
 		66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */; };
 		66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */; };
 		66EB661B19DC563D00C62A1D /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661A19DC563D00C62A1D /* HistoryViewController.m */; };
@@ -63,8 +64,6 @@
 		6620BAB819D4129E0095C9B7 /* GramManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GramManagerTests.m; sourceTree = "<group>"; };
 		665EBBC719D5BA5600B23652 /* Insta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insta.h; sourceTree = "<group>"; };
 		665EBBC819D5BA5600B23652 /* Insta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insta.m; sourceTree = "<group>"; };
-		666C7CFE19DD9CB6003B653C /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
-		666C7CFF19DD9CB6003B653C /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		667608BD19DD619F00E22208 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		667608BE19DD619F00E22208 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		66A28DF719DB02340067CD5E /* manualIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = manualIcon.png; sourceTree = "<group>"; };
@@ -72,6 +71,10 @@
 		66A28E6919DB0BEE0067CD5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		66A28E7919DB114C0067CD5E /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelHelper.h; sourceTree = "<group>"; };
 		66A28E7A19DB114C0067CD5E /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
+		66D1474519E56FB700A9FEC1 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		66D1474619E56FB700A9FEC1 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		66D1474819E584E200A9FEC1 /* LikeStatusLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeStatusLabel.h; sourceTree = "<group>"; };
+		66D1474919E584E200A9FEC1 /* LikeStatusLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeStatusLabel.m; sourceTree = "<group>"; };
 		66EB660D19DC4F8D00C62A1D /* LikedPost+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LikedPost+Helper.h"; sourceTree = "<group>"; };
 		66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LikedPost+Helper.m"; sourceTree = "<group>"; };
 		66EB661019DC4FDC00C62A1D /* UserProfile+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserProfile+Helper.h"; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				667608BE19DD619F00E22208 /* Menu.m */,
 				66F597B019DEB8D400C305E5 /* LoginViewController.h */,
 				66F597B119DEB8D400C305E5 /* LoginViewController.m */,
+				66D1474819E584E200A9FEC1 /* LikeStatusLabel.h */,
+				66D1474919E584E200A9FEC1 /* LikeStatusLabel.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -231,10 +236,10 @@
 		66EB660819DC4ED600C62A1D /* Generated Classes */ = {
 			isa = PBXGroup;
 			children = (
-				666C7CFE19DD9CB6003B653C /* UserProfile.h */,
-				666C7CFF19DD9CB6003B653C /* UserProfile.m */,
 				66EB661F19DC5AF900C62A1D /* LikedPost.h */,
 				66EB662019DC5AF900C62A1D /* LikedPost.m */,
+				66D1474519E56FB700A9FEC1 /* UserProfile.h */,
+				66D1474619E56FB700A9FEC1 /* UserProfile.m */,
 			);
 			name = "Generated Classes";
 			sourceTree = "<group>";
@@ -367,15 +372,16 @@
 			files = (
 				66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */,
 				6620BAA519D4129E0095C9B7 /* AutoViewController.m in Sources */,
+				66D1474719E56FB700A9FEC1 /* UserProfile.m in Sources */,
 				667608BF19DD619F00E22208 /* Menu.m in Sources */,
 				CCAF95DD19D6E93300A92468 /* Post.m in Sources */,
 				66EB661B19DC563D00C62A1D /* HistoryViewController.m in Sources */,
 				66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */,
+				66D1474A19E584E200A9FEC1 /* LikeStatusLabel.m in Sources */,
 				66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */,
 				665EBBC919D5BA5600B23652 /* Insta.m in Sources */,
 				66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */,
 				66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */,
-				666C7D0019DD9CB6003B653C /* UserProfile.m in Sources */,
 				6617CE7519DAC3C300436573 /* MasterViewController.m in Sources */,
 				6620BAA219D4129E0095C9B7 /* AppDelegate.m in Sources */,
 				66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */,

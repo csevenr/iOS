@@ -24,12 +24,14 @@
         [menuBtn addTarget:self action:@selector(menuBtnPressed) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:menuBtn];
 
+        /*--Multi account stuff--
         UIButton *switchAccoutnsBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.0, 300.0, 270.0, 50.0)];
         switchAccoutnsBtn.backgroundColor = [UIColor blackColor];
         [switchAccoutnsBtn setTitle:@"Switch accounts" forState:UIControlStateNormal];
         [switchAccoutnsBtn addTarget:self action:@selector(switchAccoutnsBtnPressed) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:switchAccoutnsBtn];
-
+        -----------------------*/
+        
         menuActive=NO;
     }
     return self;

@@ -13,15 +13,12 @@
 
 @class LoginViewController;
 
-@interface MasterViewController : UIViewController <instaDelegate, MenuDelegate/*, UIAlertViewDelegate, UIWebViewDelegate*/>{
+@interface MasterViewController : UIViewController <instaDelegate, MenuDelegate, UITextFieldDelegate>{
     ClientController *cc;
     Insta *insta;
 }
 
 @property (nonatomic) LoginViewController *loginVc;
-//@property (nonatomic) IBOutlet UIWebView *authWebView;
 @property (nonatomic) IBOutlet UILabel *likeCountLbl;
-
-//-(void)auth;
 
 @end

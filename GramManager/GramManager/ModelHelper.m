@@ -8,13 +8,13 @@
 
 + (NSEntityDescription *) createNewObjectForEntityName:(NSString *)entityName
 {
-    NSLog(@"Running on %@ thread", [NSThread currentThread]);
+//    NSLog(@"Running on %@ thread", [NSThread currentThread]);
     return [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:MOC];
 }
     
 + (BOOL) saveManagedObjectContext
 {
-    NSLog(@"Running on %@ thread", [NSThread currentThread]);
+//    NSLog(@"Running on %@ thread", [NSThread currentThread]);
 	NSError *error = nil;
 	if (![MOC save:&error]) {
 		NSLog(@"Core Data Save Error: %@, %@", error, [error userInfo]);

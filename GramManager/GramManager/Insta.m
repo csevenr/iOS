@@ -20,13 +20,13 @@
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error");
-        } else { 
+        } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    
-//            NSLog(@"# %@", [[jsonDictionary objectForKey:@"data"]objectAtIndex:0]);
-//            NSLog(@"## %@", [[[[[jsonDictionary objectForKey:@"data"]objectAtIndex:0] objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"]);
-
-            [self.delegate JSONReceived:jsonDictionary];
+            if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
+                [self.delegate JSONReceived:jsonDictionary];
+            }else{
+                [self non200Received];
+            }
         }
     }];
 }
@@ -45,6 +45,7 @@
                 [self performSelectorOnMainThread:@selector(savePostInCoreData:) withObject:post waitUntilDone:NO];
             }else{
                 NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
+                [self non200Received];
             }
         }
     }];
@@ -66,9 +67,16 @@
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 [UserProfile getActiveUserProfile].userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
                 [self.delegate userInfoFinished];
+            }else{
+                [self non200Received];
             }
         }
     }];
+}
+
+-(void)non200Received{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Something went wrong" message:@"We're not sure what, but something went wrong. Chances are if you leave it an hour itll fix itself" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 //-(void)getFollowersOfUser:(NSString*)userId{
