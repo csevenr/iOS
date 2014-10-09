@@ -33,6 +33,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self timerLike];
     if (mainLoop==nil) {
         mainLoop = [NSTimer scheduledTimerWithTimeInterval:36.0 target:self selector:@selector(timerLike) userInfo:nil repeats:YES];
     }

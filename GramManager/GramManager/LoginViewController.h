@@ -12,6 +12,7 @@
 @interface LoginViewController : UIViewController <instaDelegate, UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *authWebView;
+@property (nonatomic) BOOL login;
 
 -(void)auth;
 

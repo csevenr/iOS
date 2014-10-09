@@ -23,12 +23,12 @@
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
-//            NSLog(@"%@", jsonDictionary);
+//            NSLog(@"# %@", jsonDictionary);
 
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 [self.delegate JSONReceived:jsonDictionary];
             }else{
-                [self non200Received];
+                [self performSelectorOnMainThread:@selector(non200Received) withObject:nil waitUntilDone:NO];
             }
         }
     }];
@@ -44,14 +44,14 @@
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-//            NSLog(@"%@", jsonDictionary);
+//            NSLog(@"## %@", jsonDictionary);
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 200) {
                 NSLog(@"200 successful like");
                 [self performSelectorOnMainThread:@selector(savePostInCoreData:) withObject:post waitUntilDone:NO];
             }else{
                 NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
-                [self non200Received];
+                [self performSelectorOnMainThread:@selector(non200Received) withObject:nil waitUntilDone:NO];
             }
         }
     }];
@@ -80,15 +80,13 @@
                 [self.delegate userInfoFinished];
                 [self getUserMedia];
             }else{
-                [self non200Received];
+                [self performSelectorOnMainThread:@selector(non200Received) withObject:nil waitUntilDone:NO];
             }
         }
     }];
 }
 
 -(void)getUserMedia{
-    NSLog(@"%@", [UserProfile getActiveUserProfile].userId);
-    
     NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",[UserProfile getActiveUserProfile].userId , [[ClientController sharedInstance] getCurrentToken]];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
@@ -107,6 +105,17 @@
             for (int i=0; i<countToUse; i++) {
                 totalLikes+=[[[[[jsonDictionary objectForKey:@"data"] objectAtIndex:i]objectForKey:@"likes"]objectForKey:@"count" ] intValue];
             }
+        }
+    }];
+}
+
+-(void)logout{
+    NSString *urlForTag = @"https://instagram.com/accounts/logout/";
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@"Error");
+        } else {
+            
         }
     }];
 }

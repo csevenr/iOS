@@ -11,6 +11,7 @@
 #import "AutoViewController.h"
 #import "ModelHelper.h"
 #import "UserProfile+Helper.h"
+#import "LoginViewController.h"
 
 @interface MasterViewController(){
     UserProfile *userProfile;
@@ -37,8 +38,9 @@
     
     UITabBarItem *manBtn = [[UITabBarItem alloc]initWithTitle:@"Manual" image:[UIImage imageNamed:@"manualIcon.png"] tag:0];
     UITabBarItem *autoBtn = [[UITabBarItem alloc]initWithTitle:@"Automatic" image:[UIImage imageNamed:@"autoIcon.png"] tag:1];
+    UITabBarItem *logoutBtn = [[UITabBarItem alloc]initWithTitle:@"Log out" image:[UIImage imageNamed:nil] tag:2];
     
-    [tabBar setItems:[NSArray arrayWithObjects:manBtn, autoBtn, nil]];
+    [tabBar setItems:[NSArray arrayWithObjects:manBtn, autoBtn, logoutBtn, nil]];
     
     if ([self isKindOfClass:[ManualGridViewController class]]) {
         [tabBar setSelectedItem:manBtn];
@@ -47,10 +49,10 @@
     }
     
     //add side menu
-    menu = [[Menu alloc]initWithFrame:CGRectMake(-self.view.frame.size.width+50.0, 0.0, self.view.frame.size.width-50.0, self.view.frame.size.height)];
-    menu.delegate=self;
-    menu.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:menu];
+//    menu = [[Menu alloc]initWithFrame:CGRectMake(-self.view.frame.size.width+50.0, 0.0, self.view.frame.size.width-50.0, self.view.frame.size.height)];
+//    menu.delegate=self;
+//    menu.backgroundColor = [UIColor blueColor];
+//    [self.view addSubview:menu];
 }
 
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
@@ -58,6 +60,10 @@
         [self performSegueWithIdentifier:@"auto" sender:nil];
     }else if ([self isKindOfClass:[AutoViewController class]]&&item.tag==0){
         [self performSegueWithIdentifier:@"man" sender:nil];
+    }else if (item.tag==2){
+        [UserProfile getActiveUserProfile].isActive=NO;
+        [ModelHelper saveManagedObjectContext];
+        [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:NO]];
     }
 }
 
@@ -74,7 +80,7 @@
     if ([UserProfile getActiveUserProfile]!=nil) {
         userProfile = [UserProfile getActiveUserProfile];
     }else{
-        [self performSegueWithIdentifier:@"login" sender:nil];
+        [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:YES]];
     }
 }
 
@@ -89,9 +95,10 @@
 
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
     if ([segue.identifier isEqualToString:@"login"]){
         self.loginVc = segue.destinationViewController;
+        [(LoginViewController*)self.loginVc setLogin:[sender boolValue]];
     }
 }
 

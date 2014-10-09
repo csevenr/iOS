@@ -15,6 +15,7 @@
 @interface LoginViewController (){
     NSMutableArray *btns;
     UIActivityIndicatorView *activityIndicator;
+    NSMutableArray *tokens;
 }
 
 @end
@@ -62,11 +63,18 @@
     
     if ([userProfiles count]<4) {
         UIButton *loginBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.0, 100.0+(62*[userProfiles count]), self.view.frame.size.width, 60.0)];
-        if ([userProfiles count]>0) {//dont add a target here, dont want anyone pressing it.
-            [loginBtn setTitle:@"Retrieving user info" forState:UIControlStateNormal];
+        if (self.login) {
+            if ([UserProfile getActiveUserProfile]) {//dont add a target here, dont want anyone pressing it.
+                [loginBtn setTitle:@"Retrieving user info" forState:UIControlStateNormal];
+            }else{
+                [loginBtn setTitle:@"Log in" forState:UIControlStateNormal];
+                [loginBtn addTarget:self action:@selector(accountBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+            }
         }else{
-            [loginBtn setTitle:@"Log in" forState:UIControlStateNormal];
-            [loginBtn addTarget:self action:@selector(accountBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [loginBtn setTitle:@"Logging out" forState:UIControlStateNormal];
+            NSURLRequest *requestObj;
+            requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://instagram.com/accounts/logout/"]];
+            [self.authWebView loadRequest:requestObj];
         }
         loginBtn.tag=10;
         loginBtn.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1.0];
@@ -103,12 +111,18 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString* urlString = [[request URL] absoluteString];
     
-//    NSLog(@"%@", urlString);
+    NSLog(@"%@", urlString);
+    if ([urlString isEqualToString:@"http://instagram.com/"]) {
+        self.authWebView.hidden=YES;
+        self.login=YES;
+        [self createBtns];
+    }
     
     NSRange equalRange0 = [urlString rangeOfString:@"accounts" options:NSBackwardsSearch];
     if(equalRange0.length > 0) {
         webView.hidden=NO;
         [self.view bringSubviewToFront:webView];
+        self.authWebView.hidden=NO;
     }
     
     NSRange equalRange = [urlString rangeOfString:@":" options:NSBackwardsSearch];

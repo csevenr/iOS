@@ -29,6 +29,6 @@
 - (void)likePost:(Post*)post;
 -(void)getUserInfo;
 -(void)getUserMedia;
-//-(void)getFollowersOfUser:(NSString*)userId;
+-(void)logout;
 
 @end
