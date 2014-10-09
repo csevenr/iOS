@@ -29,6 +29,10 @@
     [self updateLikeStatusLbl];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [self performSegueWithIdentifier:@"auto" sender:nil];
+}
+
 - (IBAction)searchBtnPressed:(id)sender {
     if ([posts count]>0) [posts removeAllObjects];
     

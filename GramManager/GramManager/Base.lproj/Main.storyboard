@@ -191,6 +191,7 @@
                         <outlet property="searchActivityIndcator" destination="R5x-qx-qNm" id="DXb-XK-bF2"/>
                         <outlet property="searchBtn" destination="hux-sG-z4A" id="uLQ-cv-mqe"/>
                         <segue destination="aVR-Vo-fmp" kind="modal" identifier="login" id="1fu-Iz-tkk"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="auto" id="b7H-pQ-8Mr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-tC-TJD" userLabel="First Responder" sceneMemberID="firstResponder"/>

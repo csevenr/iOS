@@ -23,7 +23,6 @@
 		66A28E6A19DB0BEE0067CD5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E6819DB0BEE0067CD5E /* Model.xcdatamodeld */; };
 		66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7A19DB114C0067CD5E /* ModelHelper.m */; };
 		66D1474719E56FB700A9FEC1 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D1474619E56FB700A9FEC1 /* UserProfile.m */; };
-		66D1474A19E584E200A9FEC1 /* LikeStatusLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D1474919E584E200A9FEC1 /* LikeStatusLabel.m */; };
 		66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */; };
 		66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */; };
 		66EB661B19DC563D00C62A1D /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661A19DC563D00C62A1D /* HistoryViewController.m */; };
@@ -73,8 +72,6 @@
 		66A28E7A19DB114C0067CD5E /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
 		66D1474519E56FB700A9FEC1 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
 		66D1474619E56FB700A9FEC1 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
-		66D1474819E584E200A9FEC1 /* LikeStatusLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeStatusLabel.h; sourceTree = "<group>"; };
-		66D1474919E584E200A9FEC1 /* LikeStatusLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeStatusLabel.m; sourceTree = "<group>"; };
 		66EB660D19DC4F8D00C62A1D /* LikedPost+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LikedPost+Helper.h"; sourceTree = "<group>"; };
 		66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LikedPost+Helper.m"; sourceTree = "<group>"; };
 		66EB661019DC4FDC00C62A1D /* UserProfile+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserProfile+Helper.h"; sourceTree = "<group>"; };
@@ -191,8 +188,6 @@
 				667608BE19DD619F00E22208 /* Menu.m */,
 				66F597B019DEB8D400C305E5 /* LoginViewController.h */,
 				66F597B119DEB8D400C305E5 /* LoginViewController.m */,
-				66D1474819E584E200A9FEC1 /* LikeStatusLabel.h */,
-				66D1474919E584E200A9FEC1 /* LikeStatusLabel.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -317,6 +312,11 @@
 				TargetAttributes = {
 					6620BA9819D4129E0095C9B7 = {
 						CreatedOnToolsVersion = 6.0.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					6620BAB119D4129E0095C9B7 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -377,7 +377,6 @@
 				CCAF95DD19D6E93300A92468 /* Post.m in Sources */,
 				66EB661B19DC563D00C62A1D /* HistoryViewController.m in Sources */,
 				66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */,
-				66D1474A19E584E200A9FEC1 /* LikeStatusLabel.m in Sources */,
 				66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */,
 				665EBBC919D5BA5600B23652 /* Insta.m in Sources */,
 				66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */,
