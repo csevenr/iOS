@@ -42,11 +42,9 @@
     for (UserProfile *userProfile in results) {
         if ([userProfile.isActive boolValue]) {
             return userProfile;
-        }else{
-            return nil;
         }
     }
-    return [results firstObject];
+    return nil;
 }
 
 + (UserProfile *)getUserProfileWithUserName:(NSString*)userName
@@ -59,11 +57,9 @@
     for (UserProfile *userProfile in results) {
         if ([userProfile.userName isEqualToString:userName]) {
             return userProfile;
-        }else{
-            return nil;
         }
     }
-    return [results firstObject];
+    return nil;
 }
 
 + (UserProfile *)getUserProfile

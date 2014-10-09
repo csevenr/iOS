@@ -101,10 +101,6 @@
 }
 
 -(void)createNewAccount{
-    UserProfile *userProfile = [UserProfile create];
-    userProfile.isActive=[NSNumber numberWithBool:YES];
-    [ModelHelper saveManagedObjectContext];
-    
     [[ClientController sharedInstance] setupTokensInWebView:self.authWebView];
 }
 
@@ -136,16 +132,32 @@
 
 //            NSLog(@"%@", tokenString);
             
-            if ([UserProfile getToken:1]==nil) {
-                [UserProfile getActiveUserProfile].token1=tokenString;
-            }else if ([UserProfile getToken:2]==nil){
-                [UserProfile getActiveUserProfile].token2=tokenString;
-            }else if ([UserProfile getToken:3]==nil){
-                [UserProfile getActiveUserProfile].token3=tokenString;
-            }else if ([UserProfile getToken:4]==nil){
-                [UserProfile getActiveUserProfile].token4=tokenString;
+            //CORE DATA TOKENS
+//            if ([UserProfile getToken:1]==nil) {
+//                [UserProfile getActiveUserProfile].token1=tokenString;
+//            }else if ([UserProfile getToken:2]==nil){
+//                [UserProfile getActiveUserProfile].token2=tokenString;
+//            }else if ([UserProfile getToken:3]==nil){
+//                [UserProfile getActiveUserProfile].token3=tokenString;
+//            }else if ([UserProfile getToken:4]==nil){
+//                [UserProfile getActiveUserProfile].token4=tokenString;
+//            }
+//            if ([UserProfile getToken:4]==nil) {
+//                [[ClientController sharedInstance] setupTokensInWebView:self.authWebView];
+//            }
+            
+            //TEMP TOKENS
+            if ([tokens count]==0) {
+                tokens = [NSMutableArray new];
+                [tokens addObject:tokenString];
+            }else if ([tokens count]==1){
+                [tokens addObject:tokenString];
+            }else if ([tokens count]==2){
+                [tokens addObject:tokenString];
+            }else if ([tokens count]==3){
+                [tokens addObject:tokenString];
             }
-            if ([UserProfile getToken:4]==nil) {
+            if ([tokens count]!=4) {
                 [[ClientController sharedInstance] setupTokensInWebView:self.authWebView];
             }
         }
@@ -154,11 +166,20 @@
 }
 
 -(void)userInfoFinished{
+    if ([UserProfile getToken:1]==nil) {
+        [UserProfile getActiveUserProfile].token1=[tokens objectAtIndex:0];
+    }else if ([UserProfile getToken:2]==nil){
+        [UserProfile getActiveUserProfile].token2=[tokens objectAtIndex:1];
+    }else if ([UserProfile getToken:3]==nil){
+        [UserProfile getActiveUserProfile].token3=[tokens objectAtIndex:2];
+    }else if ([UserProfile getToken:4]==nil){
+        [UserProfile getActiveUserProfile].token4=[tokens objectAtIndex:3];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)auth{
-    if ([UserProfile getActiveUserProfile].token4!=nil) {
+    if ([tokens count]==4) {
         [self createBtns];
         activityIndicator.frame=CGRectMake(activityIndicator.frame.origin.x+50.0, activityIndicator.frame.origin.y, activityIndicator.frame.size.width, activityIndicator.frame.size.height);
         [activityIndicator startAnimating];
@@ -166,7 +187,7 @@
         self.authWebView.hidden=YES;
         Insta *insta = [Insta new];
         insta.delegate=self;
-        [insta getUserInfo];
+        [insta getUserInfoWithToken:[tokens objectAtIndex:0]];
     }
 }
 

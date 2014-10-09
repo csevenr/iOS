@@ -75,16 +75,18 @@
 }
 
 -(void)updateLikeStatusLbl{
-    if ([UserProfile getActiveUserProfile].likeTime == nil||[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]>=3600.000001) {
-        self.likeStatusLbl.text=@"30 likes remaining";
-    }else if ([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]<3600.000001){
-        if ([[UserProfile getActiveUserProfile].likesInHour integerValue]<30) {
-            self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[[UserProfile getActiveUserProfile].likesInHour integerValue]];
-        }else if ([[UserProfile getActiveUserProfile].likesInHour integerValue]>=30){
-            int mins = (int)ceilf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]/30);
-            self.likeStatusLbl.text=[NSString stringWithFormat:@"%dm until likes are restored", 60-mins];
-        }
-    }
+//    if ([UserProfile getActiveUserProfile]) {
+//        if ([UserProfile getActiveUserProfile].likeTime == nil||[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]>=3600.000001) {
+//            self.likeStatusLbl.text=@"30 likes remaining";
+//        }else if ([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]<3600.000001){
+//            if ([[UserProfile getActiveUserProfile].likesInHour integerValue]<30) {
+//                self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[[UserProfile getActiveUserProfile].likesInHour integerValue]];
+//            }else if ([[UserProfile getActiveUserProfile].likesInHour integerValue]>=30){
+//                int mins = (int)ceilf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]/30);
+//                self.likeStatusLbl.text=[NSString stringWithFormat:@"%dm until likes are restored", 60-mins];
+//            }
+//        }
+//    }
 }
 
 #pragma Mark collView methods

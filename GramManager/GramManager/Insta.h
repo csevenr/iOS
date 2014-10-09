@@ -27,7 +27,7 @@
 
 -(void)getJsonForHashtag:(NSString*)hashtag;
 - (void)likePost:(Post*)post;
--(void)getUserInfo;
+-(void)getUserInfoWithToken:(NSString*)tok;
 -(void)getUserMedia;
 -(void)logout;
 

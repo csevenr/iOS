@@ -63,8 +63,8 @@
     [ModelHelper saveManagedObjectContext];
 }
 
--(void)getUserInfo{
-    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/self?access_token=%@", [[ClientController sharedInstance] getCurrentToken]];
+-(void)getUserInfoWithToken:(NSString*)tok{
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/self?access_token=%@", tok];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error");
@@ -72,11 +72,20 @@
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
 //            NSLog(@"%@", jsonDictionary);
+            NSLog(@"%@", [[jsonDictionary objectForKey:@"data"] objectForKey:@"username"]);
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
-                [UserProfile getActiveUserProfile].userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
-                [UserProfile getActiveUserProfile].userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
-                [UserProfile getActiveUserProfile].followerCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
+                if ([UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]]!=nil){
+                    NSLog(@"already a user");
+                }else{
+                    UserProfile *userProfile = [UserProfile create];
+                    userProfile.isActive=[NSNumber numberWithBool:YES];
+                    [ModelHelper saveManagedObjectContext];
+                    
+                    [UserProfile getActiveUserProfile].userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
+                    [UserProfile getActiveUserProfile].userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
+                    [UserProfile getActiveUserProfile].followerCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
+                }
                 [self.delegate userInfoFinished];
                 [self getUserMedia];
             }else{
