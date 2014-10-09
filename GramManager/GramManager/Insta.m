@@ -22,6 +22,9 @@
             NSLog(@"Error");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
+//            NSLog(@"%@", jsonDictionary);
+
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 [self.delegate JSONReceived:jsonDictionary];
             }else{
@@ -40,6 +43,9 @@
             NSLog(@"Error");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+//            NSLog(@"%@", jsonDictionary);
+            
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 200) {
                 NSLog(@"200 successful like");
                 [self performSelectorOnMainThread:@selector(savePostInCoreData:) withObject:post waitUntilDone:NO];
@@ -64,11 +70,42 @@
             NSLog(@"Error");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+//            NSLog(@"%@", jsonDictionary);
+            
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 [UserProfile getActiveUserProfile].userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
+                [UserProfile getActiveUserProfile].userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
+                [UserProfile getActiveUserProfile].followerCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
                 [self.delegate userInfoFinished];
+                [self getUserMedia];
             }else{
                 [self non200Received];
+            }
+        }
+    }];
+}
+
+-(void)getUserMedia{
+    NSLog(@"%@", [UserProfile getActiveUserProfile].userId);
+    
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",[UserProfile getActiveUserProfile].userId , [[ClientController sharedInstance] getCurrentToken]];
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@"Error");
+        } else {
+            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            //check for at least 10 posts if not alter count
+            int countToUse=10;
+            if ([[jsonDictionary objectForKey:@"data"] count]<10) {
+                countToUse=[[jsonDictionary objectForKey:@"data"] count];
+            }
+            
+            
+            int totalLikes=0;
+            for (int i=0; i<countToUse; i++) {
+                totalLikes+=[[[[[jsonDictionary objectForKey:@"data"] objectAtIndex:i]objectForKey:@"likes"]objectForKey:@"count" ] intValue];
             }
         }
     }];
@@ -78,21 +115,5 @@
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Something went wrong" message:@"We're not sure what, but something went wrong. Chances are if you leave it an hour itll fix itself" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
-
-//-(void)getFollowersOfUser:(NSString*)userId{
-////    NSLog(@"attempting follower get");
-//    NSString *tokenString = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
-//    NSString *urlForFollowers = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/followed-by?access_token=%@", userId, tokenString];
-//    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForFollowers]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//        if (error) {
-//            NSLog(@"Error");
-//        } else {
-//            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-////            NSLog(@"!!! %d", [[jsonDictionary objectForKey:@"data" ] count]);
-////            NSLog(@"!!! %@", jsonDictionary);
-//            [self.delegate userJSON:jsonDictionary];
-//        }
-//    }];
-//}
 
 @end

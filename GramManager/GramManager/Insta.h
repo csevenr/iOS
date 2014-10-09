@@ -28,6 +28,7 @@
 -(void)getJsonForHashtag:(NSString*)hashtag;
 - (void)likePost:(Post*)post;
 -(void)getUserInfo;
+-(void)getUserMedia;
 //-(void)getFollowersOfUser:(NSString*)userId;
 
 @end

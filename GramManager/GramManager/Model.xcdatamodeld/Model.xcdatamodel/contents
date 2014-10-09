@@ -10,6 +10,7 @@
         <relationship name="profile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserProfile" inverseName="likedPosts" inverseEntity="UserProfile" syncable="YES"/>
     </entity>
     <entity name="UserProfile" representedClassName="UserProfile" syncable="YES">
+        <attribute name="followerCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="likesInHour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="likeTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -17,11 +18,12 @@
         <attribute name="token2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token3" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="likedPosts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LikedPost" inverseName="profile" inverseEntity="LikedPost" syncable="YES"/>
     </entity>
     <elements>
         <element name="LikedPost" positionX="-2007" positionY="-1282" width="128" height="148"/>
-        <element name="UserProfile" positionX="-2214" positionY="-1222" width="128" height="178"/>
+        <element name="UserProfile" positionX="-2214" positionY="-1222" width="128" height="208"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  UserProfile.h
 //  GramManager
 //
-//  Created by Oliver Rodden on 08/10/2014.
+//  Created by Oliver Rodden on 09/10/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
@@ -14,13 +14,15 @@
 @interface UserProfile : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * isActive;
+@property (nonatomic, retain) NSNumber * likesInHour;
 @property (nonatomic, retain) NSDate * likeTime;
 @property (nonatomic, retain) NSString * token1;
 @property (nonatomic, retain) NSString * token2;
 @property (nonatomic, retain) NSString * token3;
 @property (nonatomic, retain) NSString * token4;
 @property (nonatomic, retain) NSString * userName;
-@property (nonatomic, retain) NSNumber * likesInHour;
+@property (nonatomic, retain) NSNumber * followerCount;
+@property (nonatomic, retain) NSString * userId;
 @property (nonatomic, retain) NSSet *likedPosts;
 @end
 

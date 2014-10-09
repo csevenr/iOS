@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6610F45A19E690C20068D965 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6610F45919E690C20068D965 /* UserProfile.m */; };
 		6617CE7219DAB8CA00436573 /* ClientController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6617CE7119DAB8CA00436573 /* ClientController.m */; };
 		6617CE7519DAC3C300436573 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6617CE7419DAC3C300436573 /* MasterViewController.m */; };
 		6620BA9F19D4129E0095C9B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BA9E19D4129E0095C9B7 /* main.m */; };
@@ -22,7 +23,6 @@
 		66A28DFC19DB02700067CD5E /* autoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A28DFB19DB02700067CD5E /* autoIcon.png */; };
 		66A28E6A19DB0BEE0067CD5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E6819DB0BEE0067CD5E /* Model.xcdatamodeld */; };
 		66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A28E7A19DB114C0067CD5E /* ModelHelper.m */; };
-		66D1474719E56FB700A9FEC1 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D1474619E56FB700A9FEC1 /* UserProfile.m */; };
 		66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */; };
 		66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */; };
 		66EB661B19DC563D00C62A1D /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661A19DC563D00C62A1D /* HistoryViewController.m */; };
@@ -44,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6610F45819E690C20068D965 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserProfile.h; path = ../UserProfile.h; sourceTree = "<group>"; };
+		6610F45919E690C20068D965 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfile.m; path = ../UserProfile.m; sourceTree = "<group>"; };
 		6617CE7019DAB8CA00436573 /* ClientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientController.h; sourceTree = "<group>"; };
 		6617CE7119DAB8CA00436573 /* ClientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientController.m; sourceTree = "<group>"; };
 		6617CE7319DAC3C300436573 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
@@ -70,8 +72,6 @@
 		66A28E6919DB0BEE0067CD5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		66A28E7919DB114C0067CD5E /* ModelHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelHelper.h; sourceTree = "<group>"; };
 		66A28E7A19DB114C0067CD5E /* ModelHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelHelper.m; sourceTree = "<group>"; };
-		66D1474519E56FB700A9FEC1 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
-		66D1474619E56FB700A9FEC1 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		66EB660D19DC4F8D00C62A1D /* LikedPost+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LikedPost+Helper.h"; sourceTree = "<group>"; };
 		66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LikedPost+Helper.m"; sourceTree = "<group>"; };
 		66EB661019DC4FDC00C62A1D /* UserProfile+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserProfile+Helper.h"; sourceTree = "<group>"; };
@@ -233,8 +233,8 @@
 			children = (
 				66EB661F19DC5AF900C62A1D /* LikedPost.h */,
 				66EB662019DC5AF900C62A1D /* LikedPost.m */,
-				66D1474519E56FB700A9FEC1 /* UserProfile.h */,
-				66D1474619E56FB700A9FEC1 /* UserProfile.m */,
+				6610F45819E690C20068D965 /* UserProfile.h */,
+				6610F45919E690C20068D965 /* UserProfile.m */,
 			);
 			name = "Generated Classes";
 			sourceTree = "<group>";
@@ -372,7 +372,7 @@
 			files = (
 				66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */,
 				6620BAA519D4129E0095C9B7 /* AutoViewController.m in Sources */,
-				66D1474719E56FB700A9FEC1 /* UserProfile.m in Sources */,
+				6610F45A19E690C20068D965 /* UserProfile.m in Sources */,
 				667608BF19DD619F00E22208 /* Menu.m in Sources */,
 				CCAF95DD19D6E93300A92468 /* Post.m in Sources */,
 				66EB661B19DC563D00C62A1D /* HistoryViewController.m in Sources */,

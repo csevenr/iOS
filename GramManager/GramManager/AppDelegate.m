@@ -21,7 +21,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-    NSLog(@"%f", UIApplicationBackgroundFetchIntervalMinimum);
     return YES;
 }
 
@@ -29,7 +28,6 @@
 //    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
     
     MasterViewController* mainController = (MasterViewController*)self.window.rootViewController;
-    NSLog(@"%@, %@", mainController, mainController.loginVc);
     [mainController.loginVc auth];
     
     return YES;
