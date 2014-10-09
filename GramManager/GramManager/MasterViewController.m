@@ -31,40 +31,12 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    //add tab bar
-    UITabBar *tabBar = [[UITabBar alloc]initWithFrame:CGRectMake(0.0, 518.0, 320.0, 50.0)];
-    tabBar.delegate=self;
-    [self.view addSubview:tabBar];
-    
-    UITabBarItem *manBtn = [[UITabBarItem alloc]initWithTitle:@"Manual" image:[UIImage imageNamed:@"manualIcon.png"] tag:0];
-    UITabBarItem *autoBtn = [[UITabBarItem alloc]initWithTitle:@"Automatic" image:[UIImage imageNamed:@"autoIcon.png"] tag:1];
-    UITabBarItem *logoutBtn = [[UITabBarItem alloc]initWithTitle:@"Log out" image:[UIImage imageNamed:nil] tag:2];
-    
-    [tabBar setItems:[NSArray arrayWithObjects:manBtn, autoBtn, logoutBtn, nil]];
-    
-    if ([self isKindOfClass:[ManualGridViewController class]]) {
-        [tabBar setSelectedItem:manBtn];
-    }else if ([self isKindOfClass:[AutoViewController class]]){
-        [tabBar setSelectedItem:autoBtn];
-    }
     
     //add side menu
 //    menu = [[Menu alloc]initWithFrame:CGRectMake(-self.view.frame.size.width+50.0, 0.0, self.view.frame.size.width-50.0, self.view.frame.size.height)];
 //    menu.delegate=self;
 //    menu.backgroundColor = [UIColor blueColor];
 //    [self.view addSubview:menu];
-}
-
--(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    if ([self isKindOfClass:[ManualGridViewController class]]&&item.tag==1) {
-        [self performSegueWithIdentifier:@"auto" sender:nil];
-    }else if ([self isKindOfClass:[AutoViewController class]]&&item.tag==0){
-        [self performSegueWithIdentifier:@"man" sender:nil];
-    }else if (item.tag==2){
-        [UserProfile getActiveUserProfile].isActive=NO;
-        [ModelHelper saveManagedObjectContext];
-        [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:NO]];
-    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{

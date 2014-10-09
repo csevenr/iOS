@@ -71,12 +71,12 @@
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-//            NSLog(@"%@", jsonDictionary);
-            NSLog(@"%@", [[jsonDictionary objectForKey:@"data"] objectForKey:@"username"]);
+            NSLog(@"%@", jsonDictionary);
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
-                if ([UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]]!=nil){
-                    NSLog(@"already a user");
+                UserProfile *userToCheck = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
+                if (userToCheck!=nil){
+                    userToCheck.isActive=[NSNumber numberWithBool:YES];
                 }else{
                     UserProfile *userProfile = [UserProfile create];
                     userProfile.isActive=[NSNumber numberWithBool:YES];
@@ -85,6 +85,7 @@
                     [UserProfile getActiveUserProfile].userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
                     [UserProfile getActiveUserProfile].userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
                     [UserProfile getActiveUserProfile].followerCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
+                    [UserProfile getActiveUserProfile].profilePictureURL = [[jsonDictionary objectForKey:@"data"] objectForKey:@"profile_picture"];
                 }
                 [self.delegate userInfoFinished];
                 [self getUserMedia];
@@ -109,11 +110,14 @@
                 countToUse=[[jsonDictionary objectForKey:@"data"] count];
             }
             
-            
             int totalLikes=0;
             for (int i=0; i<countToUse; i++) {
                 totalLikes+=[[[[[jsonDictionary objectForKey:@"data"] objectAtIndex:i]objectForKey:@"likes"]objectForKey:@"count" ] intValue];
             }
+            
+            [UserProfile getActiveUserProfile].recentCount=[NSNumber numberWithInt:countToUse];
+            [UserProfile getActiveUserProfile].recentLikes=[NSNumber numberWithInt:totalLikes];
+            [ModelHelper saveManagedObjectContext];
         }
     }];
 }

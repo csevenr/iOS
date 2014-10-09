@@ -20,14 +20,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
 //    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-    
-    MasterViewController* mainController = (MasterViewController*)self.window.rootViewController;
+
+
+    UITabBarController *tabBarController = (UITabBarController*)self.window.rootViewController;
+    MasterViewController* mainController = (MasterViewController*)tabBarController.selectedViewController;
     [mainController.loginVc auth];
     
     return YES;

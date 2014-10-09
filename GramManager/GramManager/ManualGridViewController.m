@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.searchActivityIndcator.hidden=YES;//set this in code, because it didnt work on storyboard for some reason??
     posts = [NSMutableArray new];
     likeStatusTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLikeStatusLbl) userInfo:nil repeats:YES];

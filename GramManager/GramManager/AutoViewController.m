@@ -40,6 +40,7 @@
 }
 
 -(void)timerLike{
+    NSLog(@"tick");
     [self getJSON];
 }
 

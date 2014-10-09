@@ -12,6 +12,7 @@
 
 @implementation UserProfile
 
+@dynamic followerCount;
 @dynamic isActive;
 @dynamic likesInHour;
 @dynamic likeTime;
@@ -19,9 +20,11 @@
 @dynamic token2;
 @dynamic token3;
 @dynamic token4;
-@dynamic userName;
-@dynamic followerCount;
 @dynamic userId;
+@dynamic userName;
+@dynamic profilePictureURL;
+@dynamic recentCount;
+@dynamic recentLikes;
 @dynamic likedPosts;
 
 @end

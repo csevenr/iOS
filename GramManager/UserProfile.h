@@ -13,6 +13,7 @@
 
 @interface UserProfile : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * followerCount;
 @property (nonatomic, retain) NSNumber * isActive;
 @property (nonatomic, retain) NSNumber * likesInHour;
 @property (nonatomic, retain) NSDate * likeTime;
@@ -20,9 +21,11 @@
 @property (nonatomic, retain) NSString * token2;
 @property (nonatomic, retain) NSString * token3;
 @property (nonatomic, retain) NSString * token4;
-@property (nonatomic, retain) NSString * userName;
-@property (nonatomic, retain) NSNumber * followerCount;
 @property (nonatomic, retain) NSString * userId;
+@property (nonatomic, retain) NSString * userName;
+@property (nonatomic, retain) NSString * profilePictureURL;
+@property (nonatomic, retain) NSNumber * recentCount;
+@property (nonatomic, retain) NSNumber * recentLikes;
 @property (nonatomic, retain) NSSet *likedPosts;
 @end
 

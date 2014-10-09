@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vVJ-MN-0ZE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7gM-wZ-Api">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -20,12 +21,12 @@
                                 <rect key="frame" x="60" y="140" width="200" height="200"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="cars" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xdo-t5-Rqa">
-                                <rect key="frame" x="60" y="28" width="200" height="30"/>
+                                <rect key="frame" x="16" y="28" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="go"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brm-bm-5qH">
-                                <rect key="frame" x="60" y="66" width="200" height="21"/>
+                                <rect key="frame" x="16" y="66" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,12 +42,72 @@
                         <outlet property="lastLikedImage" destination="uDc-Qe-U7U" id="f5m-LJ-y2h"/>
                         <outlet property="likeCountLbl" destination="brm-bm-5qH" id="TmJ-LH-d3t"/>
                         <segue destination="aVR-Vo-fmp" kind="modal" identifier="login" id="YRK-MV-294"/>
-                        <segue destination="vVJ-MN-0ZE" kind="modal" identifier="man" animates="NO" id="Fsz-M1-ay2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-566" y="-34"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="HwR-AP-ASh">
+            <objects>
+                <viewController id="MuW-U3-pfs" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SIr-Wh-3mj"/>
+                        <viewControllerLayoutGuide type="bottom" id="OZp-xe-plM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FDs-0T-EVS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sh2-Br-0ss">
+                                <rect key="frame" x="0.0" y="228" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lWm-OV-1bt">
+                                <rect key="frame" x="60" y="20" width="200" height="200"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0c-l5-WWy">
+                                <rect key="frame" x="60" y="448" width="200" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="aVR-Vo-fmp" kind="modal" identifier="login" id="fC0-ES-uD1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Followers:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7R-IQ-GaP">
+                                <rect key="frame" x="16" y="273" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average likes:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQ7-ei-OA8">
+                                <rect key="frame" x="16" y="302" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileIcon.png" id="qOr-aQ-V4d"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="averageLikesLbl" destination="IQ7-ei-OA8" id="NT2-Tp-N99"/>
+                        <outlet property="followersLbl" destination="g7R-IQ-GaP" id="o4K-CV-n4h"/>
+                        <outlet property="logoutBtn" destination="i0c-l5-WWy" id="VT0-fb-OaJ"/>
+                        <outlet property="profilePicImg" destination="lWm-OV-1bt" id="XV3-WL-Q3I"/>
+                        <outlet property="usernameLbl" destination="sh2-Br-0ss" id="RNL-w0-aWy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nsp-2Y-Del" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-153" y="-34"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="deH-58-w8L">
@@ -77,27 +138,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghJ-re-ehx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-786" y="685"/>
+            <point key="canvasLocation" x="-566" y="681"/>
         </scene>
-        <!--History-->
-        <scene sceneID="Qcm-1B-r4S">
+        <!--Tab Bar Controller-->
+        <scene sceneID="HDe-jq-Qi2">
             <objects>
-                <viewController id="y6t-ST-Baj" customClass="HistoryViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qJU-dO-mqJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="cHx-tD-cFh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Zph-ac-J4H">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="History" id="ooT-0c-VpX"/>
+                <tabBarController id="7gM-wZ-Api" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="daz-AT-qlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="ZJ1-G0-k6M">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="vVJ-MN-0ZE" kind="relationship" relationship="viewControllers" id="epj-O9-JTL"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="jC5-yI-Buw"/>
+                        <segue destination="MuW-U3-pfs" kind="relationship" relationship="viewControllers" id="8wa-7Q-4Nu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sKo-e6-GR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-212" y="-434"/>
+            <point key="canvasLocation" x="-566" y="-752"/>
         </scene>
         <!--Manual-->
         <scene sceneID="H9V-u5-l9z">
@@ -111,15 +173,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hux-sG-z4A">
-                                <rect key="frame" x="212" y="66" width="48" height="30"/>
-                                <state key="normal" title="Search">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchBtnPressed" destination="vVJ-MN-0ZE" eventType="touchUpInside" id="6m6-5K-uBR"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AL2-Jm-3n4">
                                 <rect key="frame" x="0.0" y="120" width="320" height="399"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -153,11 +206,8 @@
                                     <outlet property="delegate" destination="vVJ-MN-0ZE" id="mTh-ko-xB7"/>
                                 </connections>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="R5x-qx-qNm">
-                                <rect key="frame" x="226" y="71" width="20" height="20"/>
-                            </activityIndicatorView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="cars" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tvx-GZ-lgp">
-                                <rect key="frame" x="60" y="28" width="200" height="30"/>
+                                <rect key="frame" x="16" y="28" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
                                 <connections>
@@ -171,11 +221,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjf-5k-1DA">
-                                <rect key="frame" x="60" y="66" width="144" height="21"/>
+                                <rect key="frame" x="16" y="66" width="232" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hux-sG-z4A">
+                                <rect key="frame" x="256" y="62" width="48" height="30"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchBtnPressed" destination="vVJ-MN-0ZE" eventType="touchUpInside" id="6m6-5K-uBR"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="R5x-qx-qNm">
+                                <rect key="frame" x="270" y="67" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -191,7 +253,6 @@
                         <outlet property="searchActivityIndcator" destination="R5x-qx-qNm" id="DXb-XK-bF2"/>
                         <outlet property="searchBtn" destination="hux-sG-z4A" id="uLQ-cv-mqe"/>
                         <segue destination="aVR-Vo-fmp" kind="modal" identifier="login" id="1fu-Iz-tkk"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="auto" animates="NO" id="b7H-pQ-8Mr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-tC-TJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,6 +263,7 @@
     <resources>
         <image name="autoIcon.png" width="30" height="30"/>
         <image name="manualIcon.png" width="40" height="29"/>
+        <image name="profileIcon.png" width="40" height="40"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -209,6 +271,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1fu-Iz-tkk"/>
+        <segue reference="fC0-ES-uD1"/>
     </inferredMetricsTieBreakers>
 </document>
