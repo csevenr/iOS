@@ -29,11 +29,8 @@
     [self updateLikeStatusLbl];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [self performSegueWithIdentifier:@"auto" sender:nil];
-}
-
-- (IBAction)searchBtnPressed:(id)sender {
+- (IBAction)searchBtnPressed {
+    [self.hashtagTextField resignFirstResponder];
     if ([posts count]>0) [posts removeAllObjects];
     
     [self searchingUi];
@@ -48,12 +45,16 @@
 }
 
 -(void)JSONReceived:(NSDictionary *)JSONDictionary{
-    [self performSelectorOnMainThread:@selector(searchingUi) withObject:nil waitUntilDone:NO];
-    for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
-        Post *post = [[Post alloc]initWithDictionary:postDict];
-        [posts addObject:post];
+   [self performSelectorOnMainThread:@selector(searchingUi) withObject:nil waitUntilDone:NO];
+    if ([[JSONDictionary objectForKey:@"data"] count]==0) {
+        [self performSelectorOnMainThread:@selector(showAlertView) withObject:nil waitUntilDone:NO];//call ui on main thread
+    }else{
+        for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
+            Post *post = [[Post alloc]initWithDictionary:postDict];
+            [posts addObject:post];
+        }
+        [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
     }
-    [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
 }
 
 -(void)reload{
@@ -66,6 +67,11 @@
     
     if ([self.searchActivityIndcator isAnimating])[self.searchActivityIndcator stopAnimating];
     else [self.searchActivityIndcator startAnimating];
+}
+
+-(void)showAlertView{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"No posts" message:@"We didn't find any posts for that hashtag" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 -(void)updateLikeStatusLbl{
@@ -88,7 +94,7 @@
         [UserProfile getActiveUserProfile].likeTime = [NSDate date];
     }
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime];
-    NSLog(@"%f", secondsBetween);
+//    NSLog(@"%f", secondsBetween);
     if (secondsBetween >= 3600.000001) {
         [UserProfile getActiveUserProfile].likeTime = [NSDate date];
         [UserProfile getActiveUserProfile].likesInHour = [NSNumber numberWithInt:0];
@@ -103,9 +109,6 @@
             [UserProfile getActiveUserProfile].likesInHour = [NSNumber numberWithInt:[[UserProfile getActiveUserProfile].likesInHour integerValue]+1];
             [ModelHelper saveManagedObjectContext];
             [self updateLikeStatusLbl];
-//            NSLog(@"## %d", [[UserProfile getActiveUserProfile].likesInHour integerValue]);
-//        }else if ([[UserProfile getActiveUserProfile].likesInHour integerValue]==30){
-            
         }else{
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Like limit reached" message:@"You are only allow 30 likes an hour" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
@@ -142,8 +145,7 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self searchBtnPressed:nil];
-    [textField resignFirstResponder];
+    [self searchBtnPressed];
     return YES;
 }
 

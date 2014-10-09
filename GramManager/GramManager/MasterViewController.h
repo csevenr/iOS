@@ -13,7 +13,7 @@
 
 @class LoginViewController;
 
-@interface MasterViewController : UIViewController <instaDelegate, MenuDelegate, UITextFieldDelegate>{
+@interface MasterViewController : UIViewController <instaDelegate, MenuDelegate, UITextFieldDelegate, UITabBarDelegate>{
     ClientController *cc;
     Insta *insta;
 }

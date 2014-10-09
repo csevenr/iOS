@@ -29,6 +29,7 @@
 //    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
     
     MasterViewController* mainController = (MasterViewController*)self.window.rootViewController;
+    NSLog(@"%@, %@", mainController, mainController.loginVc);
     [mainController.loginVc auth];
     
     return YES;
@@ -37,12 +38,12 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    NSLog(@"timer set");
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tester) userInfo:nil repeats:YES];
+//    NSLog(@"timer set");
+//    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(tester) userInfo:nil repeats:YES];
 }
 
 -(void)tester{
-    NSLog(@"still here");
+//    NSLog(@"still here");
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{

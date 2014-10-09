@@ -7,6 +7,8 @@
 //
 
 #import "MasterViewController.h"
+#import "ManualGridViewController.h"
+#import "AutoViewController.h"
 #import "ModelHelper.h"
 #import "UserProfile+Helper.h"
 
@@ -28,16 +30,35 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    //add tool bar
-    UIToolbar *toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0.0, 524.0, 320.0, 44.0)];
-    toolBar.backgroundColor=[UIColor yellowColor];
-    [self.view addSubview:toolBar];
+    //add tab bar
+    UITabBar *tabBar = [[UITabBar alloc]initWithFrame:CGRectMake(0.0, 518.0, 320.0, 50.0)];
+    tabBar.delegate=self;
+    [self.view addSubview:tabBar];
+    
+    UITabBarItem *manBtn = [[UITabBarItem alloc]initWithTitle:@"Manual" image:[UIImage imageNamed:@"manualIcon.png"] tag:0];
+    UITabBarItem *autoBtn = [[UITabBarItem alloc]initWithTitle:@"Automatic" image:[UIImage imageNamed:@"autoIcon.png"] tag:1];
+    
+    [tabBar setItems:[NSArray arrayWithObjects:manBtn, autoBtn, nil]];
+    
+    if ([self isKindOfClass:[ManualGridViewController class]]) {
+        [tabBar setSelectedItem:manBtn];
+    }else if ([self isKindOfClass:[AutoViewController class]]){
+        [tabBar setSelectedItem:autoBtn];
+    }
     
     //add side menu
     menu = [[Menu alloc]initWithFrame:CGRectMake(-self.view.frame.size.width+50.0, 0.0, self.view.frame.size.width-50.0, self.view.frame.size.height)];
     menu.delegate=self;
     menu.backgroundColor = [UIColor blueColor];
     [self.view addSubview:menu];
+}
+
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    if ([self isKindOfClass:[ManualGridViewController class]]&&item.tag==1) {
+        [self performSegueWithIdentifier:@"auto" sender:nil];
+    }else if ([self isKindOfClass:[AutoViewController class]]&&item.tag==0){
+        [self performSegueWithIdentifier:@"man" sender:nil];
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated{

@@ -101,9 +101,6 @@
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-//    [self.view bringSubviewToFront:webView];
-//     webView.hidden=NO;
-
     NSString* urlString = [[request URL] absoluteString];
     
 //    NSLog(@"%@", urlString);

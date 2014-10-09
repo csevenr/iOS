@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *postCollView;
 @property (weak, nonatomic) IBOutlet UILabel *likeStatusLbl;
 
-- (IBAction)searchBtnPressed:(id)sender;
-
+- (IBAction)searchBtnPressed;
 
 @end

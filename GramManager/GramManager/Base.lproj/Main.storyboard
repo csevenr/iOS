@@ -20,17 +20,17 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-Qe-U7U">
                                 <rect key="frame" x="60" y="140" width="200" height="200"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brm-bm-5qH">
-                                <rect key="frame" x="70" y="66" width="180" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="cars" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xdo-t5-Rqa">
                                 <rect key="frame" x="60" y="28" width="200" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="go"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brm-bm-5qH">
+                                <rect key="frame" x="60" y="66" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -42,6 +42,7 @@
                         <outlet property="lastLikedImage" destination="uDc-Qe-U7U" id="f5m-LJ-y2h"/>
                         <outlet property="likeCountLbl" destination="brm-bm-5qH" id="TmJ-LH-d3t"/>
                         <segue destination="aVR-Vo-fmp" kind="modal" identifier="login" id="YRK-MV-294"/>
+                        <segue destination="vVJ-MN-0ZE" kind="modal" identifier="man" animates="NO" id="Fsz-M1-ay2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -77,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghJ-re-ehx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-753" y="684"/>
+            <point key="canvasLocation" x="-786" y="685"/>
         </scene>
         <!--History-->
         <scene sceneID="Qcm-1B-r4S">
@@ -117,7 +118,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="searchBtnPressed:" destination="vVJ-MN-0ZE" eventType="touchUpInside" id="9J2-LZ-MKP"/>
+                                    <action selector="searchBtnPressed" destination="vVJ-MN-0ZE" eventType="touchUpInside" id="6m6-5K-uBR"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AL2-Jm-3n4">
@@ -191,12 +192,12 @@
                         <outlet property="searchActivityIndcator" destination="R5x-qx-qNm" id="DXb-XK-bF2"/>
                         <outlet property="searchBtn" destination="hux-sG-z4A" id="uLQ-cv-mqe"/>
                         <segue destination="aVR-Vo-fmp" kind="modal" identifier="login" id="1fu-Iz-tkk"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="auto" id="b7H-pQ-8Mr"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="auto" animates="NO" id="b7H-pQ-8Mr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-tC-TJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-936" y="-34"/>
+            <point key="canvasLocation" x="-998" y="-34"/>
         </scene>
     </scenes>
     <resources>
@@ -209,6 +210,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YRK-MV-294"/>
+        <segue reference="1fu-Iz-tkk"/>
     </inferredMetricsTieBreakers>
 </document>
