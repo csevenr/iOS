@@ -101,7 +101,7 @@
 }
 
 -(void)createNewAccount{
-    [[ClientController sharedInstance] setupTokensInWebView:self.authWebView];
+    [[ClientController sharedInstance] setupToken:1 inWebView:self.authWebView];
 }
 
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -151,15 +151,15 @@
             if ([tokens count]==0) {
                 tokens = [NSMutableArray new];
                 [tokens addObject:tokenString];
+                [[ClientController sharedInstance] setupToken:2 inWebView:self.authWebView];
             }else if ([tokens count]==1){
                 [tokens addObject:tokenString];
+                [[ClientController sharedInstance] setupToken:3 inWebView:self.authWebView];
             }else if ([tokens count]==2){
                 [tokens addObject:tokenString];
+                [[ClientController sharedInstance] setupToken:4 inWebView:self.authWebView];
             }else if ([tokens count]==3){
                 [tokens addObject:tokenString];
-            }
-            if ([tokens count]!=4) {
-                [[ClientController sharedInstance] setupTokensInWebView:self.authWebView];
             }
         }
     }

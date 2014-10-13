@@ -24,6 +24,9 @@
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
             NSLog(@"# %@", jsonDictionary);
+            
+            NSString *paginationURL = [[jsonDictionary objectForKey:@"pagination"]objectForKey:@"next_url"];
+            NSLog(@"%@", paginationURL);
 
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 [self.delegate JSONReceived:jsonDictionary];
@@ -33,6 +36,8 @@
         }
     }];
 }
+
+
 
 - (void)likePost:(Post*)post {
     NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentTokenForLike:YES]];

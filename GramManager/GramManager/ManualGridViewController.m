@@ -47,13 +47,14 @@
 
 -(void)JSONReceived:(NSDictionary *)JSONDictionary{
    [self performSelectorOnMainThread:@selector(searchingUi) withObject:nil waitUntilDone:NO];
-    if ([[JSONDictionary objectForKey:@"data"] count]==0) {
+    if ([[JSONDictionary objectForKey:@"data"] count]==0) {//Invalid hashtag, no data in JSON
         [self performSelectorOnMainThread:@selector(showAlertView) withObject:nil waitUntilDone:NO];//call ui on main thread
-    }else{
+    }else{//Valid hashtag, Create a post object for each entry
         for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
             Post *post = [[Post alloc]initWithDictionary:postDict];
             [posts addObject:post];
         }
+        //reload the table view with new data
         [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
     }
 }
@@ -97,7 +98,6 @@
         [UserProfile getActiveUserProfile].likeTime = [NSDate date];
     }
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime];
-//    NSLog(@"%f", secondsBetween);
     if (secondsBetween >= 3600.000001) {
         [UserProfile getActiveUserProfile].likeTime = [NSDate date];
         [UserProfile getActiveUserProfile].likesInHour = [NSNumber numberWithInt:0];
@@ -107,6 +107,9 @@
             [insta likePost:selectedPost];
             
             [posts removeObject:selectedPost];
+            if ([posts count]==4){//only 4 left in table view
+                NSLog(@"Pagination time");
+            }
             [self.postCollView reloadData];
             
             [UserProfile getActiveUserProfile].likesInHour = [NSNumber numberWithInt:[[UserProfile getActiveUserProfile].likesInHour integerValue]+1];

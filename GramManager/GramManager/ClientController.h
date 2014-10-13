@@ -12,7 +12,7 @@
 @interface ClientController : NSObject <UIWebViewDelegate>
 
 + (ClientController *)sharedInstance;
--(void)setupTokensInWebView:(UIWebView*)webview;
+-(void)setupToken:(NSInteger)tokenNo inWebView:(UIWebView*)webview;
 -(NSString*)getCurrentTokenForLike:(BOOL)forLike;
 -(NSString*)getCurrentClientId;
 

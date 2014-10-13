@@ -52,18 +52,18 @@ static ClientController *sharedInstance = nil;
     return self;
 }
 
--(void)setupTokensInWebView:(UIWebView*)webview{
+-(void)setupToken:(NSInteger)tokenNo inWebView:(UIWebView*)webview{
     NSURLRequest *requestObj;
-    if ([UserProfile getActiveUserProfile].token1 == nil) {
+    if (tokenNo==1) {
         requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID1, REDIRECTURI]]];
         [webview loadRequest:requestObj];
-    }else if ([UserProfile getActiveUserProfile].token2 == nil){
+    }else if (tokenNo==2){
         requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID2, REDIRECTURI]]];
         [webview loadRequest:requestObj];
-    }else if ([UserProfile getActiveUserProfile].token3 == nil){
+    }else if (tokenNo==3){
         requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID3, REDIRECTURI]]];
         [webview loadRequest:requestObj];
-    }else if ([UserProfile getActiveUserProfile].token4 == nil){
+    }else if (tokenNo==4){
         requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/oauth/authorize/?client_id=%@&redirect_uri=%@&response_type=token&display=touch&scope=likes+relationships",CLIENTID4, REDIRECTURI]]];
         [webview loadRequest:requestObj];
     }
