@@ -14,7 +14,6 @@
 #import "LoginViewController.h"
 
 @interface LikeMasterViewController(){
-    UserProfile *userProfile;
     Menu * menu;
 }
 

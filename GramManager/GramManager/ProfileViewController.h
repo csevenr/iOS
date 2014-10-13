@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MasterViewController.h"
+#import "LoginViewController.h"
 
-@class LoginViewController;
-
-@interface ProfileViewController : MasterViewController
+@interface ProfileViewController : MasterViewController <loginDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImg;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLbl;

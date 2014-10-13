@@ -13,20 +13,37 @@
 #import "LikedPost+Helper.h"
 #import "ModelHelper.h"
 
+@interface Insta (){
+    NSString *currentHashtag;
+    NSString *paginationURL;
+    
+    UIAlertView *non200Alert;
+}
+
+@end
+
 @implementation Insta
 
 -(void)getJsonForHashtag:(NSString*)hashtag{
-    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
-    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    NSString *urlForPostData;
+    if (paginationURL!=nil&&currentHashtag!=nil&&[currentHashtag isEqualToString:hashtag]){
+        urlForPostData = paginationURL;
+    }else{
+        urlForPostData = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
+        currentHashtag=hashtag;
+    }
+
+    
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForPostData]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
-            NSLog(@"Error 1");
+            NSLog(@"Error 1 %@", error);
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
             NSLog(@"# %@", jsonDictionary);
             
-            NSString *paginationURL = [[jsonDictionary objectForKey:@"pagination"]objectForKey:@"next_url"];
-            NSLog(@"%@", paginationURL);
+            paginationURL = [[jsonDictionary objectForKey:@"pagination"]objectForKey:@"next_url"];
+            NSLog(@"## %@", paginationURL);
 
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 [self.delegate JSONReceived:jsonDictionary];
@@ -80,11 +97,8 @@
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 UserProfile *userToCheck = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
-                if (userToCheck!=nil){
-                    userToCheck.isActive=[NSNumber numberWithBool:YES];
-                }else{
+                if (userToCheck==nil){
                     UserProfile *userProfile = [UserProfile create];
-                    userProfile.isActive=[NSNumber numberWithBool:YES];
                     [ModelHelper saveManagedObjectContext];
                     
                     userProfile.userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
@@ -92,6 +106,7 @@
                     userProfile.followerCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
                     userProfile.profilePictureURL = [[jsonDictionary objectForKey:@"data"] objectForKey:@"profile_picture"];
                 }
+                userToCheck.isActive=[NSNumber numberWithBool:YES];
                 [self.delegate userInfoFinished];
                 [self getUserMedia];
             }else{
@@ -139,8 +154,11 @@
 }
 
 -(void)non200ReceivedWithString:(NSString*)str{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@ %@",@"Something went wrong", str] message:@"We're not sure what, but something went wrong. Chances are if you leave it an hour itll fix itself" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [alert show];
+    if (!non200Alert.visible){
+        non200Alert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%@ %@",@"Something went wrong", str] message:@"We're not sure what, but something went wrong. Chances are if you leave it an hour itll fix itself" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [non200Alert show];
+    }
+    [self.delegate JSONReceived:nil];
 }
 
 @end

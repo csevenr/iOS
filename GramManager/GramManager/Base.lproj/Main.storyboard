@@ -192,14 +192,10 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8do-uW-8Eb">
                                                     <rect key="frame" x="-1" y="0.0" width="130" height="130"/>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Fu5-he-ePg">
-                                                    <rect key="frame" x="60" y="60" width="20" height="20"/>
-                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <outlet property="activityIndicator" destination="Fu5-he-ePg" id="kIo-5A-5N4"/>
                                             <outlet property="mainImg" destination="8do-uW-8Eb" id="vhc-Gi-81o"/>
                                         </connections>
                                     </collectionViewCell>
@@ -274,6 +270,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fC0-ES-uD1"/>
+        <segue reference="1fu-Iz-tkk"/>
     </inferredMetricsTieBreakers>
 </document>

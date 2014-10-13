@@ -23,7 +23,6 @@
 }
 
 -(void)downloadImage{
-    [self.activityIndicator startAnimating];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.post.thumbnailURL]];
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -33,7 +32,6 @@
                                }else{
                                    UIImage *image = [[UIImage alloc] initWithData:data];
                                    self.mainImg.image = image;
-                                   [self.activityIndicator stopAnimating];
                                    [self bringSubviewToFront:self.mainImg];
                                }
                            }];

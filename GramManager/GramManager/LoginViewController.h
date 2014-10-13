@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Insta.h"
 
+@protocol loginDelegate <NSObject>
+
+-(void)loginFinished;
+
+@end
+
 @interface LoginViewController : UIViewController <instaDelegate, UIWebViewDelegate>
+
+@property (nonatomic, weak) id<loginDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIWebView *authWebView;
 @property (nonatomic) BOOL login;

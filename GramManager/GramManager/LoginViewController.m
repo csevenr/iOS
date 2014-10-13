@@ -10,7 +10,6 @@
 #import "UserProfile+Helper.h"
 #import "ModelHelper.h"
 #import "ClientController.h"
-//#import "Insta.h"
 
 @interface LoginViewController (){
     NSMutableArray *btns;
@@ -42,27 +41,7 @@
         }
         [btns removeAllObjects];
     }
-    NSArray *userProfiles = [UserProfile getUserProfiles];
-    
-    /*--Multi account stuff--
-//    for (int i=0; i<[userProfiles count]; i++) {
-//        UIButton *userBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.0, 100.0+(62*i), self.view.frame.size.width, 60.0)];
-//        if ([(UserProfile*)[userProfiles objectAtIndex:i] userName]!=nil) {
-//            [userBtn setTitle:[(UserProfile*)[userProfiles objectAtIndex:i] userName] forState:UIControlStateNormal];
-//        }else{
-//            [userBtn setTitle:@"Retrieving user info" forState:UIControlStateNormal];
-//        }
-//        [userBtn addTarget:self action:@selector(accountBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-//        userBtn.tag=i;
-//        userBtn.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1.0];
-//        [userBtn setTitleColor:[UIColor colorWithRed:42.0/255.0 green:42.0/255.0 blue:42.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-//        [self.view addSubview:userBtn];
-//        [btns addObject:userBtn];
-//    }
-          -----------------------*/
-    
-    if ([userProfiles count]<4) {
-        UIButton *loginBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.0, 100.0+(62*[userProfiles count]), self.view.frame.size.width, 60.0)];
+    UIButton *loginBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.0, 162.0, self.view.frame.size.width, 60.0)];
         if (self.login) {
             if ([UserProfile getActiveUserProfile]) {//dont add a target here, dont want anyone pressing it.
                 [loginBtn setTitle:@"Retrieving user info" forState:UIControlStateNormal];
@@ -86,7 +65,6 @@
         activityIndicator.color=[UIColor colorWithRed:42.0/255.0 green:42.0/255.0 blue:42.0/255.0 alpha:1.0];
         activityIndicator.hidden=YES;
         [loginBtn addSubview:activityIndicator];
-    }
 }
 
 -(void)accountBtnPressed:(UIButton*)sender{
@@ -133,21 +111,6 @@
 
 //            NSLog(@"%@", tokenString);
             
-            //CORE DATA TOKENS
-//            if ([UserProfile getToken:1]==nil) {
-//                [UserProfile getActiveUserProfile].token1=tokenString;
-//            }else if ([UserProfile getToken:2]==nil){
-//                [UserProfile getActiveUserProfile].token2=tokenString;
-//            }else if ([UserProfile getToken:3]==nil){
-//                [UserProfile getActiveUserProfile].token3=tokenString;
-//            }else if ([UserProfile getToken:4]==nil){
-//                [UserProfile getActiveUserProfile].token4=tokenString;
-//            }
-//            if ([UserProfile getToken:4]==nil) {
-//                [[ClientController sharedInstance] setupTokensInWebView:self.authWebView];
-//            }
-            
-            //TEMP TOKENS
             if ([tokens count]==0) {
                 tokens = [NSMutableArray new];
                 [tokens addObject:tokenString];
@@ -176,6 +139,7 @@
     }else if ([UserProfile getToken:4]==nil){
         [UserProfile getActiveUserProfile].token4=[tokens objectAtIndex:3];
     }
+    [self.delegate loginFinished];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -8,7 +8,6 @@
 
 #import "ProfileViewController.h"
 #import "UserProfile+Helper.h"
-#import "LoginViewController.h"
 
 @interface ProfileViewController ()
 
@@ -18,30 +17,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUpView];
+}
+
+-(void)setUpView{
+    userProfile = [UserProfile getActiveUserProfile];
     
-    self.usernameLbl.text = [UserProfile getActiveUserProfile].userName;
-    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[UserProfile getActiveUserProfile].profilePictureURL]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    self.usernameLbl.text = userProfile.userName;
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:userProfile.profilePictureURL]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error");
         } else {
             self.profilePicImg.image = [UIImage imageWithData:data];
         }
     }];
-    self.followersLbl.text = [NSString stringWithFormat:@"%@ %d", self.followersLbl.text,[[UserProfile getActiveUserProfile].followerCount intValue]];
-    self.averageLikesLbl.text = [NSString stringWithFormat:@"%@ %d", self.averageLikesLbl.text,[[UserProfile getActiveUserProfile].recentLikes intValue]/[[UserProfile getActiveUserProfile].recentCount intValue]];
+    self.profilePicImg.layer.cornerRadius=self.profilePicImg.frame.size.width/2;
+    self.profilePicImg.clipsToBounds=YES;
+    self.followersLbl.text = [NSString stringWithFormat:@"Followers: %d",[userProfile.followerCount intValue]];
+    self.averageLikesLbl.text = [NSString stringWithFormat:@"Average likes: %d",[userProfile.recentLikes intValue]/[userProfile.recentCount intValue]];
     
     self.logoutBtn.layer.borderWidth=2.0;
     self.logoutBtn.layer.borderColor=[UIColor blackColor].CGColor;
-    // Do any additional setup after loading the view.
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
     if ([segue.identifier isEqualToString:@"login"]){
-        [UserProfile getActiveUserProfile].isActive=[NSNumber numberWithBool:NO];
+        userProfile.isActive=[NSNumber numberWithBool:NO];
         
         self.loginVc = (LoginViewController*)segue.destinationViewController;
         [self.loginVc setLogin:NO];
+        self.loginVc.delegate = self;
     }
+}
+
+-(void)loginFinished{
+    [self setUpView];
 }
 
 - (void)didReceiveMemoryWarning {

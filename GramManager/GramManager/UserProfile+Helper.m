@@ -41,6 +41,7 @@
     NSArray *results = [MOC executeFetchRequest: request error:&error];
     for (UserProfile *userProfile in results) {
         if ([userProfile.isActive boolValue]) {
+            NSLog(@"%@", userProfile.userName);
             return userProfile;
         }
     }

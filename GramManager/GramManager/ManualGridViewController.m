@@ -47,15 +47,17 @@
 
 -(void)JSONReceived:(NSDictionary *)JSONDictionary{
    [self performSelectorOnMainThread:@selector(searchingUi) withObject:nil waitUntilDone:NO];
-    if ([[JSONDictionary objectForKey:@"data"] count]==0) {//Invalid hashtag, no data in JSON
-        [self performSelectorOnMainThread:@selector(showAlertView) withObject:nil waitUntilDone:NO];//call ui on main thread
-    }else{//Valid hashtag, Create a post object for each entry
-        for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
-            Post *post = [[Post alloc]initWithDictionary:postDict];
-            [posts addObject:post];
+    if (JSONDictionary!=nil) {
+        if ([[JSONDictionary objectForKey:@"data"] count]==0) {//Invalid hashtag, no data in JSON
+            [self performSelectorOnMainThread:@selector(showAlertView) withObject:nil waitUntilDone:NO];//call ui on main thread
+        }else{//Valid hashtag, Create a post object for each entry
+            for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
+                Post *post = [[Post alloc]initWithDictionary:postDict];
+                [posts addObject:post];
+            }
+            //reload the table view with new data
+            [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
         }
-        //reload the table view with new data
-        [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
     }
 }
 
@@ -77,42 +79,44 @@
 }
 
 -(void)updateLikeStatusLbl{
-//    if ([UserProfile getActiveUserProfile]) {
-//        if ([UserProfile getActiveUserProfile].likeTime == nil||[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]>=3600.000001) {
-//            self.likeStatusLbl.text=@"30 likes remaining";
-//        }else if ([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]<3600.000001){
-//            if ([[UserProfile getActiveUserProfile].likesInHour integerValue]<30) {
-//                self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[[UserProfile getActiveUserProfile].likesInHour integerValue]];
-//            }else if ([[UserProfile getActiveUserProfile].likesInHour integerValue]>=30){
-//                int mins = (int)ceilf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]/30);
-//                self.likeStatusLbl.text=[NSString stringWithFormat:@"%dm until likes are restored", 60-mins];
-//            }
-//        }
-//    }
+    if (userProfile!=nil) {
+        NSLog(@"%f", [[NSDate date] timeIntervalSinceDate:userProfile.likeTime]);
+        if (userProfile.likeTime == nil||[[NSDate date] timeIntervalSinceDate:userProfile.likeTime]>=3600.000001) {
+            self.likeStatusLbl.text=@"30 likes remaining";
+        }else if ([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]<3600.000001){
+            if ([userProfile.likesInHour integerValue]<30) {
+                self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[userProfile.likesInHour integerValue]];
+            }else if ([userProfile.likesInHour integerValue]>=30){
+                int mins = (int)floorf([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]/60);
+                self.likeStatusLbl.text=[NSString stringWithFormat:@"%dm until likes are restored", 60-mins];
+            }
+        }
+    }
 }
 
 #pragma Mark collView methods
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if ([UserProfile getActiveUserProfile].likeTime == nil) {
-        [UserProfile getActiveUserProfile].likeTime = [NSDate date];
+    if (userProfile.likeTime == nil) {
+        userProfile.likeTime = [NSDate date];
     }
-    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime];
+    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
     if (secondsBetween >= 3600.000001) {
-        [UserProfile getActiveUserProfile].likeTime = [NSDate date];
-        [UserProfile getActiveUserProfile].likesInHour = [NSNumber numberWithInt:0];
+        userProfile.likeTime = [NSDate date];
+        userProfile.likesInHour = [NSNumber numberWithInt:0];
     }else{
-        if ([[UserProfile getActiveUserProfile].likesInHour integerValue]<30) {
+        if ([userProfile.likesInHour integerValue]<30) {
             Post *selectedPost = [posts objectAtIndex:indexPath.row];
             [insta likePost:selectedPost];
             
             [posts removeObject:selectedPost];
             if ([posts count]==4){//only 4 left in table view
                 NSLog(@"Pagination time");
+                [self getJSON];
             }
             [self.postCollView reloadData];
             
-            [UserProfile getActiveUserProfile].likesInHour = [NSNumber numberWithInt:[[UserProfile getActiveUserProfile].likesInHour integerValue]+1];
+            userProfile.likesInHour = [NSNumber numberWithInt:[userProfile.likesInHour integerValue]+1];
             [ModelHelper saveManagedObjectContext];
             [self updateLikeStatusLbl];
         }else{
@@ -141,7 +145,8 @@
     static NSString *MyIdentifier = @"postCell";
     
     PostCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
-    
+//    PostCollectionViewCell *cell;
+
     if (cell == nil){
         cell = [PostCollectionViewCell new];
     }

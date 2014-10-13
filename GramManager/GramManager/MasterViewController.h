@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class LoginViewController;
+@class LoginViewController, UserProfile;
 
-@interface MasterViewController : UIViewController
+@interface MasterViewController : UIViewController {
+    UserProfile *userProfile;
+}
 
 @property (nonatomic) LoginViewController *loginVc;
 

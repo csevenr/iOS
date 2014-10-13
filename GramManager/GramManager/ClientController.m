@@ -24,6 +24,8 @@
 #define CLIENTSECRET4 @"7afafb4790d14cfaa7e1ed1bd1cf8ec4"
 
 @interface ClientController (){
+    UserProfile *userProfile;
+    
     NSInteger count;
 }
 
@@ -47,7 +49,8 @@ static ClientController *sharedInstance = nil;
 
 -(id)init{
     if (self==[super init]) {
-        count = [[UserProfile getActiveUserProfile].tokenCount integerValue];
+        userProfile = [UserProfile getActiveUserProfile];
+        count = [userProfile.tokenCount integerValue];
     }
     return self;
 }
@@ -73,13 +76,28 @@ static ClientController *sharedInstance = nil;
     if (forLike) count++;
     if (count==100) count=0;
     
-    [UserProfile getActiveUserProfile].tokenCount=[NSNumber numberWithInt:count];
+    userProfile.tokenCount=[NSNumber numberWithInt:count];
     
-    if (count>=0&&count<25) return [[UserProfile getActiveUserProfile] token1];
-    else if (count>=25&&count<50) return [[UserProfile getActiveUserProfile] token2];
-    else if (count>=50&&count<75) return [[UserProfile getActiveUserProfile] token3];
-    else if (count>=75&&count<100) return [[UserProfile getActiveUserProfile] token4];
-    else return [[UserProfile getActiveUserProfile] token1];
+    if (count>=0&&count<25){
+//        NSLog(@"Using token: 1");
+        return userProfile.token1;
+    }
+    else if (count>=25&&count<50){
+//        NSLog(@"Using token: 2");
+        return userProfile.token2;
+    }
+    else if (count>=50&&count<75){
+//        NSLog(@"Using token: 3");
+        return userProfile.token3;
+    }
+    else if (count>=75&&count<100){
+//        NSLog(@"Using token: 4");
+        return userProfile.token4;
+    }
+    else{
+//        NSLog(@"Using token: 1");
+        return userProfile.token1;
+    }
 }
 
 -(NSString*)getCurrentClientId{
