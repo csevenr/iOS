@@ -81,20 +81,16 @@ static ClientController *sharedInstance = nil;
     if (count>=0&&count<25){
 //        NSLog(@"Using token: 1");
         return userProfile.token1;
-    }
-    else if (count>=25&&count<50){
+    }else if (count>=25&&count<50){
 //        NSLog(@"Using token: 2");
         return userProfile.token2;
-    }
-    else if (count>=50&&count<75){
+    }else if (count>=50&&count<75){
 //        NSLog(@"Using token: 3");
         return userProfile.token3;
-    }
-    else if (count>=75&&count<100){
+    }else if (count>=75&&count<100){
 //        NSLog(@"Using token: 4");
         return userProfile.token4;
-    }
-    else{
+    }else{
 //        NSLog(@"Using token: 1");
         return userProfile.token1;
     }

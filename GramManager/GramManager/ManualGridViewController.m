@@ -80,10 +80,10 @@
 
 -(void)updateLikeStatusLbl{
     if (userProfile!=nil) {
-        NSLog(@"%f", [[NSDate date] timeIntervalSinceDate:userProfile.likeTime]);
         if (userProfile.likeTime == nil||[[NSDate date] timeIntervalSinceDate:userProfile.likeTime]>=3600.000001) {
             self.likeStatusLbl.text=@"30 likes remaining";
         }else if ([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]<3600.000001){
+            NSLog(@"%f", [[NSDate date] timeIntervalSinceDate:userProfile.likeTime]);
             if ([userProfile.likesInHour integerValue]<30) {
                 self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[userProfile.likesInHour integerValue]];
             }else if ([userProfile.likesInHour integerValue]>=30){

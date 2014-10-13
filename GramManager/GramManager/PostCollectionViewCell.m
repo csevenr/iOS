@@ -18,6 +18,7 @@
 -(void)setUpCell{
 //    self.textLabel.text = [self.post userName];
     self.mainImg.backgroundColor=[UIColor lightGrayColor];
+    
     [self downloadImage];
     
 }

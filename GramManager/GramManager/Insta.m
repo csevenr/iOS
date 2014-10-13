@@ -32,7 +32,7 @@
         urlForPostData = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
         currentHashtag=hashtag;
     }
-
+    NSLog(@"#### %@",[[ClientController sharedInstance] getCurrentTokenForLike:NO]);
     
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForPostData]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
@@ -96,17 +96,17 @@
 //            NSLog(@"%@", jsonDictionary);
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
-                UserProfile *userToCheck = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
-                if (userToCheck==nil){
-                    UserProfile *userProfile = [UserProfile create];
+                UserProfile *userProfile = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
+                if (userProfile==nil){
+                    userProfile = [UserProfile create];
                     [ModelHelper saveManagedObjectContext];
                     
                     userProfile.userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
                     userProfile.userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
-                    userProfile.followerCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
-                    userProfile.profilePictureURL = [[jsonDictionary objectForKey:@"data"] objectForKey:@"profile_picture"];
                 }
-                userToCheck.isActive=[NSNumber numberWithBool:YES];
+                userProfile.followerCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
+                userProfile.profilePictureURL = [[jsonDictionary objectForKey:@"data"] objectForKey:@"profile_picture"];
+                userProfile.isActive=[NSNumber numberWithBool:YES];
                 [self.delegate userInfoFinished];
                 [self getUserMedia];
             }else{
