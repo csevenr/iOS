@@ -2,76 +2,36 @@
 //  MasterViewController.m
 //  GramManager
 //
-//  Created by Oliver Rodden on 30/09/2014.
+//  Created by Oli Rodden on 10/10/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
 #import "MasterViewController.h"
-#import "ManualGridViewController.h"
-#import "AutoViewController.h"
-#import "ModelHelper.h"
-#import "UserProfile+Helper.h"
-#import "LoginViewController.h"
 
-@interface MasterViewController(){
-    UserProfile *userProfile;
-    Menu * menu;
-}
+@interface MasterViewController ()
 
 @end
 
 @implementation MasterViewController
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    if (self==[super initWithCoder:aDecoder]) {
-        insta = [Insta new];
-    }
-    return self;
-}
-
--(void)viewDidLoad{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //add side menu
-//    menu = [[Menu alloc]initWithFrame:CGRectMake(-self.view.frame.size.width+50.0, 0.0, self.view.frame.size.width-50.0, self.view.frame.size.height)];
-//    menu.delegate=self;
-//    menu.backgroundColor = [UIColor blueColor];
-//    [self.view addSubview:menu];
+    // Do any additional setup after loading the view.
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [self login];
-}
+/*
+#pragma mark - Navigation
 
--(void)login{
-    if ([UserProfile getActiveUserProfile]!=nil) {
-        userProfile = [UserProfile getActiveUserProfile];
-    }else{
-        [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:YES]];
-    }
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
--(void)swicthButtonPressed{
-    [UserProfile deactivateCurrentUserProfile];
-    userProfile = nil;
-    [self login];
-}
-
--(void)auth{
-    NSLog(@"Master auth?");
-
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
-    if ([segue.identifier isEqualToString:@"login"]){
-        self.loginVc = segue.destinationViewController;
-        [(LoginViewController*)self.loginVc setLogin:[sender boolValue]];
-    }
-}
+*/
 
 @end

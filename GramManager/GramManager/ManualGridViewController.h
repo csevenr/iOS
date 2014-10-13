@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MasterViewController.h"
+#import "LikeMasterViewController.h"
 
-@interface ManualGridViewController : MasterViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ManualGridViewController : LikeMasterViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (weak, nonatomic) IBOutlet UIButton *searchBtn;

@@ -47,10 +47,7 @@ static ClientController *sharedInstance = nil;
 
 -(id)init{
     if (self==[super init]) {
-//        self.tokens = [NSMutableArray new];
-//        if ([[NSUserDefaults standardUserDefaults]objectForKey:@"tokens"]!=nil) {
-//            self.tokens = [[NSUserDefaults standardUserDefaults]objectForKey:@"tokens"];
-//        }
+        count = [[UserProfile getActiveUserProfile].tokenCount integerValue];
     }
     return self;
 }
@@ -72,9 +69,11 @@ static ClientController *sharedInstance = nil;
     }
 }
 
--(NSString*)getCurrentToken{
-    count++;
+-(NSString*)getCurrentTokenForLike:(BOOL)forLike{
+    if (forLike) count++;
     if (count==100) count=0;
+    
+    [UserProfile getActiveUserProfile].tokenCount=[NSNumber numberWithInt:count];
     
     if (count>=0&&count<25) return [[UserProfile getActiveUserProfile] token1];
     else if (count>=25&&count<50) return [[UserProfile getActiveUserProfile] token2];

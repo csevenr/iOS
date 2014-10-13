@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MasterViewController.h"
+#import "LikeMasterViewController.h"
 
 #import "ManualGridViewController.h"
 
-@interface AutoViewController : MasterViewController
+@interface AutoViewController : LikeMasterViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *lastLikedImage;

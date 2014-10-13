@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MasterViewController.h"
+#import "LikeMasterViewController.h"
 #import "LoginViewController.h"
 @interface AppDelegate () {
     NSTimer *timer;
@@ -30,7 +30,7 @@
 
 
     UITabBarController *tabBarController = (UITabBarController*)self.window.rootViewController;
-    MasterViewController* mainController = (MasterViewController*)tabBarController.selectedViewController;
+    LikeMasterViewController* mainController = (LikeMasterViewController*)tabBarController.selectedViewController;
     [mainController.loginVc auth];
     
     return YES;

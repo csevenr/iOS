@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7gM-wZ-Api">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -193,10 +192,14 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8do-uW-8Eb">
                                                     <rect key="frame" x="-1" y="0.0" width="130" height="130"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Fu5-he-ePg">
+                                                    <rect key="frame" x="60" y="60" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="Fu5-he-ePg" id="kIo-5A-5N4"/>
                                             <outlet property="mainImg" destination="8do-uW-8Eb" id="vhc-Gi-81o"/>
                                         </connections>
                                     </collectionViewCell>
@@ -263,7 +266,7 @@
     <resources>
         <image name="autoIcon.png" width="30" height="30"/>
         <image name="manualIcon.png" width="40" height="29"/>
-        <image name="profileIcon.png" width="40" height="40"/>
+        <image name="profileIcon.png" width="34" height="34"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

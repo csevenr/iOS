@@ -21,12 +21,13 @@
         <attribute name="token2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token3" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tokenCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="likedPosts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LikedPost" inverseName="profile" inverseEntity="LikedPost" syncable="YES"/>
     </entity>
     <elements>
         <element name="LikedPost" positionX="-2007" positionY="-1282" width="128" height="148"/>
-        <element name="UserProfile" positionX="-2214" positionY="-1357" width="128" height="253"/>
+        <element name="UserProfile" positionX="-2214" positionY="-1357" width="128" height="268"/>
     </elements>
 </model>

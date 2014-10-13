@@ -13,7 +13,7 @@
 
 + (ClientController *)sharedInstance;
 -(void)setupTokensInWebView:(UIWebView*)webview;
--(NSString*)getCurrentToken;
+-(NSString*)getCurrentTokenForLike:(BOOL)forLike;
 -(NSString*)getCurrentClientId;
 
 @end
