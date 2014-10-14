@@ -26,7 +26,7 @@
     self.usernameLbl.text = userProfile.userName;
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:userProfile.profilePictureURL]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
-            NSLog(@"Error");
+            NSLog(@"Error c");
         } else {
             self.profilePicImg.image = [UIImage imageWithData:data];
         }

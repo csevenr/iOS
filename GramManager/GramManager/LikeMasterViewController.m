@@ -55,15 +55,14 @@
     }
 }
 
+-(void)likedPost{
+    self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
+}
+
 -(void)swicthButtonPressed{
     [UserProfile deactivateCurrentUserProfile];
     userProfile = nil;
     [self login];
-}
-
--(void)auth{
-    NSLog(@"Master auth?");
-
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{

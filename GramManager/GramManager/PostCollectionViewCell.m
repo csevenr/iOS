@@ -20,7 +20,6 @@
     self.mainImg.backgroundColor=[UIColor lightGrayColor];
     
     [self downloadImage];
-    
 }
 
 -(void)downloadImage{

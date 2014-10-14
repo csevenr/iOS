@@ -16,4 +16,7 @@
 
 @property (nonatomic) LoginViewController *loginVc;
 
+//-(void)auth;
+-(IBAction)popSelf;
+
 @end

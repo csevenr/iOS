@@ -85,9 +85,9 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString* urlString = [[request URL] absoluteString];
     
-//    NSLog(@"%@", urlString);
+    NSLog(@"%@", urlString);
     
-    if ([urlString isEqualToString:@"http://instagram.com/"]) {
+    if ([urlString isEqualToString:@"http://instagram.com/"]||[urlString isEqualToString:@"about:blank"]) {
         self.authWebView.hidden=YES;
         self.login=YES;
         [self createBtns];

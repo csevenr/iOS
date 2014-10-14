@@ -34,6 +34,12 @@
     [self.hashtagTextField resignFirstResponder];
     if ([posts count]>0) [posts removeAllObjects];
     
+//    for (int i=0; i<20; i++) {
+//        Post *post = [[Post alloc]initWithDictionary:nil];
+//        [posts addObject:post];
+//    }
+//    [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
+
     [self searchingUi];
     [self getJSON];
 }
@@ -83,7 +89,7 @@
         if (userProfile.likeTime == nil||[[NSDate date] timeIntervalSinceDate:userProfile.likeTime]>=3600.000001) {
             self.likeStatusLbl.text=@"30 likes remaining";
         }else if ([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]<3600.000001){
-            NSLog(@"%f", [[NSDate date] timeIntervalSinceDate:userProfile.likeTime]);
+//            NSLog(@"%d", 3600-(int)floorf([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]));
             if ([userProfile.likesInHour integerValue]<30) {
                 self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[userProfile.likesInHour integerValue]];
             }else if ([userProfile.likesInHour integerValue]>=30){
@@ -110,8 +116,7 @@
             [insta likePost:selectedPost];
             
             [posts removeObject:selectedPost];
-            if ([posts count]==4){//only 4 left in table view
-                NSLog(@"Pagination time");
+            if ([posts count]==4){//only 4 left in table view, so paginate
                 [self getJSON];
             }
             [self.postCollView reloadData];
@@ -153,6 +158,13 @@
     cell.post = [posts objectAtIndex:indexPath.row];
 
     return cell;
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //got to the bottom. Paginate
+    if (scrollView.contentOffset.y+scrollView.frame.size.height == scrollView.contentSize.height) {
+        [self getJSON];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{

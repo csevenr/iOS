@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "LikeMasterViewController.h"
+#import "MasterViewController.h"
+//#import "LikeMasterViewController.h"
 #import "LoginViewController.h"
+
+#import "UserProfile+Helper.h"
+
 @interface AppDelegate () {
     NSTimer *timer;
 }
@@ -28,12 +32,13 @@
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-//    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
+    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
+    MasterViewController *vc = (MasterViewController*)nav.topViewController;
+    [vc.loginVc auth];
 
-
-    UITabBarController *tabBarController = (UITabBarController*)self.window.rootViewController;
-    LikeMasterViewController* mainController = (LikeMasterViewController*)tabBarController.selectedViewController;
-    [mainController.loginVc auth];
+//    UITabBarController *tabBarController = (UITabBarController*)self.window.rootViewController;
+//    LikeMasterViewController* mainController = (LikeMasterViewController*)tabBarController.selectedViewController;
+//    [mainController.loginVc auth];
     
     return YES;
 }
@@ -55,11 +60,24 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-            
+    
+//    NSLog(@"# %d", 3600-(int)floorf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]));
+    
     NSDateComponents *timeComponents = [[NSCalendar autoupdatingCurrentCalendar] components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[NSDate date]];
     NSDateComponents *dateComps = [[NSDateComponents alloc] init];
-    [dateComps setSecond:[timeComponents second]+1];
+
+    NSLog(@"%d", [timeComponents second]+3600-(int)floorf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]));
+    
+    int mins = (3600-(int)[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime])/60;
+    int secs = (3600-(int)[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime])-mins*60;
+    NSLog(@"%d, %d", mins, secs);
+    
+    [dateComps setMinute:[timeComponents minute]+mins];
+    [dateComps setSecond:[timeComponents second]+secs];
+
     NSDate *itemDate = [[NSCalendar autoupdatingCurrentCalendar] dateFromComponents:dateComps];
+    
+    NSLog(@"%@", itemDate);
     
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     if (localNotif == nil)

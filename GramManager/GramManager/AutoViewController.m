@@ -62,11 +62,16 @@
     NSString *urlForPostImg = [[[[[JSONDictionary objectForKey:@"data"]objectAtIndex:0] objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForPostImg]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
-            NSLog(@"Error");
+            NSLog(@"Error a");
         } else {
             self.lastLikedImage.image = [UIImage imageWithData:data];
         }
     }];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{

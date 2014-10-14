@@ -15,7 +15,7 @@
 
 @optional
 -(void)JSONReceived:(NSDictionary*)JSONDictionary;//+++ refactor
--(void)likedPost:(NSString*)thumbnailURL;
+-(void)likedPost;
 
 -(void)userInfoFinished;
 

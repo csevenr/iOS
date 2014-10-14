@@ -19,6 +19,14 @@
     // Do any additional setup after loading the view.
 }
 
+//-(void)auth{
+//    NSLog(@"Master auth?");
+//}
+
+-(IBAction)popSelf{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

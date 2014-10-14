@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="7gM-wZ-Api">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6Aa-Df-Fy9">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="xka-yG-j0w">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="6Aa-Df-Fy9" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KpV-uD-qxD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vVJ-MN-0ZE" kind="relationship" relationship="rootViewController" id="bac-dt-sEr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="psN-ef-uZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1430" y="-34"/>
+        </scene>
         <!--Auto-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -20,10 +37,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-Qe-U7U">
                                 <rect key="frame" x="60" y="140" width="200" height="200"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="cars" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xdo-t5-Rqa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="design" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xdo-t5-Rqa">
                                 <rect key="frame" x="16" y="28" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="1hK-bx-7uT"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brm-bm-5qH">
                                 <rect key="frame" x="16" y="66" width="288" height="21"/>
@@ -33,6 +53,10 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="lij-yd-hkN" appends="YES" id="fsC-6k-Dl8"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Auto" image="autoIcon.png" id="G7h-x8-AXQ"/>
                     <navigationItem key="navigationItem" id="fTm-uW-c7S"/>
@@ -40,13 +64,18 @@
                     <connections>
                         <outlet property="hashtagTextField" destination="Xdo-t5-Rqa" id="xCA-i4-F4I"/>
                         <outlet property="lastLikedImage" destination="uDc-Qe-U7U" id="f5m-LJ-y2h"/>
-                        <outlet property="likeCountLbl" destination="brm-bm-5qH" id="TmJ-LH-d3t"/>
+                        <outlet property="likeCountLbl" destination="brm-bm-5qH" id="OSs-aL-fc3"/>
                         <segue destination="aVR-Vo-fmp" kind="modal" identifier="login" id="YRK-MV-294"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="lij-yd-hkN">
+                    <connections>
+                        <action selector="popSelf" destination="BYZ-38-t0r" id="l3c-26-Ezo"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-566" y="-34"/>
+            <point key="canvasLocation" x="-124" y="-34"/>
         </scene>
         <!--Profile-->
         <scene sceneID="HwR-AP-ASh">
@@ -112,8 +141,14 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8XB-BJ-qAI" appends="YES" id="5ee-0W-tnF"/>
+                            <outletCollection property="gestureRecognizers" destination="aCo-wy-CHX" appends="YES" id="hRy-4t-EqO"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profileIcon.png" id="qOr-aQ-V4d"/>
+                    <navigationItem key="navigationItem" id="yZ8-FA-CRX"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="averageLikesLbl" destination="IQ7-ei-OA8" id="NT2-Tp-N99"/>
@@ -124,8 +159,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsp-2Y-Del" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="8XB-BJ-qAI">
+                    <connections>
+                        <action selector="popSelf" destination="MuW-U3-pfs" id="shy-tP-hMo"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="aCo-wy-CHX">
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="push" id="l8o-jX-XFq"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-153" y="-34"/>
+            <point key="canvasLocation" x="-566" y="-34"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="deH-58-w8L">
@@ -157,27 +202,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghJ-re-ehx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-566" y="681"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="HDe-jq-Qi2">
-            <objects>
-                <tabBarController id="7gM-wZ-Api" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="ZJ1-G0-k6M">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="vVJ-MN-0ZE" kind="relationship" relationship="viewControllers" id="epj-O9-JTL"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="jC5-yI-Buw"/>
-                        <segue destination="MuW-U3-pfs" kind="relationship" relationship="viewControllers" id="8wa-7Q-4Nu"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sKo-e6-GR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-566" y="-752"/>
         </scene>
         <!--Manual-->
         <scene sceneID="H9V-u5-l9z">
@@ -258,6 +282,10 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="a0p-mZ-1Zv" appends="YES" id="fe6-WC-NrQ"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Manual" image="manualIcon.png" id="YRn-Bu-eeQ"/>
                     <navigationItem key="navigationItem" id="QQ0-D0-e4C"/>
@@ -274,6 +302,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-tC-TJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="a0p-mZ-1Zv">
+                    <connections>
+                        <segue destination="MuW-U3-pfs" kind="push" id="QdX-uK-6w7"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-998" y="-34"/>
         </scene>
@@ -289,6 +322,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fC0-ES-uD1"/>
+        <segue reference="1fu-Iz-tkk"/>
     </inferredMetricsTieBreakers>
 </document>
