@@ -85,7 +85,7 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString* urlString = [[request URL] absoluteString];
     
-    NSLog(@"%@", urlString);
+//    NSLog(@"%@", urlString);
     
     if ([urlString isEqualToString:@"http://instagram.com/"]) {
         self.authWebView.hidden=YES;
@@ -109,7 +109,7 @@
         if ([[urlString substringToIndex:equalRange.location + equalRange.length - 1] isEqualToString:@"gmanager:%23access_token"]) {
             NSString *tokenString = [urlString substringFromIndex:equalRange.location + equalRange.length];
 
-//            NSLog(@"%@", tokenString);
+            NSLog(@"%@", tokenString);
             
             if ([tokens count]==0) {
                 tokens = [NSMutableArray new];
@@ -130,13 +130,17 @@
 }
 
 -(void)userInfoFinished{
+    NSLog(@"user info finished");
     if ([UserProfile getToken:1]==nil) {
         [UserProfile getActiveUserProfile].token1=[tokens objectAtIndex:0];
-    }else if ([UserProfile getToken:2]==nil){
+    }
+    if ([UserProfile getToken:2]==nil){
         [UserProfile getActiveUserProfile].token2=[tokens objectAtIndex:1];
-    }else if ([UserProfile getToken:3]==nil){
+    }
+    if ([UserProfile getToken:3]==nil){
         [UserProfile getActiveUserProfile].token3=[tokens objectAtIndex:2];
-    }else if ([UserProfile getToken:4]==nil){
+    }
+    if ([UserProfile getToken:4]==nil){
         [UserProfile getActiveUserProfile].token4=[tokens objectAtIndex:3];
     }
     [self.delegate loginFinished];
