@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		660273F719EE74F70096FB4C /* Universal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660273F619EE74F70096FB4C /* Universal.storyboard */; };
+		660273F919EE8D4E0096FB4C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660273F819EE8D4E0096FB4C /* iAd.framework */; };
+		6602740819EED4D40096FB4C /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6602740719EED4D40096FB4C /* UserProfile.m */; };
 		6617CE7219DAB8CA00436573 /* ClientController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6617CE7119DAB8CA00436573 /* ClientController.m */; };
 		6617CE7519DAC3C300436573 /* LikeMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6617CE7419DAC3C300436573 /* LikeMasterViewController.m */; };
 		6620BA9F19D4129E0095C9B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BA9E19D4129E0095C9B7 /* main.m */; };
@@ -31,7 +34,6 @@
 		66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06F919D998710081C68E /* ManualGridViewController.m */; };
 		66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */; };
 		CC2B60A619E81B0A00F3A5C9 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B60A519E81B0A00F3A5C9 /* MasterViewController.m */; };
-		CC2B60DB19E823C100F3A5C9 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B60DA19E823C100F3A5C9 /* UserProfile.m */; };
 		CCAF95DD19D6E93300A92468 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAF95DC19D6E93300A92468 /* Post.m */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		660273F619EE74F70096FB4C /* Universal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Universal.storyboard; sourceTree = "<group>"; };
+		660273F819EE8D4E0096FB4C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		6602740619EED4D40096FB4C /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserProfile.h; path = ../UserProfile.h; sourceTree = "<group>"; };
+		6602740719EED4D40096FB4C /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfile.m; path = ../UserProfile.m; sourceTree = "<group>"; };
 		6617CE7019DAB8CA00436573 /* ClientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientController.h; sourceTree = "<group>"; };
 		6617CE7119DAB8CA00436573 /* ClientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientController.m; sourceTree = "<group>"; };
 		6617CE7319DAC3C300436573 /* LikeMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeMasterViewController.h; sourceTree = "<group>"; };
@@ -89,8 +95,6 @@
 		66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCollectionViewCell.m; sourceTree = "<group>"; };
 		CC2B60A419E81B0A00F3A5C9 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		CC2B60A519E81B0A00F3A5C9 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		CC2B60D919E823C100F3A5C9 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
-		CC2B60DA19E823C100F3A5C9 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		CCAF95DB19D6E93300A92468 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		CCAF95DC19D6E93300A92468 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				660273F919EE8D4E0096FB4C /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +121,7 @@
 		6620BA9019D4129E0095C9B7 = {
 			isa = PBXGroup;
 			children = (
+				660273F819EE8D4E0096FB4C /* iAd.framework */,
 				6620BA9B19D4129E0095C9B7 /* GramManager */,
 				6620BAB519D4129E0095C9B7 /* GramManagerTests */,
 			);
@@ -142,6 +148,7 @@
 				66A28DF219DAF91F0067CD5E /* Objects */,
 				66A28DFD19DB027C0067CD5E /* Resources */,
 				6620BAA619D4129E0095C9B7 /* Main.storyboard */,
+				660273F619EE74F70096FB4C /* Universal.storyboard */,
 				6620BAA919D4129E0095C9B7 /* Images.xcassets */,
 				6620BAAB19D4129E0095C9B7 /* LaunchScreen.xib */,
 				6620BA9C19D4129E0095C9B7 /* Supporting Files */,
@@ -249,8 +256,8 @@
 			children = (
 				66EB661F19DC5AF900C62A1D /* LikedPost.h */,
 				66EB662019DC5AF900C62A1D /* LikedPost.m */,
-				CC2B60D919E823C100F3A5C9 /* UserProfile.h */,
-				CC2B60DA19E823C100F3A5C9 /* UserProfile.m */,
+				6602740619EED4D40096FB4C /* UserProfile.h */,
+				6602740719EED4D40096FB4C /* UserProfile.m */,
 			);
 			name = "Generated Classes";
 			sourceTree = "<group>";
@@ -370,6 +377,7 @@
 				6620BAA819D4129E0095C9B7 /* Main.storyboard in Resources */,
 				6620BAAD19D4129E0095C9B7 /* LaunchScreen.xib in Resources */,
 				6620BAAA19D4129E0095C9B7 /* Images.xcassets in Resources */,
+				660273F719EE74F70096FB4C /* Universal.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,7 +406,7 @@
 				66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */,
 				663D2D5D19E6DC5600FF43EE /* ProfileViewController.m in Sources */,
 				6617CE7519DAC3C300436573 /* LikeMasterViewController.m in Sources */,
-				CC2B60DB19E823C100F3A5C9 /* UserProfile.m in Sources */,
+				6602740819EED4D40096FB4C /* UserProfile.m in Sources */,
 				6620BAA219D4129E0095C9B7 /* AppDelegate.m in Sources */,
 				66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */,
 				66F597B219DEB8D400C305E5 /* LoginViewController.m in Sources */,
@@ -533,6 +541,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -544,6 +553,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

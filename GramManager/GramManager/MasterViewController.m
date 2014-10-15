@@ -16,12 +16,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.    
+    for (UIView *view in self.viewsToStyle) {
+        view.layer.borderWidth=1.0;
+        view.layer.borderColor=[UIColor blackColor].CGColor;
+    }
+    
+    ADBannerView *adBanner = [[ADBannerView alloc]initWithFrame:CGRectMake(0.0, self.view.frame.size.height, self.view.frame.size.width, 50.0)];
+    adBanner.delegate=self;
+    [self.view addSubview:adBanner];
 }
-
-//-(void)auth{
-//    NSLog(@"Master auth?");
-//}
 
 -(IBAction)popSelf{
     [self.navigationController popViewControllerAnimated:YES];
@@ -32,14 +36,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark iAd
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner{
+    banner.frame=CGRectMake(0.0, self.view.frame.size.height-banner.frame.size.height, banner.frame.size.width, banner.frame.size.height);
+    [UIView animateWithDuration:0.1
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished){
+                     }];
 }
-*/
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+    banner.frame=CGRectMake(0.0, self.view.frame.size.height, banner.frame.size.width, banner.frame.size.height);
+    [UIView animateWithDuration:0.1
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
+
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave{
+    return YES;
+}
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner{}
+
 
 @end

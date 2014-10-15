@@ -17,12 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpView];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setUpView];
+    });
+    
 }
 
 -(void)setUpView{
     userProfile = [UserProfile getActiveUserProfile];
-    
     self.usernameLbl.text = userProfile.userName;
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:userProfile.profilePictureURL]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
@@ -33,11 +35,8 @@
     }];
     self.profilePicImg.layer.cornerRadius=self.profilePicImg.frame.size.width/2;
     self.profilePicImg.clipsToBounds=YES;
-    self.followersLbl.text = [NSString stringWithFormat:@"Followers: %d",[userProfile.followerCount intValue]];
+    self.followersLbl.text = [NSString stringWithFormat:@"Followers: %d",[userProfile.followers intValue]];
     self.averageLikesLbl.text = [NSString stringWithFormat:@"Average likes: %d",[userProfile.recentLikes intValue]/[userProfile.recentCount intValue]];
-    
-    self.logoutBtn.layer.borderWidth=2.0;
-    self.logoutBtn.layer.borderColor=[UIColor blackColor].CGColor;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
@@ -58,15 +57,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

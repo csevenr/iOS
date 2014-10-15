@@ -18,11 +18,21 @@
     NSString *paginationURL;
     
     UIAlertView *non200Alert;
+    
+    UserProfile *userProfile;
 }
 
 @end
 
 @implementation Insta
+
+-(id)init{
+    if (self==[super init]) {
+        NSLog(@"here");
+        userProfile = [UserProfile getActiveUserProfile];
+    }
+    return self;
+}
 
 -(void)getJsonForHashtag:(NSString*)hashtag{
     NSString *urlForPostData;
@@ -32,7 +42,6 @@
         urlForPostData = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
         currentHashtag=hashtag;
     }
-//    NSLog(@"#### %@",[[ClientController sharedInstance] getCurrentTokenForLike:NO]);
     
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForPostData]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
@@ -86,6 +95,9 @@
 }
 
 -(void)getUserInfoWithToken:(NSString*)tok{
+    if (tok==nil) {
+        tok=[[ClientController sharedInstance] getCurrentTokenForLike:NO];
+    }
     
     NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/self?access_token=%@", tok];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -97,7 +109,7 @@
             NSLog(@"#¡#¡ %@", jsonDictionary);
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
-                UserProfile *userProfile = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
+                userProfile = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
                 if (userProfile==nil){
                     userProfile = [UserProfile create];
                     [ModelHelper saveManagedObjectContext];
@@ -105,11 +117,11 @@
                     userProfile.userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
                     userProfile.userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
                 }
-                userProfile.followerCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
+                userProfile.followers = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
                 userProfile.profilePictureURL = [[jsonDictionary objectForKey:@"data"] objectForKey:@"profile_picture"];
+                
                 userProfile.isActive=[NSNumber numberWithBool:YES];
-                [self.delegate userInfoFinished];
-                [self getUserMedia];
+                [self performSelectorOnMainThread:@selector(getUserMedia) withObject:nil waitUntilDone:NO];
             }else{
                 [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"2" waitUntilDone:NO];
             }
@@ -118,7 +130,7 @@
 }
 
 -(void)getUserMedia{
-    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",[UserProfile getActiveUserProfile].userId , [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",userProfile.userId , [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error 4");
@@ -139,6 +151,7 @@
             [UserProfile getActiveUserProfile].recentCount=[NSNumber numberWithInt:countToUse];
             [UserProfile getActiveUserProfile].recentLikes=[NSNumber numberWithInt:totalLikes];
             [ModelHelper saveManagedObjectContext];
+            [self.delegate userInfoFinished];
         }
     }];
 }

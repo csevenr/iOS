@@ -23,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.searchActivityIndcator.hidden=YES;//set this in code, because it didnt work on storyboard for some reason??
     posts = [NSMutableArray new];
     likeStatusTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLikeStatusLbl) userInfo:nil repeats:YES];
@@ -33,15 +32,13 @@
 - (IBAction)searchBtnPressed {
     [self.hashtagTextField resignFirstResponder];
     if ([posts count]>0) [posts removeAllObjects];
-    
-//    for (int i=0; i<20; i++) {
-//        Post *post = [[Post alloc]initWithDictionary:nil];
-//        [posts addObject:post];
-//    }
-//    [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
 
-    [self searchingUi];
-    [self getJSON];
+    if (![self.hashtagTextField.text isEqualToString:@""]) {
+        [self searchingUi];
+        [self getJSON];
+    }else{
+        NSLog(@"no hashtag");
+    }
 }
 
 -(void)getJSON{
@@ -72,7 +69,6 @@
 }
 
 -(void)searchingUi{
-    self.searchBtn.hidden=!self.searchBtn.hidden;
     self.searchActivityIndcator.hidden=!self.searchActivityIndcator.hidden;
     
     if ([self.searchActivityIndcator isAnimating])[self.searchActivityIndcator stopAnimating];
