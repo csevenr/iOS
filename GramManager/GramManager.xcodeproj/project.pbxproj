@@ -30,6 +30,7 @@
 		66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */; };
 		66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB662019DC5AF900C62A1D /* LikedPost.m */; };
 		66F032DE19EFDEFF00E5DF9B /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F032DD19EFDEFF00E5DF9B /* UserProfile.m */; };
+		66F032E119EFFDC300E5DF9B /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F032E019EFFDC300E5DF9B /* ImageDownloader.m */; };
 		66F597B219DEB8D400C305E5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F597B119DEB8D400C305E5 /* LoginViewController.m */; };
 		66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06F919D998710081C68E /* ManualGridViewController.m */; };
 		66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */; };
@@ -87,6 +88,8 @@
 		66EB662019DC5AF900C62A1D /* LikedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikedPost.m; sourceTree = "<group>"; };
 		66F032DC19EFDEFF00E5DF9B /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
 		66F032DD19EFDEFF00E5DF9B /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		66F032DF19EFFDC300E5DF9B /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
+		66F032E019EFFDC300E5DF9B /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
 		66F597B019DEB8D400C305E5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		66F597B119DEB8D400C305E5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		66FA06F819D998710081C68E /* ManualGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualGridViewController.h; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 				665EBBC819D5BA5600B23652 /* Insta.m */,
 				6617CE7019DAB8CA00436573 /* ClientController.h */,
 				6617CE7119DAB8CA00436573 /* ClientController.m */,
+				66F032DF19EFFDC300E5DF9B /* ImageDownloader.h */,
+				66F032E019EFFDC300E5DF9B /* ImageDownloader.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -402,6 +407,7 @@
 				66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */,
 				66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */,
 				665EBBC919D5BA5600B23652 /* Insta.m in Sources */,
+				66F032E119EFFDC300E5DF9B /* ImageDownloader.m in Sources */,
 				66A28E7B19DB114C0067CD5E /* ModelHelper.m in Sources */,
 				66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */,
 				663D2D5D19E6DC5600FF43EE /* ProfileViewController.m in Sources */,

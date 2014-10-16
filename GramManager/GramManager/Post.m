@@ -12,16 +12,19 @@
 
 -(id)initWithDictionary:(NSDictionary*)JSONDictionary{
     if (self=[super init]) {
-        
-        self.postId = [JSONDictionary objectForKey:@"id"];
-        self.lowResURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"low_resolution"] objectForKey:@"url"];
-        self.standardResURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"];
-        self.thumbnailURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"];       
-        
-        self.userId = [[JSONDictionary objectForKey:@"user"] objectForKey:@"id"];
-        self.userName = [[JSONDictionary objectForKey:@"user"] objectForKey:@"username"];      
+        [self setPropertiesWithDictionary:JSONDictionary];
     }
     return self;
+}
+
+-(void)setPropertiesWithDictionary:(NSDictionary*)JSONDictionary{
+    self.postId = [JSONDictionary objectForKey:@"id"];
+    self.lowResURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"low_resolution"] objectForKey:@"url"];
+    self.standardResURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"];
+    self.thumbnailURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"];
+    
+    self.userId = [[JSONDictionary objectForKey:@"user"] objectForKey:@"id"];
+    self.userName = [[JSONDictionary objectForKey:@"user"] objectForKey:@"username"];
 }
 
 @end
