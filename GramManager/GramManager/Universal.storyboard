@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3ya-xo-YwD">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -123,11 +122,18 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="8Un-K3-XN6">
+                                <rect key="frame" x="0.0" y="600" width="320" height="50"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Rul-6b-tFi" id="yuV-y0-mFI"/>
+                                </connections>
+                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Wvw-fQ-A5c" firstAttribute="top" secondItem="fRb-gU-aC9" secondAttribute="top" constant="153" id="0TU-cL-CZU"/>
+                            <constraint firstAttribute="bottom" secondItem="8Un-K3-XN6" secondAttribute="bottom" constant="-50" id="5Ek-x5-tdx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="laP-aQ-tLW" secondAttribute="trailing" constant="-16" id="5hB-JU-28o"/>
                             <constraint firstItem="X2h-ll-YKe" firstAttribute="top" secondItem="Wvw-fQ-A5c" secondAttribute="bottom" id="8wU-Xv-31V"/>
                             <constraint firstItem="y8P-yZ-fsD" firstAttribute="top" secondItem="fRb-gU-aC9" secondAttribute="top" constant="37" id="Gpq-UQ-T5I"/>
@@ -144,6 +150,7 @@
                             <constraint firstItem="S8g-N0-0Jf" firstAttribute="top" secondItem="fRb-gU-aC9" secondAttribute="top" constant="95" id="s4X-3q-fo8"/>
                             <constraint firstItem="Wvw-fQ-A5c" firstAttribute="leading" secondItem="fRb-gU-aC9" secondAttribute="leadingMargin" constant="-16" id="soI-GZ-V4M"/>
                             <constraint firstItem="laP-aQ-tLW" firstAttribute="top" secondItem="fRb-gU-aC9" secondAttribute="top" constant="8" id="tZA-9r-cLj"/>
+                            <constraint firstItem="8Un-K3-XN6" firstAttribute="leading" secondItem="fRb-gU-aC9" secondAttribute="leadingMargin" constant="-16" id="xct-xb-pHX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -157,6 +164,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="HlU-4j-pzm"/>
                     <connections>
+                        <outlet property="adBanner" destination="8Un-K3-XN6" id="I5O-Nz-gTK"/>
+                        <outlet property="adBannerConstraint" destination="5Ek-x5-tdx" id="laJ-pU-rVF"/>
                         <outlet property="hashtagTextField" destination="WLb-SC-9P6" id="bm3-cD-dJf"/>
                         <outlet property="likeStatusLbl" destination="laP-aQ-tLW" id="tmL-3Z-zEb"/>
                         <outlet property="postCollView" destination="Wvw-fQ-A5c" id="QvV-C0-oeZ"/>
@@ -334,6 +343,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9nG-AZ-GIh"/>
+        <segue reference="dFX-yE-IrA"/>
     </inferredMetricsTieBreakers>
 </document>
