@@ -37,6 +37,8 @@
     self.profilePicImg.clipsToBounds=YES;
     self.followersLbl.text = [NSString stringWithFormat:@"Followers: %d",[userProfile.followers intValue]];
     self.averageLikesLbl.text = [NSString stringWithFormat:@"Average likes: %d",[userProfile.recentLikes intValue]/[userProfile.recentCount intValue]];
+    self.mostLikesLbl.text = [NSString stringWithFormat:@"Most likes: %d",[userProfile.recentMostLikes intValue]];
+    self.leastLikesLbl.text = [NSString stringWithFormat:@"Least likes: %d",[userProfile.recentLeastLikes intValue]];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{

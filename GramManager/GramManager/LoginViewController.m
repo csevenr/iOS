@@ -145,6 +145,7 @@
         userProfile.token4=[tokens objectAtIndex:3];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
+        [ModelHelper saveManagedObjectContext];
         [self.delegate loginFinished];
         [self dismissViewControllerAnimated:YES completion:nil];
     });

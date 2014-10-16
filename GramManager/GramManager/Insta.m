@@ -28,7 +28,6 @@
 
 -(id)init{
     if (self==[super init]) {
-        NSLog(@"here");
         userProfile = [UserProfile getActiveUserProfile];
     }
     return self;
@@ -106,22 +105,28 @@
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            NSLog(@"#¡#¡ %@", jsonDictionary);
-            
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 userProfile = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
                 if (userProfile==nil){
                     userProfile = [UserProfile create];
-                    [ModelHelper saveManagedObjectContext];
                     
                     userProfile.userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
                     userProfile.userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
                 }
+                userProfile.bio = [[jsonDictionary objectForKey:@"data"] objectForKey:@"bio"];
                 userProfile.followers = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
+                userProfile.follows = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"follows"] intValue]];
+                userProfile.mediaCount = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"media"] intValue]];
+                userProfile.fullName = [[jsonDictionary objectForKey:@"data"] objectForKey:@"full_name"];
                 userProfile.profilePictureURL = [[jsonDictionary objectForKey:@"data"] objectForKey:@"profile_picture"];
+                userProfile.website = [[jsonDictionary objectForKey:@"data"] objectForKey:@"website"];
                 
                 userProfile.isActive=[NSNumber numberWithBool:YES];
-                [self performSelectorOnMainThread:@selector(getUserMedia) withObject:nil waitUntilDone:NO];
+
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [ModelHelper saveManagedObjectContext];
+                });
+                [self performSelectorOnMainThread:@selector(getUserMediaWithToken:) withObject:tok waitUntilDone:NO];
             }else{
                 [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"2" waitUntilDone:NO];
             }
@@ -129,28 +134,41 @@
     }];
 }
 
--(void)getUserMedia{
-    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",userProfile.userId , [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
+-(void)getUserMediaWithToken:(NSString*)tok{
+    if (tok==nil) {
+        tok=[[ClientController sharedInstance] getCurrentTokenForLike:NO];
+    }
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",userProfile.userId , tok];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error 4");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
+//            NSLog(@"%@", jsonDictionary);
+            
             //check for at least 10 posts if not alter count
             int countToUse=10;
             if ([[jsonDictionary objectForKey:@"data"] count]<10) {
                 countToUse=[[jsonDictionary objectForKey:@"data"] count];
             }
-            
+
             int totalLikes=0;
             for (int i=0; i<countToUse; i++) {
-                totalLikes+=[[[[[jsonDictionary objectForKey:@"data"] objectAtIndex:i]objectForKey:@"likes"]objectForKey:@"count" ] intValue];
+                int likes = [[[[[jsonDictionary objectForKey:@"data"] objectAtIndex:i]objectForKey:@"likes"]objectForKey:@"count" ] intValue];
+                totalLikes+=likes;
+                if (likes>[userProfile.recentMostLikes intValue]||[userProfile.recentMostLikes intValue]==-1){
+                    userProfile.recentMostLikes=[NSNumber numberWithInt:likes];
+                }
+                if (likes<[userProfile.recentLeastLikes intValue]||[userProfile.recentLeastLikes intValue]==-1) {
+                    userProfile.recentLeastLikes=[NSNumber numberWithInt:likes];
+                }
             }
-            
-            [UserProfile getActiveUserProfile].recentCount=[NSNumber numberWithInt:countToUse];
-            [UserProfile getActiveUserProfile].recentLikes=[NSNumber numberWithInt:totalLikes];
-            [ModelHelper saveManagedObjectContext];
+            userProfile.recentCount=[NSNumber numberWithInt:countToUse];
+            userProfile.recentLikes=[NSNumber numberWithInt:totalLikes];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [ModelHelper saveManagedObjectContext];
+            });
             [self.delegate userInfoFinished];
         }
     }];

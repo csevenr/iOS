@@ -280,6 +280,8 @@
                     <connections>
                         <outlet property="averageLikesLbl" destination="THt-8U-uVa" id="P3v-BK-bcB"/>
                         <outlet property="followersLbl" destination="1iF-Ce-4AE" id="wUn-JI-ZEw"/>
+                        <outlet property="leastLikesLbl" destination="ZIa-Gh-8rG" id="iWz-xe-6UT"/>
+                        <outlet property="mostLikesLbl" destination="tQL-En-ogD" id="Kob-Kn-elD"/>
                         <outlet property="profilePicImg" destination="aKd-xc-EKV" id="OCG-6m-pXT"/>
                         <outlet property="usernameLbl" destination="RI5-TN-iEf" id="o32-o7-9BD"/>
                         <outletCollection property="viewsToStyle" destination="Gys-Sx-tZZ" id="xLg-jK-XDf"/>
@@ -306,7 +308,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgs-m2-gw0">
+                            <webView hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgs-m2-gw0">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>

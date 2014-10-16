@@ -159,7 +159,9 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //got to the bottom. Paginate
     if (scrollView.contentOffset.y+scrollView.frame.size.height == scrollView.contentSize.height) {
-        [self getJSON];
+        if ([posts count]<81) {
+            [self getJSON];
+        }
     }
 }
 

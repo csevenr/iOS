@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		660273F719EE74F70096FB4C /* Universal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660273F619EE74F70096FB4C /* Universal.storyboard */; };
 		660273F919EE8D4E0096FB4C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660273F819EE8D4E0096FB4C /* iAd.framework */; };
-		6602740819EED4D40096FB4C /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6602740719EED4D40096FB4C /* UserProfile.m */; };
 		6617CE7219DAB8CA00436573 /* ClientController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6617CE7119DAB8CA00436573 /* ClientController.m */; };
 		6617CE7519DAC3C300436573 /* LikeMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6617CE7419DAC3C300436573 /* LikeMasterViewController.m */; };
 		6620BA9F19D4129E0095C9B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6620BA9E19D4129E0095C9B7 /* main.m */; };
@@ -30,6 +29,7 @@
 		66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB660E19DC4F8D00C62A1D /* LikedPost+Helper.m */; };
 		66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */; };
 		66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB662019DC5AF900C62A1D /* LikedPost.m */; };
+		66F032DE19EFDEFF00E5DF9B /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F032DD19EFDEFF00E5DF9B /* UserProfile.m */; };
 		66F597B219DEB8D400C305E5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F597B119DEB8D400C305E5 /* LoginViewController.m */; };
 		66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06F919D998710081C68E /* ManualGridViewController.m */; };
 		66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */; };
@@ -50,8 +50,6 @@
 /* Begin PBXFileReference section */
 		660273F619EE74F70096FB4C /* Universal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Universal.storyboard; sourceTree = "<group>"; };
 		660273F819EE8D4E0096FB4C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		6602740619EED4D40096FB4C /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserProfile.h; path = ../UserProfile.h; sourceTree = "<group>"; };
-		6602740719EED4D40096FB4C /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfile.m; path = ../UserProfile.m; sourceTree = "<group>"; };
 		6617CE7019DAB8CA00436573 /* ClientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientController.h; sourceTree = "<group>"; };
 		6617CE7119DAB8CA00436573 /* ClientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientController.m; sourceTree = "<group>"; };
 		6617CE7319DAC3C300436573 /* LikeMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeMasterViewController.h; sourceTree = "<group>"; };
@@ -87,6 +85,8 @@
 		66EB661119DC4FDC00C62A1D /* UserProfile+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UserProfile+Helper.m"; sourceTree = "<group>"; };
 		66EB661F19DC5AF900C62A1D /* LikedPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikedPost.h; sourceTree = "<group>"; };
 		66EB662019DC5AF900C62A1D /* LikedPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikedPost.m; sourceTree = "<group>"; };
+		66F032DC19EFDEFF00E5DF9B /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		66F032DD19EFDEFF00E5DF9B /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		66F597B019DEB8D400C305E5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		66F597B119DEB8D400C305E5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		66FA06F819D998710081C68E /* ManualGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualGridViewController.h; sourceTree = "<group>"; };
@@ -256,8 +256,8 @@
 			children = (
 				66EB661F19DC5AF900C62A1D /* LikedPost.h */,
 				66EB662019DC5AF900C62A1D /* LikedPost.m */,
-				6602740619EED4D40096FB4C /* UserProfile.h */,
-				6602740719EED4D40096FB4C /* UserProfile.m */,
+				66F032DC19EFDEFF00E5DF9B /* UserProfile.h */,
+				66F032DD19EFDEFF00E5DF9B /* UserProfile.m */,
 			);
 			name = "Generated Classes";
 			sourceTree = "<group>";
@@ -406,7 +406,7 @@
 				66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */,
 				663D2D5D19E6DC5600FF43EE /* ProfileViewController.m in Sources */,
 				6617CE7519DAC3C300436573 /* LikeMasterViewController.m in Sources */,
-				6602740819EED4D40096FB4C /* UserProfile.m in Sources */,
+				66F032DE19EFDEFF00E5DF9B /* UserProfile.m in Sources */,
 				6620BAA219D4129E0095C9B7 /* AppDelegate.m in Sources */,
 				66EB661219DC4FDC00C62A1D /* UserProfile+Helper.m in Sources */,
 				66F597B219DEB8D400C305E5 /* LoginViewController.m in Sources */,
