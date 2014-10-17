@@ -25,7 +25,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
