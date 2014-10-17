@@ -18,16 +18,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] priority]);
-    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] firstItem]);
-    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] firstAttribute]);
-    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] relation]);
-    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] secondItem]);
-    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] secondAttribute]);
-    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] multiplier]);
-    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] constant]);
-    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] identifier]);
-    NSLog(@"%d", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] shouldBeArchived]);
+//    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] priority]);
+//    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] firstItem]);
+//    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] firstAttribute]);
+//    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] relation]);
+//    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] secondItem]);
+//    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] secondAttribute]);
+//    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] multiplier]);
+//    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] constant]);
+//    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] identifier]);
+//    NSLog(@"%d", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] shouldBeArchived]);
     
     for (UIView *view in self.viewsToStyle) {
         view.layer.borderWidth=1.0;

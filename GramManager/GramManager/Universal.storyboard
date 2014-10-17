@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3ya-xo-YwD">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -284,6 +285,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="9tb-Df-d59" appends="YES" id="zHP-zB-kar"/>
+                            <outletCollection property="gestureRecognizers" destination="Iki-WI-OiE" appends="YES" id="VoY-j0-Zga"/>
                         </connections>
                     </view>
                     <connections>
@@ -302,8 +304,90 @@
                         <action selector="popSelf" destination="PUq-VH-3T6" id="Yr4-d5-ofP"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="Iki-WI-OiE">
+                    <connections>
+                        <segue destination="Xe3-Z5-B9a" kind="show" id="LSA-6d-j1c"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1197" y="329"/>
+        </scene>
+        <!--Auto View Controller-->
+        <scene sceneID="ZfT-PX-ou6">
+            <objects>
+                <viewController id="Xe3-Z5-B9a" customClass="AutoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KpV-gD-h7l"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wq5-hE-Z78"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="poG-qt-QlU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GxH-Gy-C8j">
+                                <rect key="frame" x="16" y="20" width="568" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gq1-PC-DVD">
+                                        <rect key="frame" x="8" y="0.0" width="552" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Xe3-Z5-B9a" id="IcE-9A-k3k"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GGY-s8-rTC"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="59N-uY-ChT">
+                                <rect key="frame" x="230" y="180" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="r5l-X2-5US"/>
+                                    <constraint firstAttribute="height" constant="140" id="tYe-bT-3vR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbo-0H-3FQ">
+                                <rect key="frame" x="16" y="78" width="568" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="mzO-0l-60v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Jbo-0H-3FQ" firstAttribute="leading" secondItem="poG-qt-QlU" secondAttribute="leadingMargin" id="1sq-2n-zbf"/>
+                            <constraint firstItem="GxH-Gy-C8j" firstAttribute="leading" secondItem="poG-qt-QlU" secondAttribute="leadingMargin" id="2GO-cw-BN1"/>
+                            <constraint firstAttribute="centerX" secondItem="59N-uY-ChT" secondAttribute="centerX" id="WcJ-ZU-bOf"/>
+                            <constraint firstAttribute="centerY" secondItem="59N-uY-ChT" secondAttribute="centerY" constant="50" id="XRA-gI-8pb"/>
+                            <constraint firstItem="GxH-Gy-C8j" firstAttribute="top" secondItem="poG-qt-QlU" secondAttribute="top" constant="20" id="Xcy-1K-5jL"/>
+                            <constraint firstItem="Jbo-0H-3FQ" firstAttribute="trailing" secondItem="poG-qt-QlU" secondAttribute="trailingMargin" id="jlM-hM-9Qu"/>
+                            <constraint firstItem="GxH-Gy-C8j" firstAttribute="trailing" secondItem="poG-qt-QlU" secondAttribute="trailingMargin" id="onK-Dm-XzL"/>
+                            <constraint firstItem="Jbo-0H-3FQ" firstAttribute="top" secondItem="poG-qt-QlU" secondAttribute="top" constant="78" id="q3B-vg-mtQ"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="7rR-d8-HIi" appends="YES" id="jOl-qN-gCJ"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="hashtagTextField" destination="gq1-PC-DVD" id="tMI-YR-U5R"/>
+                        <outlet property="lastLikedImage" destination="59N-uY-ChT" id="NYN-6R-R3c"/>
+                        <outletCollection property="viewsToStyle" destination="GxH-Gy-C8j" id="5ut-z9-9UX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ie0-RG-vhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="7rR-d8-HIi">
+                    <connections>
+                        <action selector="popSelf" destination="Xe3-Z5-B9a" id="YYA-AZ-OBc"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1918" y="329"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="aNe-Us-4cx">
@@ -317,7 +401,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgs-m2-gw0">
+                            <webView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgs-m2-gw0">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
