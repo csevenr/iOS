@@ -85,7 +85,7 @@
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString* urlString = [[request URL] absoluteString];
     
-//    NSLog(@"%@", urlString);
+    NSLog(@"%@", urlString);
     
     if ([urlString isEqualToString:@"http://instagram.com/"]||[urlString isEqualToString:@"about:blank"]) {
         self.authWebView.hidden=YES;
@@ -109,7 +109,7 @@
         if ([[urlString substringToIndex:equalRange.location + equalRange.length - 1] isEqualToString:@"gmanager:%23access_token"]) {
             NSString *tokenString = [urlString substringFromIndex:equalRange.location + equalRange.length];
 
-//            NSLog(@"%@", tokenString);
+            NSLog(@"%@", tokenString);
             
             if ([tokens count]==0) {
                 tokens = [NSMutableArray new];
@@ -131,7 +131,7 @@
 
 -(void)userInfoFinished{
     UserProfile *userProfile = [UserProfile getActiveUserProfile];
-    
+    NSLog(@"user profile %@", userProfile);
     if (userProfile.token1==nil) {
         userProfile.token1=[tokens objectAtIndex:0];
     }

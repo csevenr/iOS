@@ -25,16 +25,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Likes" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    
     imageDownloadsInProgress = [NSMutableDictionary dictionary];
     
     self.searchActivityIndcator.hidden=YES;//set this in code, because it didnt work on storyboard for some reason??
     posts = [NSMutableArray new];
     likeStatusTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLikeStatusLbl) userInfo:nil repeats:YES];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self updateLikeStatusLbl];
 }
 
 - (IBAction)searchBtnPressed {
-    [self.hashtagTextField resignFirstResponder];
     if ([posts count]>0) [posts removeAllObjects];
 
     if (![self.hashtagTextField.text isEqualToString:@""]) {
@@ -42,13 +47,6 @@
         [self getJSON];
     }else{
         NSLog(@"no hashtag");
-    }
-}
-
--(void)getJSON{
-    if (![self.hashtagTextField.text isEqualToString:@""]) {
-        [insta getJsonForHashtag:self.hashtagTextField.text];
-        [insta setDelegate:self];
     }
 }
 
@@ -108,7 +106,7 @@
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
     if (secondsBetween >= 3600.000001) {
         userProfile.likeTime = [NSDate date];
-        userProfile.likesInHour = [NSNumber numberWithInt:0];
+//        userProfile.likesInHour = [NSNumber numberWithInt:0];
     }else{
         if ([userProfile.likesInHour integerValue]<30) {
             Post *selectedPost = [posts objectAtIndex:indexPath.row];
@@ -131,7 +129,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 20.0, 0, 10.0);
+    return UIEdgeInsetsMake(0, 10.0, 0, 10.0);
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -250,10 +248,29 @@
     [self loadImagesForOnscreenRows];
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    [super textFieldDidBeginEditing:textField];
+    self.postCollView.userInteractionEnabled=NO;
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self searchBtnPressed];
+    [super textFieldShouldReturn:textField];
+    self.postCollView.userInteractionEnabled=YES;
     return YES;
 }
+
+#pragma Mark adBanner methods
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner{
+//    NSLog(@"%@", self.view.constraints);
+    [super bannerViewDidLoadAd:banner];
+    [self replaceConstraintOnView:self.postCollView withConstant:self.postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
+    [self animateConstraints];
+}
+
+//- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
+//    [super bannerView:banner didFailToReceiveAdWithError:error];
+//    [self replaceConstraintOnView:self.postCollView withConstant:self.postCollView.frame.size.height+50 andAttribute:NSLayoutAttributeHeight onSelf:YES];
+//    [self animateConstraints];
+//}
 
 @end

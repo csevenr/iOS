@@ -49,8 +49,8 @@ static ClientController *sharedInstance = nil;
 
 -(id)init{
     if (self==[super init]) {
-        userProfile = [UserProfile getActiveUserProfile];
-        count = [userProfile.tokenCount integerValue];
+        [self setUserProfile];
+        count = [userProfile.tokenCountUp integerValue];
     }
     return self;
 }
@@ -73,25 +73,22 @@ static ClientController *sharedInstance = nil;
 }
 
 -(NSString*)getCurrentTokenForLike:(BOOL)forLike{
+    if (userProfile==nil) [self setUserProfile];
+    
     if (forLike) count++;
     if (count==100) count=0;
     
-    userProfile.tokenCount=[NSNumber numberWithInt:count];
+    userProfile.tokenCountUp=[NSNumber numberWithInt:count];
     
     if (count>=0&&count<25){
-//        NSLog(@"Using token: 1");
         return userProfile.token1;
     }else if (count>=25&&count<50){
-//        NSLog(@"Using token: 2");
         return userProfile.token2;
     }else if (count>=50&&count<75){
-//        NSLog(@"Using token: 3");
         return userProfile.token3;
     }else if (count>=75&&count<100){
-//        NSLog(@"Using token: 4");
         return userProfile.token4;
     }else{
-//        NSLog(@"Using token: 1");
         return userProfile.token1;
     }
 }
@@ -104,6 +101,10 @@ static ClientController *sharedInstance = nil;
     else if (count>=50&&count<75) return CLIENTID3;
     else if (count>=75&&count<100) return CLIENTID4;
     else return CLIENTID1;
+}
+
+-(void)setUserProfile{
+    userProfile = [UserProfile getActiveUserProfile];
 }
 
 @end

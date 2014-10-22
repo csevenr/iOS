@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GramManager/Insta.m"
-            timestampString = "434914957.863967"
+            filePath = "GramManager/LoginViewController.m"
+            timestampString = "435696589.828221"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "-getJsonForHashtag:"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-userInfoFinished"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GramManager/Insta.m"
-            timestampString = "434915101.400693"
+            filePath = "GramManager/LoginViewController.m"
+            timestampString = "435697021.950527"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-getUserInfoWithToken:"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-userInfoFinished"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

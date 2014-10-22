@@ -13,7 +13,6 @@
 
 @interface AutoViewController : LikeMasterViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (strong, nonatomic) IBOutlet UIImageView *lastLikedImage;
 
 @end

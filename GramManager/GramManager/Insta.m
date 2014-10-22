@@ -54,7 +54,9 @@
 
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 [self.delegate JSONReceived:jsonDictionary];
-            }else{
+            }else if([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==400) {//chances are media is private
+                NSLog(@"%d %@", [[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
+            }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==429) {
                 [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"0" waitUntilDone:NO];
             }
         }
@@ -79,7 +81,9 @@
                 NSLog(@"200 successful like");
                 [self.delegate likedPost];
                 [self performSelectorOnMainThread:@selector(savePostInCoreData:) withObject:post waitUntilDone:NO];
-            }else{
+            }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 400) {
+                NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
+            }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 429) {
                 NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
                 [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"1" waitUntilDone:NO];
             }

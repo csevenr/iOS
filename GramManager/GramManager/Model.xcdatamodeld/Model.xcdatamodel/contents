@@ -20,6 +20,7 @@
         <attribute name="mediaCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="profilePictureURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recentCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="recentHashtags" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="recentLeastLikes" optional="YES" attributeType="Integer 16" defaultValueString="-1" syncable="YES"/>
         <attribute name="recentLikes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="recentMostLikes" optional="YES" attributeType="Integer 16" defaultValueString="-1" syncable="YES"/>
@@ -28,7 +29,7 @@
         <attribute name="token2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token3" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="token4" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tokenCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tokenCountUp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,6 +37,6 @@
     </entity>
     <elements>
         <element name="LikedPost" positionX="-2007" positionY="-1282" width="128" height="148"/>
-        <element name="UserProfile" positionX="-2268" positionY="-1321" width="128" height="388"/>
+        <element name="UserProfile" positionX="-2268" positionY="-1321" width="128" height="403"/>
     </elements>
 </model>
