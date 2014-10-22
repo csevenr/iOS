@@ -36,6 +36,13 @@
     self.profilePicImg.layer.cornerRadius=self.profilePicImg.frame.size.width/2;
     self.profilePicImg.clipsToBounds=YES;
     self.followersLbl.text = [NSString stringWithFormat:@"Followers: %d",[userProfile.followers intValue]];
+    if ([userProfile.recentCount intValue]==1) {//+++ check on 1 and less then 10 posts
+        self.lastTenPostsLbl.text = @"Post stats";
+    }else if ([userProfile.recentCount intValue]>=10){
+        self.lastTenPostsLbl.text = [NSString stringWithFormat:@"Last %d posts",[userProfile.recentCount intValue]];
+    }/*else{
+        self.lastTenPostsLbl.text = @"Last 10 posts";
+    }*/
     self.averageLikesLbl.text = [NSString stringWithFormat:@"Average likes: %d",[userProfile.recentLikes intValue]/[userProfile.recentCount intValue]];
     self.mostLikesLbl.text = [NSString stringWithFormat:@"Most likes: %d",[userProfile.recentMostLikes intValue]];
     self.leastLikesLbl.text = [NSString stringWithFormat:@"Least likes: %d",[userProfile.recentLeastLikes intValue]];

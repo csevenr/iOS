@@ -20,22 +20,14 @@
 
 @implementation AutoViewController
 
--(id)initWithCoder:(NSCoder *)aDecoder{
-    if (self==[super initWithCoder:aDecoder]) {
-        
-    }
-    return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self timerLike];
-    if (mainLoop==nil) {
-        mainLoop = [NSTimer scheduledTimerWithTimeInterval:36.0 target:self selector:@selector(timerLike) userInfo:nil repeats:YES];
+- (IBAction)searchBtnPressed {
+    if (![self.hashtagTextField.text isEqualToString:@""]) {
+        [self timerLike];
+        if (mainLoop==nil) {
+            mainLoop = [NSTimer scheduledTimerWithTimeInterval:36.0 target:self selector:@selector(timerLike) userInfo:nil repeats:YES];
+        }
+    }else{
+        NSLog(@"no hashtag");
     }
 }
 
@@ -43,22 +35,13 @@
     [self getJSON];
 }
 
--(void)getJSON{
-    if (![self.hashtagTextField.text isEqualToString:@""]) {
-        [insta getJsonForHashtag:self.hashtagTextField.text];
-        [insta setDelegate:self];
-    }
-}
-
 -(void)JSONReceived:(NSDictionary *)JSONDictionary{
-//    for (int i = 0; i<[[JSONDictionary objectForKey:@"data"] count]; i++) {
-        NSDictionary *dict = [[JSONDictionary objectForKey:@"data"] objectAtIndex:0];
-        Post *post = [[Post alloc]initWithDictionary:dict];
-//    }
-    
+    NSDictionary *dict = [[JSONDictionary objectForKey:@"data"] objectAtIndex:0];
+    Post *post = [[Post alloc]initWithDictionary:dict];
     [insta likePost:post];
     
     NSString *urlForPostImg = [[[[[JSONDictionary objectForKey:@"data"]objectAtIndex:0] objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"];
+    NSLog(@"urlForPostImg: %@", urlForPostImg);
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForPostImg]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error a");
@@ -69,7 +52,7 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
+    [super textFieldShouldReturn:textField];
     return YES;
 }
 

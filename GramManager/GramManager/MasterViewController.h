@@ -13,14 +13,13 @@
 
 @interface MasterViewController : UIViewController <ADBannerViewDelegate>{
     UserProfile *userProfile;
-    ADBannerView *adBanner;
 }
 
 @property (nonatomic) LoginViewController *loginVc;
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *viewsToStyle;
-@property (weak, nonatomic) IBOutlet ADBannerView *adBanner;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *adBannerConstraint;
 
 -(IBAction)popSelf;
+- (void)replaceConstraintOnView:(UIView *)view withConstant:(float)constant andAttribute:(NSLayoutAttribute)attribute onSelf:(BOOL)onSelf;
+- (void)animateConstraints;
 
 @end

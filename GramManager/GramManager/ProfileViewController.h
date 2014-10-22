@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImg;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *followersLbl;
+@property (weak, nonatomic) IBOutlet UILabel *lastTenPostsLbl;
 @property (weak, nonatomic) IBOutlet UILabel *averageLikesLbl;
 @property (weak, nonatomic) IBOutlet UILabel *mostLikesLbl;
 @property (weak, nonatomic) IBOutlet UILabel *leastLikesLbl;

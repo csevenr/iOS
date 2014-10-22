@@ -8,9 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
-//#import "LikeMasterViewController.h"
 #import "LoginViewController.h"
-
 #import "UserProfile+Helper.h"
 
 @interface AppDelegate () {
@@ -23,12 +21,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
+
     [UIApplication sharedApplication].applicationIconBadgeNumber=0;
     
-    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |
+                                                                                                    UIUserNotificationTypeBadge |
+                                                                                                    UIUserNotificationTypeSound
+                                                                                         categories:nil];
+//  Crashes on iPad +++
+//  [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     return YES;
 }
@@ -60,42 +63,42 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
-//    NSLog(@"# %d", 3600-(int)floorf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]));
-    
-    NSDateComponents *timeComponents = [[NSCalendar autoupdatingCurrentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[NSDate date]];
-    NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+    UserProfile *userProfile = [UserProfile getActiveUserProfile];
 
-    NSLog(@"%d", [timeComponents second]+3600-(int)floorf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]));
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    int mins = (3600-(int)[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime])/60;
-    int secs = (3600-(int)[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime])-mins*60;
-    NSLog(@"%d, %d", mins, secs);
+//    NSLog(@"%d", [userProfile.likesInHour integerValue]);
+    
+    if ([userProfile.likesInHour integerValue]!=0) {
+        NSDateComponents *timeComponents = [[NSCalendar autoupdatingCurrentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[NSDate date]];
+        NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+        
+        int mins = (3600-(int)[[NSDate date] timeIntervalSinceDate:userProfile.likeTime])/60;
+        int secs = (3600-(int)[[NSDate date] timeIntervalSinceDate:userProfile.likeTime])-mins*60;
+        
+        [dateComps setYear:[timeComponents year]];
+        [dateComps setMonth:[timeComponents month]];
+        [dateComps setDay:[timeComponents day]];
+        [dateComps setHour:[timeComponents hour]];
+        [dateComps setMinute:[timeComponents minute]+mins];
+        [dateComps setSecond:[timeComponents second]+secs];
 
-    [dateComps setYear:[timeComponents year]];
-    [dateComps setMonth:[timeComponents month]];
-    [dateComps setDay:[timeComponents day]];
-    [dateComps setHour:[timeComponents hour]];
-    [dateComps setMinute:[timeComponents minute]+mins];
-    [dateComps setSecond:[timeComponents second]+secs];
-
-    NSDate *itemDate = [[NSCalendar autoupdatingCurrentCalendar] dateFromComponents:dateComps];
-    
-    NSLog(@"%@", itemDate);
-    
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    if (localNotif == nil)
-        return;
-    localNotif.fireDate = itemDate;
-    localNotif.timeZone = [NSTimeZone defaultTimeZone];
-    localNotif.alertBody = @"Your likes have been restored";
-    localNotif.soundName = UILocalNotificationDefaultSoundName;
-    localNotif.applicationIconBadgeNumber = 1;
-    
-    // Schedule the notification
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+        NSDate *itemDate = [[NSCalendar autoupdatingCurrentCalendar] dateFromComponents:dateComps];
+        
+        NSLog(@"Notification set to fire at: %@", itemDate);
+        
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        if (localNotif == nil)
+            return;
+        localNotif.fireDate = itemDate;
+        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+        localNotif.alertBody = @"Your likes have been restored";
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        localNotif.applicationIconBadgeNumber = 1;
+        
+        // Schedule the notification
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

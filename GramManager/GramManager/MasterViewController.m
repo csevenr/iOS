@@ -7,6 +7,7 @@
 //
 
 #import "MasterViewController.h"
+#import "UserProfile+Helper.h"
 
 @interface MasterViewController ()
 
@@ -16,27 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-//    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] priority]);
-//    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] firstItem]);
-//    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] firstAttribute]);
-//    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] relation]);
-//    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] secondItem]);
-//    NSLog(@"%ld", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] secondAttribute]);
-//    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] multiplier]);
-//    NSLog(@"%f", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] constant]);
-//    NSLog(@"%@", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] identifier]);
-//    NSLog(@"%d", [(NSLayoutConstraint*)[self.view.constraints objectAtIndex:15] shouldBeArchived]);
-    
+    // Do any additional setup after loading the view.    
     for (UIView *view in self.viewsToStyle) {
         view.layer.borderWidth=1.0;
         view.layer.borderColor=[UIColor blackColor].CGColor;
     }
-    
-//    ADBannerView *adBanner = [[ADBannerView alloc]initWithFrame:CGRectMake(0.0, self.view.frame.size.height, self.view.frame.size.width, 50.0)];
-//    adBanner.delegate=self;
-//    [self.view addSubview:adBanner];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
+    if (secondsBetween >= 3600.000001) {
+        userProfile.likesInHour = [NSNumber numberWithInt:0];
+    }
 }
 
 -(IBAction)popSelf{
@@ -48,30 +40,48 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)replaceConstraintOnView:(UIView *)view withConstant:(float)constant andAttribute:(NSLayoutAttribute)attribute onSelf:(BOOL)onSelf{
+    UIView *viewForConstraints;
+    if (onSelf) viewForConstraints = view;
+    else viewForConstraints = self.view;
+    
+//    NSLog(@"%@", viewForConstraints.constraints);
+    
+    
+    /*=========================================
+    
+    THIS SHIT NEEDS UNDERSTANDING AND REWRITING
+     
+    =========================================*/
+    
+    [viewForConstraints.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint *constraint, NSUInteger idx, BOOL *stop) {
+        if (constraint.firstItem == view) {
+            NSLog(@"%@", constraint.firstItem);
+            if ((constraint.firstAttribute == attribute)) {
+                NSLog(@"## %d", constraint.firstAttribute);
+                constraint.constant = constant;
+                NSLog(@"yay");
+            }
+        }
+    }];
+}
+
+- (void)animateConstraints{
+    [UIView animateWithDuration:0.3 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+
 #pragma mark iAd
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner{
-//    NSLog(@"%@", banner.constraints);
-//    NSLog(@"%@", self.view.constraints);
-    [UIView animateWithDuration:0.1
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         [self.view layoutIfNeeded];
-                     }
-                     completion:^(BOOL finished){
-                     }];
+//    [self replaceConstraintOnView:banner withConstant:-banner.frame.size.height andAttribute:NSLayoutAttributeTop onSelf:NO];
+//    [self animateConstraints];
 }
+
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
-    [UIView animateWithDuration:0.1
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         banner.frame=CGRectMake(0.0, self.view.frame.size.height, banner.frame.size.width, banner.frame.size.height);
-                         [self.view layoutIfNeeded];
-                     }
-                     completion:^(BOOL finished){
-                     }];
+//    [self replaceConstraintOnView:banner withConstant:0 andAttribute:NSLayoutAttributeTop onSelf:NO];
+//    [self animateConstraints];
 }
 
 - (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave{

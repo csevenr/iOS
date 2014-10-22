@@ -38,8 +38,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
     [self login];
+    [super viewDidAppear:animated];
 }
 
 -(void)login{
@@ -47,6 +47,17 @@
         userProfile = [UserProfile getActiveUserProfile];
     }else{
         [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:YES]];
+    }
+}
+
+-(void)getJSON{
+    if (![self.hashtagTextField.text isEqualToString:@""]) {
+        if ([[self.hashtagTextField.text substringToIndex:1] isEqualToString:@"#"]) {
+            self.hashtagTextField.text=[self.hashtagTextField.text substringFromIndex:1];
+        }
+        [insta getJsonForHashtag:self.hashtagTextField.text];
+        [insta setDelegate:self];
+        [self addHashtagToRecentArray:self.hashtagTextField.text];
     }
 }
 
@@ -65,6 +76,89 @@
         self.loginVc = segue.destinationViewController;
         [(LoginViewController*)self.loginVc setLogin:[sender boolValue]];
     }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+//    location = [touch locationInView:self.searchContainer];
+    
+    if (!CGRectContainsPoint(self.searchContainer.frame, location)) {
+        [self searchBtnPressed];
+        [self textFieldShouldReturn:self.hashtagTextField];
+    }
+}
+
+#pragma Mark Utils
+
+-(void)addHashtagToRecentArray:(NSString*)hashtag{
+    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
+    if (array==nil) {
+        array=[NSMutableArray new];
+    }
+    
+    NSArray *hashtagToRemove;
+    for (NSString *hashtagInArray in array) {
+        if ([hashtagInArray isEqualToString:hashtag]){
+            hashtagToRemove = [NSArray arrayWithObject:hashtagInArray];//add to array and remove after loop to avoid mutating whilst enumerating
+        }
+    }
+    [array removeObjectsInArray:hashtagToRemove];
+    [array insertObject:hashtag atIndex:0];
+    
+    NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+    userProfile.recentHashtags = arrayData;
+    [ModelHelper saveManagedObjectContext];
+}
+
+#pragma Mark Delegate methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;    //count number of row from counting array hear cataGorry is An Array
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *MyIdentifier = @"MyIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+    }
+    
+    // Here we use the provided setImageWithURL: method to load the web image
+    // Ensure you use a placeholder image otherwise cells will be initialized with no image
+    
+    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
+    if (indexPath.row<=[array count]-1) {
+        cell.textLabel.text = [array objectAtIndex:indexPath.row];
+    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.hashtagTextField.text=[tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    [self textFieldShouldReturn:self.hashtagTextField];
+    [self searchBtnPressed];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    [self.hashtagTableView reloadData];
+    [self replaceConstraintOnView:self.searchContainer withConstant:182.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
+    [self animateConstraints];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self searchBtnPressed];
+    [textField resignFirstResponder];
+    [self replaceConstraintOnView:self.searchContainer withConstant:50.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
+    [self animateConstraints];
+    return YES;
 }
 
 @end

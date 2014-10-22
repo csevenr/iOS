@@ -2,7 +2,7 @@
 //  UserProfile.m
 //  GramManager
 //
-//  Created by Oliver Rodden on 16/10/2014.
+//  Created by Oliver Rodden on 22/10/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
@@ -22,18 +22,19 @@
 @dynamic mediaCount;
 @dynamic profilePictureURL;
 @dynamic recentCount;
+@dynamic recentLeastLikes;
 @dynamic recentLikes;
+@dynamic recentMostLikes;
+@dynamic recentHashtags;
 @dynamic subscriber;
 @dynamic token1;
 @dynamic token2;
 @dynamic token3;
 @dynamic token4;
-@dynamic tokenCount;
+@dynamic tokenCountUp;
 @dynamic userId;
 @dynamic userName;
 @dynamic website;
-@dynamic recentMostLikes;
-@dynamic recentLeastLikes;
 @dynamic likedPosts;
 
 @end
