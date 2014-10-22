@@ -7,16 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
 @class LoginViewController, UserProfile;
 
-@interface MasterViewController : UIViewController {
+@interface MasterViewController : UIViewController <ADBannerViewDelegate>{
     UserProfile *userProfile;
+    ADBannerView *adBanner;
 }
 
 @property (nonatomic) LoginViewController *loginVc;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *viewsToStyle;
+@property (weak, nonatomic) IBOutlet ADBannerView *adBanner;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *adBannerConstraint;
 
-//-(void)auth;
 -(IBAction)popSelf;
 
 @end

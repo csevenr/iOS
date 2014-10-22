@@ -11,10 +11,12 @@
 #import "PostCollectionViewCell.h"
 #import "UserProfile+Helper.h"
 #import "ModelHelper.h"
+#import "ImageDownloader.h"
 
 @interface ManualGridViewController (){
     NSMutableArray *posts;
     NSTimer *likeStatusTimer;
+    NSMutableDictionary *imageDownloadsInProgress;
 }
 
 @end
@@ -23,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    imageDownloadsInProgress = [NSMutableDictionary dictionary];
     
     self.searchActivityIndcator.hidden=YES;//set this in code, because it didnt work on storyboard for some reason??
     posts = [NSMutableArray new];
@@ -33,15 +36,13 @@
 - (IBAction)searchBtnPressed {
     [self.hashtagTextField resignFirstResponder];
     if ([posts count]>0) [posts removeAllObjects];
-    
-//    for (int i=0; i<20; i++) {
-//        Post *post = [[Post alloc]initWithDictionary:nil];
-//        [posts addObject:post];
-//    }
-//    [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
 
-    [self searchingUi];
-    [self getJSON];
+    if (![self.hashtagTextField.text isEqualToString:@""]) {
+        [self searchingUi];
+        [self getJSON];
+    }else{
+        NSLog(@"no hashtag");
+    }
 }
 
 -(void)getJSON{
@@ -57,8 +58,8 @@
         if ([[JSONDictionary objectForKey:@"data"] count]==0) {//Invalid hashtag, no data in JSON
             [self performSelectorOnMainThread:@selector(showAlertView) withObject:nil waitUntilDone:NO];//call ui on main thread
         }else{//Valid hashtag, Create a post object for each entry
-            for (NSDictionary *postDict in [JSONDictionary objectForKey:@"data"]) {
-                Post *post = [[Post alloc]initWithDictionary:postDict];
+            for (int i=0; i<[[JSONDictionary objectForKey:@"data"] count]; i++) {
+                Post *post = [[Post alloc]initWithDictionary:[[JSONDictionary objectForKey:@"data"] objectAtIndex:i]];
                 [posts addObject:post];
             }
             //reload the table view with new data
@@ -72,7 +73,6 @@
 }
 
 -(void)searchingUi{
-    self.searchBtn.hidden=!self.searchBtn.hidden;
     self.searchActivityIndcator.hidden=!self.searchActivityIndcator.hidden;
     
     if ([self.searchActivityIndcator isAnimating])[self.searchActivityIndcator stopAnimating];
@@ -89,7 +89,6 @@
         if (userProfile.likeTime == nil||[[NSDate date] timeIntervalSinceDate:userProfile.likeTime]>=3600.000001) {
             self.likeStatusLbl.text=@"30 likes remaining";
         }else if ([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]<3600.000001){
-//            NSLog(@"%d", 3600-(int)floorf([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]));
             if ([userProfile.likesInHour integerValue]<30) {
                 self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[userProfile.likesInHour integerValue]];
             }else if ([userProfile.likesInHour integerValue]>=30){
@@ -147,25 +146,110 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *MyIdentifier = @"postCell";
+    PostCollectionViewCell *cell = nil;
     
-    PostCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
-//    PostCollectionViewCell *cell;
-
-    if (cell == nil){
-        cell = [PostCollectionViewCell new];
+    NSUInteger nodeCount = [posts count];
+    
+    static NSString *MyIdentifier = @"postCell";
+    cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
+    
+    // Leave cells empty if there's no data yet
+    if (nodeCount > 0){
+        // Set up the cell representing the app
+        Post *post = (posts)[indexPath.row];
+        
+        // Only load cached images; defer new downloads until scrolling ends
+        if (!post.thumbnailImg){
+            if (collectionView.dragging == NO && collectionView.decelerating == NO){
+                [self startImageDownload:post forIndexPath:indexPath];
+            }
+            // if a download is deferred or in progress, return a placeholder image
+            cell.mainImg.image = nil;
+            cell.backgroundColor = [UIColor lightGrayColor];
+        }else{
+            cell.mainImg.image = post.thumbnailImg;
+        }
     }
-    cell.post = [posts objectAtIndex:indexPath.row];
-
+    
     return cell;
+}
+
+-(void)startImageDownload:(Post*)post forIndexPath:(NSIndexPath *)indexPath{
+    ImageDownloader *iconDownloader = (imageDownloadsInProgress)[indexPath];
+    if (iconDownloader == nil)
+    {
+        iconDownloader = [[ImageDownloader alloc] init];
+        iconDownloader.post = post;
+        [iconDownloader setCompletionHandler:^{
+            
+            PostCollectionViewCell *cell = (PostCollectionViewCell*)[self.postCollView cellForItemAtIndexPath:indexPath];
+            
+            // Display the newly loaded image
+            cell.mainImg.image = post.thumbnailImg;
+            
+            // Remove the IconDownloader from the in progress list.
+            // This will result in it being deallocated.
+            [imageDownloadsInProgress removeObjectForKey:indexPath];
+            
+        }];
+        (imageDownloadsInProgress)[indexPath] = iconDownloader;
+        [iconDownloader startDownload];
+    }
+}
+
+// -------------------------------------------------------------------------------
+//	loadImagesForOnscreenRows
+//  This method is used in case the user scrolled into a set of cells that don't
+//  have their app icons yet.
+// -------------------------------------------------------------------------------
+- (void)loadImagesForOnscreenRows
+{
+    if ([posts count] > 0)
+    {
+        NSArray *visiblePaths = [self.postCollView indexPathsForVisibleItems];
+        for (NSIndexPath *indexPath in visiblePaths)
+        {
+            Post *post = (posts)[indexPath.row];
+            
+            if (!post.thumbnailImg)
+                // Avoid the app icon download if the app already has an icon
+            {
+                [self startImageDownload:post forIndexPath:indexPath];
+            }
+        }
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //got to the bottom. Paginate
     if (scrollView.contentOffset.y+scrollView.frame.size.height == scrollView.contentSize.height) {
-        [self getJSON];
+        if ([posts count]<81) {
+            [self getJSON];
+        }
     }
 }
+
+// -------------------------------------------------------------------------------
+//	scrollViewDidEndDragging:willDecelerate:
+//  Load images for all onscreen rows when scrolling is finished.
+// -------------------------------------------------------------------------------
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate)
+    {
+        [self loadImagesForOnscreenRows];
+    }
+}
+
+// -------------------------------------------------------------------------------
+//	scrollViewDidEndDecelerating:scrollView
+//  When scrolling stops, proceed to load the app icons that are on screen.
+// -------------------------------------------------------------------------------
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self loadImagesForOnscreenRows];
+}
+
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self searchBtnPressed];

@@ -23,19 +23,13 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if (self==[super initWithCoder:aDecoder]) {
-        insta = [Insta new];
     }
     return self;
 }
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-    //add side menu
-//    menu = [[Menu alloc]initWithFrame:CGRectMake(-self.view.frame.size.width+50.0, 0.0, self.view.frame.size.width-50.0, self.view.frame.size.height)];
-//    menu.delegate=self;
-//    menu.backgroundColor = [UIColor blueColor];
-//    [self.view addSubview:menu];
+    insta = [Insta new];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -44,6 +38,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self login];
 }
 

@@ -11,6 +11,8 @@
 
 @interface Post : NSObject
 
+@property UIImage *thumbnailImg;
+
 @property NSString *postId;
 @property NSString *lowResURL;
 @property NSString *standardResURL;
@@ -19,5 +21,6 @@
 @property NSString *userName;
 
 -(id)initWithDictionary:(NSDictionary*)JSONDictionary;
+-(void)setPropertiesWithDictionary:(NSDictionary*)JSONDictionary;
 
 @end

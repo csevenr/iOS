@@ -24,6 +24,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
+    
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
 //    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     
@@ -49,7 +52,7 @@
 }
 
 -(void)tester{
-//    NSLog(@"still here");
+    
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
@@ -63,7 +66,7 @@
     
 //    NSLog(@"# %d", 3600-(int)floorf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]));
     
-    NSDateComponents *timeComponents = [[NSCalendar autoupdatingCurrentCalendar] components:( NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[NSDate date]];
+    NSDateComponents *timeComponents = [[NSCalendar autoupdatingCurrentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit ) fromDate:[NSDate date]];
     NSDateComponents *dateComps = [[NSDateComponents alloc] init];
 
     NSLog(@"%d", [timeComponents second]+3600-(int)floorf([[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime]));
@@ -71,7 +74,11 @@
     int mins = (3600-(int)[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime])/60;
     int secs = (3600-(int)[[NSDate date] timeIntervalSinceDate:[UserProfile getActiveUserProfile].likeTime])-mins*60;
     NSLog(@"%d, %d", mins, secs);
-    
+
+    [dateComps setYear:[timeComponents year]];
+    [dateComps setMonth:[timeComponents month]];
+    [dateComps setDay:[timeComponents day]];
+    [dateComps setHour:[timeComponents hour]];
     [dateComps setMinute:[timeComponents minute]+mins];
     [dateComps setSecond:[timeComponents second]+secs];
 
@@ -94,6 +101,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

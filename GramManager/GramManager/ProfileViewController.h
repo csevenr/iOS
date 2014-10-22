@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLbl;
 @property (weak, nonatomic) IBOutlet UILabel *followersLbl;
 @property (weak, nonatomic) IBOutlet UILabel *averageLikesLbl;
+@property (weak, nonatomic) IBOutlet UILabel *mostLikesLbl;
+@property (weak, nonatomic) IBOutlet UILabel *leastLikesLbl;
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
 @end
