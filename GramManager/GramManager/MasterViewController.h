@@ -20,6 +20,6 @@
 
 -(IBAction)popSelf;
 - (void)replaceConstraintOnView:(UIView *)view withConstant:(float)constant andAttribute:(NSLayoutAttribute)attribute onSelf:(BOOL)onSelf;
-- (void)animateConstraints;
+- (void)animateConstraintsWithDuration:(CGFloat)duration andDelay:(CGFloat)delay;
 
 @end

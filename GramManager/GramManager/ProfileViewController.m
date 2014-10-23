@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "UserProfile+Helper.h"
+#import "ModelHelper.h"
 
 @interface ProfileViewController ()
 
@@ -26,11 +27,18 @@
 -(void)setUpView{
     userProfile = [UserProfile getActiveUserProfile];
     self.usernameLbl.text = userProfile.userName;
+    if (userProfile.profilePicture!=nil) {
+        self.profilePicImg.image = [UIImage imageWithData:userProfile.profilePicture];
+    }
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:userProfile.profilePictureURL]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error c");
         } else {
-            self.profilePicImg.image = [UIImage imageWithData:data];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.profilePicImg.image = [UIImage imageWithData:data];
+                userProfile.profilePicture = data;
+                [ModelHelper saveManagedObjectContext];
+            });
         }
     }];
     self.profilePicImg.layer.cornerRadius=self.profilePicImg.frame.size.width/2;

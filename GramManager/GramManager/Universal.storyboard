@@ -42,23 +42,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8g-N0-0Jf">
-                                <rect key="frame" x="16" y="135" width="568" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="GDq-tp-R1F"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="Search">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="searchBtnPressed" destination="Rul-6b-tFi" eventType="touchUpInside" id="aBz-UA-J2h"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-fQ-A5c">
                                 <rect key="frame" x="0.0" y="193" width="600" height="407"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,6 +75,34 @@
                                     <outlet property="delegate" destination="Rul-6b-tFi" id="HVh-EB-3hn"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNk-Yc-iTQ" customClass="AlertLabel">
+                                <rect key="frame" x="16" y="135" width="568" height="50"/>
+                                <color key="backgroundColor" red="0.9215686917" green="0.15294118230000001" blue="0.32549020649999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DqD-cX-gTH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8g-N0-0Jf">
+                                <rect key="frame" x="16" y="135" width="568" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="GDq-tp-R1F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchBtnPressed" destination="Rul-6b-tFi" eventType="touchUpInside" id="aBz-UA-J2h"/>
+                                </connections>
+                            </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Glz-eT-ugp">
                                 <rect key="frame" x="342" y="150" width="20" height="20"/>
                                 <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,7 +115,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="0mU-uP-nYY"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                         <connections>
                                             <outlet property="delegate" destination="Rul-6b-tFi" id="SWv-jz-OwJ"/>
@@ -145,7 +156,9 @@
                             <constraint firstItem="Wvw-fQ-A5c" firstAttribute="top" secondItem="fRb-gU-aC9" secondAttribute="top" constant="193" id="0TU-cL-CZU"/>
                             <constraint firstAttribute="bottomMargin" secondItem="8Un-K3-XN6" secondAttribute="bottom" constant="-50" id="0pl-Z2-XMB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="laP-aQ-tLW" secondAttribute="trailing" constant="-16" id="5hB-JU-28o"/>
+                            <constraint firstItem="jNk-Yc-iTQ" firstAttribute="trailing" secondItem="fRb-gU-aC9" secondAttribute="trailingMargin" id="8Q1-9r-Skc"/>
                             <constraint firstItem="X2h-ll-YKe" firstAttribute="top" secondItem="Wvw-fQ-A5c" secondAttribute="bottom" id="8wU-Xv-31V"/>
+                            <constraint firstItem="jNk-Yc-iTQ" firstAttribute="leading" secondItem="fRb-gU-aC9" secondAttribute="leadingMargin" id="AuR-Nh-oZO"/>
                             <constraint firstItem="y8P-yZ-fsD" firstAttribute="top" secondItem="fRb-gU-aC9" secondAttribute="top" constant="77" id="Gpq-UQ-T5I"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wvw-fQ-A5c" secondAttribute="trailing" constant="-16" id="Mlf-Ux-drg"/>
                             <constraint firstItem="S8g-N0-0Jf" firstAttribute="trailing" secondItem="fRb-gU-aC9" secondAttribute="trailingMargin" id="PKB-G8-Inj"/>
@@ -155,6 +168,7 @@
                             <constraint firstItem="S8g-N0-0Jf" firstAttribute="leading" secondItem="fRb-gU-aC9" secondAttribute="leadingMargin" id="dqP-Em-gKm"/>
                             <constraint firstItem="y8P-yZ-fsD" firstAttribute="trailing" secondItem="fRb-gU-aC9" secondAttribute="trailingMargin" id="lWq-zC-UX2"/>
                             <constraint firstItem="8Un-K3-XN6" firstAttribute="top" secondItem="X2h-ll-YKe" secondAttribute="bottom" id="o8J-zx-NMv"/>
+                            <constraint firstItem="jNk-Yc-iTQ" firstAttribute="top" secondItem="fRb-gU-aC9" secondAttribute="top" constant="135" id="p5N-WJ-hfJ"/>
                             <constraint firstItem="laP-aQ-tLW" firstAttribute="leading" secondItem="fRb-gU-aC9" secondAttribute="leadingMargin" constant="-16" id="pWs-Gn-Slj"/>
                             <constraint firstItem="S8g-N0-0Jf" firstAttribute="top" secondItem="fRb-gU-aC9" secondAttribute="top" constant="135" id="s4X-3q-fo8"/>
                             <constraint firstItem="Wvw-fQ-A5c" firstAttribute="leading" secondItem="fRb-gU-aC9" secondAttribute="leadingMargin" constant="-16" id="soI-GZ-V4M"/>
@@ -169,6 +183,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="nkw-NQ-89A"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="alertLbl" destination="jNk-Yc-iTQ" id="6Az-jE-yxR"/>
                         <outlet property="hashtagTableView" destination="voI-df-d0X" id="c2u-A0-P84"/>
                         <outlet property="hashtagTextField" destination="WLb-SC-9P6" id="bm3-cD-dJf"/>
                         <outlet property="likeStatusLbl" destination="laP-aQ-tLW" id="tmL-3Z-zEb"/>

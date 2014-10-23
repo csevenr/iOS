@@ -46,7 +46,7 @@
         [self searchingUi];
         [self getJSON];
     }else{
-        NSLog(@"no hashtag");
+        [self showAlertLabelWithString:@"No hashtag"];
     }
 }
 
@@ -264,7 +264,7 @@
 //    NSLog(@"%@", self.view.constraints);
     [super bannerViewDidLoadAd:banner];
     [self replaceConstraintOnView:self.postCollView withConstant:self.postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
-    [self animateConstraints];
+    [self animateConstraintsWithDuration:0.3 andDelay:0.0];
 }
 
 //- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{

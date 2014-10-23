@@ -12,6 +12,7 @@
 #import "ModelHelper.h"
 #import "UserProfile+Helper.h"
 #import "LoginViewController.h"
+#import "AlertLabel.h"
 
 @interface LikeMasterViewController(){
     Menu * menu;
@@ -82,12 +83,19 @@
     [super touchesBegan:touches withEvent:event];
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
-//    location = [touch locationInView:self.searchContainer];
     
     if (!CGRectContainsPoint(self.searchContainer.frame, location)) {
-        [self searchBtnPressed];
         [self textFieldShouldReturn:self.hashtagTextField];
     }
+}
+
+-(void)showAlertLabelWithString:(NSString*)string{
+    self.alertLbl.text=string;
+    [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y+50 andAttribute:NSLayoutAttributeTop onSelf:NO];
+    [self animateConstraintsWithDuration:0.3 andDelay:0.0];
+
+    [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y-50 andAttribute:NSLayoutAttributeTop onSelf:NO];
+    [self animateConstraintsWithDuration:0.3 andDelay:2.0];
 }
 
 #pragma Mark Utils
@@ -147,17 +155,19 @@
     [self searchBtnPressed];
 }
 
+//TRACE AND REFACTOR
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     [self.hashtagTableView reloadData];
     [self replaceConstraintOnView:self.searchContainer withConstant:182.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
-    [self animateConstraints];
+    [self animateConstraintsWithDuration:0.3 andDelay:0.0];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self searchBtnPressed];
     [textField resignFirstResponder];
     [self replaceConstraintOnView:self.searchContainer withConstant:50.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
-    [self animateConstraints];
+    [self animateConstraintsWithDuration:0.3 andDelay:0.0];
     return YES;
 }
 
