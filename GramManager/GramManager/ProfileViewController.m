@@ -7,10 +7,13 @@
 //
 
 #import "ProfileViewController.h"
+#import "Insta.h"
 #import "UserProfile+Helper.h"
 #import "ModelHelper.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () {
+    BOOL updated;
+}
 
 @end
 
@@ -54,6 +57,17 @@
     self.averageLikesLbl.text = [NSString stringWithFormat:@"Average likes: %d",[userProfile.recentLikes intValue]/[userProfile.recentCount intValue]];
     self.mostLikesLbl.text = [NSString stringWithFormat:@"Most likes: %d",[userProfile.recentMostLikes intValue]];
     self.leastLikesLbl.text = [NSString stringWithFormat:@"Least likes: %d",[userProfile.recentLeastLikes intValue]];
+    
+    if (!updated) {
+        Insta *insta = [Insta new];
+        insta.delegate = self;
+        [insta getUserInfoWithToken:nil];
+    }
+}
+
+-(void)userInfoFinished{
+    updated = YES;
+    [self setUpView];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{

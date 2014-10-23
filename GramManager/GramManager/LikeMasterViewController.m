@@ -16,6 +16,7 @@
 
 @interface LikeMasterViewController(){
     Menu * menu;
+    BOOL alertIsShowing;
 }
 
 @end
@@ -85,17 +86,23 @@
     CGPoint location = [touch locationInView:self.view];
     
     if (!CGRectContainsPoint(self.searchContainer.frame, location)) {
-        [self textFieldShouldReturn:self.hashtagTextField];
+//        [self textFieldShouldReturn:self.hashtagTextField];
+        [self closeTextField];
     }
 }
 
 -(void)showAlertLabelWithString:(NSString*)string{
-    self.alertLbl.text=string;
-    [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y+50 andAttribute:NSLayoutAttributeTop onSelf:NO];
-    [self animateConstraintsWithDuration:0.3 andDelay:0.0];
-
-    [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y-50 andAttribute:NSLayoutAttributeTop onSelf:NO];
-    [self animateConstraintsWithDuration:0.3 andDelay:2.0];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.alertLbl.text=string;
+        if (!alertIsShowing) {
+            alertIsShowing = YES;
+            [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y+50 andAttribute:NSLayoutAttributeTop onSelf:NO];
+            [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
+            
+            [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y-50 andAttribute:NSLayoutAttributeTop onSelf:NO];
+            [self animateConstraintsWithDuration:0.3 delay:2.0 andCompletionHandler:^{alertIsShowing = NO;}];        
+        }
+    });
 }
 
 #pragma Mark Utils
@@ -120,7 +127,7 @@
     [ModelHelper saveManagedObjectContext];
 }
 
-#pragma Mark Delegate methods
+#pragma Mark tableView delegate methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -155,20 +162,24 @@
     [self searchBtnPressed];
 }
 
-//TRACE AND REFACTOR
+#pragma Mark textField delegate methods
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     [self.hashtagTableView reloadData];
     [self replaceConstraintOnView:self.searchContainer withConstant:182.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
-    [self animateConstraintsWithDuration:0.3 andDelay:0.0];
+    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self searchBtnPressed];
-    [textField resignFirstResponder];
-    [self replaceConstraintOnView:self.searchContainer withConstant:50.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
-    [self animateConstraintsWithDuration:0.3 andDelay:0.0];
+    [self closeTextField];
     return YES;
+}
+
+-(void)closeTextField{ //split into this method so if you click outside you dont search
+    [self.hashtagTextField resignFirstResponder];
+    [self replaceConstraintOnView:self.searchContainer withConstant:50.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
+    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
 }
 
 @end

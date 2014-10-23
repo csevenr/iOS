@@ -16,8 +16,8 @@
 @optional
 -(void)JSONReceived:(NSDictionary*)JSONDictionary;//+++ refactor
 -(void)likedPost;
-
 -(void)userInfoFinished;
+-(void)instaError:(NSString*)errorString;
 
 @end
 

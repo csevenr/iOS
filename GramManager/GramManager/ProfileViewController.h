@@ -10,7 +10,7 @@
 #import "MasterViewController.h"
 #import "LoginViewController.h"
 
-@interface ProfileViewController : MasterViewController <loginDelegate>
+@interface ProfileViewController : MasterViewController <loginDelegate, instaDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicImg;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLbl;

@@ -65,15 +65,18 @@
     }];
 }
 
-- (void)animateConstraintsWithDuration:(CGFloat)duration andDelay:(CGFloat)delay{
+- (void)animateConstraintsWithDuration:(CGFloat)duration delay:(CGFloat)delay andCompletionHandler:(void (^)(void))completionHandler{
     [UIView animateWithDuration:0.3
                           delay:delay
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
                          [self.view layoutIfNeeded];
                      }
-                     completion:nil
-    ];
+                     completion:^(BOOL finished){
+                         if (completionHandler) {
+                             completionHandler();
+                         }
+                     }];
 
 }
 

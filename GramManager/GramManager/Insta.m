@@ -55,6 +55,7 @@
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 [self.delegate JSONReceived:jsonDictionary];
             }else if([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==400) {//chances are media is private
+                [self.delegate instaError:@"Couldnt like that post"];//+++ Add one back to likes allowed
                 NSLog(@"%d %@", [[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
             }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==429) {
                 [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"0" waitUntilDone:NO];
@@ -62,8 +63,6 @@
         }
     }];
 }
-
-
 
 - (void)likePost:(Post*)post {
     NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentTokenForLike:YES]];
