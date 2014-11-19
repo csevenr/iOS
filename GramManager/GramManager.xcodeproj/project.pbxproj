@@ -35,6 +35,9 @@
 		66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06F919D998710081C68E /* ManualGridViewController.m */; };
 		66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */; };
 		CC2B60A619E81B0A00F3A5C9 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B60A519E81B0A00F3A5C9 /* MasterViewController.m */; };
+		CC57F2E21A1D4CEB00DE0E8B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57F2E11A1D4CEB00DE0E8B /* MenuViewController.m */; };
+		CC57F2E71A1D4D2100DE0E8B /* CircleCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57F2E41A1D4D2100DE0E8B /* CircleCounterView.m */; };
+		CC57F2E81A1D4D2100DE0E8B /* CircleDownCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57F2E61A1D4D2100DE0E8B /* CircleDownCounter.m */; };
 		CCAF95DD19D6E93300A92468 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAF95DC19D6E93300A92468 /* Post.m */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +58,7 @@
 		6617CE7119DAB8CA00436573 /* ClientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientController.m; sourceTree = "<group>"; };
 		6617CE7319DAC3C300436573 /* LikeMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeMasterViewController.h; sourceTree = "<group>"; };
 		6617CE7419DAC3C300436573 /* LikeMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeMasterViewController.m; sourceTree = "<group>"; };
-		6620BA9919D4129E0095C9B7 /* GramManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GramManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6620BA9919D4129E0095C9B7 /* awnty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = awnty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6620BA9D19D4129E0095C9B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6620BA9E19D4129E0095C9B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6620BAA019D4129E0095C9B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -98,6 +101,12 @@
 		66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCollectionViewCell.m; sourceTree = "<group>"; };
 		CC2B60A419E81B0A00F3A5C9 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		CC2B60A519E81B0A00F3A5C9 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		CC57F2E01A1D4CEB00DE0E8B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		CC57F2E11A1D4CEB00DE0E8B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		CC57F2E31A1D4D2100DE0E8B /* CircleCounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleCounterView.h; sourceTree = "<group>"; };
+		CC57F2E41A1D4D2100DE0E8B /* CircleCounterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleCounterView.m; sourceTree = "<group>"; };
+		CC57F2E51A1D4D2100DE0E8B /* CircleDownCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleDownCounter.h; sourceTree = "<group>"; };
+		CC57F2E61A1D4D2100DE0E8B /* CircleDownCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleDownCounter.m; sourceTree = "<group>"; };
 		CCAF95DB19D6E93300A92468 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		CCAF95DC19D6E93300A92468 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,7 +142,7 @@
 		6620BA9A19D4129E0095C9B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6620BA9919D4129E0095C9B7 /* GramManager.app */,
+				6620BA9919D4129E0095C9B7 /* awnty.app */,
 				6620BAB219D4129E0095C9B7 /* GramManagerTests.xctest */,
 			);
 			name = Products;
@@ -201,6 +210,8 @@
 				663D2D5C19E6DC5600FF43EE /* ProfileViewController.m */,
 				66F597B019DEB8D400C305E5 /* LoginViewController.h */,
 				66F597B119DEB8D400C305E5 /* LoginViewController.m */,
+				CC57F2E01A1D4CEB00DE0E8B /* MenuViewController.h */,
+				CC57F2E11A1D4CEB00DE0E8B /* MenuViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -213,6 +224,10 @@
 				66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */,
 				667608BD19DD619F00E22208 /* Menu.h */,
 				667608BE19DD619F00E22208 /* Menu.m */,
+				CC57F2E31A1D4D2100DE0E8B /* CircleCounterView.h */,
+				CC57F2E41A1D4D2100DE0E8B /* CircleCounterView.m */,
+				CC57F2E51A1D4D2100DE0E8B /* CircleDownCounter.h */,
+				CC57F2E61A1D4D2100DE0E8B /* CircleDownCounter.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -308,7 +323,7 @@
 			);
 			name = GramManager;
 			productName = GramManager;
-			productReference = 6620BA9919D4129E0095C9B7 /* GramManager.app */;
+			productReference = 6620BA9919D4129E0095C9B7 /* awnty.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6620BAB119D4129E0095C9B7 /* GramManagerTests */ = {
@@ -340,6 +355,7 @@
 				TargetAttributes = {
 					6620BA9819D4129E0095C9B7 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 59SRS4L8V3;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -404,6 +420,9 @@
 				6620BAA519D4129E0095C9B7 /* AutoViewController.m in Sources */,
 				667608BF19DD619F00E22208 /* Menu.m in Sources */,
 				CCAF95DD19D6E93300A92468 /* Post.m in Sources */,
+				CC57F2E21A1D4CEB00DE0E8B /* MenuViewController.m in Sources */,
+				CC57F2E81A1D4D2100DE0E8B /* CircleDownCounter.m in Sources */,
+				CC57F2E71A1D4D2100DE0E8B /* CircleCounterView.m in Sources */,
 				66D9867C19F7B72E006880CE /* UserProfile.m in Sources */,
 				66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */,
 				66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */,
@@ -543,10 +562,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GramManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = awnty;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -555,10 +575,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GramManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = awnty;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
