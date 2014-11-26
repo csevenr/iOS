@@ -34,61 +34,64 @@
 }
 
 -(void)getJsonForHashtag:(NSString*)hashtag{
-    NSString *urlForPostData;
-    if (paginationURL!=nil&&currentHashtag!=nil&&[currentHashtag isEqualToString:hashtag]){
-        urlForPostData = paginationURL;
-    }else{
-        urlForPostData = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
-        currentHashtag=hashtag;
-    }
-    
-    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForPostData]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if (error) {
-            NSLog(@"Error 1 %@", error);
-        } else {
-            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-//            NSLog(@"# %@", jsonDictionary);
-            
-            paginationURL = [[jsonDictionary objectForKey:@"pagination"]objectForKey:@"next_url"];
-
-            if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
-                [self.delegate JSONReceived:jsonDictionary];
-            }else if([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==400) {//chances are media is private
-                NSLog(@"%d %@", [[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
-            }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==429) {
-                [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"0" waitUntilDone:NO];
-            }
+    if ([self checkForConnection]) {
+        NSString *urlForPostData;
+        if (paginationURL!=nil&&currentHashtag!=nil&&[currentHashtag isEqualToString:hashtag]){
+            urlForPostData = paginationURL;
+        }else{
+            urlForPostData = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
+            currentHashtag=hashtag;
         }
-    }];
+        
+        [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForPostData]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (error) {
+                NSLog(@"Error 1 %@", error);
+            } else {
+                NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
+                NSLog(@"# %@", jsonDictionary);
+                
+                paginationURL = [[jsonDictionary objectForKey:@"pagination"]objectForKey:@"next_url"];
+
+                if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
+                    [self.delegate JSONReceived:jsonDictionary];
+                }else if([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==400) {//chances are media is private
+                    [self.delegate instaError:@"Couldnt like that post"];//+++ Add one back to likes allowed
+                    NSLog(@"%d %@", [[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
+                }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==429) {
+                    [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"0" waitUntilDone:NO];
+                }
+            }
+        }];
+    }
 }
 
-
-
 - (void)likePost:(Post*)post {
-    NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentTokenForLike:YES]];
-    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
-    [req setHTTPMethod:@"POST"];
-    [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if (error) {
-            NSLog(@"Error 2");
-        } else {
-            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            
-//            NSLog(@"## %@", jsonDictionary);
-            
-            if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 200) {
-                NSLog(@"200 successful like");
-                [self.delegate likedPost];
-                [self performSelectorOnMainThread:@selector(savePostInCoreData:) withObject:post waitUntilDone:NO];
-            }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 400) {
-                NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
-            }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 429) {
-                NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
-                [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"1" waitUntilDone:NO];
+    if ([self checkForConnection]) {
+        NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentTokenForLike:YES]];
+        NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
+        [req setHTTPMethod:@"POST"];
+        [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (error) {
+                NSLog(@"Error 2");
+            } else {
+                NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                
+    //            NSLog(@"## %@", jsonDictionary);
+                
+                if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 200) {
+                    NSLog(@"200 successful like");
+                    [self.delegate likedPost];
+                    [self performSelectorOnMainThread:@selector(savePostInCoreData:) withObject:post waitUntilDone:NO];
+                }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 400) {
+                    NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
+                }else if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 429) {
+                    NSLog(@"%d %@",[[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] , [[jsonDictionary objectForKey:@"meta"]objectForKey:@"error_message"]);
+                    [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"1" waitUntilDone:NO];
+                }
             }
-        }
-    }];
+        }];
+    }
 }
 
 -(void)savePostInCoreData:(Post*)post{
@@ -195,6 +198,16 @@
         [non200Alert show];
     }
     [self.delegate JSONReceived:nil];
+}
+
+-(BOOL)checkForConnection{
+    NSURL *scriptUrl = [NSURL URLWithString:@"http://www.google.com"];
+    NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
+    if (data)
+        return YES;
+    else
+        [self.delegate instaError:@"No internet connection"];
+        return NO;
 }
 
 @end

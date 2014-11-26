@@ -47,7 +47,6 @@
     
 //    NSLog(@"%@", viewForConstraints.constraints);
     
-    
     /*=========================================
     
     THIS SHIT NEEDS UNDERSTANDING AND REWRITING
@@ -66,10 +65,19 @@
     }];
 }
 
-- (void)animateConstraints{
-    [UIView animateWithDuration:0.3 animations:^{
-        [self.view layoutIfNeeded];
-    }];
+- (void)animateConstraintsWithDuration:(CGFloat)duration delay:(CGFloat)delay andCompletionHandler:(void (^)(void))completionHandler{
+    [UIView animateWithDuration:0.3
+                          delay:delay
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished){
+                         if (completionHandler) {
+                             completionHandler();
+                         }
+                     }];
+
 }
 
 #pragma mark iAd

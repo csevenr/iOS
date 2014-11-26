@@ -7,9 +7,13 @@
 //
 
 #import "ProfileViewController.h"
+#import "Insta.h"
 #import "UserProfile+Helper.h"
+#import "ModelHelper.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () {
+    BOOL updated;
+}
 
 @end
 
@@ -26,11 +30,18 @@
 -(void)setUpView{
     userProfile = [UserProfile getActiveUserProfile];
     self.usernameLbl.text = userProfile.userName;
+    if (userProfile.profilePicture!=nil) {
+        self.profilePicImg.image = [UIImage imageWithData:userProfile.profilePicture];
+    }
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:userProfile.profilePictureURL]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error c");
         } else {
-            self.profilePicImg.image = [UIImage imageWithData:data];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.profilePicImg.image = [UIImage imageWithData:data];
+                userProfile.profilePicture = data;
+                [ModelHelper saveManagedObjectContext];
+            });
         }
     }];
     self.profilePicImg.layer.cornerRadius=self.profilePicImg.frame.size.width/2;
@@ -46,6 +57,17 @@
     self.averageLikesLbl.text = [NSString stringWithFormat:@"Average likes: %d",[userProfile.recentLikes intValue]/[userProfile.recentCount intValue]];
     self.mostLikesLbl.text = [NSString stringWithFormat:@"Most likes: %d",[userProfile.recentMostLikes intValue]];
     self.leastLikesLbl.text = [NSString stringWithFormat:@"Least likes: %d",[userProfile.recentLeastLikes intValue]];
+    
+    if (!updated) {
+        Insta *insta = [Insta new];
+        insta.delegate = self;
+        [insta getUserInfoWithToken:nil];
+    }
+}
+
+-(void)userInfoFinished{
+    updated = YES;
+    [self setUpView];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{

@@ -18,6 +18,7 @@
         <attribute name="likesInHour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="likeTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="mediaCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="profilePicture" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="profilePictureURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="recentCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="recentHashtags" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -37,6 +38,6 @@
     </entity>
     <elements>
         <element name="LikedPost" positionX="-2007" positionY="-1282" width="128" height="148"/>
-        <element name="UserProfile" positionX="-2268" positionY="-1321" width="128" height="403"/>
+        <element name="UserProfile" positionX="-2268" positionY="-1321" width="128" height="418"/>
     </elements>
 </model>

@@ -98,7 +98,7 @@
         [self searchingUi];
         [self getJSON];
     }else{
-        NSLog(@"no hashtag");
+        [self showAlertLabelWithString:@"No hashtag"];
     }
 }
 
@@ -106,7 +106,7 @@
    [self performSelectorOnMainThread:@selector(searchingUi) withObject:nil waitUntilDone:NO];
     if (JSONDictionary!=nil) {
         if ([[JSONDictionary objectForKey:@"data"] count]==0) {//Invalid hashtag, no data in JSON
-            [self performSelectorOnMainThread:@selector(showAlertView) withObject:nil waitUntilDone:NO];//call ui on main thread
+            [self showAlertLabelWithString:@"No posts for that hashtag"];
         }else{//Valid hashtag, Create a post object for each entry
             for (int i=0; i<[[JSONDictionary objectForKey:@"data"] count]; i++) {
                 Post *post = [[Post alloc]initWithDictionary:[[JSONDictionary objectForKey:@"data"] objectAtIndex:i]];
@@ -129,11 +129,6 @@
     else [self.searchActivityIndcator startAnimating];
 }
 
--(void)showAlertView{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"No posts" message:@"We didn't find any posts for that hashtag" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-}
-
 -(void)updateLikeStatusLbl{
     if (userProfile!=nil) {
         if (userProfile.likeTime == nil||[[NSDate date] timeIntervalSinceDate:userProfile.likeTime]>=3600.000001) {
@@ -147,6 +142,10 @@
             }
         }
     }
+}
+
+-(void)instaError:(NSString *)errorString{
+    [self showAlertLabelWithString:errorString];
 }
 
 #pragma Mark collView methods
@@ -324,8 +323,13 @@
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner{
 //    NSLog(@"%@", self.view.constraints);
     [super bannerViewDidLoadAd:banner];
-    [self replaceConstraintOnView:postCollView withConstant:postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
-    [self animateConstraints];
+//<<<<<<< HEAD
+//    [self replaceConstraintOnView:postCollView withConstant:postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
+//    [self animateConstraints];
+//=======
+//    [self replaceConstraintOnView:self.postCollView withConstant:self.postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
+//    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
+//>>>>>>> 7a0cebd571693bf4f317ae1fd9457b6423a208f9
 }
 
 //- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{

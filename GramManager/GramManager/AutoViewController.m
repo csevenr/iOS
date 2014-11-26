@@ -50,10 +50,10 @@
     }];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [super textFieldShouldReturn:textField];
-    return YES;
-}
+//-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+//    [super textFieldShouldReturn:textField];
+//    return YES;
+//}
 
 -(void)viewWillDisappear:(BOOL)animated{
     if (mainLoop!=nil) {

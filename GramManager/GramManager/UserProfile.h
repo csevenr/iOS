@@ -2,7 +2,7 @@
 //  UserProfile.h
 //  GramManager
 //
-//  Created by Oliver Rodden on 22/10/2014.
+//  Created by Oliver Rodden on 23/10/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
@@ -23,10 +23,10 @@
 @property (nonatomic, retain) NSNumber * mediaCount;
 @property (nonatomic, retain) NSString * profilePictureURL;
 @property (nonatomic, retain) NSNumber * recentCount;
+@property (nonatomic, retain) NSData * recentHashtags;
 @property (nonatomic, retain) NSNumber * recentLeastLikes;
 @property (nonatomic, retain) NSNumber * recentLikes;
 @property (nonatomic, retain) NSNumber * recentMostLikes;
-@property (nonatomic, retain) NSData * recentHashtags;
 @property (nonatomic, retain) NSNumber * subscriber;
 @property (nonatomic, retain) NSString * token1;
 @property (nonatomic, retain) NSString * token2;
@@ -36,6 +36,7 @@
 @property (nonatomic, retain) NSString * userId;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSString * website;
+@property (nonatomic, retain) NSData * profilePicture;
 @property (nonatomic, retain) NSSet *likedPosts;
 @end
 
