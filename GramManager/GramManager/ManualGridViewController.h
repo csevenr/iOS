@@ -13,7 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *searchBtn;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *searchActivityIndcator;
-@property (weak, nonatomic) IBOutlet UICollectionView *postCollView;
 @property (weak, nonatomic) IBOutlet UILabel *likeStatusLbl;
 
 //- (IBAction)searchBtnPressed;

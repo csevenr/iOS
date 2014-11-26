@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic) LoginViewController *loginVc;
-@property (strong, nonatomic) IBOutletCollection(UIView) NSArray *viewsToStyle;
+@property (strong, nonatomic) IBOutletCollection(UIView) NSMutableArray *viewsToStyle;
 
 -(IBAction)popSelf;
 - (void)replaceConstraintOnView:(UIView *)view withConstant:(float)constant andAttribute:(NSLayoutAttribute)attribute onSelf:(BOOL)onSelf;

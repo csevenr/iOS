@@ -14,6 +14,11 @@
 #import "ImageDownloader.h"
 
 @interface ManualGridViewController (){
+    UIView *hashtagTextFieldView;
+    UITextField *hashtagTextField;
+    UITableView *hashtagTableView;
+    UICollectionView *postCollView;
+    
     NSMutableArray *posts;
     NSTimer *likeStatusTimer;
     NSMutableDictionary *imageDownloadsInProgress;
@@ -26,6 +31,53 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Likes" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
+    scrollView.backgroundColor = [UIColor redColor];
+//    scrollView.
+    [self.view addSubview:scrollView];
+    
+    UIView *scrollSubView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.width*2.5)];
+    scrollSubView.backgroundColor = [UIColor blueColor];
+    [scrollView addSubview:scrollSubView];
+    
+    [scrollView setContentSize:scrollSubView.frame.size];
+    
+
+    UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 260.0, self.view.frame.size.width - 36.0, 50.0)];
+    [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
+    [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [scrollSubView addSubview:searchBtn];
+    
+    searchBtn.layer.borderWidth=1.0;
+    searchBtn.layer.borderColor=[UIColor blackColor].CGColor;
+    
+    hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(16.0, 200.0, self.view.frame.size.width - 32.0, 50.0)];
+    [scrollSubView addSubview:hashtagTextFieldView];
+
+    hashtagTextFieldView.layer.borderWidth=1.0;
+    hashtagTextFieldView.layer.borderColor=[UIColor blackColor].CGColor;
+
+    hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
+    hashtagTextField.placeholder = @"#";
+    hashtagTextField.delegate = self;
+    
+    hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
+    hashtagTableView.delegate = self;
+    hashtagTableView.dataSource = self;
+    
+    [hashtagTextFieldView addSubview:hashtagTextField];
+    [hashtagTextFieldView addSubview:hashtagTableView];
+    hashtagTextFieldView.clipsToBounds = YES;
+
+    
+    
+    
+    postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, scrollSubView.frame.size.height - self.view.frame.size.width*1.5, self.view.frame.size.width, self.view.frame.size.width*1.5) collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    postCollView.delegate = self;
+    postCollView.dataSource = self;
+    postCollView.backgroundColor = [UIColor blackColor];
+    [scrollSubView addSubview:postCollView];
     
     imageDownloadsInProgress = [NSMutableDictionary dictionary];
     
@@ -67,7 +119,7 @@
 }
 
 -(void)reload{
-    [self.postCollView reloadData];
+    [postCollView reloadData];
 }
 
 -(void)searchingUi{
@@ -116,7 +168,7 @@
             if ([posts count]==4){//only 4 left in table view, so paginate
                 [self getJSON];
             }
-            [self.postCollView reloadData];
+            [postCollView reloadData];
             
             userProfile.likesInHour = [NSNumber numberWithInt:[userProfile.likesInHour integerValue]+1];
             [ModelHelper saveManagedObjectContext];
@@ -180,7 +232,7 @@
         iconDownloader.post = post;
         [iconDownloader setCompletionHandler:^{
             
-            PostCollectionViewCell *cell = (PostCollectionViewCell*)[self.postCollView cellForItemAtIndexPath:indexPath];
+            PostCollectionViewCell *cell = (PostCollectionViewCell*)[postCollView cellForItemAtIndexPath:indexPath];
             
             // Display the newly loaded image
             cell.mainImg.image = post.thumbnailImg;
@@ -204,7 +256,7 @@
 {
     if ([posts count] > 0)
     {
-        NSArray *visiblePaths = [self.postCollView indexPathsForVisibleItems];
+        NSArray *visiblePaths = [postCollView indexPathsForVisibleItems];
         for (NSIndexPath *indexPath in visiblePaths)
         {
             Post *post = (posts)[indexPath.row];
@@ -249,13 +301,22 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    [super textFieldDidBeginEditing:textField];
-    self.postCollView.userInteractionEnabled=NO;
+//    [super textFieldDidBeginEditing:textField];
+    postCollView.userInteractionEnabled=NO;
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^(void) {
+                         hashtagTextFieldView.frame=CGRectMake(hashtagTextFieldView.frame.origin.x, hashtagTextFieldView.frame.origin.y, hashtagTextFieldView.frame.size.width, hashtagTextFieldView.frame.size.height+44*3);
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [super textFieldShouldReturn:textField];
-    self.postCollView.userInteractionEnabled=YES;
+    postCollView.userInteractionEnabled=YES;
     return YES;
 }
 
@@ -263,7 +324,7 @@
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner{
 //    NSLog(@"%@", self.view.constraints);
     [super bannerViewDidLoadAd:banner];
-    [self replaceConstraintOnView:self.postCollView withConstant:self.postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
+    [self replaceConstraintOnView:postCollView withConstant:postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
     [self animateConstraints];
 }
 
