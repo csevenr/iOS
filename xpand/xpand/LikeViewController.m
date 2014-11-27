@@ -1,19 +1,19 @@
 //
-//  ManualGridViewController.m
-//  GramManager
+//  ViewController.m
+//  xpand
 //
-//  Created by Oliver Rodden on 29/09/2014.
+//  Created by Oliver Rodden on 27/11/2014.
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
-#import "ManualGridViewController.h"
+#import "LikeViewController.h"
 #import "Post.h"
 #import "PostCollectionViewCell.h"
 #import "UserProfile+Helper.h"
 #import "ModelHelper.h"
 #import "ImageDownloader.h"
 
-@interface ManualGridViewController (){
+@interface LikeViewController () {
     UIView *hashtagTextFieldView;
     UITextField *hashtagTextField;
     UITableView *hashtagTableView;
@@ -26,15 +26,19 @@
 
 @end
 
-@implementation ManualGridViewController
+@implementation LikeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Likes" style:UIBarButtonItemStyleBordered target:nil action:nil];
     
+//    UINib *cellNib = [UINib nibWithNibName:@"NibCell" bundle:nil];
+//    [postCollView registerNib:cellNib forCellWithReuseIdentifier:@"postCell"];
+    [postCollView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
+    
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
     scrollView.backgroundColor = [UIColor redColor];
-//    scrollView.
+    //    scrollView.
     [self.view addSubview:scrollView];
     
     UIView *scrollSubView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.width*2.5)];
@@ -43,7 +47,7 @@
     
     [scrollView setContentSize:scrollSubView.frame.size];
     
-
+    
     UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 260.0, self.view.frame.size.width - 36.0, 50.0)];
     [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
     [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -54,10 +58,10 @@
     
     hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(16.0, 200.0, self.view.frame.size.width - 32.0, 50.0)];
     [scrollSubView addSubview:hashtagTextFieldView];
-
+    
     hashtagTextFieldView.layer.borderWidth=1.0;
     hashtagTextFieldView.layer.borderColor=[UIColor blackColor].CGColor;
-
+    
     hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
     hashtagTextField.placeholder = @"#";
     hashtagTextField.delegate = self;
@@ -69,7 +73,6 @@
     [hashtagTextFieldView addSubview:hashtagTextField];
     [hashtagTextFieldView addSubview:hashtagTableView];
     hashtagTextFieldView.clipsToBounds = YES;
-
     
     
     
@@ -93,7 +96,7 @@
 
 - (IBAction)searchBtnPressed {
     if ([posts count]>0) [posts removeAllObjects];
-
+    
     if (![self.hashtagTextField.text isEqualToString:@""]) {
         [self searchingUi];
         [self getJSON];
@@ -103,7 +106,7 @@
 }
 
 -(void)JSONReceived:(NSDictionary *)JSONDictionary{
-   [self performSelectorOnMainThread:@selector(searchingUi) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(searchingUi) withObject:nil waitUntilDone:NO];
     if (JSONDictionary!=nil) {
         if ([[JSONDictionary objectForKey:@"data"] count]==0) {//Invalid hashtag, no data in JSON
             [self showAlertLabelWithString:@"No posts for that hashtag"];
@@ -115,6 +118,17 @@
             //reload the table view with new data
             [self performSelectorOnMainThread:@selector(reload) withObject:nil waitUntilDone:NO];//call ui on main thread
         }
+    }
+}
+
+-(void)getJSON{
+    if (![self.hashtagTextField.text isEqualToString:@""]) {
+        if ([[self.hashtagTextField.text substringToIndex:1] isEqualToString:@"#"]) {
+            self.hashtagTextField.text=[self.hashtagTextField.text substringFromIndex:1];
+        }
+        [insta getJsonForHashtag:hashtagTextField.text];
+        [insta setDelegate:self];
+        [self addHashtagToRecentArray:hashtagTextField.text];
     }
 }
 
@@ -148,6 +162,28 @@
     [self showAlertLabelWithString:errorString];
 }
 
+#pragma Mark Utils
+
+-(void)addHashtagToRecentArray:(NSString*)hashtag{
+    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
+    if (array==nil) {
+        array=[NSMutableArray new];
+    }
+    
+    NSArray *hashtagToRemove;
+    for (NSString *hashtagInArray in array) {
+        if ([hashtagInArray isEqualToString:hashtag]){
+            hashtagToRemove = [NSArray arrayWithObject:hashtagInArray];//add to array and remove after loop to avoid mutating whilst enumerating
+        }
+    }
+    [array removeObjectsInArray:hashtagToRemove];
+    [array insertObject:hashtag atIndex:0];
+    
+    NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
+    userProfile.recentHashtags = arrayData;
+    [ModelHelper saveManagedObjectContext];
+}
+
 #pragma Mark collView methods
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -157,7 +193,7 @@
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
     if (secondsBetween >= 3600.000001) {
         userProfile.likeTime = [NSDate date];
-//        userProfile.likesInHour = [NSNumber numberWithInt:0];
+        //        userProfile.likesInHour = [NSNumber numberWithInt:0];
     }else{
         if ([userProfile.likesInHour integerValue]<30) {
             Post *selectedPost = [posts objectAtIndex:indexPath.row];
@@ -195,30 +231,31 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PostCollectionViewCell *cell = nil;
+    NSLog(@"a");
+//    PostCollectionViewCell *cell = nil;
     
     NSUInteger nodeCount = [posts count];
     
     static NSString *MyIdentifier = @"postCell";
-    cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
     
-    // Leave cells empty if there's no data yet
-    if (nodeCount > 0){
-        // Set up the cell representing the app
-        Post *post = (posts)[indexPath.row];
-        
-        // Only load cached images; defer new downloads until scrolling ends
-        if (!post.thumbnailImg){
-            if (collectionView.dragging == NO && collectionView.decelerating == NO){
-                [self startImageDownload:post forIndexPath:indexPath];
-            }
-            // if a download is deferred or in progress, return a placeholder image
-            cell.mainImg.image = nil;
-            cell.backgroundColor = [UIColor lightGrayColor];
-        }else{
-            cell.mainImg.image = post.thumbnailImg;
-        }
-    }
+//    // Leave cells empty if there's no data yet
+//    if (nodeCount > 0){
+//        // Set up the cell representing the app
+//        Post *post = (posts)[indexPath.row];
+//        
+//        // Only load cached images; defer new downloads until scrolling ends
+//        if (!post.thumbnailImg){
+//            if (collectionView.dragging == NO && collectionView.decelerating == NO){
+//                [self startImageDownload:post forIndexPath:indexPath];
+//            }
+//            // if a download is deferred or in progress, return a placeholder image
+//            cell.mainImg.image = nil;
+//            cell.backgroundColor = [UIColor lightGrayColor];
+//        }else{
+//            cell.mainImg.image = post.thumbnailImg;
+//        }
+//    }
     
     return cell;
 }
@@ -300,7 +337,7 @@
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-//    [super textFieldDidBeginEditing:textField];
+    //    [super textFieldDidBeginEditing:textField];
     postCollView.userInteractionEnabled=NO;
     [UIView animateWithDuration:0.3
                           delay:0.0
@@ -321,15 +358,15 @@
 
 #pragma Mark adBanner methods
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner{
-//    NSLog(@"%@", self.view.constraints);
+    //    NSLog(@"%@", self.view.constraints);
     [super bannerViewDidLoadAd:banner];
-//<<<<<<< HEAD
-//    [self replaceConstraintOnView:postCollView withConstant:postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
-//    [self animateConstraints];
-//=======
-//    [self replaceConstraintOnView:self.postCollView withConstant:self.postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
-//    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
-//>>>>>>> 7a0cebd571693bf4f317ae1fd9457b6423a208f9
+    //<<<<<<< HEAD
+    //    [self replaceConstraintOnView:postCollView withConstant:postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
+    //    [self animateConstraints];
+    //=======
+    //    [self replaceConstraintOnView:self.postCollView withConstant:self.postCollView.frame.size.height-50 andAttribute:NSLayoutAttributeHeight onSelf:NO];
+    //    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
+    //>>>>>>> 7a0cebd571693bf4f317ae1fd9457b6423a208f9
 }
 
 //- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
