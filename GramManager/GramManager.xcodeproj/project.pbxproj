@@ -36,6 +36,9 @@
 		66FA06FA19D998710081C68E /* ManualGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06F919D998710081C68E /* ManualGridViewController.m */; };
 		66FA06FD19D99C6D0081C68E /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FA06FC19D99C6D0081C68E /* PostCollectionViewCell.m */; };
 		CC2B60A619E81B0A00F3A5C9 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2B60A519E81B0A00F3A5C9 /* MasterViewController.m */; };
+		CC57F2E21A1D4CEB00DE0E8B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57F2E11A1D4CEB00DE0E8B /* MenuViewController.m */; };
+		CC57F2E71A1D4D2100DE0E8B /* CircleCounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57F2E41A1D4D2100DE0E8B /* CircleCounterView.m */; };
+		CC57F2E81A1D4D2100DE0E8B /* CircleDownCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57F2E61A1D4D2100DE0E8B /* CircleDownCounter.m */; };
 		CCAF95DD19D6E93300A92468 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CCAF95DC19D6E93300A92468 /* Post.m */; };
 /* End PBXBuildFile section */
 
@@ -423,6 +426,7 @@
 				667608BF19DD619F00E22208 /* Menu.m in Sources */,
 				66244E5519F8EEC700B5D54C /* AlertLabel.m in Sources */,
 				CCAF95DD19D6E93300A92468 /* Post.m in Sources */,
+
 				66EB660F19DC4F8D00C62A1D /* LikedPost+Helper.m in Sources */,
 				66EB662119DC5AF900C62A1D /* LikedPost.m in Sources */,
 				665EBBC919D5BA5600B23652 /* Insta.m in Sources */,
