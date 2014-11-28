@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
 #import "Insta.h"
 
 @protocol loginDelegate <NSObject>
@@ -15,7 +16,7 @@
 
 @end
 
-@interface LoginViewController : UIViewController <instaDelegate, UIWebViewDelegate>
+@interface LoginViewController : MasterViewController <instaDelegate, UIWebViewDelegate>
 
 @property (nonatomic, weak) id<loginDelegate> delegate;
 

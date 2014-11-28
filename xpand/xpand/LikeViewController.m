@@ -82,6 +82,8 @@
     postCollView.backgroundColor = [UIColor blackColor];
     [scrollSubView addSubview:postCollView];
     
+    [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
+    
     imageDownloadsInProgress = [NSMutableDictionary dictionary];
     
     self.searchActivityIndcator.hidden=YES;//set this in code, because it didnt work on storyboard for some reason??
@@ -120,6 +122,10 @@
         }
     }
 }
+
+//-(void)loginFinished{
+//    [self popSelf];
+//}
 
 -(void)getJSON{
     if (![self.hashtagTextField.text isEqualToString:@""]) {
@@ -231,31 +237,30 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"a");
 //    PostCollectionViewCell *cell = nil;
     
     NSUInteger nodeCount = [posts count];
     
     static NSString *MyIdentifier = @"postCell";
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
+    PostCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
     
 //    // Leave cells empty if there's no data yet
-//    if (nodeCount > 0){
-//        // Set up the cell representing the app
-//        Post *post = (posts)[indexPath.row];
-//        
-//        // Only load cached images; defer new downloads until scrolling ends
-//        if (!post.thumbnailImg){
-//            if (collectionView.dragging == NO && collectionView.decelerating == NO){
-//                [self startImageDownload:post forIndexPath:indexPath];
-//            }
-//            // if a download is deferred or in progress, return a placeholder image
-//            cell.mainImg.image = nil;
-//            cell.backgroundColor = [UIColor lightGrayColor];
-//        }else{
-//            cell.mainImg.image = post.thumbnailImg;
-//        }
-//    }
+    if (nodeCount > 0){
+        // Set up the cell representing the app
+        Post *post = (posts)[indexPath.row];
+        
+        // Only load cached images; defer new downloads until scrolling ends
+        if (!post.thumbnailImg){
+            if (collectionView.dragging == NO && collectionView.decelerating == NO){
+                [self startImageDownload:post forIndexPath:indexPath];
+            }
+            // if a download is deferred or in progress, return a placeholder image
+            cell.mainImg.image = nil;
+            cell.backgroundColor = [UIColor lightGrayColor];
+        }else{
+            cell.mainImg.image = post.thumbnailImg;
+        }
+    }
     
     return cell;
 }
@@ -267,7 +272,8 @@
         iconDownloader = [[ImageDownloader alloc] init];
         iconDownloader.post = post;
         [iconDownloader setCompletionHandler:^{
-            
+            NSLog(@"cc");
+
             PostCollectionViewCell *cell = (PostCollectionViewCell*)[postCollView cellForItemAtIndexPath:indexPath];
             
             // Display the newly loaded image

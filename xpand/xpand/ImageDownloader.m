@@ -68,7 +68,6 @@
 {
     // Set appIcon and clear temporary data/image
     UIImage *image = [[UIImage alloc] initWithData:self.activeDownload];
-    
     if (image.size.width != kAppIconSize || image.size.height != kAppIconSize)
 	{
         CGSize itemSize = CGSizeMake(kAppIconSize, kAppIconSize);
@@ -77,10 +76,14 @@
 		[image drawInRect:imageRect];
 		self.post.thumbnailImg = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
+        NSLog(@"aa");
+
     }
     else
     {
         self.post.thumbnailImg = image;
+        NSLog(@"bb");
+
     }
     
     self.activeDownload = nil;

@@ -131,7 +131,6 @@
 
 -(void)userInfoFinished{
     UserProfile *userProfile = [UserProfile getActiveUserProfile];
-    NSLog(@"user profile %@", userProfile);
     if (userProfile.token1==nil) {
         userProfile.token1=[tokens objectAtIndex:0];
     }
@@ -144,10 +143,10 @@
     if (userProfile.token4==nil){
         userProfile.token4=[tokens objectAtIndex:3];
     }
+    NSLog(@"user profile %@", userProfile);
     dispatch_async(dispatch_get_main_queue(), ^{
         [ModelHelper saveManagedObjectContext];
-        [self.delegate loginFinished];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self popSelf];
     });
 }
 

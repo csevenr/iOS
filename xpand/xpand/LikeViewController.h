@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "LikeMasterViewController.h"
-#import "LikeMasterViewController.h"
+#import "LoginViewController.h"
 
 @class AlertLabel;
 
-@interface LikeViewController : LikeMasterViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface LikeViewController : LikeMasterViewController <loginDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (weak, nonatomic) IBOutlet UITableView *hashtagTableView;

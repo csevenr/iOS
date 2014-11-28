@@ -22,7 +22,7 @@
     self.lowResURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"low_resolution"] objectForKey:@"url"];
     self.standardResURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"];
     self.thumbnailURL = [[[JSONDictionary objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"];
-    
+    NSLog(@"_!_!%@, %@, %@", self.lowResURL, self.standardResURL, self.thumbnailURL);
     self.userId = [[JSONDictionary objectForKey:@"user"] objectForKey:@"id"];
     self.userName = [[JSONDictionary objectForKey:@"user"] objectForKey:@"username"];
 }

@@ -49,7 +49,7 @@
             } else {
                 NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
-                NSLog(@"# %@", jsonDictionary);
+//                NSLog(@"# %@", jsonDictionary);
                 
                 paginationURL = [[jsonDictionary objectForKey:@"pagination"]objectForKey:@"next_url"];
 
@@ -112,7 +112,7 @@
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            NSLog(@"### %@", jsonDictionary);
+//            NSLog(@"### %@", jsonDictionary);
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                 userProfile = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
@@ -154,7 +154,7 @@
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            NSLog(@"#### %@", jsonDictionary);
+//           NSLog(@"#### %@", jsonDictionary);
             
             //check for at least 10 posts if not alter count
             int countToUse=10;
