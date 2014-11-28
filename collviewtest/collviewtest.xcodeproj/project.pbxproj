@@ -15,6 +15,7 @@
 		664185F61A28907C0091D4F4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 664185F51A28907C0091D4F4 /* Images.xcassets */; };
 		664185F91A28907C0091D4F4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 664185F71A28907C0091D4F4 /* LaunchScreen.xib */; };
 		664186051A28907C0091D4F4 /* collviewtestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 664186041A28907C0091D4F4 /* collviewtestTests.m */; };
+		66FB10991A28E4D400BC1710 /* FloatingHeaderViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FB10981A28E4D400BC1710 /* FloatingHeaderViewFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		664185FE1A28907C0091D4F4 /* collviewtestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = collviewtestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		664186031A28907C0091D4F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		664186041A28907C0091D4F4 /* collviewtestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = collviewtestTests.m; sourceTree = "<group>"; };
+		66FB10971A28E4D300BC1710 /* FloatingHeaderViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeaderViewFlowLayout.h; sourceTree = "<group>"; };
+		66FB10981A28E4D400BC1710 /* FloatingHeaderViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeaderViewFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 				664185EA1A28907C0091D4F4 /* AppDelegate.m */,
 				664185EF1A28907C0091D4F4 /* ViewController.h */,
 				664185F01A28907C0091D4F4 /* ViewController.m */,
+				66FB10971A28E4D300BC1710 /* FloatingHeaderViewFlowLayout.h */,
+				66FB10981A28E4D400BC1710 /* FloatingHeaderViewFlowLayout.m */,
 				664185F21A28907C0091D4F4 /* Main.storyboard */,
 				664185F51A28907C0091D4F4 /* Images.xcassets */,
 				664185F71A28907C0091D4F4 /* LaunchScreen.xib */,
@@ -222,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66FB10991A28E4D400BC1710 /* FloatingHeaderViewFlowLayout.m in Sources */,
 				664185EB1A28907C0091D4F4 /* AppDelegate.m in Sources */,
 				664185EE1A28907C0091D4F4 /* collviewtest.xcdatamodeld in Sources */,
 				664185F11A28907C0091D4F4 /* ViewController.m in Sources */,
@@ -418,6 +424,7 @@
 				6641860A1A28907C0091D4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6641860B1A28907C0091D4F4 /* Build configuration list for PBXNativeTarget "collviewtestTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				6641860D1A28907C0091D4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

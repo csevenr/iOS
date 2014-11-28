@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FloatingHeaderViewFlowLayout.h"
 
 @interface ViewController ()
 
@@ -18,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    UICollectionView *collView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    UICollectionView *collView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[[FloatingHeaderViewFlowLayout alloc] init]];
     collView.delegate = self;
     collView.dataSource = self;
     collView.backgroundColor = [UIColor whiteColor];
@@ -63,12 +64,14 @@
     if (section == 0) {
         return CGSizeMake(200.0, 20.0);
     }else{
-        return CGSizeMake(200.0, 40.0);
+        return CGSizeMake(200.0, 120.0);
     }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
+    
+    NSLog(@"%d", indexPath.section);
     UICollectionReusableView *reusableview = nil;
     
     if (kind == UICollectionElementKindSectionHeader) {

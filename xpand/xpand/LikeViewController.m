@@ -13,6 +13,7 @@
 #import "ModelHelper.h"
 #import "ImageDownloader.h"
 #import "AlertLabel.h"
+#import "FloatingHeaderViewFlowLayout.h"
 
 @interface LikeViewController () {
     UIView *hashtagTextFieldView;
@@ -77,7 +78,7 @@
     
     
     
-    postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, scrollSubView.frame.size.height - self.view.frame.size.width*1.5, self.view.frame.size.width, self.view.frame.size.width*1.5) collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, scrollSubView.frame.size.height - self.view.frame.size.width*1.5, self.view.frame.size.width, self.view.frame.size.width*1.5) collectionViewLayout:[[FloatingHeaderViewFlowLayout alloc] init]];
     postCollView.delegate = self;
     postCollView.dataSource = self;
     postCollView.backgroundColor = [UIColor blackColor];

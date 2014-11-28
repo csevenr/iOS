@@ -30,6 +30,7 @@
 		66A43EBA1A274FD900829313 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB91A274FD900829313 /* LoginViewController.m */; };
 		66A43EBD1A27500600829313 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EBC1A27500600829313 /* ImageDownloader.m */; };
 		66ED89461A2794C900C05E9D /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66ED89451A2794C900C05E9D /* NibCell.xib */; };
+		66FB10961A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FB10951A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		66A43EBB1A27500600829313 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
 		66A43EBC1A27500600829313 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
 		66ED89451A2794C900C05E9D /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
+		66FB10941A28E47100BC1710 /* FloatingHeaderViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeaderViewFlowLayout.h; sourceTree = "<group>"; };
+		66FB10951A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeaderViewFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				66A43E891A274BA600829313 /* PostCollectionViewCell.m */,
 				66A43E631A274A0D00829313 /* AppDelegate.h */,
 				66A43E641A274A0D00829313 /* AppDelegate.m */,
+				66FB10941A28E47100BC1710 /* FloatingHeaderViewFlowLayout.h */,
+				66FB10951A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m */,
 				66A43E6C1A274A0D00829313 /* Main.storyboard */,
 				66A43E6F1A274A0D00829313 /* Images.xcassets */,
 				66A43E711A274A0D00829313 /* LaunchScreen.xib */,
@@ -329,6 +334,7 @@
 				66A43E8A1A274BA600829313 /* PostCollectionViewCell.m in Sources */,
 				66A43E6B1A274A0D00829313 /* LikeViewController.m in Sources */,
 				66A43E681A274A0D00829313 /* xpand.xcdatamodeld in Sources */,
+				66FB10961A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m in Sources */,
 				66A43EBD1A27500600829313 /* ImageDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
