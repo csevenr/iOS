@@ -10,7 +10,7 @@
 #import "Post.h"
 @interface PostCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *mainImg;
+@property (nonatomic) UIImageView *mainImg;
 
 @property (nonatomic) Post *post;
 

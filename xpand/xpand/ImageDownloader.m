@@ -76,13 +76,11 @@
 		[image drawInRect:imageRect];
 		self.post.thumbnailImg = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
-        NSLog(@"aa");
 
     }
     else
     {
         self.post.thumbnailImg = image;
-        NSLog(@"bb");
 
     }
     

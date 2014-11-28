@@ -9,14 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "LikeMasterViewController.h"
 #import "LoginViewController.h"
+#import "Insta.h"
+#import "ClientController.h"
 
 @class AlertLabel;
 
-@interface LikeViewController : LikeMasterViewController <loginDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface LikeViewController : LikeMasterViewController <instaDelegate, loginDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>{
+    Insta *insta;
+    ClientController *cc;
+
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (weak, nonatomic) IBOutlet UITableView *hashtagTableView;
-@property (nonatomic) IBOutlet AlertLabel *alertLbl;
+@property (nonatomic) AlertLabel *alertLbl;
 @property (nonatomic) IBOutlet UILabel *likeCountLbl;
 @property (nonatomic) IBOutlet UIView *searchContainer;
 

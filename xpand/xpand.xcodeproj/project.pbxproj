@@ -27,7 +27,6 @@
 		66A43EAE1A274EFC00829313 /* AlertLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EAD1A274EFC00829313 /* AlertLabel.m */; };
 		66A43EB31A274F4B00829313 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB01A274F4B00829313 /* MasterViewController.m */; };
 		66A43EB41A274F4B00829313 /* LikeMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB21A274F4B00829313 /* LikeMasterViewController.m */; };
-		66A43EB71A274FAD00829313 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB61A274FAD00829313 /* Menu.m */; };
 		66A43EBA1A274FD900829313 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB91A274FD900829313 /* LoginViewController.m */; };
 		66A43EBD1A27500600829313 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EBC1A27500600829313 /* ImageDownloader.m */; };
 		66ED89461A2794C900C05E9D /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66ED89451A2794C900C05E9D /* NibCell.xib */; };
@@ -82,8 +81,6 @@
 		66A43EB01A274F4B00829313 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		66A43EB11A274F4B00829313 /* LikeMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeMasterViewController.h; sourceTree = "<group>"; };
 		66A43EB21A274F4B00829313 /* LikeMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeMasterViewController.m; sourceTree = "<group>"; };
-		66A43EB51A274FAD00829313 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
-		66A43EB61A274FAD00829313 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
 		66A43EB81A274FD900829313 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		66A43EB91A274FD900829313 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		66A43EBB1A27500600829313 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
@@ -148,8 +145,6 @@
 				66A43E711A274A0D00829313 /* LaunchScreen.xib */,
 				66A43EAC1A274EFC00829313 /* AlertLabel.h */,
 				66A43EAD1A274EFC00829313 /* AlertLabel.m */,
-				66A43EB51A274FAD00829313 /* Menu.h */,
-				66A43EB61A274FAD00829313 /* Menu.m */,
 				66A43EBB1A27500600829313 /* ImageDownloader.h */,
 				66A43EBC1A27500600829313 /* ImageDownloader.m */,
 				66A43E5F1A274A0D00829313 /* Supporting Files */,
@@ -204,12 +199,12 @@
 		66A43EBF1A27506800829313 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				66A43E691A274A0D00829313 /* LikeViewController.h */,
-				66A43E6A1A274A0D00829313 /* LikeViewController.m */,
 				66A43EAF1A274F4B00829313 /* MasterViewController.h */,
 				66A43EB01A274F4B00829313 /* MasterViewController.m */,
 				66A43EB11A274F4B00829313 /* LikeMasterViewController.h */,
 				66A43EB21A274F4B00829313 /* LikeMasterViewController.m */,
+				66A43E691A274A0D00829313 /* LikeViewController.h */,
+				66A43E6A1A274A0D00829313 /* LikeViewController.m */,
 				66A43EB81A274FD900829313 /* LoginViewController.h */,
 				66A43EB91A274FD900829313 /* LoginViewController.m */,
 			);
@@ -319,7 +314,6 @@
 			files = (
 				66A43E931A274BEC00829313 /* ClientController.m in Sources */,
 				66A43EA41A274E1300829313 /* LikedPost+Helper.m in Sources */,
-				66A43EB71A274FAD00829313 /* Menu.m in Sources */,
 				66A43EA51A274E1300829313 /* UserProfile+Helper.m in Sources */,
 				66A43EAE1A274EFC00829313 /* AlertLabel.m in Sources */,
 				66A43E651A274A0D00829313 /* AppDelegate.m in Sources */,

@@ -12,6 +12,7 @@
 #import "UserProfile+Helper.h"
 #import "ModelHelper.h"
 #import "ImageDownloader.h"
+#import "AlertLabel.h"
 
 @interface LikeViewController () {
     UIView *hashtagTextFieldView;
@@ -22,6 +23,8 @@
     NSMutableArray *posts;
     NSTimer *likeStatusTimer;
     NSMutableDictionary *imageDownloadsInProgress;
+    
+    BOOL alertIsShowing;
 }
 
 @end
@@ -30,12 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    insta = [Insta new];
+    
     self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Likes" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    
-//    UINib *cellNib = [UINib nibWithNibName:@"NibCell" bundle:nil];
-//    [postCollView registerNib:cellNib forCellWithReuseIdentifier:@"postCell"];
-    [postCollView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
-    
+        
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
     scrollView.backgroundColor = [UIColor redColor];
     //    scrollView.
@@ -91,15 +92,39 @@
     likeStatusTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLikeStatusLbl) userInfo:nil repeats:YES];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
+}
+
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self login];
     [self updateLikeStatusLbl];
 }
+
+-(void)login{
+    if ([UserProfile getActiveUserProfile]!=nil) {
+        userProfile = [UserProfile getActiveUserProfile];
+    }else{
+        [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:YES]];
+    }
+}
+
+-(void)likedPost{
+    self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
+}
+
+//-(void)swicthButtonPressed{
+//    [UserProfile deactivateCurrentUserProfile];
+//    userProfile = nil;
+//    [self login];
+//}
 
 - (IBAction)searchBtnPressed {
     if ([posts count]>0) [posts removeAllObjects];
     
-    if (![self.hashtagTextField.text isEqualToString:@""]) {
+    if (![hashtagTextField.text isEqualToString:@""]) {
         [self searchingUi];
         [self getJSON];
     }else{
@@ -128,9 +153,9 @@
 //}
 
 -(void)getJSON{
-    if (![self.hashtagTextField.text isEqualToString:@""]) {
-        if ([[self.hashtagTextField.text substringToIndex:1] isEqualToString:@"#"]) {
-            self.hashtagTextField.text=[self.hashtagTextField.text substringFromIndex:1];
+    if (![hashtagTextField.text isEqualToString:@""]) {
+        if ([[hashtagTextField.text substringToIndex:1] isEqualToString:@"#"]) {
+            hashtagTextField.text=[hashtagTextField.text substringFromIndex:1];
         }
         [insta getJsonForHashtag:hashtagTextField.text];
         [insta setDelegate:self];
@@ -168,6 +193,24 @@
     [self showAlertLabelWithString:errorString];
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self.view];
+    
+    if (!CGRectContainsPoint(hashtagTextFieldView.frame, location)) {
+        //        [self textFieldShouldReturn:self.hashtagTextField];
+        [self closeTextField];
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
+    if ([segue.identifier isEqualToString:@"login"]){
+        self.loginVc = segue.destinationViewController;
+        [(LoginViewController*)self.loginVc setLogin:[sender boolValue]];
+    }
+}
+
 #pragma Mark Utils
 
 -(void)addHashtagToRecentArray:(NSString*)hashtag{
@@ -188,6 +231,20 @@
     NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
     userProfile.recentHashtags = arrayData;
     [ModelHelper saveManagedObjectContext];
+}
+
+-(void)showAlertLabelWithString:(NSString*)string{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.alertLbl.text=string;
+        if (!alertIsShowing) {
+            alertIsShowing = YES;
+            [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y+50 andAttribute:NSLayoutAttributeTop onSelf:NO];
+            [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
+            
+            [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y-50 andAttribute:NSLayoutAttributeTop onSelf:NO];
+            [self animateConstraintsWithDuration:0.3 delay:2.0 andCompletionHandler:^{alertIsShowing = NO;}];
+        }
+    });
 }
 
 #pragma Mark collView methods
@@ -219,6 +276,10 @@
             [alert show];
         }
     }
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake((self.view.frame.size.width-30)/2, (self.view.frame.size.width-30)/2);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -265,6 +326,21 @@
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+        UIView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+        
+        headerView.backgroundColor = [UIColor greenColor];
+        
+        [reusableview addSubview:headerView];
+    }
+    return reusableview;
+}
+
 -(void)startImageDownload:(Post*)post forIndexPath:(NSIndexPath *)indexPath{
     ImageDownloader *iconDownloader = (imageDownloadsInProgress)[indexPath];
     if (iconDownloader == nil)
@@ -272,11 +348,12 @@
         iconDownloader = [[ImageDownloader alloc] init];
         iconDownloader.post = post;
         [iconDownloader setCompletionHandler:^{
-            NSLog(@"cc");
 
             PostCollectionViewCell *cell = (PostCollectionViewCell*)[postCollView cellForItemAtIndexPath:indexPath];
-            
+
             // Display the newly loaded image
+            cell.backgroundColor = [UIColor greenColor];
+            cell.mainImg.backgroundColor = [UIColor redColor];
             cell.mainImg.image = post.thumbnailImg;
             
             // Remove the IconDownloader from the in progress list.
@@ -342,8 +419,12 @@
     [self loadImagesForOnscreenRows];
 }
 
+#pragma Mark textField delegate methods
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    //    [super textFieldDidBeginEditing:textField];
+    [hashtagTableView reloadData];
+    [self replaceConstraintOnView:self.searchContainer withConstant:182.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
+    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
     postCollView.userInteractionEnabled=NO;
     [UIView animateWithDuration:0.3
                           delay:0.0
@@ -357,9 +438,60 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [super textFieldShouldReturn:textField];
+    [self searchBtnPressed];
+    [self closeTextField];
     postCollView.userInteractionEnabled=YES;
     return YES;
+}
+
+-(void)closeTextField{ //split into this method so if you click outside you dont search
+    [hashtagTextField resignFirstResponder];
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^(void) {
+                         hashtagTextFieldView.frame=CGRectMake(hashtagTextFieldView.frame.origin.x, hashtagTextFieldView.frame.origin.y, hashtagTextFieldView.frame.size.width, 50.0);
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+//    [self replaceConstraintOnView:self.searchContainer withConstant:50.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
+//    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
+}
+
+#pragma Mark tableView delegate methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;    //count number of row from counting array hear cataGorry is An Array
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *MyIdentifier = @"MyIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+    }
+    
+    // Here we use the provided setImageWithURL: method to load the web image
+    // Ensure you use a placeholder image otherwise cells will be initialized with no image
+    
+    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
+    if (indexPath.row<=[array count]-1) {
+        cell.textLabel.text = [array objectAtIndex:indexPath.row];
+    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    hashtagTextField.text=[tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    [self textFieldShouldReturn:hashtagTextField];
+    [self searchBtnPressed];
 }
 
 #pragma Mark adBanner methods

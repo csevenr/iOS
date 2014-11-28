@@ -8,25 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "MasterViewController.h"
-#import "ClientController.h"
-#import "Insta.h"
-#import "Menu.h"
 
-@class AlertLabel;
 
-@interface LikeMasterViewController : MasterViewController <instaDelegate, MenuDelegate, UITextFieldDelegate/*, UITableViewDelegate, UITableViewDataSource*/>{
-    ClientController *cc;
-    Insta *insta;
+@interface LikeMasterViewController : MasterViewController <UITextFieldDelegate/*, UITableViewDelegate, UITableViewDataSource*/>{
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (weak, nonatomic) IBOutlet UITableView *hashtagTableView;
-@property (nonatomic) IBOutlet AlertLabel *alertLbl;
 @property (nonatomic) IBOutlet UILabel *likeCountLbl;
 @property (nonatomic) IBOutlet UIView *searchContainer;
 
 -(void)getJSON;
 - (IBAction)searchBtnPressed;
--(void)showAlertLabelWithString:(NSString*)string;
+//-(void)showAlertLabelWithString:(NSString*)string;
 
 @end

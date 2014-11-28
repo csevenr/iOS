@@ -10,6 +10,13 @@
 
 @implementation PostCollectionViewCell
 
+//-(id)initWithFrame:(CGRect)frame{
+//    if (self == [super initWithFrame:frame]) {
+//        
+//    }
+//    return self;
+//}
+
 //-(void)setPost:(Post *)post{
 //    self->_post = post;
 //    [self setUpCell];
@@ -38,6 +45,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+-(void)layoutSubviews{
+    self.mainImg = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height)];
+    [self addSubview:self.mainImg];
 }
 
 @end
