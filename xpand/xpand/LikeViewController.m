@@ -32,60 +32,25 @@
 
 @implementation LikeViewController
 
+#pragma mark view
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     insta = [Insta new];
     
     self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Likes" style:UIBarButtonItemStyleBordered target:nil action:nil];
-        
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
-    scrollView.backgroundColor = [UIColor redColor];
-    //    scrollView.
-    [self.view addSubview:scrollView];
     
-    UIView *scrollSubView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.width*2.5)];
-    scrollSubView.backgroundColor = [UIColor blueColor];
-    [scrollView addSubview:scrollSubView];
-    
-    [scrollView setContentSize:scrollSubView.frame.size];
-    
-    
-    UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 260.0, self.view.frame.size.width - 36.0, 50.0)];
-    [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
-    [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [scrollSubView addSubview:searchBtn];
-    
-    searchBtn.layer.borderWidth=1.0;
-    searchBtn.layer.borderColor=[UIColor blackColor].CGColor;
-    
-    hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(16.0, 200.0, self.view.frame.size.width - 32.0, 50.0)];
-    [scrollSubView addSubview:hashtagTextFieldView];
-    
-    hashtagTextFieldView.layer.borderWidth=1.0;
-    hashtagTextFieldView.layer.borderColor=[UIColor blackColor].CGColor;
-    
-    hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
-    hashtagTextField.placeholder = @"#";
-    hashtagTextField.delegate = self;
-    
-    hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
-    hashtagTableView.delegate = self;
-    hashtagTableView.dataSource = self;
-    
-    [hashtagTextFieldView addSubview:hashtagTextField];
-    [hashtagTextFieldView addSubview:hashtagTableView];
-    hashtagTextFieldView.clipsToBounds = YES;
-    
-    
-    
-    postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, scrollSubView.frame.size.height - self.view.frame.size.width*1.5, self.view.frame.size.width, self.view.frame.size.width*1.5) collectionViewLayout:[[FloatingHeaderViewFlowLayout alloc] init]];
+    postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:[[FloatingHeaderViewFlowLayout alloc] init]];
     postCollView.delegate = self;
     postCollView.dataSource = self;
     postCollView.backgroundColor = [UIColor blackColor];
-    [scrollSubView addSubview:postCollView];
+    [self.view addSubview:postCollView];
     
     [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
-    
+    [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"spineyCell"];
+    [postCollView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader"];
+    [postCollView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader"];
+
     imageDownloadsInProgress = [NSMutableDictionary dictionary];
     
     self.searchActivityIndcator.hidden=YES;//set this in code, because it didnt work on storyboard for some reason??
@@ -103,6 +68,8 @@
     [self login];
     [self updateLikeStatusLbl];
 }
+
+#pragma mark interaction
 
 -(void)login{
     if ([UserProfile getActiveUserProfile]!=nil) {
@@ -205,6 +172,8 @@
     }
 }
 
+#pragma mark navigation
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
     if ([segue.identifier isEqualToString:@"login"]){
         self.loginVc = segue.destinationViewController;
@@ -212,7 +181,7 @@
     }
 }
 
-#pragma Mark Utils
+#pragma mark Utils
 
 -(void)addHashtagToRecentArray:(NSString*)hashtag{
     NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
@@ -248,7 +217,7 @@
     });
 }
 
-#pragma Mark collView methods
+#pragma mark collView methods
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (userProfile.likeTime == nil) {
@@ -279,49 +248,41 @@
     }
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake((self.view.frame.size.width-30)/2, (self.view.frame.size.width-30)/2);
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    return UIEdgeInsetsMake(0, 10.0, 0, 10.0);
-}
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return [posts count];
-}
-
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    PostCollectionViewCell *cell = nil;
+    PostCollectionViewCell *cell = nil;
     
-    NSUInteger nodeCount = [posts count];
-    
-    static NSString *MyIdentifier = @"postCell";
-    PostCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
-    
-//    // Leave cells empty if there's no data yet
-    if (nodeCount > 0){
-        // Set up the cell representing the app
-        Post *post = (posts)[indexPath.row];
+    if (indexPath.section == 0){
+
+        static NSString *MyIdentifier = @"spineyCell";
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
         
-        // Only load cached images; defer new downloads until scrolling ends
-        if (!post.thumbnailImg){
-            if (collectionView.dragging == NO && collectionView.decelerating == NO){
-                [self startImageDownload:post forIndexPath:indexPath];
+        //put the spiney thing in
+        cell.backgroundColor = [UIColor redColor];
+    
+    }else if (indexPath.section == 1){
+        static NSString *MyIdentifier = @"postCell";
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
+        
+        NSUInteger nodeCount = [posts count];
+        //    // Leave cells empty if there's no data yet
+        if (nodeCount > 0){
+            // Set up the cell representing the app
+            Post *post = (posts)[indexPath.row];
+            
+            // Only load cached images; defer new downloads until scrolling ends
+            if (!post.thumbnailImg){
+                if (collectionView.dragging == NO && collectionView.decelerating == NO){
+                    [self startImageDownload:post forIndexPath:indexPath];
+                }
+                // if a download is deferred or in progress, return a placeholder image
+                cell.mainImg.image = nil;
+                cell.backgroundColor = [UIColor lightGrayColor];
+            }else{
+                cell.mainImg.image = post.thumbnailImg;
             }
-            // if a download is deferred or in progress, return a placeholder image
-            cell.mainImg.image = nil;
-            cell.backgroundColor = [UIColor lightGrayColor];
-        }else{
-            cell.mainImg.image = post.thumbnailImg;
         }
+        cell.backgroundColor = [UIColor blueColor];
     }
     
     return cell;
@@ -329,18 +290,91 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionReusableView *reusableview = nil;
+    UICollectionReusableView *headerView = nil;
     
-    if (kind == UICollectionElementKindSectionHeader) {
-        
-        UIView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-        
-        headerView.backgroundColor = [UIColor greenColor];
-        
-        [reusableview addSubview:headerView];
+    if (indexPath.section == 0) {
+        if (kind == UICollectionElementKindSectionHeader) {
+            
+            headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader" forIndexPath:indexPath];
+            
+            headerView.backgroundColor = [UIColor yellowColor];
+        }
+    }else if (indexPath.section == 1) {
+        if (kind == UICollectionElementKindSectionHeader) {
+            
+            headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader" forIndexPath:indexPath];
+            
+            UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 70, self.view.frame.size.width - 32.0, 50.0)];
+            [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
+            [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [headerView addSubview:searchBtn];
+            
+            searchBtn.layer.borderWidth=1.0;
+            searchBtn.layer.borderColor=[UIColor blackColor].CGColor;
+            
+            hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(16.0, 10, self.view.frame.size.width - 32.0, 50.0)];
+            [headerView addSubview:hashtagTextFieldView];
+            
+            hashtagTextFieldView.layer.borderWidth=1.0;
+            hashtagTextFieldView.layer.borderColor=[UIColor blackColor].CGColor;
+            
+            hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
+            hashtagTextField.placeholder = @"#";
+            hashtagTextField.delegate = self;
+            
+            hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
+            hashtagTableView.delegate = self;
+            hashtagTableView.dataSource = self;
+            
+            [hashtagTextFieldView addSubview:hashtagTextField];
+            [hashtagTextFieldView addSubview:hashtagTableView];
+            hashtagTextFieldView.clipsToBounds = YES;
+            
+            headerView.backgroundColor = [UIColor greenColor];
+            
+        }
     }
-    return reusableview;
+    return headerView;
 }
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake((self.view.frame.size.width-30)/2, (self.view.frame.size.width-30)/2);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    if (section == 0) {
+        return UIEdgeInsetsMake(0, (self.view.frame.size.width/2)-((self.view.frame.size.width-30)/2), 0, 10.0);
+    }else{
+        return UIEdgeInsetsMake(0, 10.0, 0, 10.0);
+    }
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 2;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 1;
+    }else{
+        if ([posts count] == 0) {
+            return 10;
+        }
+        return [posts count];
+    }
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return CGSizeMake(200.0, 20.0);
+    }else{
+        return CGSizeMake(200.0, 130.0);
+    }
+}
+
+#pragma mark image download
 
 -(void)startImageDownload:(Post*)post forIndexPath:(NSIndexPath *)indexPath{
     ImageDownloader *iconDownloader = (imageDownloadsInProgress)[indexPath];
@@ -390,6 +424,8 @@
     }
 }
 
+# pragma mark scrollView delegate methods
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //got to the bottom. Paginate
     if (scrollView.contentOffset.y+scrollView.frame.size.height == scrollView.contentSize.height) {
@@ -420,13 +456,13 @@
     [self loadImagesForOnscreenRows];
 }
 
-#pragma Mark textField delegate methods
+#pragma mark textField delegate methods
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     [hashtagTableView reloadData];
     [self replaceConstraintOnView:self.searchContainer withConstant:182.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
     [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
-    postCollView.userInteractionEnabled=NO;
+//    postCollView.userInteractionEnabled=NO;
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -441,7 +477,7 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self searchBtnPressed];
     [self closeTextField];
-    postCollView.userInteractionEnabled=YES;
+//    postCollView.userInteractionEnabled=YES;
     return YES;
 }
 
@@ -460,7 +496,7 @@
 //    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
 }
 
-#pragma Mark tableView delegate methods
+#pragma mark tableView delegate methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -495,7 +531,8 @@
     [self searchBtnPressed];
 }
 
-#pragma Mark adBanner methods
+#pragma mark - adBanner methods
+
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner{
     //    NSLog(@"%@", self.view.constraints);
     [super bannerViewDidLoadAd:banner];
