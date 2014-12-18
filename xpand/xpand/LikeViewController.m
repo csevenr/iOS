@@ -14,12 +14,17 @@
 #import "ImageDownloader.h"
 #import "AlertLabel.h"
 #import "FloatingHeaderViewFlowLayout.h"
+#import "CircleProgressBar.h"
+
+#define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
 
 @interface LikeViewController () {
     UIView *hashtagTextFieldView;
     UITextField *hashtagTextField;
     UITableView *hashtagTableView;
     UICollectionView *postCollView;
+
+    CircleProgressBar *circle;
     
     NSMutableArray *posts;
     NSTimer *likeStatusTimer;
@@ -43,7 +48,7 @@
     postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:[[FloatingHeaderViewFlowLayout alloc] init]];
     postCollView.delegate = self;
     postCollView.dataSource = self;
-    postCollView.backgroundColor = [UIColor blackColor];
+    postCollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:postCollView];
     
     [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
@@ -81,6 +86,7 @@
 
 -(void)likedPost{
     self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
+    [self updateLikeStatusLbl];
 }
 
 //-(void)swicthButtonPressed{
@@ -149,6 +155,8 @@
         }else if ([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]<3600.000001){
             if ([userProfile.likesInHour integerValue]<30) {
                 self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[userProfile.likesInHour integerValue]];
+//                NSLog(@"%d, %f, %f", [userProfile.likesInHour integerValue], [userProfile.likesInHour integerValue]/30.0, 1.0-([userProfile.likesInHour integerValue]/30.0));
+                circle.value = 1.0-([userProfile.likesInHour integerValue]/30.0);
             }else if ([userProfile.likesInHour integerValue]>=30){
                 int mins = (int)floorf([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]/60);
                 self.likeStatusLbl.text=[NSString stringWithFormat:@"%dm until likes are restored", 60-mins];
@@ -257,8 +265,11 @@
         static NSString *MyIdentifier = @"spineyCell";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
         
-        //put the spiney thing in
-        cell.backgroundColor = [UIColor redColor];
+        circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
+        circle.value = 1.0;
+        [cell addSubview:circle];
+        
+//        cell.backgroundColor = [UIColor redColor];
     
     }else if (indexPath.section == 1){
         static NSString *MyIdentifier = @"postCell";
@@ -282,7 +293,7 @@
                 cell.mainImg.image = post.thumbnailImg;
             }
         }
-        cell.backgroundColor = [UIColor blueColor];
+//        cell.backgroundColor = [UIColor blueColor];
     }
     
     return cell;
@@ -297,7 +308,7 @@
             
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader" forIndexPath:indexPath];
             
-            headerView.backgroundColor = [UIColor yellowColor];
+//            headerView.backgroundColor = [UIColor yellowColor];
         }
     }else if (indexPath.section == 1) {
         if (kind == UICollectionElementKindSectionHeader) {
@@ -307,6 +318,7 @@
             UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 70, self.view.frame.size.width - 32.0, 50.0)];
             [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
             [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [searchBtn.titleLabel setFont:FONT];
             [headerView addSubview:searchBtn];
             
             searchBtn.layer.borderWidth=1.0;
@@ -319,7 +331,8 @@
             hashtagTextFieldView.layer.borderColor=[UIColor blackColor].CGColor;
             
             hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
-            hashtagTextField.placeholder = @"#";
+            [hashtagTextField setFont:FONT];
+//            hashtagTextField.placeholder = @"#";
             hashtagTextField.delegate = self;
             
             hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
@@ -330,7 +343,7 @@
             [hashtagTextFieldView addSubview:hashtagTableView];
             hashtagTextFieldView.clipsToBounds = YES;
             
-            headerView.backgroundColor = [UIColor greenColor];
+            headerView.backgroundColor = [UIColor whiteColor];
             
         }
     }
@@ -359,9 +372,6 @@
     if (section == 0) {
         return 1;
     }else{
-        if ([posts count] == 0) {
-            return 10;
-        }
         return [posts count];
     }
 }
@@ -427,8 +437,11 @@
 # pragma mark scrollView delegate methods
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self loadImagesForOnscreenRows];
+
     //got to the bottom. Paginate
     if (scrollView.contentOffset.y+scrollView.frame.size.height == scrollView.contentSize.height) {
+    NSLog(@"sss");
         if ([posts count]<81) {
             [self getJSON];
         }
