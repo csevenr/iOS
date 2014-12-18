@@ -20,7 +20,7 @@
     // Do any additional setup after loading the view.    
     for (UIView *view in self.viewsToStyle) {
         view.layer.borderWidth=1.0;
-        view.layer.borderColor=[UIColor blackColor].CGColor;
+        view.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
     }
 }
 

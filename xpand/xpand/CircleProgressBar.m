@@ -11,6 +11,8 @@
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 #define DEGREES_TO_RADIANS_TOP(angle) DEGREES_TO_RADIANS(angle-90)
 
+#define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
+
 @interface CircleProgressBar (){
 }
 
@@ -20,19 +22,16 @@
 
 -(id)initWithFrame:(CGRect)frame{
     if (self == [super initWithFrame:frame]){
-//        UIBezierPath *path = [UIBezierPath new];
-//        [path addArcWithCenter:self.center radius:50 startAngle:0 endAngle:2 * M_PI clockwise:YES];
-//        value = 0.967;
-        
-        NSTimer *timerr = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timer) userInfo:nil repeats:YES];
-
+        UILabel *lbl = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width * 0.9, self.frame.size.height * 0.9)];
+        lbl.center = self.center;
+        lbl.numberOfLines = 0;
+        lbl.textAlignment = NSTextAlignmentCenter;
+        lbl.text = @"29 likes remaining";
+        lbl.font = FONT;
+//        lbl.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.9];
+        [self addSubview:lbl];
     }
     return self;
-}
-
--(void)timer{
-//    count ++;
-    [self setNeedsDisplay];
 }
 
 -(void)setValue:(float)value{
@@ -46,15 +45,12 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
- 
-
-    
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     [[UIColor whiteColor] setFill];
     CGContextFillRect(context, rect);
     
-    CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:114.0/255.0 green:207.0/255.0 blue:63.0/255.0 alpha:1.0] CGColor]);
 
     UIBezierPath *darkGrey = [UIBezierPath bezierPath];
     [darkGrey addArcWithCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:self.frame.size.width/2 - 5 startAngle:DEGREES_TO_RADIANS_TOP(0) endAngle:DEGREES_TO_RADIANS_TOP(360) clockwise:YES];
@@ -62,7 +58,7 @@
     [darkGrey setLineWidth:3.0];
     [darkGrey stroke];
     
-    CGContextSetStrokeColorWithColor(context, [[UIColor darkGrayColor] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:184.0/255.0 green:231.0/255.0 blue:159.0/255.0 alpha:1.0] CGColor]);
     
     UIBezierPath *lightGrey = [UIBezierPath bezierPath];
     [lightGrey addArcWithCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:self.frame.size.width/2 - 5 startAngle:DEGREES_TO_RADIANS_TOP(0) endAngle:DEGREES_TO_RADIANS_TOP(360 - (360 * self.value))  clockwise:NO];

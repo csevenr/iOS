@@ -31,6 +31,10 @@
     NSMutableDictionary *imageDownloadsInProgress;
     
     BOOL alertIsShowing;
+    
+    UICollectionReusableView *headerForLater;
+    
+    NSMutableArray *postCells;
 }
 
 @end
@@ -139,6 +143,7 @@
 
 -(void)reload{
     [postCollView reloadData];
+    [postCollView reloadItemsAtIndexPaths:postCells];
 }
 
 -(void)searchingUi{
@@ -241,10 +246,13 @@
             [insta likePost:selectedPost];
             
             [posts removeObject:selectedPost];
+            [postCells removeObject:indexPath];
+            
             if ([posts count]==4){//only 4 left in table view, so paginate
                 [self getJSON];
             }
-            [postCollView reloadData];
+//            [postCollView reloadData];
+            [self reload];
             
             userProfile.likesInHour = [NSNumber numberWithInt:[userProfile.likesInHour integerValue]+1];
             [ModelHelper saveManagedObjectContext];
@@ -269,9 +277,12 @@
         circle.value = 1.0;
         [cell addSubview:circle];
         
-//        cell.backgroundColor = [UIColor redColor];
-    
+        cell.userInteractionEnabled = NO;
+
     }else if (indexPath.section == 1){
+        if (postCells == nil) {
+            postCells = [NSMutableArray new];
+        }
         static NSString *MyIdentifier = @"postCell";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
         
@@ -293,7 +304,7 @@
                 cell.mainImg.image = post.thumbnailImg;
             }
         }
-//        cell.backgroundColor = [UIColor blueColor];
+        [postCells addObject:indexPath];
     }
     
     return cell;
@@ -301,38 +312,39 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
+
     UICollectionReusableView *headerView = nil;
+
+    if (kind == UICollectionElementKindSectionHeader) {
     
-    if (indexPath.section == 0) {
-        if (kind == UICollectionElementKindSectionHeader) {
-            
+        if (indexPath.section == 0) {
+        
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader" forIndexPath:indexPath];
             
 //            headerView.backgroundColor = [UIColor yellowColor];
-        }
-    }else if (indexPath.section == 1) {
-        if (kind == UICollectionElementKindSectionHeader) {
+        }else if (indexPath.section == 1) {
+    
             
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader" forIndexPath:indexPath];
+
+//            UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 70, self.view.frame.size.width - 32.0, 50.0)];
+//            [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
+//            [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//            [searchBtn.titleLabel setFont:FONT];
+//            [headerView addSubview:searchBtn];
+//            
+//            searchBtn.layer.borderWidth=1.0;
+//            searchBtn.layer.borderColor=[UIColor blackColor].CGColor;
             
-            UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 70, self.view.frame.size.width - 32.0, 50.0)];
-            [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
-            [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [searchBtn.titleLabel setFont:FONT];
-            [headerView addSubview:searchBtn];
-            
-            searchBtn.layer.borderWidth=1.0;
-            searchBtn.layer.borderColor=[UIColor blackColor].CGColor;
-            
-            hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(16.0, 10, self.view.frame.size.width - 32.0, 50.0)];
+            hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(10.0, 10, self.view.frame.size.width - 20.0, 50.0)];
             [headerView addSubview:hashtagTextFieldView];
             
             hashtagTextFieldView.layer.borderWidth=1.0;
-            hashtagTextFieldView.layer.borderColor=[UIColor blackColor].CGColor;
+            hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
             
             hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
             [hashtagTextField setFont:FONT];
-//            hashtagTextField.placeholder = @"#";
+            hashtagTextField.placeholder = @"#";
             hashtagTextField.delegate = self;
             
             hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
@@ -343,7 +355,9 @@
             [hashtagTextFieldView addSubview:hashtagTableView];
             hashtagTextFieldView.clipsToBounds = YES;
             
-            headerView.backgroundColor = [UIColor whiteColor];
+            headerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.92];
+//            headerView.
+            headerForLater = headerView;
             
         }
     }
@@ -372,6 +386,9 @@
     if (section == 0) {
         return 1;
     }else{
+        if ([posts count] == 0) {
+            return 1;
+        }
         return [posts count];
     }
 }
@@ -380,7 +397,7 @@
     if (section == 0) {
         return CGSizeMake(200.0, 20.0);
     }else{
-        return CGSizeMake(200.0, 130.0);
+        return CGSizeMake(200.0, 70.0);
     }
 }
 
@@ -397,8 +414,8 @@
             PostCollectionViewCell *cell = (PostCollectionViewCell*)[postCollView cellForItemAtIndexPath:indexPath];
 
             // Display the newly loaded image
-            cell.backgroundColor = [UIColor greenColor];
-            cell.mainImg.backgroundColor = [UIColor redColor];
+//            cell.backgroundColor = [UIColor greenColor];
+//            cell.mainImg.backgroundColor = [UIColor redColor];
             cell.mainImg.image = post.thumbnailImg;
             
             // Remove the IconDownloader from the in progress list.
@@ -436,12 +453,21 @@
 
 # pragma mark scrollView delegate methods
 
+#define OFFSET 115.0
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    NSLog(@"%f", postCollView.contentOffset.y);
+    float offset = postCollView.contentOffset.y - 100;
+    if (offset > OFFSET) offset = OFFSET;
+    
+    hashtagTextFieldView.backgroundColor = [UIColor colorWithWhite:1.0 - (offset/OFFSET) alpha:0.8];
+    hashtagTextField.textColor = [UIColor colorWithWhite:(offset/OFFSET) alpha:0.8];
+    
     [self loadImagesForOnscreenRows];
 
     //got to the bottom. Paginate
     if (scrollView.contentOffset.y+scrollView.frame.size.height == scrollView.contentSize.height) {
-    NSLog(@"sss");
+    NSLog(@"%d", [posts count]);
         if ([posts count]<81) {
             [self getJSON];
         }
@@ -516,7 +542,9 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;    //count number of row from counting array hear cataGorry is An Array
+//    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];    //count number of row from counting array hear cataGorry is An Array
+//    return [array count];
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -528,18 +556,18 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-    // Here we use the provided setImageWithURL: method to load the web image
-    // Ensure you use a placeholder image otherwise cells will be initialized with no image
+//    cell.textLabel.text = @"aaa";
     
     NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
-    if (indexPath.row<=[array count]-1) {
+    if (indexPath.row<[array count]) {
         cell.textLabel.text = [array objectAtIndex:indexPath.row];
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    hashtagTextField.text=[tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    NSLog(@"%@", hashtagTextField.text); 
+    hashtagTextField.text = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     [self textFieldShouldReturn:hashtagTextField];
     [self searchBtnPressed];
 }
