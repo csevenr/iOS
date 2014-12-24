@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xpand/LikeViewController.m"
-            timestampString = "440609880.613048"
+            timestampString = "441114915.142291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
-            landmarkName = "-scrollViewDidScroll:"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
+            landmarkName = "-closeTextField"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

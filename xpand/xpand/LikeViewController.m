@@ -32,9 +32,9 @@
     
     BOOL alertIsShowing;
     
-    UICollectionReusableView *headerForLater;
-    
     NSMutableArray *postCells;
+    
+    UICollectionReusableView *headerForLater;
 }
 
 @end
@@ -179,9 +179,12 @@
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:self.view];
     
-    if (!CGRectContainsPoint(hashtagTextFieldView.frame, location)) {
-        //        [self textFieldShouldReturn:self.hashtagTextField];
-        [self closeTextField];
+    CGPoint pointOnScreen = [headerForLater convertPoint:hashtagTextFieldView.frame.origin toView:self.view];
+    
+    if (!CGRectContainsPoint(CGRectMake(pointOnScreen.x, pointOnScreen.y, hashtagTextFieldView.frame.size.width, hashtagTextFieldView.frame.size.height), location)) {
+        if (hashtagTextFieldView.frame.size.height != 50.0) {
+            [self closeTextField];
+        }
     }
 }
 
@@ -269,16 +272,19 @@
     PostCollectionViewCell *cell = nil;
     
     if (indexPath.section == 0){
-
+        
         static NSString *MyIdentifier = @"spineyCell";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
         
-        circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
-        circle.value = 1.0;
+        if (circle == nil) {
+            circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
+            circle.value = 0.9;
+            
+            cell.userInteractionEnabled = NO;
+        }
+        
         [cell addSubview:circle];
         
-        cell.userInteractionEnabled = NO;
-
     }else if (indexPath.section == 1){
         if (postCells == nil) {
             postCells = [NSMutableArray new];
@@ -321,44 +327,36 @@
         
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader" forIndexPath:indexPath];
             
-//            headerView.backgroundColor = [UIColor yellowColor];
         }else if (indexPath.section == 1) {
     
-            
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader" forIndexPath:indexPath];
+            
+            if (hashtagTextFieldView == nil) {
+                hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(10.0, 10, self.view.frame.size.width - 20.0, 50.0)];
+                
+                hashtagTextFieldView.layer.borderWidth=1.0;
+                hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
+                hashtagTextFieldView.backgroundColor = [UIColor redColor];
+                
+                hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
+                [hashtagTextField setFont:FONT];
+                hashtagTextField.placeholder = @"#";
+                hashtagTextField.delegate = self;
 
-//            UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 70, self.view.frame.size.width - 32.0, 50.0)];
-//            [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
-//            [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//            [searchBtn.titleLabel setFont:FONT];
-//            [headerView addSubview:searchBtn];
-//            
-//            searchBtn.layer.borderWidth=1.0;
-//            searchBtn.layer.borderColor=[UIColor blackColor].CGColor;
-            
-            hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(10.0, 10, self.view.frame.size.width - 20.0, 50.0)];
-            [headerView addSubview:hashtagTextFieldView];
-            
-            hashtagTextFieldView.layer.borderWidth=1.0;
-            hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
-            
-            hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
-            [hashtagTextField setFont:FONT];
-            hashtagTextField.placeholder = @"#";
-            hashtagTextField.delegate = self;
-            
-            hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
-            hashtagTableView.delegate = self;
-            hashtagTableView.dataSource = self;
-            
-            [hashtagTextFieldView addSubview:hashtagTextField];
-            [hashtagTextFieldView addSubview:hashtagTableView];
-            hashtagTextFieldView.clipsToBounds = YES;
+                hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
+                hashtagTableView.delegate = self;
+                hashtagTableView.dataSource = self;
+                hashtagTableView.backgroundColor = [UIColor clearColor];
+                
+                [hashtagTextFieldView addSubview:hashtagTextField];
+                [hashtagTextFieldView addSubview:hashtagTableView];
+                hashtagTextFieldView.clipsToBounds = YES;
+            }
             
             headerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.92];
-//            headerView.
-            headerForLater = headerView;
+            [headerView addSubview:hashtagTextFieldView];
             
+            headerForLater = headerView;
         }
     }
     return headerView;
@@ -414,8 +412,7 @@
             PostCollectionViewCell *cell = (PostCollectionViewCell*)[postCollView cellForItemAtIndexPath:indexPath];
 
             // Display the newly loaded image
-//            cell.backgroundColor = [UIColor greenColor];
-//            cell.mainImg.backgroundColor = [UIColor redColor];
+
             cell.mainImg.image = post.thumbnailImg;
             
             // Remove the IconDownloader from the in progress list.
@@ -498,10 +495,10 @@
 #pragma mark textField delegate methods
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+    postCollView.userInteractionEnabled=NO;
     [hashtagTableView reloadData];
     [self replaceConstraintOnView:self.searchContainer withConstant:182.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
     [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
-//    postCollView.userInteractionEnabled=NO;
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -509,14 +506,13 @@
                          hashtagTextFieldView.frame=CGRectMake(hashtagTextFieldView.frame.origin.x, hashtagTextFieldView.frame.origin.y, hashtagTextFieldView.frame.size.width, hashtagTextFieldView.frame.size.height+44*3);
                      }
                      completion:^(BOOL finished){
-                         
                      }];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self searchBtnPressed];
     [self closeTextField];
-//    postCollView.userInteractionEnabled=YES;
+    postCollView.userInteractionEnabled=YES;
     return YES;
 }
 
@@ -556,12 +552,18 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-//    cell.textLabel.text = @"aaa";
+//    NSLog(@"%@, %@", userProfile, userProfile.recentHashtags);
+
+    NSMutableArray *array;
+    if (userProfile != nil) {
+         array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
+    }
     
-    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
     if (indexPath.row<[array count]) {
         cell.textLabel.text = [array objectAtIndex:indexPath.row];
     }
+    cell.backgroundColor = [UIColor clearColor];
+    
     return cell;
 }
 

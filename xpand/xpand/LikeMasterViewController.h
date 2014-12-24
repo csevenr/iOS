@@ -10,7 +10,7 @@
 #import "MasterViewController.h"
 
 
-@interface LikeMasterViewController : MasterViewController <UITextFieldDelegate/*, UITableViewDelegate, UITableViewDataSource*/>{
+@interface LikeMasterViewController : MasterViewController <UITextFieldDelegate>{
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
