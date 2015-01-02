@@ -26,9 +26,11 @@
 		66A43EAB1A274E6B00829313 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EAA1A274E6B00829313 /* UserProfile.m */; };
 		66A43EAE1A274EFC00829313 /* AlertLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EAD1A274EFC00829313 /* AlertLabel.m */; };
 		66A43EB31A274F4B00829313 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB01A274F4B00829313 /* MasterViewController.m */; };
-		66A43EB41A274F4B00829313 /* LikeMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB21A274F4B00829313 /* LikeMasterViewController.m */; };
 		66A43EBA1A274FD900829313 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB91A274FD900829313 /* LoginViewController.m */; };
 		66A43EBD1A27500600829313 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EBC1A27500600829313 /* ImageDownloader.m */; };
+		66D8AABA1A56973400E02CD2 /* InstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D8AAB91A56973400E02CD2 /* InstagramViewController.m */; };
+		66D8AABD1A56A78000E02CD2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D8AABC1A56A78000E02CD2 /* ProfileViewController.m */; };
+		66D8AAC01A56BE8000E02CD2 /* SearchCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D8AABF1A56BE8000E02CD2 /* SearchCollectionReusableView.m */; };
 		66ED89461A2794C900C05E9D /* NibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66ED89451A2794C900C05E9D /* NibCell.xib */; };
 		66FB10961A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FB10951A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m */; };
 		CC90F8861A423B0B005B43A0 /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CC90F8851A423B0B005B43A0 /* CircleProgressBar.m */; };
@@ -81,12 +83,16 @@
 		66A43EAD1A274EFC00829313 /* AlertLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertLabel.m; sourceTree = "<group>"; };
 		66A43EAF1A274F4B00829313 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		66A43EB01A274F4B00829313 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		66A43EB11A274F4B00829313 /* LikeMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeMasterViewController.h; sourceTree = "<group>"; };
-		66A43EB21A274F4B00829313 /* LikeMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeMasterViewController.m; sourceTree = "<group>"; };
 		66A43EB81A274FD900829313 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		66A43EB91A274FD900829313 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		66A43EBB1A27500600829313 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
 		66A43EBC1A27500600829313 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
+		66D8AAB81A56973400E02CD2 /* InstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramViewController.h; sourceTree = "<group>"; };
+		66D8AAB91A56973400E02CD2 /* InstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramViewController.m; sourceTree = "<group>"; };
+		66D8AABB1A56A78000E02CD2 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		66D8AABC1A56A78000E02CD2 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		66D8AABE1A56BE8000E02CD2 /* SearchCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCollectionReusableView.h; sourceTree = "<group>"; };
+		66D8AABF1A56BE8000E02CD2 /* SearchCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCollectionReusableView.m; sourceTree = "<group>"; };
 		66ED89451A2794C900C05E9D /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
 		66FB10941A28E47100BC1710 /* FloatingHeaderViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeaderViewFlowLayout.h; sourceTree = "<group>"; };
 		66FB10951A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeaderViewFlowLayout.m; sourceTree = "<group>"; };
@@ -136,6 +142,8 @@
 			children = (
 				66A43EBF1A27506800829313 /* ViewControllers */,
 				66A43EBE1A27505700829313 /* CoreData */,
+				66D8AABE1A56BE8000E02CD2 /* SearchCollectionReusableView.h */,
+				66D8AABF1A56BE8000E02CD2 /* SearchCollectionReusableView.m */,
 				66A43E911A274BEC00829313 /* ClientController.h */,
 				66A43E921A274BEC00829313 /* ClientController.m */,
 				66A43E8E1A274BDD00829313 /* Insta.h */,
@@ -211,10 +219,12 @@
 			children = (
 				66A43EAF1A274F4B00829313 /* MasterViewController.h */,
 				66A43EB01A274F4B00829313 /* MasterViewController.m */,
-				66A43EB11A274F4B00829313 /* LikeMasterViewController.h */,
-				66A43EB21A274F4B00829313 /* LikeMasterViewController.m */,
+				66D8AAB81A56973400E02CD2 /* InstagramViewController.h */,
+				66D8AAB91A56973400E02CD2 /* InstagramViewController.m */,
 				66A43E691A274A0D00829313 /* LikeViewController.h */,
 				66A43E6A1A274A0D00829313 /* LikeViewController.m */,
+				66D8AABB1A56A78000E02CD2 /* ProfileViewController.h */,
+				66D8AABC1A56A78000E02CD2 /* ProfileViewController.m */,
 				66A43EB81A274FD900829313 /* LoginViewController.h */,
 				66A43EB91A274FD900829313 /* LoginViewController.m */,
 			);
@@ -270,7 +280,6 @@
 				TargetAttributes = {
 					66A43E5B1A274A0D00829313 = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 5AM8BPAVQJ;
 					};
 					66A43E771A274A0D00829313 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -324,15 +333,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A43E931A274BEC00829313 /* ClientController.m in Sources */,
+				66D8AAC01A56BE8000E02CD2 /* SearchCollectionReusableView.m in Sources */,
 				66A43EA41A274E1300829313 /* LikedPost+Helper.m in Sources */,
 				66A43EA51A274E1300829313 /* UserProfile+Helper.m in Sources */,
 				66A43EAE1A274EFC00829313 /* AlertLabel.m in Sources */,
+				66D8AABD1A56A78000E02CD2 /* ProfileViewController.m in Sources */,
 				66A43E651A274A0D00829313 /* AppDelegate.m in Sources */,
-				66A43EB41A274F4B00829313 /* LikeMasterViewController.m in Sources */,
 				66A43EA81A274E1800829313 /* ModelHelper.m in Sources */,
 				66A43E9F1A274E0800829313 /* LikedPost.m in Sources */,
 				66A43EB31A274F4B00829313 /* MasterViewController.m in Sources */,
 				66A43E901A274BDD00829313 /* Insta.m in Sources */,
+				66D8AABA1A56973400E02CD2 /* InstagramViewController.m in Sources */,
 				66A43E8D1A274BBF00829313 /* Post.m in Sources */,
 				66A43EAB1A274E6B00829313 /* UserProfile.m in Sources */,
 				66A43E621A274A0D00829313 /* main.m in Sources */,
@@ -499,7 +510,7 @@
 				INFOPLIST_FILE = xpandTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xpand.app/xpand";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/awnty.app/awnty";
 			};
 			name = Debug;
 		};
@@ -514,7 +525,7 @@
 				INFOPLIST_FILE = xpandTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xpand.app/xpand";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/awnty.app/awnty";
 			};
 			name = Release;
 		};

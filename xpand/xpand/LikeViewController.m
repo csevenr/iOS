@@ -15,8 +15,11 @@
 #import "AlertLabel.h"
 #import "FloatingHeaderViewFlowLayout.h"
 #import "CircleProgressBar.h"
+#import "LoginViewController.h"
+#import "SearchCollectionReusableView.h"
 
-#define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
+
+//#define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
 
 @interface LikeViewController () {
     UIView *hashtagTextFieldView;
@@ -31,6 +34,7 @@
     NSMutableDictionary *imageDownloadsInProgress;
     
     BOOL alertIsShowing;
+    BOOL searchIsOpen;
     
     NSMutableArray *postCells;
     
@@ -47,7 +51,9 @@
     [super viewDidLoad];
     insta = [Insta new];
     
-    self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Likes" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    searchIsOpen = NO;
+    
+    self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Likes" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:[[FloatingHeaderViewFlowLayout alloc] init]];
     postCollView.delegate = self;
@@ -58,7 +64,7 @@
     [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
     [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"spineyCell"];
     [postCollView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader"];
-    [postCollView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader"];
+    [postCollView registerClass:[SearchCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader"];
 
     imageDownloadsInProgress = [NSMutableDictionary dictionary];
     
@@ -70,6 +76,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
+
+//    UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(8.0, 8.0, 100.0, 30.0)];
+//    [backBtn setTitle:@"Back" forState:UIControlStateNormal];
+//    [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
+//    [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+//    [backBtn.titleLabel setFont:FONT];
+//    [backBtn sizeToFit];
+//    [self.view addSubview:backBtn];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -132,18 +146,20 @@
 
 -(void)getJSON{
     if (![hashtagTextField.text isEqualToString:@""]) {
-        if ([[hashtagTextField.text substringToIndex:1] isEqualToString:@"#"]) {
-            hashtagTextField.text=[hashtagTextField.text substringFromIndex:1];
-        }
-        [insta getJsonForHashtag:hashtagTextField.text];
+        NSCharacterSet *charactersToRemove = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
+        NSString *trimmedReplacement = [[hashtagTextField.text componentsSeparatedByCharactersInSet:charactersToRemove] componentsJoinedByString:@""];
+        
+        [insta getJsonForHashtag:trimmedReplacement];
         [insta setDelegate:self];
-        [self addHashtagToRecentArray:hashtagTextField.text];
+        hashtagTextField.text = trimmedReplacement;
+        [self addHashtagToRecentArray:trimmedReplacement];
     }
 }
 
 -(void)reload{
+//    NSLog(@"reload, cells: %d", [postCells count]);
     [postCollView reloadData];
-    [postCollView reloadItemsAtIndexPaths:postCells];
+//    [postCollView reloadItemsAtIndexPaths:postCells];
 }
 
 -(void)searchingUi{
@@ -236,35 +252,37 @@
 #pragma mark collView methods
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (userProfile.likeTime == nil) {
-        userProfile.likeTime = [NSDate date];
-    }
-    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
-    if (secondsBetween >= 3600.000001) {
-        userProfile.likeTime = [NSDate date];
-        //        userProfile.likesInHour = [NSNumber numberWithInt:0];
-    }else{
-        if ([userProfile.likesInHour integerValue]<30) {
-            Post *selectedPost = [posts objectAtIndex:indexPath.row];
-            [insta likePost:selectedPost];
-            
-            [posts removeObject:selectedPost];
-            [postCells removeObject:indexPath];
-            
-            if ([posts count]==4){//only 4 left in table view, so paginate
-                [self getJSON];
-            }
-//            [postCollView reloadData];
-            [self reload];
-            
-            userProfile.likesInHour = [NSNumber numberWithInt:[userProfile.likesInHour integerValue]+1];
-            [ModelHelper saveManagedObjectContext];
-            [self updateLikeStatusLbl];
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Like limit reached" message:@"You are only allow 30 likes an hour" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
+//    if (!searchIsOpen) {
+        if (userProfile.likeTime == nil) {
+            userProfile.likeTime = [NSDate date];
         }
-    }
+        NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
+        if (secondsBetween >= 3600.000001) {
+            userProfile.likeTime = [NSDate date];
+            //        userProfile.likesInHour = [NSNumber numberWithInt:0];
+        }else{
+            if ([userProfile.likesInHour integerValue]<30) {
+                Post *selectedPost = [posts objectAtIndex:indexPath.row];
+                [insta likePost:selectedPost];
+                
+                [posts removeObject:selectedPost];
+                [postCells removeObject:indexPath];
+                
+                if ([posts count]==4){//only 4 left in table view, so paginate
+                    [self getJSON];
+                }
+    //            [postCollView reloadData];
+                [self reload];
+                
+                userProfile.likesInHour = [NSNumber numberWithInt:[userProfile.likesInHour integerValue]+1];
+                [ModelHelper saveManagedObjectContext];
+                [self updateLikeStatusLbl];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Like limit reached" message:@"You are only allow 30 likes an hour" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+//    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -319,7 +337,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
 
-    UICollectionReusableView *headerView = nil;
+    SearchCollectionReusableView *headerView = nil;
 
     if (kind == UICollectionElementKindSectionHeader) {
     
@@ -327,16 +345,31 @@
         
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader" forIndexPath:indexPath];
             
+            UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
+            [backBtn setTitle:@"Back" forState:UIControlStateNormal];
+            [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
+            [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+            [backBtn.titleLabel setFont:FONT];
+            [backBtn sizeToFit];
+            [headerView addSubview:backBtn];
+            
+//            backBtn.backgroundColor = [UIColor yellowColor];
+            
+//            NSLog(@"%f", backBtn.frame.size.height);
+            
+//            headerView.backgroundColor=[UIColor redColor];
+            
         }else if (indexPath.section == 1) {
     
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader" forIndexPath:indexPath];
             
             if (hashtagTextFieldView == nil) {
+
                 hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(10.0, 10, self.view.frame.size.width - 20.0, 50.0)];
-                
+
+                hashtagTextFieldView.backgroundColor = [UIColor clearColor];
                 hashtagTextFieldView.layer.borderWidth=1.0;
                 hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
-                hashtagTextFieldView.backgroundColor = [UIColor redColor];
                 
                 hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
                 [hashtagTextField setFont:FONT];
@@ -351,12 +384,13 @@
                 [hashtagTextFieldView addSubview:hashtagTextField];
                 [hashtagTextFieldView addSubview:hashtagTableView];
                 hashtagTextFieldView.clipsToBounds = YES;
+                
+                headerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.92];
+                headerForLater = headerView;
+            
             }
             
-            headerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.92];
             [headerView addSubview:hashtagTextFieldView];
-            
-            headerForLater = headerView;
         }
     }
     return headerView;
@@ -384,16 +418,16 @@
     if (section == 0) {
         return 1;
     }else{
-        if ([posts count] == 0) {
-            return 1;
-        }
+//        if ([posts count] == 0) {
+//            return 1;
+//        }
         return [posts count];
     }
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return CGSizeMake(200.0, 20.0);
+        return CGSizeMake(200.0, 34.0);
     }else{
         return CGSizeMake(200.0, 70.0);
     }
@@ -457,7 +491,7 @@
     float offset = postCollView.contentOffset.y - 100;
     if (offset > OFFSET) offset = OFFSET;
     
-    hashtagTextFieldView.backgroundColor = [UIColor colorWithWhite:1.0 - (offset/OFFSET) alpha:0.8];
+    headerForLater.backgroundColor = [UIColor colorWithWhite:1.0 - (offset/OFFSET) alpha:0.8];
     hashtagTextField.textColor = [UIColor colorWithWhite:(offset/OFFSET) alpha:0.8];
     
     [self loadImagesForOnscreenRows];
@@ -495,7 +529,7 @@
 #pragma mark textField delegate methods
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
-    postCollView.userInteractionEnabled=NO;
+    searchIsOpen = YES;
     [hashtagTableView reloadData];
     [self replaceConstraintOnView:self.searchContainer withConstant:182.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
     [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
@@ -510,14 +544,15 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self searchBtnPressed];
+    searchIsOpen = NO;
     [self closeTextField];
-    postCollView.userInteractionEnabled=YES;
+
     return YES;
 }
 
 -(void)closeTextField{ //split into this method so if you click outside you dont search
     [hashtagTextField resignFirstResponder];
+    [self searchBtnPressed];
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -527,6 +562,7 @@
                      completion:^(BOOL finished){
                          
                      }];
+
 //    [self replaceConstraintOnView:self.searchContainer withConstant:50.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
 //    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
 }
@@ -559,10 +595,12 @@
          array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
     }
     
-    if (indexPath.row<[array count]) {
-        cell.textLabel.text = [array objectAtIndex:indexPath.row];
+    if (userProfile != nil) {
+        NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
+        if (indexPath.row<[array count]) {
+            cell.textLabel.text = [array objectAtIndex:indexPath.row];
+        }
     }
-    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -571,7 +609,6 @@
     NSLog(@"%@", hashtagTextField.text); 
     hashtagTextField.text = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     [self textFieldShouldReturn:hashtagTextField];
-    [self searchBtnPressed];
 }
 
 #pragma mark - adBanner methods

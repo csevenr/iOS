@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 
+#define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
+
 @class LoginViewController, UserProfile;
 
 @interface MasterViewController : UIViewController <ADBannerViewDelegate>{

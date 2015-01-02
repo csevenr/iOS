@@ -43,7 +43,7 @@
             currentHashtag=hashtag;
         }
         
-        NSLog(@"## %@", urlForPostData);
+        NSLog(@"_## %@", urlForPostData);
         
         [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForPostData]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if (error) {
