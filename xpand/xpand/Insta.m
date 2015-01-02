@@ -185,7 +185,7 @@
     }];
 }
 
--(void)logout{
++(void)logout{
     NSString *urlForTag = @"https://instagram.com/accounts/logout/";
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {

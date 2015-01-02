@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Oliver Rodden. All rights reserved.
 //
 
-#import "LikeViewController.h"
+#import "ManualViewController.h"
 #import "Post.h"
 #import "PostCollectionViewCell.h"
 #import "UserProfile+Helper.h"
@@ -21,7 +21,7 @@
 
 //#define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
 
-@interface LikeViewController () {
+@interface ManualViewController () {
     UIView *hashtagTextFieldView;
     UITextField *hashtagTextField;
     UITableView *hashtagTableView;
@@ -43,13 +43,15 @@
 
 @end
 
-@implementation LikeViewController
+@implementation ManualViewController
 
 #pragma mark view
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     insta = [Insta new];
+    
+    [self login];
     
     searchIsOpen = NO;
     
@@ -70,26 +72,9 @@
     
     self.searchActivityIndcator.hidden=YES;//set this in code, because it didnt work on storyboard for some reason??
     posts = [NSMutableArray new];
+    
+//    [self updateLikeStatusLbl];
     likeStatusTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLikeStatusLbl) userInfo:nil repeats:YES];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
-
-//    UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(8.0, 8.0, 100.0, 30.0)];
-//    [backBtn setTitle:@"Back" forState:UIControlStateNormal];
-//    [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
-//    [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-//    [backBtn.titleLabel setFont:FONT];
-//    [backBtn sizeToFit];
-//    [self.view addSubview:backBtn];
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self login];
-    [self updateLikeStatusLbl];
 }
 
 #pragma mark interaction
@@ -103,7 +88,6 @@
 }
 
 -(void)likedPost{
-    self.likeCountLbl.text=[NSString stringWithFormat:@"%d",[userProfile.likedPosts count]];
     [self updateLikeStatusLbl];
 }
 
@@ -172,15 +156,14 @@
 -(void)updateLikeStatusLbl{
     if (userProfile!=nil) {
         if (userProfile.likeTime == nil||[[NSDate date] timeIntervalSinceDate:userProfile.likeTime]>=3600.000001) {
-            self.likeStatusLbl.text=@"30 likes remaining";
+            circle.textLabel.text=@"100 likes remaining";
         }else if ([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]<3600.000001){
-            if ([userProfile.likesInHour integerValue]<30) {
-                self.likeStatusLbl.text=[NSString stringWithFormat:@"%d likes remaining", 30-[userProfile.likesInHour integerValue]];
-//                NSLog(@"%d, %f, %f", [userProfile.likesInHour integerValue], [userProfile.likesInHour integerValue]/30.0, 1.0-([userProfile.likesInHour integerValue]/30.0));
-                circle.value = 1.0-([userProfile.likesInHour integerValue]/30.0);
-            }else if ([userProfile.likesInHour integerValue]>=30){
+            if ([userProfile.likesInHour integerValue]<100) {
+                circle.textLabel.text=[NSString stringWithFormat:@"%d likes remaining", 100-[userProfile.likesInHour integerValue]];
+                circle.value = 1.0-([userProfile.likesInHour integerValue]/100.0);
+            }else if ([userProfile.likesInHour integerValue]>=100){
                 int mins = (int)floorf([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]/60);
-                self.likeStatusLbl.text=[NSString stringWithFormat:@"%dm until likes are restored", 60-mins];
+                circle.textLabel.text=[NSString stringWithFormat:@"%dm until likes are restored", 60-mins];
             }
         }
     }
@@ -261,7 +244,7 @@
             userProfile.likeTime = [NSDate date];
             //        userProfile.likesInHour = [NSNumber numberWithInt:0];
         }else{
-            if ([userProfile.likesInHour integerValue]<30) {
+            if ([userProfile.likesInHour integerValue]<100) {
                 Post *selectedPost = [posts objectAtIndex:indexPath.row];
                 [insta likePost:selectedPost];
                 
@@ -278,7 +261,7 @@
                 [ModelHelper saveManagedObjectContext];
                 [self updateLikeStatusLbl];
             }else{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Like limit reached" message:@"You are only allow 30 likes an hour" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Like limit reached" message:@"You are only allow 100 likes an hour" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 [alert show];
             }
         }
@@ -296,7 +279,7 @@
         
         if (circle == nil) {
             circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
-            circle.value = 0.9;
+            [self updateLikeStatusLbl];
             
             cell.userInteractionEnabled = NO;
         }

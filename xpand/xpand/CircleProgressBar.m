@@ -22,14 +22,14 @@
 
 -(id)initWithFrame:(CGRect)frame{
     if (self == [super initWithFrame:frame]){
-        UILabel *lbl = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width * 0.9, self.frame.size.height * 0.9)];
-        lbl.center = self.center;
-        lbl.numberOfLines = 0;
-        lbl.textAlignment = NSTextAlignmentCenter;
-        lbl.text = @"29 likes remaining";
-        lbl.font = FONT;
+        self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width * 0.9, self.frame.size.height * 0.9)];
+        self.textLabel.center = self.center;
+        self.textLabel.numberOfLines = 0;
+        self.textLabel.textAlignment = NSTextAlignmentCenter;
+//        self.textLabel.text = @"29 likes remaining";
+        self.textLabel.font = FONT;
 //        lbl.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.9];
-        [self addSubview:lbl];
+        [self addSubview:self.textLabel];
     }
     return self;
 }
@@ -38,8 +38,6 @@
     self->_value = value;
     [self setNeedsDisplay];
 }
-
-
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

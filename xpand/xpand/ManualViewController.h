@@ -14,7 +14,7 @@
 
 @class AlertLabel;
 
-@interface LikeViewController : MasterViewController <instaDelegate, loginDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>{
+@interface ManualViewController : MasterViewController <instaDelegate, loginDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>{
     
     Insta *insta;
     ClientController *cc;

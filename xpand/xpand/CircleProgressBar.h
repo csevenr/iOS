@@ -11,6 +11,6 @@
 @interface CircleProgressBar : UIView
 
 @property float value;
-
+@property UILabel *textLabel;
 
 @end

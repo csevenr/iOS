@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661E2EED1A5707AB008A2E27 /* AutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E2EEC1A5707AB008A2E27 /* AutoViewController.m */; };
 		66A43E621A274A0D00829313 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E611A274A0D00829313 /* main.m */; };
 		66A43E651A274A0D00829313 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E641A274A0D00829313 /* AppDelegate.m */; };
 		66A43E681A274A0D00829313 /* xpand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E661A274A0D00829313 /* xpand.xcdatamodeld */; };
-		66A43E6B1A274A0D00829313 /* LikeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E6A1A274A0D00829313 /* LikeViewController.m */; };
+		66A43E6B1A274A0D00829313 /* ManualViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E6A1A274A0D00829313 /* ManualViewController.m */; };
 		66A43E6E1A274A0D00829313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A43E6C1A274A0D00829313 /* Main.storyboard */; };
 		66A43E701A274A0D00829313 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A43E6F1A274A0D00829313 /* Images.xcassets */; };
 		66A43E731A274A0D00829313 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A43E711A274A0D00829313 /* LaunchScreen.xib */; };
@@ -47,14 +48,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		661E2EEB1A5707AB008A2E27 /* AutoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoViewController.h; sourceTree = "<group>"; };
+		661E2EEC1A5707AB008A2E27 /* AutoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoViewController.m; sourceTree = "<group>"; };
 		66A43E5C1A274A0D00829313 /* awnty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = awnty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A43E601A274A0D00829313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A43E611A274A0D00829313 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		66A43E631A274A0D00829313 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		66A43E641A274A0D00829313 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		66A43E671A274A0D00829313 /* xpand.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = xpand.xcdatamodel; sourceTree = "<group>"; };
-		66A43E691A274A0D00829313 /* LikeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LikeViewController.h; sourceTree = "<group>"; };
-		66A43E6A1A274A0D00829313 /* LikeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LikeViewController.m; sourceTree = "<group>"; };
+		66A43E691A274A0D00829313 /* ManualViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManualViewController.h; sourceTree = "<group>"; };
+		66A43E6A1A274A0D00829313 /* ManualViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManualViewController.m; sourceTree = "<group>"; };
 		66A43E6D1A274A0D00829313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66A43E6F1A274A0D00829313 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		66A43E721A274A0D00829313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -221,8 +224,10 @@
 				66A43EB01A274F4B00829313 /* MasterViewController.m */,
 				66D8AAB81A56973400E02CD2 /* InstagramViewController.h */,
 				66D8AAB91A56973400E02CD2 /* InstagramViewController.m */,
-				66A43E691A274A0D00829313 /* LikeViewController.h */,
-				66A43E6A1A274A0D00829313 /* LikeViewController.m */,
+				66A43E691A274A0D00829313 /* ManualViewController.h */,
+				66A43E6A1A274A0D00829313 /* ManualViewController.m */,
+				661E2EEB1A5707AB008A2E27 /* AutoViewController.h */,
+				661E2EEC1A5707AB008A2E27 /* AutoViewController.m */,
 				66D8AABB1A56A78000E02CD2 /* ProfileViewController.h */,
 				66D8AABC1A56A78000E02CD2 /* ProfileViewController.m */,
 				66A43EB81A274FD900829313 /* LoginViewController.h */,
@@ -350,10 +355,11 @@
 				66A43EBA1A274FD900829313 /* LoginViewController.m in Sources */,
 				CC90F8861A423B0B005B43A0 /* CircleProgressBar.m in Sources */,
 				66A43E8A1A274BA600829313 /* PostCollectionViewCell.m in Sources */,
-				66A43E6B1A274A0D00829313 /* LikeViewController.m in Sources */,
+				66A43E6B1A274A0D00829313 /* ManualViewController.m in Sources */,
 				66A43E681A274A0D00829313 /* xpand.xcdatamodeld in Sources */,
 				66FB10961A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m in Sources */,
 				66A43EBD1A27500600829313 /* ImageDownloader.m in Sources */,
+				661E2EED1A5707AB008A2E27 /* AutoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

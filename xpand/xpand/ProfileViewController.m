@@ -96,6 +96,10 @@
     [self setUpView];
 }
 
+//- (IBAction)logoutBtnPressed {
+//    [self.loginVc ];
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

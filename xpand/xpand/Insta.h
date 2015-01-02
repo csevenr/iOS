@@ -29,6 +29,6 @@
 - (void)likePost:(Post*)post;
 -(void)getUserInfoWithToken:(NSString*)tok;
 -(void)getUserMediaWithToken:(NSString*)tok;
--(void)logout;
++(void)logout;
 
 @end

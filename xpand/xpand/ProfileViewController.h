@@ -21,4 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *leastLikesLbl;
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
 
+- (IBAction)logoutBtnPressed;
+
 @end
