@@ -8,9 +8,6 @@
 
 #import "LikeMasterViewController.h"
 
-#import "ModelHelper.h"
-#import "UserProfile+Helper.h"
-#import "LoginViewController.h"
 
 @interface LikeMasterViewController(){
 }
@@ -18,26 +15,5 @@
 @end
 
 @implementation LikeMasterViewController
-
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

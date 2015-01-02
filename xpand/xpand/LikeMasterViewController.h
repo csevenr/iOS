@@ -10,16 +10,9 @@
 #import "MasterViewController.h"
 
 
-@interface LikeMasterViewController : MasterViewController <UITextFieldDelegate/*, UITableViewDelegate, UITableViewDataSource*/>{
+@interface LikeMasterViewController : MasterViewController </*, UITableViewDelegate, UITableViewDataSource*/>{
 }
 
-@property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
-@property (weak, nonatomic) IBOutlet UITableView *hashtagTableView;
-@property (nonatomic) IBOutlet UILabel *likeCountLbl;
-@property (nonatomic) IBOutlet UIView *searchContainer;
-
--(void)getJSON;
-- (IBAction)searchBtnPressed;
 //-(void)showAlertLabelWithString:(NSString*)string;
 
 @end

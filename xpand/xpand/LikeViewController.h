@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LikeMasterViewController.h"
+#import "MasterViewController.h"
 #import "LoginViewController.h"
 #import "Insta.h"
 #import "ClientController.h"
 
 @class AlertLabel;
 
-@interface LikeViewController : LikeMasterViewController <instaDelegate, loginDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>{
+@interface LikeViewController : MasterViewController <instaDelegate, loginDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>{
+    
     Insta *insta;
     ClientController *cc;
 

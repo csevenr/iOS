@@ -15,6 +15,8 @@
 #import "AlertLabel.h"
 #import "FloatingHeaderViewFlowLayout.h"
 #import "CircleProgressBar.h"
+#import "LoginViewController.h"
+
 
 #define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
 
@@ -31,6 +33,7 @@
     NSMutableDictionary *imageDownloadsInProgress;
     
     BOOL alertIsShowing;
+    BOOL searchIsOpen;
     
     UICollectionReusableView *headerForLater;
     
@@ -46,6 +49,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     insta = [Insta new];
+    
+    searchIsOpen = NO;
     
     self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"Likes" style:UIBarButtonItemStyleBordered target:nil action:nil];
     
@@ -233,35 +238,37 @@
 #pragma mark collView methods
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (userProfile.likeTime == nil) {
-        userProfile.likeTime = [NSDate date];
-    }
-    NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
-    if (secondsBetween >= 3600.000001) {
-        userProfile.likeTime = [NSDate date];
-        //        userProfile.likesInHour = [NSNumber numberWithInt:0];
-    }else{
-        if ([userProfile.likesInHour integerValue]<30) {
-            Post *selectedPost = [posts objectAtIndex:indexPath.row];
-            [insta likePost:selectedPost];
-            
-            [posts removeObject:selectedPost];
-            [postCells removeObject:indexPath];
-            
-            if ([posts count]==4){//only 4 left in table view, so paginate
-                [self getJSON];
-            }
-//            [postCollView reloadData];
-            [self reload];
-            
-            userProfile.likesInHour = [NSNumber numberWithInt:[userProfile.likesInHour integerValue]+1];
-            [ModelHelper saveManagedObjectContext];
-            [self updateLikeStatusLbl];
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Like limit reached" message:@"You are only allow 30 likes an hour" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
+//    if (!searchIsOpen) {
+        if (userProfile.likeTime == nil) {
+            userProfile.likeTime = [NSDate date];
         }
-    }
+        NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
+        if (secondsBetween >= 3600.000001) {
+            userProfile.likeTime = [NSDate date];
+            //        userProfile.likesInHour = [NSNumber numberWithInt:0];
+        }else{
+            if ([userProfile.likesInHour integerValue]<30) {
+                Post *selectedPost = [posts objectAtIndex:indexPath.row];
+                [insta likePost:selectedPost];
+                
+                [posts removeObject:selectedPost];
+                [postCells removeObject:indexPath];
+                
+                if ([posts count]==4){//only 4 left in table view, so paginate
+                    [self getJSON];
+                }
+    //            [postCollView reloadData];
+                [self reload];
+                
+                userProfile.likesInHour = [NSNumber numberWithInt:[userProfile.likesInHour integerValue]+1];
+                [ModelHelper saveManagedObjectContext];
+                [self updateLikeStatusLbl];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Like limit reached" message:@"You are only allow 30 likes an hour" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+//    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -273,11 +280,12 @@
         static NSString *MyIdentifier = @"spineyCell";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
         
-        circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
-        circle.value = 1.0;
+        if (circle == nil) {
+            circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
+            circle.value = 1.0;
+            cell.userInteractionEnabled = NO;
+        }
         [cell addSubview:circle];
-        
-        cell.userInteractionEnabled = NO;
 
     }else if (indexPath.section == 1){
         if (postCells == nil) {
@@ -326,39 +334,33 @@
     
             
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader" forIndexPath:indexPath];
-
-//            UIButton *searchBtn = [[UIButton alloc]initWithFrame:CGRectMake(16.0, 70, self.view.frame.size.width - 32.0, 50.0)];
-//            [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
-//            [searchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//            [searchBtn.titleLabel setFont:FONT];
-//            [headerView addSubview:searchBtn];
-//            
-//            searchBtn.layer.borderWidth=1.0;
-//            searchBtn.layer.borderColor=[UIColor blackColor].CGColor;
             
-            hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(10.0, 10, self.view.frame.size.width - 20.0, 50.0)];
+            if (hashtagTextFieldView == nil) {
+            
+                hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(10.0, 10, self.view.frame.size.width - 20.0, 50.0)];
+                
+                hashtagTextFieldView.layer.borderWidth=1.0;
+                hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
+                
+                hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
+                [hashtagTextField setFont:FONT];
+                hashtagTextField.placeholder = @"#";
+                hashtagTextField.delegate = self;
+                
+                hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
+                hashtagTableView.delegate = self;
+                hashtagTableView.dataSource = self;
+                
+                [hashtagTextFieldView addSubview:hashtagTextField];
+                [hashtagTextFieldView addSubview:hashtagTableView];
+                hashtagTextFieldView.clipsToBounds = YES;
+                
+                headerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.92];
+                headerForLater = headerView;
+            
+            }
+            
             [headerView addSubview:hashtagTextFieldView];
-            
-            hashtagTextFieldView.layer.borderWidth=1.0;
-            hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
-            
-            hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
-            [hashtagTextField setFont:FONT];
-            hashtagTextField.placeholder = @"#";
-            hashtagTextField.delegate = self;
-            
-            hashtagTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, hashtagTextFieldView.frame.size.height, hashtagTextFieldView.frame.size.width, 44*3)];
-            hashtagTableView.delegate = self;
-            hashtagTableView.dataSource = self;
-            
-            [hashtagTextFieldView addSubview:hashtagTextField];
-            [hashtagTextFieldView addSubview:hashtagTableView];
-            hashtagTextFieldView.clipsToBounds = YES;
-            
-            headerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.92];
-//            headerView.
-            headerForLater = headerView;
-            
         }
     }
     return headerView;
@@ -498,10 +500,11 @@
 #pragma mark textField delegate methods
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
+    searchIsOpen = YES;
+    postCollView.userInteractionEnabled = NO;
     [hashtagTableView reloadData];
     [self replaceConstraintOnView:self.searchContainer withConstant:182.0 andAttribute:NSLayoutAttributeHeight onSelf:YES];
     [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
-//    postCollView.userInteractionEnabled=NO;
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseInOut
@@ -514,9 +517,10 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    searchIsOpen = NO;
+    postCollView.userInteractionEnabled = YES;
     [self searchBtnPressed];
     [self closeTextField];
-//    postCollView.userInteractionEnabled=YES;
     return YES;
 }
 
@@ -558,10 +562,13 @@
     
 //    cell.textLabel.text = @"aaa";
     
-    NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
-    if (indexPath.row<[array count]) {
-        cell.textLabel.text = [array objectAtIndex:indexPath.row];
+    if (userProfile != nil) {
+        NSMutableArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:userProfile.recentHashtags];
+        if (indexPath.row<[array count]) {
+            cell.textLabel.text = [array objectAtIndex:indexPath.row];
+        }
     }
+    
     return cell;
 }
 
