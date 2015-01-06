@@ -11,7 +11,7 @@
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 #define DEGREES_TO_RADIANS_TOP(angle) DEGREES_TO_RADIANS(angle-90)
 
-#define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
+#define FONT [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:18.0]
 
 @interface CircleProgressBar (){
 }
@@ -22,13 +22,17 @@
 
 -(id)initWithFrame:(CGRect)frame{
     if (self == [super initWithFrame:frame]){
-        self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width * 0.9, self.frame.size.height * 0.9)];
-        self.textLabel.center = self.center;
+        self.numberLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, self.frame.size.height * 0.24, self.frame.size.width, 60.0)];
+        self.numberLabel.numberOfLines = 0;
+        self.numberLabel.textAlignment = NSTextAlignmentCenter;
+        self.numberLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:70.0];
+        self.numberLabel.textColor = [UIColor colorWithRed:100.0 / 255.0 green:14.0 / 255.0 blue:121.0 / 255.0 alpha:1.0];
+        [self addSubview:self.numberLabel];
+        
+        self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, self.frame.size.height * 0.6, self.frame.size.width, 20.0)];
         self.textLabel.numberOfLines = 0;
         self.textLabel.textAlignment = NSTextAlignmentCenter;
-//        self.textLabel.text = @"29 likes remaining";
         self.textLabel.font = FONT;
-//        lbl.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.9];
         [self addSubview:self.textLabel];
     }
     return self;
@@ -36,7 +40,7 @@
 
 -(void)setValue:(float)value{
     if (value == 1.0) {
-        self->_value = 0.9;
+        self->_value = 0.9999;
     }else{
         self->_value = value;
     }

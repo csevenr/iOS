@@ -156,10 +156,13 @@
 -(void)updateLikeStatusLbl{
     if (userProfile!=nil) {
         if (userProfile.likeTime == nil||[[NSDate date] timeIntervalSinceDate:userProfile.likeTime]>=3600.000001) {
-            circle.textLabel.text=@"100 likes remaining";
+            circle.numberLabel.text = @"100";
+            circle.textLabel.text = @"likes remaining";
+            circle.value = 1.0;
         }else if ([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]<3600.000001){
             if ([userProfile.likesInHour integerValue]<100) {
-                circle.textLabel.text=[NSString stringWithFormat:@"%d likes remaining", 100-[userProfile.likesInHour integerValue]];
+                circle.numberLabel.text = [NSString stringWithFormat:@"%d", 100-[userProfile.likesInHour integerValue]];
+                circle.textLabel.text = @"likes remaining";
                 circle.value = 1.0-([userProfile.likesInHour integerValue]/100.0);
             }else if ([userProfile.likesInHour integerValue]>=100){
                 int mins = (int)floorf([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]/60);
@@ -279,6 +282,7 @@
         
         if (circle == nil) {
             circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
+//            circle.value = 1.0;
             [self updateLikeStatusLbl];
             
             cell.userInteractionEnabled = NO;
@@ -348,13 +352,14 @@
             
             if (hashtagTextFieldView == nil) {
 
-                hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(10.0, 10, self.view.frame.size.width - 20.0, 50.0)];
+                hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(30.0, 10, self.view.frame.size.width - 60.0, 50.0)];
 
                 hashtagTextFieldView.backgroundColor = [UIColor clearColor];
                 hashtagTextFieldView.layer.borderWidth=1.0;
-                hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
+//                hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
+                hashtagTextFieldView.layer.borderColor=[UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
                 
-                hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(10.0, 0.0, self.view.frame.size.width - 20.0, 50.0)];
+                hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(20.0, 0.0, hashtagTextFieldView.frame.size.width - 40.0, 50.0)];
                 [hashtagTextField setFont:FONT];
                 hashtagTextField.placeholder = @"#";
                 hashtagTextField.delegate = self;
@@ -410,7 +415,8 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return CGSizeMake(200.0, 34.0);
+//        return CGSizeMake(200.0, 34.0);
+        return CGSizeMake(200.0, 50.0);
     }else{
         return CGSizeMake(200.0, 70.0);
     }
@@ -473,9 +479,13 @@
 //    NSLog(@"%f", postCollView.contentOffset.y);
     float offset = postCollView.contentOffset.y - 100;
     if (offset > OFFSET) offset = OFFSET;
-    
-    headerForLater.backgroundColor = [UIColor colorWithWhite:1.0 - (offset/OFFSET) alpha:0.8];
+
     hashtagTextField.textColor = [UIColor colorWithWhite:(offset/OFFSET) alpha:0.8];
+    
+//    headerForLater.backgroundColor = [UIColor colorWithRed:(255.0-185.0*(offset/OFFSET)) / 255.0 green:(255.0-210.0*(offset/OFFSET)) / 255.0 blue:(255.0-181.0*(offset/OFFSET)) / 255.0 alpha:0.8];
+    headerForLater.backgroundColor = [UIColor colorWithRed:(255.0-187.0*(offset/OFFSET)) / 255.0 green:(255.0-223.0*(offset/OFFSET)) / 255.0 blue:(255.0-180.0*(offset/OFFSET)) / 255.0 alpha:0.9];
+    
+    hashtagTextFieldView.layer.borderColor=[UIColor colorWithWhite:0.7 alpha:1.0-(offset/OFFSET)].CGColor;
     
     [self loadImagesForOnscreenRows];
 
