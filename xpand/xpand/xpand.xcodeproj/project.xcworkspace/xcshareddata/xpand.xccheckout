@@ -14,11 +14,11 @@
 		<string>https://github.com/olirodd/iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>xpand/xpand.xcodeproj</string>
+	<string>xpand/xpand/xpand.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7DE6CFFF0836644E3E2BCC5D1B0CB565A45B6F22</key>
-		<string>../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/olirodd/iOS.git</string>

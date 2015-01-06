@@ -234,27 +234,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xpand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFc-Vp-h9a">
-                                <rect key="frame" x="258" y="50" width="84" height="36"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irJ-Vh-IR9">
-                                <rect key="frame" x="-5" y="76" width="610" height="150"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="15" y="-30" width="570" height="210"/>
+                                <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="irJ-Vh-IR9" secondAttribute="height" multiplier="610:211" id="JD8-gL-u7l"/>
+                                    <constraint firstAttribute="width" secondItem="irJ-Vh-IR9" secondAttribute="height" multiplier="19:7" id="WoG-IR-R52"/>
                                     <constraint firstAttribute="width" secondItem="irJ-Vh-IR9" secondAttribute="height" multiplier="61:15" id="cKr-L0-dsQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
-                                <state key="normal" title="Like - Manual">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Manual">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="JD8-gL-u7l"/>
+                                        <exclude reference="cKr-L0-dsQ"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -262,75 +258,65 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Et0-Pt-3VI">
-                                <rect key="frame" x="-5" y="225" width="610" height="150"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="15" y="195" width="570" height="210"/>
+                                <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Et0-Pt-3VI" secondAttribute="height" multiplier="610:211" id="esa-r5-nOa"/>
-                                    <constraint firstAttribute="width" secondItem="Et0-Pt-3VI" secondAttribute="height" multiplier="61:15" id="q6s-US-4Na"/>
+                                    <constraint firstAttribute="width" secondItem="Et0-Pt-3VI" secondAttribute="height" multiplier="19:7" id="wqp-nx-fTc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
-                                <state key="normal" title="Like - Auto">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Auto">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="esa-r5-nOa"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <segue destination="RgR-NY-quu" kind="show" id="P0K-kV-3CB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEQ-j3-P5o">
-                                <rect key="frame" x="-5" y="374" width="610" height="150"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="15" y="420" width="570" height="210"/>
+                                <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="FEQ-j3-P5o" secondAttribute="height" multiplier="610:211" id="Rzg-fo-70l"/>
-                                    <constraint firstAttribute="width" secondItem="FEQ-j3-P5o" secondAttribute="height" multiplier="61:15" id="tds-E4-tcd"/>
+                                    <constraint firstAttribute="width" secondItem="FEQ-j3-P5o" secondAttribute="height" multiplier="19:7" id="fJ0-gP-yM5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Profile">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Rzg-fo-70l"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <segue destination="R7m-k9-KJ2" kind="show" id="EOg-qK-bMx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X  P  A  N  D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFc-Vp-h9a">
+                                <rect key="frame" x="16" y="50" width="568" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Rzs-VS-AXg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FEQ-j3-P5o" firstAttribute="top" secondItem="Et0-Pt-3VI" secondAttribute="bottom" constant="-1" id="0BP-9q-KUF"/>
+                            <constraint firstItem="FEQ-j3-P5o" firstAttribute="top" secondItem="Et0-Pt-3VI" secondAttribute="bottom" constant="15" id="0BP-9q-KUF"/>
                             <constraint firstItem="fFc-Vp-h9a" firstAttribute="top" secondItem="ew9-iz-Z9U" secondAttribute="bottom" constant="50" id="13g-vy-8qQ"/>
                             <constraint firstAttribute="centerY" secondItem="Et0-Pt-3VI" secondAttribute="centerY" id="1bn-MX-tCK"/>
-                            <constraint firstItem="Et0-Pt-3VI" firstAttribute="width" secondItem="Et0-Pt-3VI" secondAttribute="height" multiplier="610:211" id="4U3-c1-iBb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FEQ-j3-P5o" secondAttribute="trailing" constant="-21" id="7vW-VD-MAp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FEQ-j3-P5o" secondAttribute="trailing" constant="-1" id="7vW-VD-MAp"/>
                             <constraint firstAttribute="centerX" secondItem="fFc-Vp-h9a" secondAttribute="centerX" id="8M8-Dx-HPq"/>
-                            <constraint firstItem="Et0-Pt-3VI" firstAttribute="top" secondItem="irJ-Vh-IR9" secondAttribute="bottom" constant="-1" id="DMi-QK-sRC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="irJ-Vh-IR9" secondAttribute="trailing" constant="-21" id="KMZ-5F-POD"/>
-                            <constraint firstItem="FEQ-j3-P5o" firstAttribute="top" secondItem="irJ-Vh-IR9" secondAttribute="bottom" constant="148" id="d3N-bU-uhk"/>
-                            <constraint firstItem="Et0-Pt-3VI" firstAttribute="leading" secondItem="imH-Zi-tXR" secondAttribute="leadingMargin" constant="-21" id="fMp-zD-5C7"/>
-                            <constraint firstItem="FEQ-j3-P5o" firstAttribute="leading" secondItem="imH-Zi-tXR" secondAttribute="leadingMargin" constant="-21" id="iNN-BL-Yyg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Et0-Pt-3VI" secondAttribute="trailing" constant="-21" id="s5Y-WU-RV0"/>
-                            <constraint firstItem="FEQ-j3-P5o" firstAttribute="top" secondItem="Et0-Pt-3VI" secondAttribute="bottom" constant="-1" id="ucu-L0-2z3"/>
-                            <constraint firstItem="irJ-Vh-IR9" firstAttribute="leading" secondItem="imH-Zi-tXR" secondAttribute="leadingMargin" constant="-21" id="uq8-HT-Cf7"/>
+                            <constraint firstItem="fFc-Vp-h9a" firstAttribute="trailing" secondItem="imH-Zi-tXR" secondAttribute="trailingMargin" id="9Sv-sR-wZL"/>
+                            <constraint firstItem="fFc-Vp-h9a" firstAttribute="leading" secondItem="imH-Zi-tXR" secondAttribute="leadingMargin" id="Apy-2t-UNE"/>
+                            <constraint firstItem="Et0-Pt-3VI" firstAttribute="top" secondItem="irJ-Vh-IR9" secondAttribute="bottom" constant="15" id="DMi-QK-sRC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="irJ-Vh-IR9" secondAttribute="trailing" constant="-1" id="KMZ-5F-POD"/>
+                            <constraint firstItem="Et0-Pt-3VI" firstAttribute="leading" secondItem="imH-Zi-tXR" secondAttribute="leadingMargin" constant="-1" id="fMp-zD-5C7"/>
+                            <constraint firstItem="FEQ-j3-P5o" firstAttribute="leading" secondItem="imH-Zi-tXR" secondAttribute="leadingMargin" constant="-1" id="iNN-BL-Yyg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Et0-Pt-3VI" secondAttribute="trailing" constant="-1" id="s5Y-WU-RV0"/>
+                            <constraint firstItem="irJ-Vh-IR9" firstAttribute="leading" secondItem="imH-Zi-tXR" secondAttribute="leadingMargin" constant="-1" id="uq8-HT-Cf7"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="4U3-c1-iBb"/>
-                                <exclude reference="d3N-bU-uhk"/>
-                                <exclude reference="ucu-L0-2z3"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="qGk-hN-wmF"/>
                     <connections>
+                        <outlet property="titleLbl" destination="fFc-Vp-h9a" id="rlh-EF-ka9"/>
                         <outletCollection property="viewsToStyle" destination="irJ-Vh-IR9" collectionClass="NSMutableArray" id="iBO-fk-JOm"/>
                         <outletCollection property="viewsToStyle" destination="FEQ-j3-P5o" collectionClass="NSMutableArray" id="MOc-Ma-dd3"/>
                         <outletCollection property="viewsToStyle" destination="Et0-Pt-3VI" collectionClass="NSMutableArray" id="SKm-nT-WIc"/>

@@ -11,4 +11,6 @@
 
 @interface InstagramViewController : MasterViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
+
 @end

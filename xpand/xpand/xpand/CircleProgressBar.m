@@ -35,7 +35,11 @@
 }
 
 -(void)setValue:(float)value{
-    self->_value = value;
+    if (value == 1.0) {
+        self->_value = 0.9;
+    }else{
+        self->_value = value;
+    }
     [self setNeedsDisplay];
 }
 
@@ -48,7 +52,7 @@
     [[UIColor whiteColor] setFill];
     CGContextFillRect(context, rect);
     
-    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:114.0/255.0 green:207.0/255.0 blue:63.0/255.0 alpha:1.0] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:68.0 / 255.0 green:179.0 / 255.0 blue:254.0 / 255.0 alpha:1.0] CGColor]);
 
     UIBezierPath *darkGrey = [UIBezierPath bezierPath];
     [darkGrey addArcWithCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:self.frame.size.width/2 - 5 startAngle:DEGREES_TO_RADIANS_TOP(0) endAngle:DEGREES_TO_RADIANS_TOP(360) clockwise:YES];
@@ -56,7 +60,7 @@
     [darkGrey setLineWidth:3.0];
     [darkGrey stroke];
     
-    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:184.0/255.0 green:231.0/255.0 blue:159.0/255.0 alpha:1.0] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:100.0 / 255.0 green:14.0 / 255.0 blue:121.0 / 255.0 alpha:1.0] CGColor]);
     
     UIBezierPath *lightGrey = [UIBezierPath bezierPath];
     [lightGrey addArcWithCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:self.frame.size.width/2 - 5 startAngle:DEGREES_TO_RADIANS_TOP(0) endAngle:DEGREES_TO_RADIANS_TOP(360 - (360 * self.value))  clockwise:NO];
