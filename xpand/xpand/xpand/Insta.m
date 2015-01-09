@@ -185,13 +185,17 @@
     }];
 }
 
-+(void)logout{
+-(void)logout{
     NSString *urlForTag = @"https://instagram.com/accounts/logout/";
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error 5");
         } else {
-            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UserProfile deactivateCurrentUserProfile];
+                [ModelHelper saveManagedObjectContext];
+                [self.delegate logoutFinished];
+            });
         }
     }];
 }

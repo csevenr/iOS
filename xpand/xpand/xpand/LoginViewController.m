@@ -24,47 +24,26 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if (self==[super initWithCoder:aDecoder]) {
         btns=[NSMutableArray new];
+        
+        UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
+        [backBtn setTitle:@"Back" forState:UIControlStateNormal];
+        [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
+        [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        [backBtn.titleLabel setFont:FONT];
+        [backBtn sizeToFit];
+        [self.view addSubview:backBtn];
     }
     return self;
 }
 
 -(void)viewDidLoad{
-    [super viewDidLoad];
-    self.view.backgroundColor=[UIColor colorWithRed:42.0/255.0 green:42.0/255.0 blue:42.0/255.0 alpha:1.0];
-    [self createBtns];
+    NSLog(@"viewDidLoad");
 }
 
--(void)createBtns{
-    if (btns!=nil){
-        for (UIButton *btn in btns) {
-            [btn removeFromSuperview];
-        }
-        [btns removeAllObjects];
-    }
-    UIButton *loginBtn = [[UIButton alloc]initWithFrame:CGRectMake(0.0, 162.0, self.view.frame.size.width, 60.0)];
-        if (self.login) {
-            if ([UserProfile getActiveUserProfile]) {//dont add a target here, dont want anyone pressing it.
-                [loginBtn setTitle:@"Retrieving user info" forState:UIControlStateNormal];
-            }else{
-                [loginBtn setTitle:@"Log in" forState:UIControlStateNormal];
-                [loginBtn addTarget:self action:@selector(accountBtnPressed:) forControlEvents:UIControlEventTouchUpInside];
-            }
-        }else{
-            [loginBtn setTitle:@"Logging out" forState:UIControlStateNormal];
-            NSURLRequest *requestObj;
-            requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://instagram.com/accounts/logout/"]];
-            [self.authWebView loadRequest:requestObj];
-        }
-        loginBtn.tag=10;
-        loginBtn.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1.0];
-        [loginBtn setTitleColor:[UIColor colorWithRed:42.0/255.0 green:42.0/255.0 blue:42.0/255.0 alpha:1.0] forState:UIControlStateNormal];
-        [self.view addSubview:loginBtn];
-        [btns addObject:loginBtn];
-        
-        activityIndicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(200.0, 20.0, 20.0, 20.0)];
-        activityIndicator.color=[UIColor colorWithRed:42.0/255.0 green:42.0/255.0 blue:42.0/255.0 alpha:1.0];
-        activityIndicator.hidden=YES;
-        [loginBtn addSubview:activityIndicator];
+-(void)viewDidAppear:(BOOL)animated{}
+
+- (IBAction)loginBtnPressed:(id)sender {
+    [self createNewAccount];
 }
 
 -(void)accountBtnPressed:(UIButton*)sender{
@@ -89,8 +68,6 @@
     
     if ([urlString isEqualToString:@"http://instagram.com/"]||[urlString isEqualToString:@"about:blank"]) {
         self.authWebView.hidden=YES;
-        self.login=YES;
-        [self createBtns];
     }
     
     NSRange equalRange0 = [urlString rangeOfString:@"accounts" options:NSBackwardsSearch];
@@ -130,7 +107,7 @@
 }
 
 -(void)userInfoFinished{
-    UserProfile *userProfile = [UserProfile getActiveUserProfile];
+    userProfile = [UserProfile getActiveUserProfile];
     if (userProfile.token1==nil) {
         userProfile.token1=[tokens objectAtIndex:0];
     }
@@ -152,11 +129,11 @@
 
 -(void)auth{
     if ([tokens count]==4) {
-        [self createBtns];
-        activityIndicator.frame=CGRectMake(activityIndicator.frame.origin.x+50.0, activityIndicator.frame.origin.y, activityIndicator.frame.size.width, activityIndicator.frame.size.height);
-        [activityIndicator startAnimating];
-        activityIndicator.hidden = NO;
+        [self.loginBtn setTitle:@"Retrieving User Info" forState:UIControlStateNormal];
+        self.loginBtn.enabled = NO;
+
         self.authWebView.hidden=YES;
+        
         Insta *insta = [Insta new];
         insta.delegate=self;
         [insta getUserInfoWithToken:[tokens objectAtIndex:0]];

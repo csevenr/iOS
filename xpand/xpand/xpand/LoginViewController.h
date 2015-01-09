@@ -19,10 +19,10 @@
 @interface LoginViewController : MasterViewController <instaDelegate, UIWebViewDelegate>
 
 @property (nonatomic, weak) id<loginDelegate> delegate;
-
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIWebView *authWebView;
-@property (nonatomic) BOOL login;
 
+- (IBAction)loginBtnPressed:(id)sender;
 -(void)auth;
 
 @end

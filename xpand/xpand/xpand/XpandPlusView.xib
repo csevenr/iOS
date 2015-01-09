@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="XpandPlusView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X P A N D +" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGA-85-0yO">
+                    <rect key="frame" x="226" y="26" width="149" height="35"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="30"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbE-d4-lLy">
+                    <rect key="frame" x="10" y="69" width="580" height="93"/>
+                    <string key="text">Subscribing to XPAND+ gives you acess to our automatic liking system. Allowing you to select a hashtag and let us do the rest for you!</string>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribing also gives you acess to all the future features of XPAND+" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnY-LF-fCq">
+                    <rect key="frame" x="10" y="259" width="580" height="62"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ONLY $5 A MONTH" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiy-HK-bV1">
+                    <rect key="frame" x="8" y="189" width="584" height="41"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="34"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1K9-uN-ARd">
+                    <rect key="frame" x="16" y="337" width="568" height="247"/>
+                    <color key="backgroundColor" red="0.42352944609999998" green="0.050980396570000003" blue="0.49803924560000001" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="36"/>
+                    <state key="normal" title="SUBSCRIBE NOW!">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="subscribeBtnPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="87A-ew-ODj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9n9-Cy-jtT">
+                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                    <color key="backgroundColor" red="0.42352944609999998" green="0.050980396570000003" blue="0.49803924560000001" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                    <state key="normal" title="X">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="closeBtnPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="wOz-ey-fRH"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.25490197539999998" green="0.67450982329999998" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="kbE-d4-lLy" firstAttribute="top" secondItem="CGA-85-0yO" secondAttribute="bottom" constant="8" id="2PM-qF-HcA"/>
+                <constraint firstItem="lnY-LF-fCq" firstAttribute="top" secondItem="hiy-HK-bV1" secondAttribute="bottom" constant="29" id="59U-2O-epu"/>
+                <constraint firstAttribute="trailing" secondItem="lnY-LF-fCq" secondAttribute="trailing" constant="10" id="5ca-Ld-4lp"/>
+                <constraint firstItem="1K9-uN-ARd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Jqp-Yb-8BC"/>
+                <constraint firstItem="1K9-uN-ARd" firstAttribute="top" secondItem="lnY-LF-fCq" secondAttribute="bottom" constant="16" id="N5X-rU-Bn4"/>
+                <constraint firstAttribute="trailing" secondItem="1K9-uN-ARd" secondAttribute="trailing" constant="16" id="by6-99-vDi"/>
+                <constraint firstItem="kbE-d4-lLy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="dgL-Bk-fKt"/>
+                <constraint firstAttribute="bottom" secondItem="1K9-uN-ARd" secondAttribute="bottom" constant="16" id="f0G-Wf-zrB"/>
+                <constraint firstAttribute="trailing" secondItem="kbE-d4-lLy" secondAttribute="trailing" constant="10" id="fYc-PZ-3bw"/>
+                <constraint firstItem="hiy-HK-bV1" firstAttribute="top" secondItem="kbE-d4-lLy" secondAttribute="bottom" constant="27" id="guV-KF-tbm"/>
+                <constraint firstItem="hiy-HK-bV1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="iel-zI-Mqx"/>
+                <constraint firstAttribute="centerX" secondItem="CGA-85-0yO" secondAttribute="centerX" id="kxO-rI-nhx"/>
+                <constraint firstItem="CGA-85-0yO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="26" id="ncD-SY-4cj"/>
+                <constraint firstAttribute="trailing" secondItem="hiy-HK-bV1" secondAttribute="trailing" constant="8" id="rqd-15-TEM"/>
+                <constraint firstItem="lnY-LF-fCq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="tH3-JL-C1Z"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="closeBtn" destination="9n9-Cy-jtT" id="XSq-M0-gua"/>
+                <outlet property="subscribeBtn" destination="1K9-uN-ARd" id="xzs-eV-Yv2"/>
+            </connections>
+        </view>
+    </objects>
+</document>

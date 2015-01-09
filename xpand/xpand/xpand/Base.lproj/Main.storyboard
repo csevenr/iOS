@@ -91,7 +91,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="oGN-yK-w6r" kind="show" id="fMG-Oe-8kh"/>
+                                    <action selector="logoutBtnPressed" destination="R7m-k9-KJ2" eventType="touchUpInside" id="16A-4o-nAg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcN-Au-CMN">
@@ -105,6 +105,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="xpandPlusBtnPressed:" destination="R7m-k9-KJ2" eventType="touchUpInside" id="DRW-ES-6OH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyK-7G-Htb">
                                 <rect key="frame" x="40" y="333" width="521" height="23"/>
@@ -149,8 +152,10 @@
                     <connections>
                         <outlet property="averageLikesLbl" destination="hea-Fg-CmP" id="xkS-bN-kNp"/>
                         <outlet property="followersLbl" destination="4xI-nV-ajr" id="RSd-MR-ILh"/>
+                        <outlet property="followingLbl" destination="eEF-fo-LkU" id="DKj-vN-HT6"/>
                         <outlet property="lastTenPostsLbl" destination="kPo-qG-AVc" id="V8P-XG-zuq"/>
                         <outlet property="leastLikesLbl" destination="aaq-J9-3jM" id="Ug7-uK-6bS"/>
+                        <outlet property="logoutBtn" destination="6n7-RD-Ers" id="T1E-gh-yKq"/>
                         <outlet property="mostLikesLbl" destination="yyK-7G-Htb" id="lQM-bH-i7w"/>
                         <outlet property="profilePicImg" destination="HEf-kK-QFG" id="OMe-D4-ZEo"/>
                         <outlet property="usernameLbl" destination="zvl-VC-hpY" id="rBD-zi-Mqu"/>
@@ -205,7 +210,7 @@
                     <navigationItem key="navigationItem" id="k4P-7U-0pG"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <segue destination="oGN-yK-w6r" kind="show" identifier="login" id="mcC-aV-HK0"/>
+                        <segue destination="oGN-yK-w6r" kind="presentation" identifier="login" id="mcC-aV-HK0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -233,7 +238,7 @@
                                     <constraint firstAttribute="width" secondItem="irJ-Vh-IR9" secondAttribute="height" multiplier="61:15" id="cKr-L0-dsQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Manual">
+                                <state key="normal" title="Auto">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -244,7 +249,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="BZd-VT-gxV"/>
+                                    <action selector="AutoBtnPressed:" destination="efU-w9-j4F" eventType="touchUpInside" id="Oea-5E-owh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Et0-Pt-3VI">
@@ -254,12 +259,12 @@
                                     <constraint firstAttribute="width" secondItem="Et0-Pt-3VI" secondAttribute="height" multiplier="19:7" id="wqp-nx-fTc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Auto">
+                                <state key="normal" title="Manual">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="RgR-NY-quu" kind="show" id="P0K-kV-3CB"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="v5n-NU-9t2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEQ-j3-P5o">
@@ -310,6 +315,8 @@
                         <outletCollection property="viewsToStyle" destination="irJ-Vh-IR9" collectionClass="NSMutableArray" id="iBO-fk-JOm"/>
                         <outletCollection property="viewsToStyle" destination="FEQ-j3-P5o" collectionClass="NSMutableArray" id="MOc-Ma-dd3"/>
                         <outletCollection property="viewsToStyle" destination="Et0-Pt-3VI" collectionClass="NSMutableArray" id="SKm-nT-WIc"/>
+                        <segue destination="RgR-NY-quu" kind="show" identifier="auto" id="VlC-Fk-x1t"/>
+                        <segue destination="oGN-yK-w6r" kind="presentation" identifier="login" id="DFJ-Eq-TRS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5l-kU-cVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,18 +342,48 @@
                                     <outlet property="delegate" destination="oGN-yK-w6r" id="Jem-Zx-JJb"/>
                                 </connections>
                             </webView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XPAND is an instagram based service and therefore needs you to login to your account to acess some basic information" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqG-Eu-gkh">
+                                <rect key="frame" x="16" y="20" width="568" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uho-kC-xwl">
+                                <rect key="frame" x="16" y="70" width="568" height="210"/>
+                                <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Uho-kC-xwl" secondAttribute="height" multiplier="284:105" id="LRg-ot-Er4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="AutoBtnPressed:" destination="efU-w9-j4F" eventType="touchUpInside" id="Gz3-zp-1HB"/>
+                                    <action selector="loginBtnPressed:" destination="oGN-yK-w6r" eventType="touchUpInside" id="XV6-Ii-oMa"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.25490197539999998" green="0.67450982329999998" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="UCl-pi-Coy" firstAttribute="top" secondItem="KSx-Ug-0Qh" secondAttribute="bottom" id="3jp-hp-jOm"/>
+                            <constraint firstItem="nqG-Eu-gkh" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" id="6c4-l6-sWJ"/>
+                            <constraint firstItem="Uho-kC-xwl" firstAttribute="top" secondItem="nqG-Eu-gkh" secondAttribute="bottom" constant="9" id="9Fy-KY-m6U"/>
                             <constraint firstItem="KSx-Ug-0Qh" firstAttribute="top" secondItem="iew-St-GMU" secondAttribute="topMargin" id="Rf3-Wz-IdQ"/>
-                            <constraint firstItem="UCl-pi-Coy" firstAttribute="top" secondItem="KSx-Ug-0Qh" secondAttribute="bottom" id="dbT-ii-A29"/>
+                            <constraint firstItem="Uho-kC-xwl" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" id="gvO-rC-bO4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KSx-Ug-0Qh" secondAttribute="trailing" constant="-20" id="mft-aV-CZC"/>
+                            <constraint firstItem="nqG-Eu-gkh" firstAttribute="top" secondItem="Pb6-6K-WJN" secondAttribute="bottom" constant="20" id="nPT-Ve-NFp"/>
                             <constraint firstItem="KSx-Ug-0Qh" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" constant="-20" id="qaM-t2-D7d"/>
+                            <constraint firstItem="nqG-Eu-gkh" firstAttribute="trailing" secondItem="iew-St-GMU" secondAttribute="trailingMargin" id="wvh-qW-xte"/>
+                            <constraint firstItem="Uho-kC-xwl" firstAttribute="trailing" secondItem="iew-St-GMU" secondAttribute="trailingMargin" id="x3Z-ZP-zEM"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="authWebView" destination="KSx-Ug-0Qh" id="xVN-3w-97d"/>
+                        <outlet property="loginBtn" destination="Uho-kC-xwl" id="Q1K-V4-kYp"/>
+                        <outletCollection property="viewsToStyle" destination="Uho-kC-xwl" collectionClass="NSMutableArray" id="ptD-hl-AeA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8RK-r9-4Ie" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -364,10 +401,56 @@
                     <view key="view" contentMode="scaleToFill" id="vjH-dG-C1k">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKa-Mv-W7A">
+                                <rect key="frame" x="16" y="40" width="568" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lJY-ln-nUC">
+                                        <rect key="frame" x="10" y="10" width="548" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ylh-HW-a1J"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxB-7B-v2i">
+                                <rect key="frame" x="16" y="195" width="568" height="210"/>
+                                <color key="backgroundColor" red="0.25490197539999998" green="0.67450982329999998" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LxB-7B-v2i" secondAttribute="height" multiplier="284:105" id="8CM-8V-3Tt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="AutoBtnPressed:" destination="efU-w9-j4F" eventType="touchUpInside" id="H0C-Ro-7vW"/>
+                                    <action selector="loginBtnPressed:" destination="oGN-yK-w6r" eventType="touchUpInside" id="jO1-Zk-9Bh"/>
+                                    <action selector="startBtnPressed:" destination="RgR-NY-quu" eventType="touchUpInside" id="vwI-Rm-Ux7"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LxB-7B-v2i" firstAttribute="trailing" secondItem="vjH-dG-C1k" secondAttribute="trailingMargin" id="R5L-Qc-XYu"/>
+                            <constraint firstAttribute="centerY" secondItem="LxB-7B-v2i" secondAttribute="centerY" id="qCJ-ys-gAc"/>
+                            <constraint firstItem="wKa-Mv-W7A" firstAttribute="top" secondItem="lqS-y7-mlv" secondAttribute="bottom" constant="40" id="rUB-zT-6se"/>
+                            <constraint firstItem="wKa-Mv-W7A" firstAttribute="leading" secondItem="vjH-dG-C1k" secondAttribute="leadingMargin" id="uTF-0j-JPH"/>
+                            <constraint firstItem="LxB-7B-v2i" firstAttribute="leading" secondItem="vjH-dG-C1k" secondAttribute="leadingMargin" id="vOI-Vc-uCU"/>
+                            <constraint firstItem="wKa-Mv-W7A" firstAttribute="trailing" secondItem="vjH-dG-C1k" secondAttribute="trailingMargin" id="zrL-Es-jHa"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <segue destination="oGN-yK-w6r" kind="show" identifier="login" id="POE-Ad-bg7"/>
+                        <outlet property="hashtagTextField" destination="lJY-ln-nUC" id="pa5-GS-xCx"/>
+                        <outlet property="hashtagTextFieldView" destination="wKa-Mv-W7A" id="e4a-pr-Xgr"/>
+                        <outlet property="startBtn" destination="LxB-7B-v2i" id="9He-X9-w8X"/>
+                        <outletCollection property="viewsToStyle" destination="LxB-7B-v2i" collectionClass="NSMutableArray" id="4Nf-D0-X3A"/>
+                        <segue destination="oGN-yK-w6r" kind="presentation" identifier="login" id="POE-Ad-bg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rd-Ky-SJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,6 +459,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fMG-Oe-8kh"/>
+        <segue reference="DFJ-Eq-TRS"/>
     </inferredMetricsTieBreakers>
 </document>

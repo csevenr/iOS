@@ -11,4 +11,10 @@
 
 @interface AutoViewController : MasterViewController
 
+@property (weak, nonatomic) IBOutlet UIView *hashtagTextFieldView;
+@property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
+@property (weak, nonatomic) IBOutlet UIButton *startBtn;
+
+- (IBAction)startBtnPressed:(id)sender;
+
 @end

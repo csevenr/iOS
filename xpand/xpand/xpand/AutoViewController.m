@@ -18,6 +18,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.hashtagTextFieldView.layer.borderWidth = 1.0;
+    self.hashtagTextFieldView.layer.borderColor = [[UIColor blackColor] CGColor];
+    
+    [self.hashtagTextField setFont:FONT];
+    
     UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
     [backBtn setTitle:@"Back" forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
@@ -25,6 +30,10 @@
     [backBtn.titleLabel setFont:FONT];
     [backBtn sizeToFit];
     [self.view addSubview:backBtn];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,5 +50,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)startBtnPressed:(id)sender {
+    NSLog(@"%f, %f", self.startBtn.bounds.size.width, self.startBtn.bounds.size.height);
+}
 
 @end

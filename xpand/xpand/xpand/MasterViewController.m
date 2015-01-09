@@ -8,9 +8,12 @@
 
 #import "MasterViewController.h"
 #import "UserProfile+Helper.h"
+#import "LoginViewController.h"
+#import "XpandPlusView.h"
 
-
-@interface MasterViewController ()
+@interface MasterViewController () {
+    BOOL needsLogin; //Must attempt login straight away for some screens to have userprofile, but if need a login must be done after the view is loaded so i have the segue
+}
 
 @end
 
@@ -18,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    needsLogin = NO;
+    [self login];
+    
     // Do any additional setup after loading the view.    
     for (UIView *view in self.viewsToStyle) {
         view.layer.borderWidth=1.0;
@@ -28,13 +34,50 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
     if (secondsBetween >= 3600.000001) {
         userProfile.likesInHour = [NSNumber numberWithInt:0];
     }
+    if (needsLogin){
+        [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:YES]];
+        needsLogin = NO;
+    }
+}
+
+-(void)login{
+    if ([UserProfile getActiveUserProfile]!=nil) {
+        userProfile = [UserProfile getActiveUserProfile];
+    }else{
+        needsLogin = YES;
+    }
+}
+
+-(void)showXpandPlusView{
+    NSArray * allTheViewsInMyNIB = [[NSBundle mainBundle] loadNibNamed:@"XpandPlusView" owner:self options:nil]; // loading nib (might contain more than one view)
+    XpandPlusView* xView = allTheViewsInMyNIB[0]; // getting desired view
+    xView.delegate = self;
+    xView.frame = CGRectMake(16.0, self.view.frame.size.height, self.view.frame.size.width - 32.0 ,self.view.frame.size.height - 32.0); //setting the frame
+    [self.view addSubview:xView];
+
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^(void) {
+                         xView.frame = CGRectMake(16.0, 16.0, self.view.frame.size.width - 32.0 ,self.view.frame.size.height - 32.0);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.destinationViewController isKindOfClass:[LoginViewController class]]) {
+        self.loginVc = segue.destinationViewController;
+    }
 }
 
 -(IBAction)popSelf{
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -17,6 +17,7 @@
 -(void)JSONReceived:(NSDictionary*)JSONDictionary;//+++ refactor
 -(void)likedPost;
 -(void)userInfoFinished;
+-(void)logoutFinished;
 -(void)instaError:(NSString*)errorString;
 
 @end
@@ -29,6 +30,6 @@
 - (void)likePost:(Post*)post;
 -(void)getUserInfoWithToken:(NSString*)tok;
 -(void)getUserMediaWithToken:(NSString*)tok;
-+(void)logout;
+-(void)logout;
 
 @end

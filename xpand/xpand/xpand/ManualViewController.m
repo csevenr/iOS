@@ -18,9 +18,6 @@
 #import "LoginViewController.h"
 #import "SearchCollectionReusableView.h"
 
-
-//#define FONT [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]
-
 @interface ManualViewController () {
     UIView *hashtagTextFieldView;
     UITextField *hashtagTextField;
@@ -49,9 +46,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    insta = [Insta new];
+    self.view.clipsToBounds = YES;
     
-    [self login];
+    //Background
+//    CAGradientLayer *gradient = [CAGradientLayer layer];
+//    gradient.frame = CGRectMake(0.0, 0.0, self.view.bounds.size.width * 1.75, self.view.bounds.size.height * 1.2);
+//    gradient.anchorPoint = CGPointMake(0.5, 0.5);
+//    gradient.position = (CGPoint){CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)};
+////    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:68.0 / 255.0 green:179.0 / 255.0 blue:254.0 / 255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:100.0 / 255.0 green:14.0 / 255.0 blue:121.0 / 255.0 alpha:1.0] CGColor], nil];
+//    gradient.colors = [NSArray arrayWithObjects:(id)(id)[[UIColor colorWithRed:100.0 / 255.0 green:14.0 / 255.0 blue:121.0 / 255.0 alpha:1.0] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
+//    gradient.transform = CATransform3DMakeRotation(-28.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
+//    [self.view.layer insertSublayer:gradient atIndex:0];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:245.0 / 255.0 green:245.0 / 255.0 blue:245.0 / 255.0 alpha:1.0];
+    
+    insta = [Insta new];
     
     searchIsOpen = NO;
     
@@ -60,7 +69,8 @@
     postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:[[FloatingHeaderViewFlowLayout alloc] init]];
     postCollView.delegate = self;
     postCollView.dataSource = self;
-    postCollView.backgroundColor = [UIColor whiteColor];
+    postCollView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+//    postCollView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:postCollView];
     
     [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
@@ -77,25 +87,17 @@
     likeStatusTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLikeStatusLbl) userInfo:nil repeats:YES];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [likeStatusTimer invalidate];
+}
+
 #pragma mark interaction
 
--(void)login{
-    if ([UserProfile getActiveUserProfile]!=nil) {
-        userProfile = [UserProfile getActiveUserProfile];
-    }else{
-        [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:YES]];
-    }
-}
+
 
 -(void)likedPost{
     [self updateLikeStatusLbl];
 }
-
-//-(void)swicthButtonPressed{
-//    [UserProfile deactivateCurrentUserProfile];
-//    userProfile = nil;
-//    [self login];
-//}
 
 - (IBAction)searchBtnPressed {
     if ([posts count]>0) [posts removeAllObjects];
@@ -124,10 +126,6 @@
     }
 }
 
-//-(void)loginFinished{
-//    [self popSelf];
-//}
-
 -(void)getJSON{
     if (![hashtagTextField.text isEqualToString:@""]) {
         NSCharacterSet *charactersToRemove = [[NSCharacterSet alphanumericCharacterSet] invertedSet];
@@ -141,9 +139,7 @@
 }
 
 -(void)reload{
-//    NSLog(@"reload, cells: %d", [postCells count]);
     [postCollView reloadData];
-//    [postCollView reloadItemsAtIndexPaths:postCells];
 }
 
 -(void)searchingUi{
@@ -166,7 +162,9 @@
                 circle.value = 1.0-([userProfile.likesInHour integerValue]/100.0);
             }else if ([userProfile.likesInHour integerValue]>=100){
                 int mins = (int)floorf([[NSDate date] timeIntervalSinceDate:userProfile.likeTime]/60);
-                circle.textLabel.text=[NSString stringWithFormat:@"%dm until likes are restored", 60-mins];
+                circle.numberLabel.text = [NSString stringWithFormat:@"%dm", 60-mins];
+                circle.textLabel.text = @"until likes are restored";
+                circle.value = mins/60.0;
             }
         }
     }
@@ -195,7 +193,6 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
     if ([segue.identifier isEqualToString:@"login"]){
         self.loginVc = segue.destinationViewController;
-        [(LoginViewController*)self.loginVc setLogin:[sender boolValue]];
     }
 }
 
@@ -235,6 +232,10 @@
     });
 }
 
+-(void)performLikeWithPost:(Post*)post{
+    [insta likePost:post];
+}
+
 #pragma mark collView methods
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -249,15 +250,14 @@
         }else{
             if ([userProfile.likesInHour integerValue]<100) {
                 Post *selectedPost = [posts objectAtIndex:indexPath.row];
-                [insta likePost:selectedPost];
+                [self performSelectorInBackground:@selector(performLikeWithPost:) withObject:selectedPost];
                 
                 [posts removeObject:selectedPost];
                 [postCells removeObject:indexPath];
                 
-                if ([posts count]==4){//only 4 left in table view, so paginate
+                if ([posts count]==10){//only 4 left in table view, so paginate
                     [self getJSON];
                 }
-    //            [postCollView reloadData];
                 [self reload];
                 
                 userProfile.likesInHour = [NSNumber numberWithInt:[userProfile.likesInHour integerValue]+1];
@@ -283,6 +283,7 @@
         if (circle == nil) {
             circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
 //            circle.value = 1.0;
+            
             [self updateLikeStatusLbl];
             
             cell.userInteractionEnabled = NO;
@@ -316,6 +317,9 @@
             }
         }
         [postCells addObject:indexPath];
+        
+        cell.layer.borderColor = [[UIColor colorWithWhite:1.0 alpha:1.0] CGColor];
+        cell.layer.borderWidth = 2.0;
     }
     
     return cell;
@@ -339,12 +343,6 @@
             [backBtn.titleLabel setFont:FONT];
             [backBtn sizeToFit];
             [headerView addSubview:backBtn];
-            
-//            backBtn.backgroundColor = [UIColor yellowColor];
-            
-//            NSLog(@"%f", backBtn.frame.size.height);
-            
-//            headerView.backgroundColor=[UIColor redColor];
             
         }else if (indexPath.section == 1) {
     
@@ -373,7 +371,8 @@
                 [hashtagTextFieldView addSubview:hashtagTableView];
                 hashtagTextFieldView.clipsToBounds = YES;
                 
-                headerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.92];
+//                headerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.92];
+                headerView.backgroundColor = [UIColor clearColor];
                 headerForLater = headerView;
             
             }
@@ -406,16 +405,12 @@
     if (section == 0) {
         return 1;
     }else{
-//        if ([posts count] == 0) {
-//            return 1;
-//        }
         return [posts count];
     }
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-//        return CGSizeMake(200.0, 34.0);
         return CGSizeMake(200.0, 50.0);
     }else{
         return CGSizeMake(200.0, 70.0);
@@ -491,7 +486,6 @@
 
     //got to the bottom. Paginate
     if (scrollView.contentOffset.y+scrollView.frame.size.height == scrollView.contentSize.height) {
-    NSLog(@"%d", [posts count]);
         if ([posts count]<81) {
             [self getJSON];
         }
@@ -599,7 +593,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%@", hashtagTextField.text); 
     hashtagTextField.text = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     [self textFieldShouldReturn:hashtagTextField];
 }

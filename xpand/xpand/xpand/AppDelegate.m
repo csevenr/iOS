@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MasterViewController.h"
 #import "LoginViewController.h"
+#import "UserProfile+Helper.h"
 
 @interface AppDelegate ()
 
@@ -19,12 +20,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
+    
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |
+                                                                                                    UIUserNotificationTypeBadge |
+                                                                                                    UIUserNotificationTypeSound
+                                                                                         categories:nil];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];//may crash on ipad
+    
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-    LoginViewController *vc = (LoginViewController*)nav.topViewController;
+    LoginViewController *vc = (LoginViewController*)[(MasterViewController*)nav.topViewController loginVc];
     [vc auth];
 
     return YES;
@@ -38,10 +49,48 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    UserProfile *userProfile = [UserProfile getActiveUserProfile];
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
+    //    NSLog(@"%d", [userProfile.likesInHour integerValue]);
+    
+    if ([userProfile.likesInHour integerValue]!=0) {
+        NSDateComponents *timeComponents = [[NSCalendar autoupdatingCurrentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond) fromDate:[NSDate date]];
+        NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+        
+        int mins = (3600-(int)[[NSDate date] timeIntervalSinceDate:userProfile.likeTime])/60;
+        int secs = (3600-(int)[[NSDate date] timeIntervalSinceDate:userProfile.likeTime])-mins*60;
+        
+        [dateComps setYear:[timeComponents year]];
+        [dateComps setMonth:[timeComponents month]];
+        [dateComps setDay:[timeComponents day]];
+        [dateComps setHour:[timeComponents hour]];
+        [dateComps setMinute:[timeComponents minute]+mins];
+        [dateComps setSecond:[timeComponents second]+secs];
+        
+        NSDate *itemDate = [[NSCalendar autoupdatingCurrentCalendar] dateFromComponents:dateComps];
+        
+        NSLog(@"Notification set to fire at: %@", itemDate);
+        
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        if (localNotif == nil)
+            return;
+        localNotif.fireDate = itemDate;
+        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+        localNotif.alertBody = @"Your likes have been restored";
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        localNotif.applicationIconBadgeNumber = 1;
+        
+        // Schedule the notification
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

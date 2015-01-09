@@ -13,8 +13,6 @@
 		66A43E651A274A0D00829313 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E641A274A0D00829313 /* AppDelegate.m */; };
 		66A43E681A274A0D00829313 /* xpand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E661A274A0D00829313 /* xpand.xcdatamodeld */; };
 		66A43E6B1A274A0D00829313 /* ManualViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E6A1A274A0D00829313 /* ManualViewController.m */; };
-		66A43E6E1A274A0D00829313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A43E6C1A274A0D00829313 /* Main.storyboard */; };
-		66A43E731A274A0D00829313 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A43E711A274A0D00829313 /* LaunchScreen.xib */; };
 		66A43E7F1A274A0D00829313 /* xpandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E7E1A274A0D00829313 /* xpandTests.m */; };
 		66A43E8A1A274BA600829313 /* PostCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E891A274BA600829313 /* PostCollectionViewCell.m */; };
 		66A43E8D1A274BBF00829313 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E8C1A274BBF00829313 /* Post.m */; };
@@ -29,6 +27,10 @@
 		66A43EB31A274F4B00829313 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB01A274F4B00829313 /* MasterViewController.m */; };
 		66A43EBA1A274FD900829313 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EB91A274FD900829313 /* LoginViewController.m */; };
 		66A43EBD1A27500600829313 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EBC1A27500600829313 /* ImageDownloader.m */; };
+		66B43C461A5EA948007E7730 /* XpandPlusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B43C451A5EA948007E7730 /* XpandPlusView.m */; };
+		66B43C481A5EAD5F007E7730 /* XpandPlusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66B43C471A5EAD5F007E7730 /* XpandPlusView.xib */; };
+		66D04C721A6041EA0037A401 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D04C6E1A6041EA0037A401 /* LaunchScreen.xib */; };
+		66D04C731A6041EA0037A401 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D04C701A6041EA0037A401 /* Main.storyboard */; };
 		66D8AABA1A56973400E02CD2 /* InstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D8AAB91A56973400E02CD2 /* InstagramViewController.m */; };
 		66D8AABD1A56A78000E02CD2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D8AABC1A56A78000E02CD2 /* ProfileViewController.m */; };
 		66D8AAC01A56BE8000E02CD2 /* SearchCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D8AABF1A56BE8000E02CD2 /* SearchCollectionReusableView.m */; };
@@ -59,8 +61,6 @@
 		66A43E671A274A0D00829313 /* xpand.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = xpand.xcdatamodel; sourceTree = "<group>"; };
 		66A43E691A274A0D00829313 /* ManualViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManualViewController.h; sourceTree = "<group>"; };
 		66A43E6A1A274A0D00829313 /* ManualViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManualViewController.m; sourceTree = "<group>"; };
-		66A43E6D1A274A0D00829313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		66A43E721A274A0D00829313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		66A43E781A274A0D00829313 /* xpandTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xpandTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A43E7D1A274A0D00829313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A43E7E1A274A0D00829313 /* xpandTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xpandTests.m; sourceTree = "<group>"; };
@@ -90,13 +90,20 @@
 		66A43EB91A274FD900829313 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		66A43EBB1A27500600829313 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
 		66A43EBC1A27500600829313 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
+		66B43C441A5EA948007E7730 /* XpandPlusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpandPlusView.h; sourceTree = "<group>"; };
+		66B43C451A5EA948007E7730 /* XpandPlusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XpandPlusView.m; sourceTree = "<group>"; };
+		66B43C471A5EAD5F007E7730 /* XpandPlusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XpandPlusView.xib; sourceTree = "<group>"; };
+		66D04C6F1A6041EA0037A401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		66D04C711A6041EA0037A401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		66D04C751A6043200037A401 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		66D04C771A6043360037A401 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		66D8AAB81A56973400E02CD2 /* InstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramViewController.h; sourceTree = "<group>"; };
 		66D8AAB91A56973400E02CD2 /* InstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramViewController.m; sourceTree = "<group>"; };
 		66D8AABB1A56A78000E02CD2 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		66D8AABC1A56A78000E02CD2 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		66D8AABE1A56BE8000E02CD2 /* SearchCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCollectionReusableView.h; sourceTree = "<group>"; };
 		66D8AABF1A56BE8000E02CD2 /* SearchCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCollectionReusableView.m; sourceTree = "<group>"; };
-		66ED89451A2794C900C05E9D /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibCell.xib; sourceTree = "<group>"; };
+		66ED89451A2794C900C05E9D /* NibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NibCell.xib; path = ../NibCell.xib; sourceTree = "<group>"; };
 		66FB10941A28E47100BC1710 /* FloatingHeaderViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeaderViewFlowLayout.h; sourceTree = "<group>"; };
 		66FB10951A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeaderViewFlowLayout.m; sourceTree = "<group>"; };
 		CC90F8841A423B0B005B43A0 /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
@@ -124,7 +131,6 @@
 		66A43E531A274A0D00829313 = {
 			isa = PBXGroup;
 			children = (
-				66ED89451A2794C900C05E9D /* NibCell.xib */,
 				66A43E5E1A274A0D00829313 /* xpand */,
 				66A43E7B1A274A0D00829313 /* xpandTests */,
 				66A43E5D1A274A0D00829313 /* Products */,
@@ -161,8 +167,10 @@
 				66FB10951A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m */,
 				CC90F8841A423B0B005B43A0 /* CircleProgressBar.h */,
 				CC90F8851A423B0B005B43A0 /* CircleProgressBar.m */,
-				66A43E6C1A274A0D00829313 /* Main.storyboard */,
-				66A43E711A274A0D00829313 /* LaunchScreen.xib */,
+				66B43C471A5EAD5F007E7730 /* XpandPlusView.xib */,
+				66ED89451A2794C900C05E9D /* NibCell.xib */,
+				66D04C6E1A6041EA0037A401 /* LaunchScreen.xib */,
+				66D04C701A6041EA0037A401 /* Main.storyboard */,
 				66A43EAC1A274EFC00829313 /* AlertLabel.h */,
 				66A43EAD1A274EFC00829313 /* AlertLabel.m */,
 				66A43EBB1A27500600829313 /* ImageDownloader.h */,
@@ -222,6 +230,8 @@
 			children = (
 				66A43EAF1A274F4B00829313 /* MasterViewController.h */,
 				66A43EB01A274F4B00829313 /* MasterViewController.m */,
+				66B43C441A5EA948007E7730 /* XpandPlusView.h */,
+				66B43C451A5EA948007E7730 /* XpandPlusView.m */,
 				66D8AAB81A56973400E02CD2 /* InstagramViewController.h */,
 				66D8AAB91A56973400E02CD2 /* InstagramViewController.m */,
 				66A43E691A274A0D00829313 /* ManualViewController.h */,
@@ -316,10 +326,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66A43E6E1A274A0D00829313 /* Main.storyboard in Resources */,
+				66D04C721A6041EA0037A401 /* LaunchScreen.xib in Resources */,
+				66D04C731A6041EA0037A401 /* Main.storyboard in Resources */,
 				6605A41A1A5C4FAB00A85AA7 /* Images.xcassets in Resources */,
 				66ED89461A2794C900C05E9D /* NibCell.xib in Resources */,
-				66A43E731A274A0D00829313 /* LaunchScreen.xib in Resources */,
+				66B43C481A5EAD5F007E7730 /* XpandPlusView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +366,7 @@
 				66A43EBA1A274FD900829313 /* LoginViewController.m in Sources */,
 				CC90F8861A423B0B005B43A0 /* CircleProgressBar.m in Sources */,
 				66A43E8A1A274BA600829313 /* PostCollectionViewCell.m in Sources */,
+				66B43C461A5EA948007E7730 /* XpandPlusView.m in Sources */,
 				66A43E6B1A274A0D00829313 /* ManualViewController.m in Sources */,
 				66A43E681A274A0D00829313 /* xpand.xcdatamodeld in Sources */,
 				66FB10961A28E47100BC1710 /* FloatingHeaderViewFlowLayout.m in Sources */,
@@ -382,20 +394,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		66A43E6C1A274A0D00829313 /* Main.storyboard */ = {
+		66D04C6E1A6041EA0037A401 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				66A43E6D1A274A0D00829313 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		66A43E711A274A0D00829313 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				66A43E721A274A0D00829313 /* Base */,
+				66D04C6F1A6041EA0037A401 /* Base */,
+				66D04C771A6043360037A401 /* en */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		66D04C701A6041EA0037A401 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D04C711A6041EA0037A401 /* Base */,
+				66D04C751A6043200037A401 /* en */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -489,6 +503,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = awnty;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -502,6 +517,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = awnty;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

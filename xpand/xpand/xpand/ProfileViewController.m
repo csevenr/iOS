@@ -13,6 +13,7 @@
 
 @interface ProfileViewController () {
     BOOL updated;
+    Insta *insta;
 }
 
 @end
@@ -22,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     dispatch_async(dispatch_get_main_queue(), ^{
+        insta = [Insta new];
+        insta.delegate = self;
         [self setUpView];
     });
     
@@ -59,6 +62,7 @@
     self.profilePicImg.layer.cornerRadius=self.profilePicImg.frame.size.width/2;
     self.profilePicImg.clipsToBounds=YES;
     self.followersLbl.text = [NSString stringWithFormat:@"Followers: %d",[userProfile.followers intValue]];
+    self.followingLbl.text = [NSString stringWithFormat:@"Following: %d",[userProfile.follows intValue]];
     if ([userProfile.recentCount intValue]==1) {//+++ check on 1 and less then 10 posts
         self.lastTenPostsLbl.text = @"Post stats";
     }else if ([userProfile.recentCount intValue]>=10){
@@ -71,8 +75,8 @@
     self.leastLikesLbl.text = [NSString stringWithFormat:@"Least likes: %d",[userProfile.recentLeastLikes intValue]];
     
     if (!updated) {
-        Insta *insta = [Insta new];
-        insta.delegate = self;
+//        Insta *insta = [Insta new];
+//        insta.delegate = self;
         [insta getUserInfoWithToken:nil];
     }
 }
@@ -87,18 +91,26 @@
         userProfile.isActive=[NSNumber numberWithBool:NO];
         
         self.loginVc = (LoginViewController*)segue.destinationViewController;
-        [self.loginVc setLogin:NO];
         self.loginVc.delegate = self;
     }
+}
+
+- (IBAction)xpandPlusBtnPressed:(id)sender {
+    [self showXpandPlusView];
+}
+
+- (IBAction)logoutBtnPressed{
+    [insta logout];
+    [self.logoutBtn setTitle:@"Logging Out" forState:UIControlStateNormal];
+}
+
+-(void)logoutFinished{
+    [self popSelf];
 }
 
 -(void)loginFinished{
     [self setUpView];
 }
-
-//- (IBAction)logoutBtnPressed {
-//    [self.loginVc ];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

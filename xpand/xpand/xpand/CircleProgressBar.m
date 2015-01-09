@@ -22,7 +22,10 @@
 
 -(id)initWithFrame:(CGRect)frame{
     if (self == [super initWithFrame:frame]){
+        self.backgroundColor = [UIColor clearColor];
+        
         self.numberLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, self.frame.size.height * 0.24, self.frame.size.width, 60.0)];
+        self.numberLabel.backgroundColor = [UIColor clearColor];
         self.numberLabel.numberOfLines = 0;
         self.numberLabel.textAlignment = NSTextAlignmentCenter;
         self.numberLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:70.0];
@@ -30,6 +33,7 @@
         [self addSubview:self.numberLabel];
         
         self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, self.frame.size.height * 0.6, self.frame.size.width, 20.0)];
+        self.textLabel.backgroundColor = [UIColor clearColor];
         self.textLabel.numberOfLines = 0;
         self.textLabel.textAlignment = NSTextAlignmentCenter;
         self.textLabel.font = FONT;
@@ -53,7 +57,7 @@
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    [[UIColor whiteColor] setFill];
+    [[UIColor clearColor] setFill];
     CGContextFillRect(context, rect);
     
     CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:68.0 / 255.0 green:179.0 / 255.0 blue:254.0 / 255.0 alpha:1.0] CGColor]);
