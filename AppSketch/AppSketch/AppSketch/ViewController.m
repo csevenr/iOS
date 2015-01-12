@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "EditableView.h"
+#import "TouchDownTapGestureRecognizer.h"
 
 @interface ViewController (){
     EditableView *currentView;
@@ -22,15 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    UITapGestureRecognizer *newView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(createNewView:)];
+    TouchDownTapGestureRecognizer *newView = [[TouchDownTapGestureRecognizer alloc]initWithTarget:self action:@selector(createNewView:) secondeAction:@selector(createNewView:)];//pass another selector
     newView.numberOfTapsRequired = 3;
     [self.view addGestureRecognizer:newView];
     
     isPlacingNewView = NO;
 }
 
--(void)createNewView:(UITapGestureRecognizer*)gest{
+-(void)createNewView:(TouchDownTapGestureRecognizer*)gest{
     CGPoint location = [gest locationInView:self.view];
+    
     EditableView *testView = [[EditableView alloc]initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0)];
     testView.center = CGPointMake(location.x, location.y);
     testView.layer.borderWidth = 1.0;
@@ -49,8 +51,6 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
-    
-    
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{

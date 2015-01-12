@@ -16,6 +16,7 @@
 		663886941A63CEAC009029E9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663886921A63CEAC009029E9 /* LaunchScreen.xib */; };
 		663886A01A63CEAC009029E9 /* AppSketchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6638869F1A63CEAC009029E9 /* AppSketchTests.m */; };
 		663886AB1A63D60A009029E9 /* EditableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 663886AA1A63D60A009029E9 /* EditableView.m */; };
+		663886AE1A63E188009029E9 /* TouchDownTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 663886AD1A63E188009029E9 /* TouchDownTapGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		6638869F1A63CEAC009029E9 /* AppSketchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppSketchTests.m; sourceTree = "<group>"; };
 		663886A91A63D60A009029E9 /* EditableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableView.h; sourceTree = "<group>"; };
 		663886AA1A63D60A009029E9 /* EditableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableView.m; sourceTree = "<group>"; };
+		663886AC1A63E188009029E9 /* TouchDownTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchDownTapGestureRecognizer.h; sourceTree = "<group>"; };
+		663886AD1A63E188009029E9 /* TouchDownTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchDownTapGestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 				6638868B1A63CEAC009029E9 /* ViewController.m */,
 				663886A91A63D60A009029E9 /* EditableView.h */,
 				663886AA1A63D60A009029E9 /* EditableView.m */,
+				663886AC1A63E188009029E9 /* TouchDownTapGestureRecognizer.h */,
+				663886AD1A63E188009029E9 /* TouchDownTapGestureRecognizer.m */,
 				6638868D1A63CEAC009029E9 /* Main.storyboard */,
 				663886901A63CEAC009029E9 /* Images.xcassets */,
 				663886921A63CEAC009029E9 /* LaunchScreen.xib */,
@@ -228,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				663886AB1A63D60A009029E9 /* EditableView.m in Sources */,
+				663886AE1A63E188009029E9 /* TouchDownTapGestureRecognizer.m in Sources */,
 				663886861A63CEAC009029E9 /* AppDelegate.m in Sources */,
 				663886831A63CEAC009029E9 /* main.m in Sources */,
 				6638868C1A63CEAC009029E9 /* ViewController.m in Sources */,
