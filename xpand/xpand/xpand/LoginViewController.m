@@ -24,20 +24,18 @@
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if (self==[super initWithCoder:aDecoder]) {
         btns=[NSMutableArray new];
-        
-        UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
-        [backBtn setTitle:@"Back" forState:UIControlStateNormal];
-        [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
-        [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-        [backBtn.titleLabel setFont:FONT];
-        [backBtn sizeToFit];
-        [self.view addSubview:backBtn];
     }
     return self;
 }
 
 -(void)viewDidLoad{
-    NSLog(@"viewDidLoad");
+    UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
+    [backBtn setTitle:@"Back" forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+    [backBtn.titleLabel setFont:FONT];
+    [backBtn sizeToFit];
+    [self.view addSubview:backBtn];
 }
 
 -(void)viewDidAppear:(BOOL)animated{}
