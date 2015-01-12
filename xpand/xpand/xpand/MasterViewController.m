@@ -40,7 +40,7 @@
         userProfile.likesInHour = [NSNumber numberWithInt:0];
     }
     if (needsLogin){
-        [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:YES]];
+        [self performSegueWithIdentifier:@"login2" sender:[NSNumber numberWithBool:YES]];
         needsLogin = NO;
     }
 }
