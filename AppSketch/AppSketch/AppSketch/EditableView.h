@@ -10,4 +10,6 @@
 
 @interface EditableView : UIView
 
+@property BOOL editable;
+
 @end

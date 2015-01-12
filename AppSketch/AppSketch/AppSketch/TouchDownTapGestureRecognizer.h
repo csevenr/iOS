@@ -10,6 +10,8 @@
 
 @interface TouchDownTapGestureRecognizer : UITapGestureRecognizer
 
+//@property NSInteger numberOfTapsRequired;
+
 -(id)initWithTarget:(id)target action:(SEL)action secondeAction:(SEL)secondAction;
 
 @end

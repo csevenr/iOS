@@ -13,6 +13,9 @@
 @interface ViewController (){
     EditableView *currentView;
     
+    CGPoint oldLocation1;
+    CGPoint oldLocation2;
+    
     BOOL isPlacingNewView;
 }
 
@@ -49,14 +52,49 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+//    NSLog(@"BEGAN");
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
 }
 
+//-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+//    NSArray *touchArray = [[event allTouches] allObjects];
+//    
+//    UITouch *touch1 = [touchArray objectAtIndex:[touchArray count]-1];// [[event allTouches] anyObject];
+//    CGPoint location1 = [touch1 locationInView:self.view];
+//
+//    
+//    UITouch *touch2;
+//    CGPoint location2;
+//    CGFloat distance;
+//    if ([touchArray count] > 1) {
+//        touch2 = [touchArray objectAtIndex:0];
+//        location2 = [touch2 locationInView:self.view];
+//        
+//        CGFloat xDist = ((location2.x - oldLocation2.x) - (location1.x - oldLocation1.x));
+//        CGFloat yDist = ((location2.y - oldLocation2.y) - (location1.y - oldLocation1.y));
+//        distance = sqrt((xDist * xDist) + (yDist * yDist));
+//        
+//        currentView.frame = CGRectMake(currentView.frame.origin.x, currentView.frame.origin.y, currentView.frame.size.width - xDist, currentView.frame.size.height - yDist);
+//        NSLog(@"%f, %f", currentView.frame.origin.x, currentView.frame.origin.y);
+////        NSLog(@"%f, %f, %f, %f", location1.x ,location1.y, location2.x ,location2.y);
+////        NSLog(@"%f", distance);
+////        NSLog(@"%f, %f", xDist, yDist);
+////        NSLog(@"%f, %f", currentView.frame.size.width, currentView.frame.size.height);
+//        oldLocation1 = location1;
+//        oldLocation2 = location2;
+//    }
+//    
+//    
+//    if (isPlacingNewView){
+//        currentView.center = CGPointMake(location1.x, location1.y);
+//    }
+//}
+
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint location = [touch locationInView:self.view];
-    
+
     if (isPlacingNewView){
         currentView.center = CGPointMake(location.x, location.y);
     }
@@ -64,7 +102,7 @@
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     if (isPlacingNewView == YES) {
-        currentView.layer.borderColor = [[UIColor blackColor] CGColor];
+        currentView.editable = NO;
         currentView = nil;
     }
 }

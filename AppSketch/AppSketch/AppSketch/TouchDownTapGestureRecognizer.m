@@ -31,10 +31,10 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     if (![failTimer isValid]) {
-        failTimer = [NSTimer scheduledTimerWithTimeInterval:0.35*self.numberOfTapsRequired target:self selector:@selector(failed) userInfo:nil repeats:NO];
+        failTimer = [NSTimer scheduledTimerWithTimeInterval:0.2*(self.numberOfTapsRequired-1)+0.35 target:self selector:@selector(failed) userInfo:nil repeats:NO];
         taps=0;
     }
-    taps++;// = self.numberOfTapsRequired;
+    taps++;
     
     if (self.state == UIGestureRecognizerStatePossible) {
         if (taps == self.numberOfTapsRequired) {
