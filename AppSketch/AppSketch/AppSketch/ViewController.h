@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditableView.h"
+#import "DetailsMenu.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <EditableViewDelegate, DetailsMenuDelegate>
 
 
 @end

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DetailsMenu">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjA-KS-ARG" customClass="NKOColorPickerView">
+                    <rect key="frame" x="160" y="8" width="280" height="280"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="280" id="dRq-Ks-yas"/>
+                        <constraint firstAttribute="width" constant="280" id="zRf-kn-WTs"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IU0-0k-OcR">
+                    <rect key="frame" x="53" y="296" width="539" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="qCZ-Ha-d0H"/>
+                    </connections>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai9-Yh-uYf">
+                    <rect key="frame" x="8" y="300" width="37" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="IU0-0k-OcR" firstAttribute="leading" secondItem="Ai9-Yh-uYf" secondAttribute="trailing" constant="8" id="2Qb-ex-DBR"/>
+                <constraint firstAttribute="centerX" secondItem="OjA-KS-ARG" secondAttribute="centerX" id="CrN-rp-1P1"/>
+                <constraint firstItem="IU0-0k-OcR" firstAttribute="top" secondItem="OjA-KS-ARG" secondAttribute="bottom" constant="8" id="L36-nM-Xes"/>
+                <constraint firstAttribute="trailing" secondItem="IU0-0k-OcR" secondAttribute="trailing" constant="8" id="LJY-q0-CxR"/>
+                <constraint firstItem="Ai9-Yh-uYf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cuA-YS-rpO"/>
+                <constraint firstItem="IU0-0k-OcR" firstAttribute="leading" secondItem="Ai9-Yh-uYf" secondAttribute="trailing" constant="8" id="dQf-fd-d8v"/>
+                <constraint firstItem="OjA-KS-ARG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="hF4-dv-ODb"/>
+                <constraint firstItem="IU0-0k-OcR" firstAttribute="top" secondItem="Ai9-Yh-uYf" secondAttribute="bottom" constant="-25" id="rQS-SW-J6C"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="pickerView" destination="OjA-KS-ARG" id="1yf-yI-3kE"/>
+                <outlet property="textTextField" destination="IU0-0k-OcR" id="Gme-Ms-qXT"/>
+            </connections>
+        </view>
+    </objects>
+</document>

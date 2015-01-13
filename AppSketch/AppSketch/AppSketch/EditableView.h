@@ -8,8 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class EditableView;
+
+@protocol EditableViewDelegate <NSObject>
+
+-(void)editableViewDeleteBtnPressed;
+-(void)editableViewDetailsBtnPressed;
+-(void)editableViewShouldBecomeEditable:(EditableView*)v;
+-(void)editableViewShouldBecomeUneditable;
+
+@end
+
 @interface EditableView : UIView
 
+@property (nonatomic, weak) id<EditableViewDelegate> delegate;
+
 @property BOOL editable;
+
+@property UILabel *titleLabel;
+@property UIImage *image;
 
 @end
