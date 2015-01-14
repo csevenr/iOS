@@ -34,7 +34,19 @@
         self.editable = YES;//+++ private? must be property
         isPositioning = NO;
         isScaling = NO;
+                
+        self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height)];
+        self.imageView.layer.cornerRadius = 10.0;
+        self.imageView.clipsToBounds = YES;
+        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self addSubview:self.imageView];
         
+        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height)];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.numberOfLines = 0;
+        [self addSubview:self.titleLabel];
+        
+        //Add tools last for zpositioning
         positionHandle = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30.0, 30.0)];
         positionHandle.backgroundColor = [UIColor colorWithRed:134.0/255.0 green:232.0/255.0 blue:124.0/255.0 alpha:1.0];
         positionHandle.layer.cornerRadius = 10.0;
@@ -66,13 +78,6 @@
         [self addSubview:scaleHandle];
         
         editTools = [NSArray arrayWithObjects:positionHandle, deleteBtn, detailsBtn, scaleHandle, nil];
-        
-        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height)];
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.numberOfLines = 0;
-//        self.titleLabel.textColor = [UIColor blackColor];
-//        self.titleLabel.backgroundColor = [UIColor redColor];
-        [self addSubview:self.titleLabel];
     }
     return self;
 }
@@ -135,6 +140,7 @@
         scaleHandle.frame = CGRectMake(self.frame.size.width - 30.0, self.frame.size.height - 30.0, 30.0, 30.0);
         
         self.titleLabel.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
+        self.imageView.frame = CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height);
     }
     oldLocation = location;
 }

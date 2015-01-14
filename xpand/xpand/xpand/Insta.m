@@ -72,6 +72,7 @@
     if ([self checkForConnection]) {
 //        NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentTokenForLike:YES]];
         NSString *urlForLike = [NSString stringWithFormat:@"http://xpand.editionthree.com/like.php?imageID=%@", post.postId/*, [[ClientController sharedInstance] getCurrentTokenForLike:YES]*/];
+        NSLog(@"POSTID: %@", post.postId);
         NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
         [req setHTTPMethod:@"POST"];
         [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {

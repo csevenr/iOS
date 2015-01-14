@@ -11,7 +11,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OjA-KS-ARG" customClass="NKOColorPickerView">
-                    <rect key="frame" x="160" y="8" width="280" height="280"/>
+                    <rect key="frame" x="160" y="58" width="280" height="280"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="280" id="dRq-Ks-yas"/>
@@ -19,7 +19,7 @@
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IU0-0k-OcR">
-                    <rect key="frame" x="53" y="296" width="539" height="30"/>
+                    <rect key="frame" x="53" y="346" width="539" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
@@ -27,25 +27,58 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai9-Yh-uYf">
-                    <rect key="frame" x="8" y="300" width="37" height="21"/>
+                    <rect key="frame" x="8" y="350" width="37" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9Wk-li-QXw">
+                    <rect key="frame" x="239" y="8" width="123" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="2fT-KN-kdJ"/>
+                        <constraint firstAttribute="width" constant="123" id="b41-RD-Yt2"/>
+                    </constraints>
+                    <segments>
+                        <segment title="Colour"/>
+                        <segment title="Image"/>
+                    </segments>
+                    <connections>
+                        <action selector="backgroundSegConValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="zpL-RE-TIr"/>
+                    </connections>
+                </segmentedControl>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLF-GV-HU7">
+                    <rect key="frame" x="160" y="58" width="280" height="280"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="280" id="27H-s9-9Dw"/>
+                        <constraint firstAttribute="height" constant="280" id="WQ0-2I-J0P"/>
+                    </constraints>
+                    <state key="normal" title="Tap to choose pic">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseImageBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="IIK-wO-uHq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="IU0-0k-OcR" firstAttribute="leading" secondItem="Ai9-Yh-uYf" secondAttribute="trailing" constant="8" id="2Qb-ex-DBR"/>
                 <constraint firstAttribute="centerX" secondItem="OjA-KS-ARG" secondAttribute="centerX" id="CrN-rp-1P1"/>
+                <constraint firstAttribute="centerX" secondItem="9Wk-li-QXw" secondAttribute="centerX" id="INo-2Z-aYt"/>
+                <constraint firstItem="OjA-KS-ARG" firstAttribute="top" secondItem="9Wk-li-QXw" secondAttribute="bottom" constant="22" id="Kx2-3y-SPz"/>
                 <constraint firstItem="IU0-0k-OcR" firstAttribute="top" secondItem="OjA-KS-ARG" secondAttribute="bottom" constant="8" id="L36-nM-Xes"/>
                 <constraint firstAttribute="trailing" secondItem="IU0-0k-OcR" secondAttribute="trailing" constant="8" id="LJY-q0-CxR"/>
+                <constraint firstAttribute="centerX" secondItem="xLF-GV-HU7" secondAttribute="centerX" id="YWe-0q-7yC"/>
+                <constraint firstItem="9Wk-li-QXw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ZPn-1v-Mk8"/>
                 <constraint firstItem="Ai9-Yh-uYf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cuA-YS-rpO"/>
                 <constraint firstItem="IU0-0k-OcR" firstAttribute="leading" secondItem="Ai9-Yh-uYf" secondAttribute="trailing" constant="8" id="dQf-fd-d8v"/>
-                <constraint firstItem="OjA-KS-ARG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="hF4-dv-ODb"/>
+                <constraint firstItem="xLF-GV-HU7" firstAttribute="top" secondItem="9Wk-li-QXw" secondAttribute="bottom" constant="22" id="nae-1Q-kmc"/>
                 <constraint firstItem="IU0-0k-OcR" firstAttribute="top" secondItem="Ai9-Yh-uYf" secondAttribute="bottom" constant="-25" id="rQS-SW-J6C"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
+                <outlet property="backgroundImageButton" destination="xLF-GV-HU7" id="kYg-EB-VrS"/>
                 <outlet property="pickerView" destination="OjA-KS-ARG" id="1yf-yI-3kE"/>
                 <outlet property="textTextField" destination="IU0-0k-OcR" id="Gme-Ms-qXT"/>
             </connections>

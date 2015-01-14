@@ -48,6 +48,7 @@
 }
 
 -(void)editSelf{
+    currentView.editable = NO;
     currentView = (EditableView*)self.view;
     [self showDetailsMenu];
 }
@@ -75,6 +76,8 @@
         detailsMenu.frame = CGRectMake(self.view.frame.size.width, 10.0, self.view.frame.size.width ,self.view.frame.size.height - 20.0); //setting the frame
         [self.view addSubview:detailsMenu];
     }
+    
+    [self.view bringSubviewToFront:detailsMenu];
     
     [UIView animateWithDuration:0.3
                           delay:0.0
@@ -158,6 +161,10 @@
 
 -(void)setCurrentViewBackgroundColour:(UIColor*)colour{
     currentView.backgroundColor = colour;
+}
+
+-(void)setCurrentViewImage:(UIImage*)image{
+    currentView.imageView.image = image;
 }
 
 -(void)setCurrentViewTitleLabel:(NSString*)string{

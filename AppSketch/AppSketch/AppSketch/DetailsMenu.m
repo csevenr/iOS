@@ -32,10 +32,16 @@
     [closeMenuBtn addTarget:self action:@selector(closeBtnPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:closeMenuBtn];
     
+    self.backgroundImageButton.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.backgroundImageButton.layer.borderWidth = 3.0;
+    self.backgroundImageButton.layer.cornerRadius = 10.0;
+    self.backgroundImageButton.clipsToBounds = YES;
+    
     [self.textTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 -(void)closeBtnPressed{
+    [self textFieldShouldReturn:self.textTextField];
     [self.delegate hideDetailsMenu];
 }
 
@@ -43,6 +49,53 @@
 
 - (void)textFieldDidChange:(UITextField *)textField {
     [self.delegate setCurrentViewTitleLabel:textField.text];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)backgroundSegConValueChanged:(UISegmentedControl *)sender {
+    if (sender.selectedSegmentIndex == 0){
+        self.pickerView.hidden = NO;
+        self.backgroundImageButton.hidden = YES;
+    }else if (sender.selectedSegmentIndex == 1){
+        self.pickerView.hidden = YES;
+        self.backgroundImageButton.hidden = NO;
+    }
+}
+
+- (IBAction)chooseImageBtn:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [(UIViewController*)self.delegate presentViewController:picker animated:YES completion:nil];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *imageToUse;
+    if ([info objectForKey:UIImagePickerControllerEditedImage] != nil) {
+        imageToUse = [info objectForKey:UIImagePickerControllerEditedImage];
+    }else{
+        imageToUse = [info objectForKey:UIImagePickerControllerOriginalImage];
+    }
+    [self.backgroundImageButton setImage:imageToUse forState:UIControlStateNormal];
+    [self.delegate setCurrentViewImage:imageToUse];
+    [(UIViewController*)self.delegate dismissViewControllerAnimated:picker
+                                                         completion:^{
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    }];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [(UIViewController*)self.delegate dismissViewControllerAnimated:picker
+                                                         completion:^{
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    }];
 }
 
 @end

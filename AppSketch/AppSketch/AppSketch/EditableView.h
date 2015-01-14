@@ -26,6 +26,6 @@
 @property BOOL editable;
 
 @property UILabel *titleLabel;
-@property UIImage *image;
+@property UIImageView *imageView;
 
 @end
