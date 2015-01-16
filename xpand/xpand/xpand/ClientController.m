@@ -72,6 +72,8 @@ static ClientController *sharedInstance = nil;
     }
 }
 
+// --OLD--
+/*
 -(NSString*)getCurrentTokenForLike:(BOOL)forLike{
     if (userProfile==nil) [self setUserProfile];
     
@@ -92,6 +94,7 @@ static ClientController *sharedInstance = nil;
         return userProfile.token1;
     }
 }
+ */
 
 -(NSString*)getCurrentClientId{
     if (count==100) count=0;

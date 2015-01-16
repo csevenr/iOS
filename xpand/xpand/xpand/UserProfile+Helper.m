@@ -79,6 +79,8 @@
     return [results firstObject];
 }
 
+//--OLD--
+/*
 +(NSString*)getToken:(NSInteger)tokenNo{
     NSString *token;
     if (tokenNo==1) {
@@ -94,6 +96,7 @@
     }
     return token;
 }
+*/
 
 +(void)deactivateCurrentUserProfile{
     [self getActiveUserProfile].isActive=NO;

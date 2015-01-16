@@ -2,8 +2,8 @@
 //  UserProfile.m
 //  xpand
 //
-//  Created by Oliver Rodden on 27/11/2014.
-//  Copyright (c) 2014 Oliver Rodden. All rights reserved.
+//  Created by Oliver Rodden on 16/01/2015.
+//  Copyright (c) 2015 Oliver Rodden. All rights reserved.
 //
 
 #import "UserProfile.h"
@@ -28,14 +28,11 @@
 @dynamic recentLikes;
 @dynamic recentMostLikes;
 @dynamic subscriber;
-@dynamic token1;
-@dynamic token2;
-@dynamic token3;
-@dynamic token4;
 @dynamic tokenCountUp;
 @dynamic userId;
 @dynamic userName;
 @dynamic website;
+@dynamic token;
 @dynamic likedPosts;
 
 @end

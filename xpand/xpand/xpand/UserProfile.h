@@ -2,8 +2,8 @@
 //  UserProfile.h
 //  xpand
 //
-//  Created by Oliver Rodden on 27/11/2014.
-//  Copyright (c) 2014 Oliver Rodden. All rights reserved.
+//  Created by Oliver Rodden on 16/01/2015.
+//  Copyright (c) 2015 Oliver Rodden. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -29,14 +29,11 @@
 @property (nonatomic, retain) NSNumber * recentLikes;
 @property (nonatomic, retain) NSNumber * recentMostLikes;
 @property (nonatomic, retain) NSNumber * subscriber;
-@property (nonatomic, retain) NSString * token1;
-@property (nonatomic, retain) NSString * token2;
-@property (nonatomic, retain) NSString * token3;
-@property (nonatomic, retain) NSString * token4;
 @property (nonatomic, retain) NSNumber * tokenCountUp;
 @property (nonatomic, retain) NSString * userId;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSString * website;
+@property (nonatomic, retain) NSString * token;
 @property (nonatomic, retain) NSSet *likedPosts;
 @end
 

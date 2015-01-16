@@ -41,24 +41,61 @@
 -(void)viewDidAppear:(BOOL)animated{}
 
 - (IBAction)loginBtnPressed:(id)sender {
+    [self presentOAuth];
+    //--OLD--
+    /*
     [self createNewAccount];
+     */
 }
 
--(void)accountBtnPressed:(UIButton*)sender{
-    if (sender.tag==10) {
-        [self createNewAccount];
-        [activityIndicator startAnimating];
-        activityIndicator.hidden = NO;
-    }else{
-        [UserProfile getUserProfileWithUserName:sender.titleLabel.text].isActive=[NSNumber numberWithBool:YES];
-        [self dismissViewControllerAnimated:YES completion:nil];
+//-(void)accountBtnPressed:(UIButton*)sender{
+//    if (sender.tag==10) {
+//        [self createNewAccount];
+//        [activityIndicator startAnimating];
+//        activityIndicator.hidden = NO;
+//    }else{
+//        [UserProfile getUserProfileWithUserName:sender.titleLabel.text].isActive=[NSNumber numberWithBool:YES];
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    }
+//}
+
+-(void)presentOAuth{
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://xpand.editionthree.com"]];
+    [self.authWebView loadRequest:requestObj];
+    [self.view bringSubviewToFront:self.authWebView];
+    self.authWebView.hidden = NO;
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSString* urlString = [[webView.request URL] absoluteString];
+    
+    NSLog(@"%@", urlString);
+    
+    if ([urlString isEqualToString:@"http://xpand.editionthree.com/json.php"]) {
+        webView.hidden = YES;
+
+        NSString *str = [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"];
+        //    NSLog(@"%@",str);
+        
+        NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        
+        NSLog(@"%@", jsonDictionary);
+        
+        NSLog(@"%@", [jsonDictionary objectForKey:@"access_token"]);
+        
+//        userProfile.token =
     }
 }
 
+//--OLD--
+/*
 -(void)createNewAccount{
     [[ClientController sharedInstance] setupToken:1 inWebView:self.authWebView];
 }
+*/
 
+//--OLD--
+/*
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     NSString* urlString = [[request URL] absoluteString];
     
@@ -103,7 +140,10 @@
     }
     return YES;
 }
+*/
 
+//--OLD--
+/*
 -(void)userInfoFinished{
     userProfile = [UserProfile getActiveUserProfile];
     if (userProfile.token1==nil) {
@@ -124,6 +164,7 @@
         [self popSelf];
     });
 }
+ */
 
 -(void)auth{
     if ([tokens count]==4) {
