@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0600"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "663886471A63CBEB009029E9"
+               BlueprintIdentifier = "CC4A6C9F1A68587200E3D954"
                BuildableName = "SPENDR.app"
                BlueprintName = "SPENDR"
                ReferencedContainer = "container:SPENDR.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "663886631A63CBEB009029E9"
+               BlueprintIdentifier = "CC4A6CB81A68587200E3D954"
                BuildableName = "SPENDRTests.xctest"
                BlueprintName = "SPENDRTests"
                ReferencedContainer = "container:SPENDR.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "663886631A63CBEB009029E9"
+               BlueprintIdentifier = "CC4A6CB81A68587200E3D954"
                BuildableName = "SPENDRTests.xctest"
                BlueprintName = "SPENDRTests"
                ReferencedContainer = "container:SPENDR.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "663886471A63CBEB009029E9"
+            BlueprintIdentifier = "CC4A6C9F1A68587200E3D954"
             BuildableName = "SPENDR.app"
             BlueprintName = "SPENDR"
             ReferencedContainer = "container:SPENDR.xcodeproj">
@@ -75,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "663886471A63CBEB009029E9"
+            BlueprintIdentifier = "CC4A6C9F1A68587200E3D954"
             BuildableName = "SPENDR.app"
             BlueprintName = "SPENDR"
             ReferencedContainer = "container:SPENDR.xcodeproj">
@@ -93,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "663886471A63CBEB009029E9"
+            BlueprintIdentifier = "CC4A6C9F1A68587200E3D954"
             BuildableName = "SPENDR.app"
             BlueprintName = "SPENDR"
             ReferencedContainer = "container:SPENDR.xcodeproj">

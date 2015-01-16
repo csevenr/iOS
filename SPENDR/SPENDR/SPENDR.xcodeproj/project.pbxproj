@@ -7,52 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6638864E1A63CBEB009029E9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6638864D1A63CBEB009029E9 /* main.m */; };
-		663886511A63CBEB009029E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 663886501A63CBEB009029E9 /* AppDelegate.m */; };
-		663886541A63CBEB009029E9 /* SPENDR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 663886521A63CBEB009029E9 /* SPENDR.xcdatamodeld */; };
-		663886571A63CBEB009029E9 /* OverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663886561A63CBEB009029E9 /* OverviewViewController.m */; };
-		6638865A1A63CBEB009029E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663886581A63CBEB009029E9 /* Main.storyboard */; };
-		6638865C1A63CBEB009029E9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6638865B1A63CBEB009029E9 /* Images.xcassets */; };
-		6638865F1A63CBEB009029E9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6638865D1A63CBEB009029E9 /* LaunchScreen.xib */; };
-		6638866B1A63CBEB009029E9 /* SPENDRTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6638866A1A63CBEB009029E9 /* SPENDRTests.m */; };
+		CC4A6CA61A68587200E3D954 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6CA51A68587200E3D954 /* main.m */; };
+		CC4A6CA91A68587200E3D954 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6CA81A68587200E3D954 /* AppDelegate.m */; };
+		CC4A6CAC1A68587200E3D954 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6CAB1A68587200E3D954 /* ViewController.m */; };
+		CC4A6CAF1A68587200E3D954 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4A6CAD1A68587200E3D954 /* Main.storyboard */; };
+		CC4A6CB11A68587200E3D954 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC4A6CB01A68587200E3D954 /* Images.xcassets */; };
+		CC4A6CB41A68587200E3D954 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4A6CB21A68587200E3D954 /* LaunchScreen.xib */; };
+		CC4A6CC01A68587200E3D954 /* SPENDRTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6CBF1A68587200E3D954 /* SPENDRTests.m */; };
+		CC4A6CCB1A686C4F00E3D954 /* EntryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6CCA1A686C4F00E3D954 /* EntryTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		663886651A63CBEB009029E9 /* PBXContainerItemProxy */ = {
+		CC4A6CBA1A68587200E3D954 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 663886401A63CBEB009029E9 /* Project object */;
+			containerPortal = CC4A6C981A68587200E3D954 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 663886471A63CBEB009029E9;
+			remoteGlobalIDString = CC4A6C9F1A68587200E3D954;
 			remoteInfo = SPENDR;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		663886481A63CBEB009029E9 /* SPENDR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPENDR.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6638864C1A63CBEB009029E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6638864D1A63CBEB009029E9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6638864F1A63CBEB009029E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		663886501A63CBEB009029E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		663886531A63CBEB009029E9 /* SPENDR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SPENDR.xcdatamodel; sourceTree = "<group>"; };
-		663886551A63CBEB009029E9 /* OverviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverviewViewController.h; sourceTree = "<group>"; };
-		663886561A63CBEB009029E9 /* OverviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverviewViewController.m; sourceTree = "<group>"; };
-		663886591A63CBEB009029E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6638865B1A63CBEB009029E9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6638865E1A63CBEB009029E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		663886641A63CBEB009029E9 /* SPENDRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPENDRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		663886691A63CBEB009029E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6638866A1A63CBEB009029E9 /* SPENDRTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPENDRTests.m; sourceTree = "<group>"; };
+		CC4A6CA01A68587200E3D954 /* SPENDR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPENDR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC4A6CA41A68587200E3D954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC4A6CA51A68587200E3D954 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CC4A6CA71A68587200E3D954 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CC4A6CA81A68587200E3D954 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CC4A6CAA1A68587200E3D954 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CC4A6CAB1A68587200E3D954 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CC4A6CAE1A68587200E3D954 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CC4A6CB01A68587200E3D954 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CC4A6CB31A68587200E3D954 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		CC4A6CB91A68587200E3D954 /* SPENDRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPENDRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC4A6CBE1A68587200E3D954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC4A6CBF1A68587200E3D954 /* SPENDRTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPENDRTests.m; sourceTree = "<group>"; };
+		CC4A6CC91A686C4F00E3D954 /* EntryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryTableViewCell.h; sourceTree = "<group>"; };
+		CC4A6CCA1A686C4F00E3D954 /* EntryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		663886451A63CBEB009029E9 /* Frameworks */ = {
+		CC4A6C9D1A68587200E3D954 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		663886611A63CBEB009029E9 /* Frameworks */ = {
+		CC4A6CB61A68587200E3D954 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,62 +63,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6638863F1A63CBEB009029E9 = {
+		CC4A6C971A68587200E3D954 = {
 			isa = PBXGroup;
 			children = (
-				6638864A1A63CBEB009029E9 /* SPENDR */,
-				663886671A63CBEB009029E9 /* SPENDRTests */,
-				663886491A63CBEB009029E9 /* Products */,
+				CC4A6CA21A68587200E3D954 /* SPENDR */,
+				CC4A6CBC1A68587200E3D954 /* SPENDRTests */,
+				CC4A6CA11A68587200E3D954 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		663886491A63CBEB009029E9 /* Products */ = {
+		CC4A6CA11A68587200E3D954 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				663886481A63CBEB009029E9 /* SPENDR.app */,
-				663886641A63CBEB009029E9 /* SPENDRTests.xctest */,
+				CC4A6CA01A68587200E3D954 /* SPENDR.app */,
+				CC4A6CB91A68587200E3D954 /* SPENDRTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6638864A1A63CBEB009029E9 /* SPENDR */ = {
+		CC4A6CA21A68587200E3D954 /* SPENDR */ = {
 			isa = PBXGroup;
 			children = (
-				6638864F1A63CBEB009029E9 /* AppDelegate.h */,
-				663886501A63CBEB009029E9 /* AppDelegate.m */,
-				663886551A63CBEB009029E9 /* OverviewViewController.h */,
-				663886561A63CBEB009029E9 /* OverviewViewController.m */,
-				663886581A63CBEB009029E9 /* Main.storyboard */,
-				6638865B1A63CBEB009029E9 /* Images.xcassets */,
-				6638865D1A63CBEB009029E9 /* LaunchScreen.xib */,
-				663886521A63CBEB009029E9 /* SPENDR.xcdatamodeld */,
-				6638864B1A63CBEB009029E9 /* Supporting Files */,
+				CC4A6CA71A68587200E3D954 /* AppDelegate.h */,
+				CC4A6CA81A68587200E3D954 /* AppDelegate.m */,
+				CC4A6CAA1A68587200E3D954 /* ViewController.h */,
+				CC4A6CAB1A68587200E3D954 /* ViewController.m */,
+				CC4A6CC91A686C4F00E3D954 /* EntryTableViewCell.h */,
+				CC4A6CCA1A686C4F00E3D954 /* EntryTableViewCell.m */,
+				CC4A6CAD1A68587200E3D954 /* Main.storyboard */,
+				CC4A6CB01A68587200E3D954 /* Images.xcassets */,
+				CC4A6CB21A68587200E3D954 /* LaunchScreen.xib */,
+				CC4A6CA31A68587200E3D954 /* Supporting Files */,
 			);
 			path = SPENDR;
 			sourceTree = "<group>";
 		};
-		6638864B1A63CBEB009029E9 /* Supporting Files */ = {
+		CC4A6CA31A68587200E3D954 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6638864C1A63CBEB009029E9 /* Info.plist */,
-				6638864D1A63CBEB009029E9 /* main.m */,
+				CC4A6CA41A68587200E3D954 /* Info.plist */,
+				CC4A6CA51A68587200E3D954 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		663886671A63CBEB009029E9 /* SPENDRTests */ = {
+		CC4A6CBC1A68587200E3D954 /* SPENDRTests */ = {
 			isa = PBXGroup;
 			children = (
-				6638866A1A63CBEB009029E9 /* SPENDRTests.m */,
-				663886681A63CBEB009029E9 /* Supporting Files */,
+				CC4A6CBF1A68587200E3D954 /* SPENDRTests.m */,
+				CC4A6CBD1A68587200E3D954 /* Supporting Files */,
 			);
 			path = SPENDRTests;
 			sourceTree = "<group>";
 		};
-		663886681A63CBEB009029E9 /* Supporting Files */ = {
+		CC4A6CBD1A68587200E3D954 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				663886691A63CBEB009029E9 /* Info.plist */,
+				CC4A6CBE1A68587200E3D954 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -125,13 +127,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		663886471A63CBEB009029E9 /* SPENDR */ = {
+		CC4A6C9F1A68587200E3D954 /* SPENDR */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6638866E1A63CBEB009029E9 /* Build configuration list for PBXNativeTarget "SPENDR" */;
+			buildConfigurationList = CC4A6CC31A68587200E3D954 /* Build configuration list for PBXNativeTarget "SPENDR" */;
 			buildPhases = (
-				663886441A63CBEB009029E9 /* Sources */,
-				663886451A63CBEB009029E9 /* Frameworks */,
-				663886461A63CBEB009029E9 /* Resources */,
+				CC4A6C9C1A68587200E3D954 /* Sources */,
+				CC4A6C9D1A68587200E3D954 /* Frameworks */,
+				CC4A6C9E1A68587200E3D954 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -139,46 +141,46 @@
 			);
 			name = SPENDR;
 			productName = SPENDR;
-			productReference = 663886481A63CBEB009029E9 /* SPENDR.app */;
+			productReference = CC4A6CA01A68587200E3D954 /* SPENDR.app */;
 			productType = "com.apple.product-type.application";
 		};
-		663886631A63CBEB009029E9 /* SPENDRTests */ = {
+		CC4A6CB81A68587200E3D954 /* SPENDRTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 663886711A63CBEB009029E9 /* Build configuration list for PBXNativeTarget "SPENDRTests" */;
+			buildConfigurationList = CC4A6CC61A68587200E3D954 /* Build configuration list for PBXNativeTarget "SPENDRTests" */;
 			buildPhases = (
-				663886601A63CBEB009029E9 /* Sources */,
-				663886611A63CBEB009029E9 /* Frameworks */,
-				663886621A63CBEB009029E9 /* Resources */,
+				CC4A6CB51A68587200E3D954 /* Sources */,
+				CC4A6CB61A68587200E3D954 /* Frameworks */,
+				CC4A6CB71A68587200E3D954 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				663886661A63CBEB009029E9 /* PBXTargetDependency */,
+				CC4A6CBB1A68587200E3D954 /* PBXTargetDependency */,
 			);
 			name = SPENDRTests;
 			productName = SPENDRTests;
-			productReference = 663886641A63CBEB009029E9 /* SPENDRTests.xctest */;
+			productReference = CC4A6CB91A68587200E3D954 /* SPENDRTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		663886401A63CBEB009029E9 /* Project object */ = {
+		CC4A6C981A68587200E3D954 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "Oliver Rodden";
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = OliRodd;
 				TargetAttributes = {
-					663886471A63CBEB009029E9 = {
-						CreatedOnToolsVersion = 6.1.1;
+					CC4A6C9F1A68587200E3D954 = {
+						CreatedOnToolsVersion = 6.0.1;
 					};
-					663886631A63CBEB009029E9 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 663886471A63CBEB009029E9;
+					CC4A6CB81A68587200E3D954 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = CC4A6C9F1A68587200E3D954;
 					};
 				};
 			};
-			buildConfigurationList = 663886431A63CBEB009029E9 /* Build configuration list for PBXProject "SPENDR" */;
+			buildConfigurationList = CC4A6C9B1A68587200E3D954 /* Build configuration list for PBXProject "SPENDR" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -186,29 +188,29 @@
 				en,
 				Base,
 			);
-			mainGroup = 6638863F1A63CBEB009029E9;
-			productRefGroup = 663886491A63CBEB009029E9 /* Products */;
+			mainGroup = CC4A6C971A68587200E3D954;
+			productRefGroup = CC4A6CA11A68587200E3D954 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				663886471A63CBEB009029E9 /* SPENDR */,
-				663886631A63CBEB009029E9 /* SPENDRTests */,
+				CC4A6C9F1A68587200E3D954 /* SPENDR */,
+				CC4A6CB81A68587200E3D954 /* SPENDRTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		663886461A63CBEB009029E9 /* Resources */ = {
+		CC4A6C9E1A68587200E3D954 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6638865A1A63CBEB009029E9 /* Main.storyboard in Resources */,
-				6638865F1A63CBEB009029E9 /* LaunchScreen.xib in Resources */,
-				6638865C1A63CBEB009029E9 /* Images.xcassets in Resources */,
+				CC4A6CAF1A68587200E3D954 /* Main.storyboard in Resources */,
+				CC4A6CB41A68587200E3D954 /* LaunchScreen.xib in Resources */,
+				CC4A6CB11A68587200E3D954 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		663886621A63CBEB009029E9 /* Resources */ = {
+		CC4A6CB71A68587200E3D954 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -218,48 +220,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		663886441A63CBEB009029E9 /* Sources */ = {
+		CC4A6C9C1A68587200E3D954 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				663886511A63CBEB009029E9 /* AppDelegate.m in Sources */,
-				663886541A63CBEB009029E9 /* SPENDR.xcdatamodeld in Sources */,
-				663886571A63CBEB009029E9 /* OverviewViewController.m in Sources */,
-				6638864E1A63CBEB009029E9 /* main.m in Sources */,
+				CC4A6CCB1A686C4F00E3D954 /* EntryTableViewCell.m in Sources */,
+				CC4A6CAC1A68587200E3D954 /* ViewController.m in Sources */,
+				CC4A6CA91A68587200E3D954 /* AppDelegate.m in Sources */,
+				CC4A6CA61A68587200E3D954 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		663886601A63CBEB009029E9 /* Sources */ = {
+		CC4A6CB51A68587200E3D954 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6638866B1A63CBEB009029E9 /* SPENDRTests.m in Sources */,
+				CC4A6CC01A68587200E3D954 /* SPENDRTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		663886661A63CBEB009029E9 /* PBXTargetDependency */ = {
+		CC4A6CBB1A68587200E3D954 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 663886471A63CBEB009029E9 /* SPENDR */;
-			targetProxy = 663886651A63CBEB009029E9 /* PBXContainerItemProxy */;
+			target = CC4A6C9F1A68587200E3D954 /* SPENDR */;
+			targetProxy = CC4A6CBA1A68587200E3D954 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		663886581A63CBEB009029E9 /* Main.storyboard */ = {
+		CC4A6CAD1A68587200E3D954 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				663886591A63CBEB009029E9 /* Base */,
+				CC4A6CAE1A68587200E3D954 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		6638865D1A63CBEB009029E9 /* LaunchScreen.xib */ = {
+		CC4A6CB21A68587200E3D954 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6638865E1A63CBEB009029E9 /* Base */,
+				CC4A6CB31A68587200E3D954 /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -267,7 +269,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		6638866C1A63CBEB009029E9 /* Debug */ = {
+		CC4A6CC11A68587200E3D954 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -301,7 +303,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -309,7 +311,7 @@
 			};
 			name = Debug;
 		};
-		6638866D1A63CBEB009029E9 /* Release */ = {
+		CC4A6CC21A68587200E3D954 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -337,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -345,7 +347,7 @@
 			};
 			name = Release;
 		};
-		6638866F1A63CBEB009029E9 /* Debug */ = {
+		CC4A6CC41A68587200E3D954 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -355,7 +357,7 @@
 			};
 			name = Debug;
 		};
-		663886701A63CBEB009029E9 /* Release */ = {
+		CC4A6CC51A68587200E3D954 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -365,7 +367,7 @@
 			};
 			name = Release;
 		};
-		663886721A63CBEB009029E9 /* Debug */ = {
+		CC4A6CC71A68587200E3D954 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -384,7 +386,7 @@
 			};
 			name = Debug;
 		};
-		663886731A63CBEB009029E9 /* Release */ = {
+		CC4A6CC81A68587200E3D954 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -402,45 +404,32 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		663886431A63CBEB009029E9 /* Build configuration list for PBXProject "SPENDR" */ = {
+		CC4A6C9B1A68587200E3D954 /* Build configuration list for PBXProject "SPENDR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6638866C1A63CBEB009029E9 /* Debug */,
-				6638866D1A63CBEB009029E9 /* Release */,
+				CC4A6CC11A68587200E3D954 /* Debug */,
+				CC4A6CC21A68587200E3D954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6638866E1A63CBEB009029E9 /* Build configuration list for PBXNativeTarget "SPENDR" */ = {
+		CC4A6CC31A68587200E3D954 /* Build configuration list for PBXNativeTarget "SPENDR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6638866F1A63CBEB009029E9 /* Debug */,
-				663886701A63CBEB009029E9 /* Release */,
+				CC4A6CC41A68587200E3D954 /* Debug */,
+				CC4A6CC51A68587200E3D954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		663886711A63CBEB009029E9 /* Build configuration list for PBXNativeTarget "SPENDRTests" */ = {
+		CC4A6CC61A68587200E3D954 /* Build configuration list for PBXNativeTarget "SPENDRTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				663886721A63CBEB009029E9 /* Debug */,
-				663886731A63CBEB009029E9 /* Release */,
+				CC4A6CC71A68587200E3D954 /* Debug */,
+				CC4A6CC81A68587200E3D954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		663886521A63CBEB009029E9 /* SPENDR.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				663886531A63CBEB009029E9 /* SPENDR.xcdatamodel */,
-			);
-			currentVersion = 663886531A63CBEB009029E9 /* SPENDR.xcdatamodel */;
-			path = SPENDR.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = 663886401A63CBEB009029E9 /* Project object */;
+	rootObject = CC4A6C981A68587200E3D954 /* Project object */;
 }
