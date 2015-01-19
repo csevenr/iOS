@@ -32,6 +32,11 @@
     self.entryTypeSegCon.tintColor = BLUE;
     self.entryTypeSegCon.selectedSegmentIndex = -1;
     self.entryTableView.backgroundColor = [UIColor clearColor];
+
+    self.formView.layer.cornerRadius = 10.0;
+    self.formView.layer.borderWidth = 3.0;
+    self.formView.layer.borderColor = [[UIColor lightGrayColor] CGColor]
+    ;
 }
 
 -(EntryTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -63,9 +68,55 @@
     return 3;
 }
 
+- (IBAction)entryTypeSegConValueChaged:(id)sender {
+    NSLog(@"%@", self.formContainerView.constraints);
+    [self replaceConstraintOnView:self.formContainerView withConstant:300.0 andAttribute:NSLayoutAttributeTopMargin onSelf:NO];
+    [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)replaceConstraintOnView:(UIView *)view withConstant:(float)constant andAttribute:(NSLayoutAttribute)attribute onSelf:(BOOL)onSelf{
+    UIView *viewForConstraints;
+    if (onSelf) viewForConstraints = view;
+    else viewForConstraints = self.view;
+    
+    //    NSLog(@"%@", viewForConstraints.constraints);
+    
+    /*=========================================
+     
+     THIS SHIT NEEDS UNDERSTANDING AND REWRITING
+     
+     =========================================*/
+    
+    [viewForConstraints.constraints enumerateObjectsUsingBlock:^(NSLayoutConstraint *constraint, NSUInteger idx, BOOL *stop) {
+        if (constraint.firstItem == view) {
+            //            NSLog(@"%@", constraint.firstItem);
+            if ((constraint.firstAttribute == attribute)) {
+                //                NSLog(@"## %d", constraint.firstAttribute);
+                constraint.constant = constant;
+                //                NSLog(@"yay");
+            }
+        }
+    }];
+}
+
+- (void)animateConstraintsWithDuration:(CGFloat)duration delay:(CGFloat)delay andCompletionHandler:(void (^)(void))completionHandler{
+    [UIView animateWithDuration:0.3
+                          delay:delay
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:^(BOOL finished){
+                         if (completionHandler) {
+                             completionHandler();
+                         }
+                     }];
+    
 }
 
 @end

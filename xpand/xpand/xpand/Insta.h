@@ -22,7 +22,7 @@
 
 @end
 
-@interface Insta : NSObject //<NSURLConnectionDelegate>
+@interface Insta : NSObject <NSURLConnectionDataDelegate>
 
 @property (nonatomic, weak) id<instaDelegate> delegate;
 

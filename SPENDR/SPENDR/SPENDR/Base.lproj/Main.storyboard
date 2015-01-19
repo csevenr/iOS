@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -34,6 +34,9 @@
                                     <segment title="Income"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="entryTypeSegConValueChaged:" destination="BYZ-38-t0r" eventType="valueChanged" id="tJN-Qc-Ba3"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8bG-Vz-mO1">
                                 <rect key="frame" x="16" y="189" width="568" height="411"/>
@@ -84,19 +87,37 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Thw-DJ-th4"/>
                                 </connections>
                             </tableView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCZ-BE-h9B">
+                                <rect key="frame" x="16" y="189" width="568" height="411"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6as-Yc-VS1">
+                                        <rect key="frame" x="0.0" y="0.0" width="568" height="411"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6as-Yc-VS1" firstAttribute="leading" secondItem="mCZ-BE-h9B" secondAttribute="leading" id="KNT-3R-nSs"/>
+                                    <constraint firstAttribute="trailing" secondItem="6as-Yc-VS1" secondAttribute="trailing" id="KZm-rh-CP2"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="mCZ-BE-h9B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1dC-en-ZKR"/>
                             <constraint firstItem="fyO-7f-NkC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="30z-RN-Isk"/>
                             <constraint firstItem="n6b-mr-Fmk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="34m-f3-KBf"/>
                             <constraint firstItem="8bG-Vz-mO1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="6w4-LD-Bjx"/>
                             <constraint firstItem="fyO-7f-NkC" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="9gc-lR-oHz"/>
                             <constraint firstItem="CaG-6B-XTV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Kze-eq-92O"/>
                             <constraint firstItem="n6b-mr-Fmk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="M0Q-lI-x0N"/>
+                            <constraint firstItem="mCZ-BE-h9B" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="WM9-3z-6jr"/>
                             <constraint firstItem="n6b-mr-Fmk" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Z9n-Hf-RJ4"/>
                             <constraint firstItem="8bG-Vz-mO1" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="dNt-4d-2XG"/>
+                            <constraint firstItem="mCZ-BE-h9B" firstAttribute="top" secondItem="fyO-7f-NkC" secondAttribute="bottom" constant="1" id="e5B-DT-OjX"/>
                             <constraint firstAttribute="centerX" secondItem="fyO-7f-NkC" secondAttribute="centerX" id="ox3-C8-HGJ"/>
                             <constraint firstItem="fyO-7f-NkC" firstAttribute="top" secondItem="CaG-6B-XTV" secondAttribute="bottom" constant="8" id="pL6-MB-EEp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mCZ-BE-h9B" secondAttribute="bottom" id="tKj-0u-2Ph"/>
                             <constraint firstItem="CaG-6B-XTV" firstAttribute="top" secondItem="n6b-mr-Fmk" secondAttribute="bottom" constant="8" id="tM9-mj-wul"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8bG-Vz-mO1" secondAttribute="bottom" id="udQ-sK-ybS"/>
                             <constraint firstItem="CaG-6B-XTV" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="use-Rt-aLM"/>
@@ -108,6 +129,8 @@
                         <outlet property="balaceLbl" destination="CaG-6B-XTV" id="1Rl-hF-wNv"/>
                         <outlet property="entryTableView" destination="8bG-Vz-mO1" id="Pog-wy-XwI"/>
                         <outlet property="entryTypeSegCon" destination="fyO-7f-NkC" id="TPV-hL-z3K"/>
+                        <outlet property="formContainerView" destination="mCZ-BE-h9B" id="J7o-zS-rRY"/>
+                        <outlet property="formView" destination="6as-Yc-VS1" id="78X-0H-b0o"/>
                         <outlet property="titleLbl" destination="n6b-mr-Fmk" id="UXK-gx-xhR"/>
                     </connections>
                 </viewController>

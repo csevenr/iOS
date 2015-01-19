@@ -15,6 +15,8 @@
     NSMutableArray *btns;
     UIActivityIndicatorView *activityIndicator;
     NSMutableArray *tokens;
+    
+    NSString *token;
 }
 
 @end
@@ -77,14 +79,31 @@
         NSString *str = [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"];
         //    NSLog(@"%@",str);
         
-        NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+        NSArray *jsonDictionary=[NSArray arrayWithObject:[NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil]];
         
         NSLog(@"%@", jsonDictionary);
         
-        NSLog(@"%@", [jsonDictionary objectForKey:@"access_token"]);
+        NSLog(@"%@", [[[jsonDictionary objectAtIndex:0] objectAtIndex:0] objectForKey:@"instagram_access_token"]);
         
-//        userProfile.token =
+        token = [[[jsonDictionary objectAtIndex:0] objectAtIndex:0] objectForKey:@"instagram_access_token"];
+        
+        self.loginBtn.enabled = NO;
+        
+        Insta *insta = [Insta new];
+        insta.delegate=self;
+        [insta getUserInfoWithToken:token];
     }
+}
+
+-(void)userInfoFinished{
+    userProfile = [UserProfile getActiveUserProfile];
+    NSLog(@"user profile %@", userProfile);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        userProfile.token = token;
+        [ModelHelper saveManagedObjectContext];
+        [self popSelf];
+    });
+
 }
 
 //--OLD--
@@ -166,6 +185,8 @@
 }
  */
 
+//--OLD--
+/*
 -(void)auth{
     if ([tokens count]==4) {
         [self.loginBtn setTitle:@"Retrieving User Info" forState:UIControlStateNormal];
@@ -178,5 +199,5 @@
         [insta getUserInfoWithToken:[tokens objectAtIndex:0]];
     }
 }
-
+*/
 @end

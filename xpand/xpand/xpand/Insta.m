@@ -39,7 +39,7 @@
         if (paginationURL!=nil&&currentHashtag!=nil&&[currentHashtag isEqualToString:hashtag]){
             urlForPostData = paginationURL;
         }else{
-            urlForPostData = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], [[ClientController sharedInstance] getCurrentTokenForLike:NO]];
+            urlForPostData = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent?client_id=%@&access_token=%@",hashtag, [[ClientController sharedInstance] getCurrentClientId], userProfile.token];
             currentHashtag=hashtag;
         }
         
@@ -71,15 +71,21 @@
 - (void)likePost:(Post*)post {
     if ([self checkForConnection]) {
 //        NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentTokenForLike:YES]];
-        NSString *urlForLike = [NSString stringWithFormat:@"http://xpand.editionthree.com/like.php?imageID=%@", post.postId/*, [[ClientController sharedInstance] getCurrentTokenForLike:YES]*/];
-        NSLog(@"POSTID: %@", post.postId);
+        NSString *urlForLike = [NSString stringWithFormat:@"http://xpand.editionthree.com/like.php?user_id=%@&image_id=%@", userProfile.userId, post.postId];
+//        NSLog(@"POSTID: %@", post.postId);
         NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
         [req setHTTPMethod:@"POST"];
+        NSURLConnection *con = [[NSURLConnection alloc]initWithRequest:req delegate:self startImmediately:YES];
+
         [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if (error) {
                 NSLog(@"%@", error);
                 NSLog(@"Error 2");
             } else {
+                NSString* returnString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+                NSLog(@"__ %@", returnString);
+                
                 NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
                 NSLog(@"## %@", jsonDictionary);
@@ -106,8 +112,8 @@
 }
 
 -(void)getUserInfoWithToken:(NSString*)tok{
-    if (tok==nil) {
-        tok=[[ClientController sharedInstance] getCurrentTokenForLike:NO];
+    if (tok == nil) {
+        tok = [[UserProfile getActiveUserProfile] token];
     }
     
     NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/self?access_token=%@", tok];
@@ -136,7 +142,7 @@
                 userProfile.website = [[jsonDictionary objectForKey:@"data"] objectForKey:@"website"];
                 
                 userProfile.isActive=[NSNumber numberWithBool:YES];
-
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [ModelHelper saveManagedObjectContext];
                 });
@@ -219,6 +225,11 @@
     else
         [self.delegate instaError:@"No internet connection"];
         return NO;
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+
+    NSLog(@"-- %@", [connection.currentRequest.URL absoluteString]);
 }
 
 @end
