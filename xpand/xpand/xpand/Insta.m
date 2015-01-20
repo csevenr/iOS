@@ -73,6 +73,7 @@
 //        NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentTokenForLike:YES]];
         NSString *urlForLike = [NSString stringWithFormat:@"http://xpand.editionthree.com/like.php?user_id=%@&image_id=%@", userProfile.userId, post.postId];
 //        NSLog(@"POSTID: %@", post.postId);
+
         NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
         [req setHTTPMethod:@"POST"];
         NSURLConnection *con = [[NSURLConnection alloc]initWithRequest:req delegate:self startImmediately:YES];
@@ -82,13 +83,16 @@
                 NSLog(@"%@", error);
                 NSLog(@"Error 2");
             } else {
+
                 NSString* returnString= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 
                 NSLog(@"__ %@", returnString);
-                
+
                 NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
-                NSLog(@"## %@", jsonDictionary);
+                NSArray *aJ = [NSArray arrayWithObjects:[NSJSONSerialization JSONObjectWithData:data options:0 error:nil], nil];
+                
+                NSLog(@"## %@", aJ);
                 
                 if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue] == 200) {
                     NSLog(@"200 successful like");
