@@ -77,7 +77,7 @@
     if (!updated) {
 //        Insta *insta = [Insta new];
 //        insta.delegate = self;
-        [insta getUserInfoWithToken:nil];
+        [insta getUserInfo];
     }
 }
 

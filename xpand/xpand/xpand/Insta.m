@@ -115,12 +115,8 @@
     [ModelHelper saveManagedObjectContext];
 }
 
--(void)getUserInfoWithToken:(NSString*)tok{
-    if (tok == nil) {
-        tok = [[UserProfile getActiveUserProfile] token];
-    }
-    
-    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/self?access_token=%@", tok];
+-(void)getUserInfo{
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/self?access_token=%@", userProfile.token];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error 3");
@@ -150,7 +146,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [ModelHelper saveManagedObjectContext];
                 });
-                [self performSelectorOnMainThread:@selector(getUserMediaWithToken:) withObject:tok waitUntilDone:NO];
+                [self performSelectorOnMainThread:@selector(getUserMediaWithToken) withObject:nil waitUntilDone:NO];
             }else{
                 [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"2" waitUntilDone:NO];
             }
@@ -158,11 +154,8 @@
     }];
 }
 
--(void)getUserMediaWithToken:(NSString*)tok{
-    if (tok==nil) {
-        tok=[[ClientController sharedInstance] getCurrentTokenForLike:NO];
-    }
-    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",userProfile.userId , tok];
+-(void)getUserMedia{
+    NSString *urlForTag = [NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",userProfile.userId , userProfile.token];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error 4");
@@ -176,8 +169,11 @@
             if ([[jsonDictionary objectForKey:@"data"] count]<10) {
                 countToUse=[[jsonDictionary objectForKey:@"data"] count];
             }
-
+            
             int totalLikes=0;
+            userProfile.recentMostLikes = [NSNumber numberWithInt:-1];
+            userProfile.recentLeastLikes = [NSNumber numberWithInt:-1];
+            
             for (int i=0; i<countToUse; i++) {
                 int likes = [[[[[jsonDictionary objectForKey:@"data"] objectAtIndex:i]objectForKey:@"likes"]objectForKey:@"count" ] intValue];
                 totalLikes+=likes;
@@ -192,8 +188,8 @@
             userProfile.recentLikes=[NSNumber numberWithInt:totalLikes];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [ModelHelper saveManagedObjectContext];
+                [self.delegate userInfoFinished];
             });
-            [self.delegate userInfoFinished];
         }
     }];
 }
@@ -229,11 +225,6 @@
     else
         [self.delegate instaError:@"No internet connection"];
         return NO;
-}
-
--(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-
-    NSLog(@"-- %@", [connection.currentRequest.URL absoluteString]);
 }
 
 @end

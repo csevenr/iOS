@@ -83,27 +83,25 @@
         
         NSLog(@"%@", jsonDictionary);
         
-        NSLog(@"%@", [[[jsonDictionary objectAtIndex:0] objectAtIndex:0] objectForKey:@"instagram_access_token"]);
+        NSLog(@"%@", [[jsonDictionary objectAtIndex:0] objectForKey:@"instagram_access_token"]);
         
-        token = [[[jsonDictionary objectAtIndex:0] objectAtIndex:0] objectForKey:@"instagram_access_token"];
+        token = [[jsonDictionary objectAtIndex:0] objectForKey:@"instagram_access_token"];
         
         self.loginBtn.enabled = NO;
         
         Insta *insta = [Insta new];
         insta.delegate=self;
-        [insta getUserInfoWithToken:token];
+        [insta getUserInfo];
     }
 }
 
 -(void)userInfoFinished{
     userProfile = [UserProfile getActiveUserProfile];
-    NSLog(@"user profile %@", userProfile);
     dispatch_async(dispatch_get_main_queue(), ^{
         userProfile.token = token;
         [ModelHelper saveManagedObjectContext];
         [self popSelf];
     });
-
 }
 
 //--OLD--
