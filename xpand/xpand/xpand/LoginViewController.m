@@ -77,8 +77,8 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     NSString* urlString = [[webView.request URL] absoluteString];
-    
-    NSLog(@"%@", urlString);
+//
+//    NSLog(@"%@", urlString);
     
     if ([urlString isEqualToString:@"http://xpand.editionthree.com/json.php"]) {
         webView.hidden = YES;
@@ -88,13 +88,20 @@
         
         NSArray *jsonDictionary=[NSArray arrayWithObject:[NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil]];
         
-        NSLog(@"%@", jsonDictionary);
+//        NSLog(@"%@", jsonDictionary);
         
-        NSLog(@"%@", [[jsonDictionary objectAtIndex:0] objectForKey:@"instagram_access_token"]);
+//        NSLog(@"%@", [[jsonDictionary objectAtIndex:0] objectForKey:@"instagram_access_token"]);
         
         token = [[jsonDictionary objectAtIndex:0] objectForKey:@"instagram_access_token"];
         
         self.loginBtn.enabled = NO;
+        
+        if (userProfile == nil) {
+            userProfile = [UserProfile create];
+            NSLog(@")))");
+            userProfile.isActive = [NSNumber numberWithBool:YES];
+            userProfile.token = token;
+        }
         
         Insta *insta = [Insta new];
         insta.delegate=self;

@@ -126,10 +126,7 @@
 //            NSLog(@"### %@", jsonDictionary);
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
-                userProfile = [UserProfile getUserProfileWithUserName:[[jsonDictionary objectForKey:@"data"]objectForKey:@"username"]];
-                if (userProfile==nil){
-                    userProfile = [UserProfile create];
-                    
+               if (userProfile.userName == nil){
                     userProfile.userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
                     userProfile.userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
                 }
@@ -146,9 +143,9 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [ModelHelper saveManagedObjectContext];
                 });
-                [self performSelectorOnMainThread:@selector(getUserMediaWithToken) withObject:nil waitUntilDone:NO];
+                [self performSelectorOnMainThread:@selector(getUserMedia) withObject:nil waitUntilDone:NO];
             }else{
-                [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"2" waitUntilDone:NO];
+                [self performSelectorOnMainThread:@selector(non200ReceivedWithString:) withObject:@"2" waitUntilDone:NO];//+++ crashes becuase of this
             }
         }
     }];

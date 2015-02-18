@@ -44,10 +44,13 @@
 
 -(void)setUpView{
     userProfile = [UserProfile getActiveUserProfile];
+    NSLog(@"ProfileViewController>userProfile %@", userProfile);
     self.usernameLbl.text = userProfile.userName;
     if (userProfile.profilePicture!=nil) {
         self.profilePicImg.image = [UIImage imageWithData:userProfile.profilePicture];
     }
+
+    NSLog(@"ProfileViewController>userProfile.profilePictureURL %@", userProfile.profilePictureURL);
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:userProfile.profilePictureURL]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error c");
