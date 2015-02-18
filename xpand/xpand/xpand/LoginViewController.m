@@ -10,6 +10,7 @@
 #import "UserProfile+Helper.h"
 #import "ModelHelper.h"
 #import "ClientController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface LoginViewController (){
     NSMutableArray *btns;
@@ -31,6 +32,12 @@
 }
 
 -(void)viewDidLoad{
+    self.loginBtn.layer.cornerRadius = 20.0;
+    [self.loginBtn.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.loginBtn.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
+    [self.loginBtn.layer setShadowOpacity:0.5];
+    [self.loginBtn.layer setShadowRadius:2.0];
+    
     UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
     [backBtn setTitle:@"Back" forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];

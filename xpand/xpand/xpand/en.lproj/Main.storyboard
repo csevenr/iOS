@@ -332,49 +332,50 @@
                                     <outlet property="delegate" destination="oGN-yK-w6r" id="Jem-Zx-JJb"/>
                                 </connections>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOd-Hh-xzL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aa" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqG-Eu-gkh">
+                                <rect key="frame" x="16" y="559" width="568" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="CfB-CI-kda"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uho-kC-xwl">
                                 <rect key="frame" x="16" y="195" width="568" height="210"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="lOd-Hh-xzL" secondAttribute="height" multiplier="284:105" id="vqu-qy-UTZ"/>
+                                    <constraint firstAttribute="width" secondItem="Uho-kC-xwl" secondAttribute="height" multiplier="284:105" id="LRg-ot-Er4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="30"/>
-                                <state key="normal" title="Sign In">
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Login">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginBtnPressed:" destination="oGN-yK-w6r" eventType="touchUpInside" id="MBv-jq-VsN"/>
+                                    <action selector="AutoBtnPressed:" destination="efU-w9-j4F" eventType="touchUpInside" id="Gz3-zp-1HB"/>
+                                    <action selector="loginBtnPressed:" destination="oGN-yK-w6r" eventType="touchUpInside" id="XV6-Ii-oMa"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with Instagram to start using Xpand" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPA-JR-W0e">
-                                <rect key="frame" x="16" y="559" width="568" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="fX3-aN-fEr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.21176472306251526" green="0.67450982332229614" blue="0.72549021244049072" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.66666668653488159" green="0.90588241815567017" blue="0.93333339691162109" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="UCl-pi-Coy" firstAttribute="top" secondItem="KSx-Ug-0Qh" secondAttribute="bottom" id="3jp-hp-jOm"/>
-                            <constraint firstItem="BPA-JR-W0e" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" id="GCO-h0-qWm"/>
+                            <constraint firstItem="nqG-Eu-gkh" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" id="6c4-l6-sWJ"/>
                             <constraint firstItem="KSx-Ug-0Qh" firstAttribute="top" secondItem="iew-St-GMU" secondAttribute="topMargin" id="Rf3-Wz-IdQ"/>
-                            <constraint firstItem="lOd-Hh-xzL" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" id="Sd6-pt-biS"/>
-                            <constraint firstItem="lOd-Hh-xzL" firstAttribute="trailing" secondItem="iew-St-GMU" secondAttribute="trailingMargin" id="Y4e-Qx-9I7"/>
-                            <constraint firstItem="BPA-JR-W0e" firstAttribute="trailing" secondItem="iew-St-GMU" secondAttribute="trailingMargin" id="g8V-f9-hsQ"/>
+                            <constraint firstItem="Uho-kC-xwl" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" id="gvO-rC-bO4"/>
+                            <constraint firstAttribute="centerY" secondItem="Uho-kC-xwl" secondAttribute="centerY" id="le5-nd-UH8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KSx-Ug-0Qh" secondAttribute="trailing" constant="-20" id="mft-aV-CZC"/>
+                            <constraint firstItem="UCl-pi-Coy" firstAttribute="top" secondItem="nqG-Eu-gkh" secondAttribute="bottom" constant="20" id="n1I-pM-z3l"/>
                             <constraint firstItem="KSx-Ug-0Qh" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" constant="-20" id="qaM-t2-D7d"/>
-                            <constraint firstItem="UCl-pi-Coy" firstAttribute="top" secondItem="BPA-JR-W0e" secondAttribute="bottom" constant="20" id="vA5-C5-coX"/>
-                            <constraint firstAttribute="centerY" secondItem="lOd-Hh-xzL" secondAttribute="centerY" id="ygx-fN-OJ7"/>
+                            <constraint firstItem="nqG-Eu-gkh" firstAttribute="trailing" secondItem="iew-St-GMU" secondAttribute="trailingMargin" id="wvh-qW-xte"/>
+                            <constraint firstItem="Uho-kC-xwl" firstAttribute="trailing" secondItem="iew-St-GMU" secondAttribute="trailingMargin" id="x3Z-ZP-zEM"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="authWebView" destination="KSx-Ug-0Qh" id="xVN-3w-97d"/>
-                        <outlet property="loginBtn" destination="lOd-Hh-xzL" id="JvZ-Ic-Kl1"/>
+                        <outlet property="loginBtn" destination="Uho-kC-xwl" id="Q1K-V4-kYp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8RK-r9-4Ie" userLabel="First Responder" sceneMemberID="firstResponder"/>

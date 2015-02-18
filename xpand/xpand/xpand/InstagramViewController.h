@@ -11,7 +11,7 @@
 
 @interface InstagramViewController : MasterViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btnsToStyle;
 
 - (IBAction)AutoBtnPressed:(id)sender;
 

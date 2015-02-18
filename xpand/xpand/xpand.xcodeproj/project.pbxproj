@@ -95,8 +95,6 @@
 		66B43C471A5EAD5F007E7730 /* XpandPlusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XpandPlusView.xib; sourceTree = "<group>"; };
 		66D04C6F1A6041EA0037A401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		66D04C711A6041EA0037A401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		66D04C751A6043200037A401 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		66D04C771A6043360037A401 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		66D8AAB81A56973400E02CD2 /* InstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramViewController.h; sourceTree = "<group>"; };
 		66D8AAB91A56973400E02CD2 /* InstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramViewController.m; sourceTree = "<group>"; };
 		66D8AABB1A56A78000E02CD2 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -398,7 +396,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				66D04C6F1A6041EA0037A401 /* Base */,
-				66D04C771A6043360037A401 /* en */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -407,7 +404,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				66D04C711A6041EA0037A401 /* Base */,
-				66D04C751A6043200037A401 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
