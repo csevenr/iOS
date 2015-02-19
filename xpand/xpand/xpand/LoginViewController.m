@@ -32,11 +32,11 @@
 }
 
 -(void)viewDidLoad{
-    self.loginBtn.layer.cornerRadius = 20.0;
+    self.loginBtn.layer.cornerRadius = 4.0;
     [self.loginBtn.layer setShadowColor:[UIColor blackColor].CGColor];
-    [self.loginBtn.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
-    [self.loginBtn.layer setShadowOpacity:0.5];
-    [self.loginBtn.layer setShadowRadius:2.0];
+    [self.loginBtn.layer setShadowOffset:CGSizeMake(0.0, 2.0)];
+    [self.loginBtn.layer setShadowOpacity:0.2];
+    [self.loginBtn.layer setShadowRadius:1.0];
     
     UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
     [backBtn setTitle:@"Back" forState:UIControlStateNormal];

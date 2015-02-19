@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iH7-kw-SY8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iH7-kw-SY8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -676,7 +676,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="WZl-dA-N8R"/>
@@ -773,6 +773,7 @@
         <!--View Controller-->
         <scene sceneID="e0K-DG-KOP">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lLL-NY-X2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="B1P-0Q-no3" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6FQ-TQ-LQw"/>
@@ -784,7 +785,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lLL-NY-X2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1548" y="-709"/>
         </scene>
@@ -827,7 +827,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fX3-aN-fEr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.21176472306251526" green="0.67450982332229614" blue="0.72549021244049072" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -842,7 +842,7 @@
                             <constraint firstItem="BPA-JR-W0e" firstAttribute="trailing" secondItem="iew-St-GMU" secondAttribute="trailingMargin" id="g8V-f9-hsQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KSx-Ug-0Qh" secondAttribute="trailing" constant="-20" id="mft-aV-CZC"/>
                             <constraint firstItem="KSx-Ug-0Qh" firstAttribute="leading" secondItem="iew-St-GMU" secondAttribute="leadingMargin" constant="-20" id="qaM-t2-D7d"/>
-                            <constraint firstItem="UCl-pi-Coy" firstAttribute="top" secondItem="BPA-JR-W0e" secondAttribute="bottom" constant="20" id="vA5-C5-coX"/>
+                            <constraint firstItem="UCl-pi-Coy" firstAttribute="top" secondItem="BPA-JR-W0e" secondAttribute="bottom" constant="40" id="vA5-C5-coX"/>
                             <constraint firstAttribute="centerY" secondItem="lOd-Hh-xzL" secondAttribute="centerY" id="ygx-fN-OJ7"/>
                         </constraints>
                     </view>
@@ -876,24 +876,50 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="10" y="10" width="350" height="30"/>
+                                        </variation>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Ylh-HW-a1J"/>
+                                    <constraint firstAttribute="height" constant="50" id="HsA-Ob-rhX"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="HsA-Ob-rhX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="HsA-Ob-rhX"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxB-7B-v2i">
                                 <rect key="frame" x="16" y="195" width="568" height="210"/>
-                                <color key="backgroundColor" red="0.25490197539999998" green="0.67450982329999998" blue="0.95686280729999995" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="0.63921570777893066" green="0.89019614458084106" blue="0.91764712333679199" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="LxB-7B-v2i" secondAttribute="height" multiplier="284:105" id="8CM-8V-3Tt"/>
+                                    <constraint firstAttribute="width" constant="163" id="fd0-XJ-Tfk"/>
+                                    <constraint firstAttribute="height" constant="53" id="lxO-Io-uEM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Start">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fd0-XJ-Tfk"/>
+                                        <exclude reference="lxO-Io-uEM"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="fd0-XJ-Tfk"/>
+                                        <include reference="lxO-Io-uEM"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="AutoBtnPressed:" destination="efU-w9-j4F" eventType="touchUpInside" id="H0C-Ro-7vW"/>
                                     <action selector="loginBtnPressed:" destination="oGN-yK-w6r" eventType="touchUpInside" id="jO1-Zk-9Bh"/>
@@ -903,28 +929,44 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LxB-7B-v2i" firstAttribute="trailing" secondItem="vjH-dG-C1k" secondAttribute="trailingMargin" id="R5L-Qc-XYu"/>
-                            <constraint firstAttribute="centerY" secondItem="LxB-7B-v2i" secondAttribute="centerY" id="qCJ-ys-gAc"/>
-                            <constraint firstItem="wKa-Mv-W7A" firstAttribute="top" secondItem="lqS-y7-mlv" secondAttribute="bottom" constant="40" id="rUB-zT-6se"/>
-                            <constraint firstItem="wKa-Mv-W7A" firstAttribute="leading" secondItem="vjH-dG-C1k" secondAttribute="leadingMargin" id="uTF-0j-JPH"/>
-                            <constraint firstItem="LxB-7B-v2i" firstAttribute="leading" secondItem="vjH-dG-C1k" secondAttribute="leadingMargin" id="vOI-Vc-uCU"/>
-                            <constraint firstItem="wKa-Mv-W7A" firstAttribute="trailing" secondItem="vjH-dG-C1k" secondAttribute="trailingMargin" id="zrL-Es-jHa"/>
+                            <constraint firstAttribute="centerX" secondItem="LxB-7B-v2i" secondAttribute="centerX" id="6Jl-mB-aPY"/>
+                            <constraint firstItem="wKa-Mv-W7A" firstAttribute="trailing" secondItem="vjH-dG-C1k" secondAttribute="trailingMargin" id="DUH-yr-G2i"/>
+                            <constraint firstAttribute="centerY" secondItem="LxB-7B-v2i" secondAttribute="centerY" constant="-38" id="PeF-Ll-EgD"/>
+                            <constraint firstItem="wKa-Mv-W7A" firstAttribute="leading" secondItem="vjH-dG-C1k" secondAttribute="leadingMargin" id="ZoR-Nr-8ds"/>
+                            <constraint firstAttribute="centerY" secondItem="wKa-Mv-W7A" secondAttribute="centerY" constant="41" id="aw1-Ez-n30"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DUH-yr-G2i"/>
+                                <exclude reference="ZoR-Nr-8ds"/>
+                                <exclude reference="aw1-Ez-n30"/>
+                                <exclude reference="6Jl-mB-aPY"/>
+                                <exclude reference="PeF-Ll-EgD"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="DUH-yr-G2i"/>
+                                <include reference="ZoR-Nr-8ds"/>
+                                <include reference="aw1-Ez-n30"/>
+                                <include reference="6Jl-mB-aPY"/>
+                                <include reference="PeF-Ll-EgD"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="hashtagTextField" destination="lJY-ln-nUC" id="pa5-GS-xCx"/>
                         <outlet property="hashtagTextFieldView" destination="wKa-Mv-W7A" id="e4a-pr-Xgr"/>
                         <outlet property="startBtn" destination="LxB-7B-v2i" id="9He-X9-w8X"/>
-                        <outletCollection property="viewsToStyle" destination="LxB-7B-v2i" collectionClass="NSMutableArray" id="4Nf-D0-X3A"/>
                         <segue destination="oGN-yK-w6r" kind="presentation" identifier="login" id="POE-Ad-bg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5rd-Ky-SJg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832" y="86"/>
+            <point key="canvasLocation" x="831" y="85.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DFJ-Eq-TRS"/>
+        <segue reference="POE-Ad-bg7"/>
     </inferredMetricsTieBreakers>
 </document>

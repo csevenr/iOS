@@ -24,13 +24,11 @@
 }
 
 -(void)awakeFromNib {
-    self.subscribeBtn.layer.borderWidth = 1.0;
-    self.subscribeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.subscribeBtn.layer.cornerRadius = 8.0;
-    
-    self.closeBtn.layer.borderWidth = 1.0;
-    self.closeBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.closeBtn.layer.cornerRadius = 15.0;
+    self.subscribeBtn.layer.cornerRadius = 4.0;
+    [self.subscribeBtn.layer setShadowColor:[UIColor lightGrayColor].CGColor];
+    [self.subscribeBtn.layer setShadowOffset:CGSizeMake(0.0, 2.0)];
+    [self.subscribeBtn.layer setShadowOpacity:0.5];
+    [self.subscribeBtn.layer setShadowRadius:0.0];
 }
 
 - (IBAction)closeBtnPressed:(id)sender {

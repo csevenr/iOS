@@ -18,8 +18,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.hashtagTextFieldView.layer.borderWidth = 1.0;
-    self.hashtagTextFieldView.layer.borderColor = [[UIColor blackColor] CGColor];
+    self.view.backgroundColor = [UIColor colorWithRed:20.0 / 255.0 green:20.0 / 255.0 blue:20.0 / 255.0 alpha:1.0];
+        
+    self.startBtn.layer.cornerRadius = 4.0;
     
     [self.hashtagTextField setFont:FONT];
     

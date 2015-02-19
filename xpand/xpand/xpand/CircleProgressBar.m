@@ -29,7 +29,7 @@
         self.numberLabel.numberOfLines = 0;
         self.numberLabel.textAlignment = NSTextAlignmentCenter;
         self.numberLabel.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:70.0];
-        self.numberLabel.textColor = [UIColor colorWithRed:100.0 / 255.0 green:14.0 / 255.0 blue:121.0 / 255.0 alpha:1.0];
+        self.numberLabel.textColor = [UIColor whiteColor];
         [self addSubview:self.numberLabel];
         
         self.textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, self.frame.size.height * 0.6, self.frame.size.width, 20.0)];
@@ -37,6 +37,7 @@
         self.textLabel.numberOfLines = 0;
         self.textLabel.textAlignment = NSTextAlignmentCenter;
         self.textLabel.font = FONT;
+        self.textLabel.textColor = [UIColor whiteColor];
         [self addSubview:self.textLabel];
     }
     return self;
@@ -60,7 +61,7 @@
     [[UIColor clearColor] setFill];
     CGContextFillRect(context, rect);
     
-    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:68.0 / 255.0 green:179.0 / 255.0 blue:254.0 / 255.0 alpha:1.0] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:71.0 / 255.0 green:104.0 / 255.0 blue:108.0 / 255.0 alpha:1.0] CGColor]);
 
     UIBezierPath *darkGrey = [UIBezierPath bezierPath];
     [darkGrey addArcWithCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:self.frame.size.width/2 - 5 startAngle:DEGREES_TO_RADIANS_TOP(0) endAngle:DEGREES_TO_RADIANS_TOP(360) clockwise:YES];
@@ -68,7 +69,7 @@
     [darkGrey setLineWidth:3.0];
     [darkGrey stroke];
     
-    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:100.0 / 255.0 green:14.0 / 255.0 blue:121.0 / 255.0 alpha:1.0] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:128.0 / 255.0 green:222.0 / 255.0 blue:234.0 / 255.0 alpha:1.0] CGColor]);
     
     UIBezierPath *lightGrey = [UIBezierPath bezierPath];
     [lightGrey addArcWithCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2) radius:self.frame.size.width/2 - 5 startAngle:DEGREES_TO_RADIANS_TOP(0) endAngle:DEGREES_TO_RADIANS_TOP(360 - (360 * self.value))  clockwise:NO];

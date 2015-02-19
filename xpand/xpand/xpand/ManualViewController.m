@@ -48,17 +48,7 @@
     [super viewDidLoad];
     self.view.clipsToBounds = YES;
     
-    //Background
-//    CAGradientLayer *gradient = [CAGradientLayer layer];
-//    gradient.frame = CGRectMake(0.0, 0.0, self.view.bounds.size.width * 1.75, self.view.bounds.size.height * 1.2);
-//    gradient.anchorPoint = CGPointMake(0.5, 0.5);
-//    gradient.position = (CGPoint){CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)};
-////    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithRed:68.0 / 255.0 green:179.0 / 255.0 blue:254.0 / 255.0 alpha:1.0] CGColor], (id)[[UIColor colorWithRed:100.0 / 255.0 green:14.0 / 255.0 blue:121.0 / 255.0 alpha:1.0] CGColor], nil];
-//    gradient.colors = [NSArray arrayWithObjects:(id)(id)[[UIColor colorWithRed:100.0 / 255.0 green:14.0 / 255.0 blue:121.0 / 255.0 alpha:1.0] CGColor], (id)[[UIColor whiteColor] CGColor], nil];
-//    gradient.transform = CATransform3DMakeRotation(-28.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
-//    [self.view.layer insertSublayer:gradient atIndex:0];
-    
-    self.view.backgroundColor = [UIColor colorWithRed:245.0 / 255.0 green:245.0 / 255.0 blue:245.0 / 255.0 alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithRed:20.0 / 255.0 green:20.0 / 255.0 blue:20.0 / 255.0 alpha:1.0];
     
     insta = [Insta new];
     
@@ -69,8 +59,7 @@
     postCollView = [[UICollectionView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:[[FloatingHeaderViewFlowLayout alloc] init]];
     postCollView.delegate = self;
     postCollView.dataSource = self;
-    postCollView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
-//    postCollView.backgroundColor = [UIColor clearColor];
+    postCollView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:postCollView];
     
     [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
@@ -352,9 +341,8 @@
 
                 hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(30.0, 10, self.view.frame.size.width - 60.0, 50.0)];
 
-                hashtagTextFieldView.backgroundColor = [UIColor clearColor];
+                hashtagTextFieldView.backgroundColor = [UIColor whiteColor];
                 hashtagTextFieldView.layer.borderWidth=1.0;
-//                hashtagTextFieldView.layer.borderColor=[UIColor colorWithRed:119.0/255.0 green:119.0/255.0 blue:119.0/255.0 alpha:1.0].CGColor;
                 hashtagTextFieldView.layer.borderColor=[UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
                 
                 hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(20.0, 0.0, hashtagTextFieldView.frame.size.width - 40.0, 50.0)];
