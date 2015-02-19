@@ -98,7 +98,6 @@
         
         if (userProfile == nil) {
             userProfile = [UserProfile create];
-            NSLog(@")))");
             userProfile.isActive = [NSNumber numberWithBool:YES];
             userProfile.token = token;
         }
