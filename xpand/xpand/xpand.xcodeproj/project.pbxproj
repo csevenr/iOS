@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6603DD221A9731F600207286 /* back-button-white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6603DD201A9731F600207286 /* back-button-white@3x.png */; };
+		6603DD241A9734F300207286 /* backButtonBlackPadding@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6603DD231A9734F300207286 /* backButtonBlackPadding@3x.png */; };
 		6605A41A1A5C4FAB00A85AA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6605A4191A5C4FAB00A85AA7 /* Images.xcassets */; };
 		661E2EED1A5707AB008A2E27 /* AutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E2EEC1A5707AB008A2E27 /* AutoViewController.m */; };
 		662405831A96289500104F8A /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662405811A96289500104F8A /* Main1.storyboard */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6603DD201A9731F600207286 /* back-button-white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button-white@3x.png"; sourceTree = "<group>"; };
+		6603DD231A9734F300207286 /* backButtonBlackPadding@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButtonBlackPadding@3x.png"; sourceTree = "<group>"; };
 		6605A4191A5C4FAB00A85AA7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		661E2EEB1A5707AB008A2E27 /* AutoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoViewController.h; sourceTree = "<group>"; };
 		661E2EEC1A5707AB008A2E27 /* AutoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoViewController.m; sourceTree = "<group>"; };
@@ -126,6 +130,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6603DD1E1A9731EC00207286 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				6603DD231A9734F300207286 /* backButtonBlackPadding@3x.png */,
+				6603DD201A9731F600207286 /* back-button-white@3x.png */,
+			);
+			name = Artwork;
+			sourceTree = "<group>";
+		};
 		66A43E531A274A0D00829313 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +160,7 @@
 		66A43E5E1A274A0D00829313 /* xpand */ = {
 			isa = PBXGroup;
 			children = (
+				6603DD1E1A9731EC00207286 /* Artwork */,
 				66A43EBF1A27506800829313 /* ViewControllers */,
 				66A43EBE1A27505700829313 /* CoreData */,
 				66D8AABE1A56BE8000E02CD2 /* SearchCollectionReusableView.h */,
@@ -324,8 +338,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6603DD241A9734F300207286 /* backButtonBlackPadding@3x.png in Resources */,
 				66D04C721A6041EA0037A401 /* LaunchScreen.xib in Resources */,
 				662405831A96289500104F8A /* Main1.storyboard in Resources */,
+				6603DD221A9731F600207286 /* back-button-white@3x.png in Resources */,
 				6605A41A1A5C4FAB00A85AA7 /* Images.xcassets in Resources */,
 				66ED89461A2794C900C05E9D /* NibCell.xib in Resources */,
 				66B43C481A5EAD5F007E7730 /* XpandPlusView.xib in Resources */,

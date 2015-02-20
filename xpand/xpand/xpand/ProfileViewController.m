@@ -33,24 +33,22 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
-    [backBtn setTitle:@"Back" forState:UIControlStateNormal];
-    [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
-    [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-    [backBtn.titleLabel setFont:FONT];
-    [backBtn sizeToFit];
-    [self.view addSubview:backBtn];
+//    UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
+//    [backBtn setTitle:@"Back" forState:UIControlStateNormal];
+//    [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
+//    [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+//    [backBtn.titleLabel setFont:FONT];
+//    [backBtn sizeToFit];
+//    [self.view addSubview:backBtn];
 }
 
 -(void)setUpView{
     userProfile = [UserProfile getActiveUserProfile];
-    NSLog(@"ProfileViewController>userProfile %@", userProfile);
     self.usernameLbl.text = userProfile.userName;
     if (userProfile.profilePicture!=nil) {
         self.profilePicImg.image = [UIImage imageWithData:userProfile.profilePicture];
     }
 
-    NSLog(@"ProfileViewController>userProfile.profilePictureURL %@", userProfile.profilePictureURL);
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:userProfile.profilePictureURL]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error c");
