@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		66D9C9731A9F81BB007D03BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D9C9721A9F81BB007D03BB /* main.m */; };
+		66D9C9761A9F81BB007D03BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D9C9751A9F81BB007D03BB /* AppDelegate.m */; };
+		66D9C9791A9F81BB007D03BB /* CorradoManual.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66D9C9771A9F81BB007D03BB /* CorradoManual.xcdatamodeld */; };
+		66D9C97F1A9F81BB007D03BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66D9C97D1A9F81BB007D03BB /* Main.storyboard */; };
+		66D9C9811A9F81BB007D03BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D9C9801A9F81BB007D03BB /* Images.xcassets */; };
+		66D9C9841A9F81BB007D03BB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D9C9821A9F81BB007D03BB /* LaunchScreen.xib */; };
+		66D9C9901A9F81BB007D03BB /* CorradoManualTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D9C98F1A9F81BB007D03BB /* CorradoManualTests.m */; };
+		66D9C99B1A9F8246007D03BB /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D9C99A1A9F8246007D03BB /* RootTableViewController.m */; };
+		66D9C99D1A9F82AD007D03BB /* JSON.txt in Resources */ = {isa = PBXBuildFile; fileRef = 66D9C99C1A9F82AD007D03BB /* JSON.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66D9C98A1A9F81BB007D03BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66D9C9651A9F81BB007D03BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66D9C96C1A9F81BB007D03BB;
+			remoteInfo = CorradoManual;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		66D9C96D1A9F81BB007D03BB /* CorradoManual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorradoManual.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66D9C9711A9F81BB007D03BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66D9C9721A9F81BB007D03BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		66D9C9741A9F81BB007D03BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		66D9C9751A9F81BB007D03BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		66D9C9781A9F81BB007D03BB /* CorradoManual.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CorradoManual.xcdatamodel; sourceTree = "<group>"; };
+		66D9C97E1A9F81BB007D03BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		66D9C9801A9F81BB007D03BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		66D9C9831A9F81BB007D03BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		66D9C9891A9F81BB007D03BB /* CorradoManualTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CorradoManualTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66D9C98E1A9F81BB007D03BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66D9C98F1A9F81BB007D03BB /* CorradoManualTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorradoManualTests.m; sourceTree = "<group>"; };
+		66D9C9991A9F8246007D03BB /* RootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableViewController.h; sourceTree = "<group>"; };
+		66D9C99A1A9F8246007D03BB /* RootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableViewController.m; sourceTree = "<group>"; };
+		66D9C99C1A9F82AD007D03BB /* JSON.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSON.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66D9C96A1A9F81BB007D03BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66D9C9861A9F81BB007D03BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		66D9C9641A9F81BB007D03BB = {
+			isa = PBXGroup;
+			children = (
+				66D9C96F1A9F81BB007D03BB /* CorradoManual */,
+				66D9C98C1A9F81BB007D03BB /* CorradoManualTests */,
+				66D9C96E1A9F81BB007D03BB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		66D9C96E1A9F81BB007D03BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66D9C96D1A9F81BB007D03BB /* CorradoManual.app */,
+				66D9C9891A9F81BB007D03BB /* CorradoManualTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66D9C96F1A9F81BB007D03BB /* CorradoManual */ = {
+			isa = PBXGroup;
+			children = (
+				66D9C9741A9F81BB007D03BB /* AppDelegate.h */,
+				66D9C9751A9F81BB007D03BB /* AppDelegate.m */,
+				66D9C9991A9F8246007D03BB /* RootTableViewController.h */,
+				66D9C99A1A9F8246007D03BB /* RootTableViewController.m */,
+				66D9C99C1A9F82AD007D03BB /* JSON.txt */,
+				66D9C97D1A9F81BB007D03BB /* Main.storyboard */,
+				66D9C9801A9F81BB007D03BB /* Images.xcassets */,
+				66D9C9821A9F81BB007D03BB /* LaunchScreen.xib */,
+				66D9C9771A9F81BB007D03BB /* CorradoManual.xcdatamodeld */,
+				66D9C9701A9F81BB007D03BB /* Supporting Files */,
+			);
+			path = CorradoManual;
+			sourceTree = "<group>";
+		};
+		66D9C9701A9F81BB007D03BB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				66D9C9711A9F81BB007D03BB /* Info.plist */,
+				66D9C9721A9F81BB007D03BB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		66D9C98C1A9F81BB007D03BB /* CorradoManualTests */ = {
+			isa = PBXGroup;
+			children = (
+				66D9C98F1A9F81BB007D03BB /* CorradoManualTests.m */,
+				66D9C98D1A9F81BB007D03BB /* Supporting Files */,
+			);
+			path = CorradoManualTests;
+			sourceTree = "<group>";
+		};
+		66D9C98D1A9F81BB007D03BB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				66D9C98E1A9F81BB007D03BB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		66D9C96C1A9F81BB007D03BB /* CorradoManual */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66D9C9931A9F81BB007D03BB /* Build configuration list for PBXNativeTarget "CorradoManual" */;
+			buildPhases = (
+				66D9C9691A9F81BB007D03BB /* Sources */,
+				66D9C96A1A9F81BB007D03BB /* Frameworks */,
+				66D9C96B1A9F81BB007D03BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CorradoManual;
+			productName = CorradoManual;
+			productReference = 66D9C96D1A9F81BB007D03BB /* CorradoManual.app */;
+			productType = "com.apple.product-type.application";
+		};
+		66D9C9881A9F81BB007D03BB /* CorradoManualTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66D9C9961A9F81BB007D03BB /* Build configuration list for PBXNativeTarget "CorradoManualTests" */;
+			buildPhases = (
+				66D9C9851A9F81BB007D03BB /* Sources */,
+				66D9C9861A9F81BB007D03BB /* Frameworks */,
+				66D9C9871A9F81BB007D03BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66D9C98B1A9F81BB007D03BB /* PBXTargetDependency */,
+			);
+			name = CorradoManualTests;
+			productName = CorradoManualTests;
+			productReference = 66D9C9891A9F81BB007D03BB /* CorradoManualTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66D9C9651A9F81BB007D03BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Oliver Rodden";
+				TargetAttributes = {
+					66D9C96C1A9F81BB007D03BB = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					66D9C9881A9F81BB007D03BB = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 66D9C96C1A9F81BB007D03BB;
+					};
+				};
+			};
+			buildConfigurationList = 66D9C9681A9F81BB007D03BB /* Build configuration list for PBXProject "CorradoManual" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 66D9C9641A9F81BB007D03BB;
+			productRefGroup = 66D9C96E1A9F81BB007D03BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66D9C96C1A9F81BB007D03BB /* CorradoManual */,
+				66D9C9881A9F81BB007D03BB /* CorradoManualTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66D9C96B1A9F81BB007D03BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66D9C99D1A9F82AD007D03BB /* JSON.txt in Resources */,
+				66D9C97F1A9F81BB007D03BB /* Main.storyboard in Resources */,
+				66D9C9841A9F81BB007D03BB /* LaunchScreen.xib in Resources */,
+				66D9C9811A9F81BB007D03BB /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66D9C9871A9F81BB007D03BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		66D9C9691A9F81BB007D03BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66D9C9761A9F81BB007D03BB /* AppDelegate.m in Sources */,
+				66D9C9731A9F81BB007D03BB /* main.m in Sources */,
+				66D9C9791A9F81BB007D03BB /* CorradoManual.xcdatamodeld in Sources */,
+				66D9C99B1A9F8246007D03BB /* RootTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66D9C9851A9F81BB007D03BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66D9C9901A9F81BB007D03BB /* CorradoManualTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		66D9C98B1A9F81BB007D03BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66D9C96C1A9F81BB007D03BB /* CorradoManual */;
+			targetProxy = 66D9C98A1A9F81BB007D03BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		66D9C97D1A9F81BB007D03BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D9C97E1A9F81BB007D03BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		66D9C9821A9F81BB007D03BB /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66D9C9831A9F81BB007D03BB /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		66D9C9911A9F81BB007D03BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66D9C9921A9F81BB007D03BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		66D9C9941A9F81BB007D03BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CorradoManual/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		66D9C9951A9F81BB007D03BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CorradoManual/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		66D9C9971A9F81BB007D03BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CorradoManualTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CorradoManual.app/CorradoManual";
+			};
+			name = Debug;
+		};
+		66D9C9981A9F81BB007D03BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CorradoManualTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CorradoManual.app/CorradoManual";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		66D9C9681A9F81BB007D03BB /* Build configuration list for PBXProject "CorradoManual" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66D9C9911A9F81BB007D03BB /* Debug */,
+				66D9C9921A9F81BB007D03BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66D9C9931A9F81BB007D03BB /* Build configuration list for PBXNativeTarget "CorradoManual" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66D9C9941A9F81BB007D03BB /* Debug */,
+				66D9C9951A9F81BB007D03BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		66D9C9961A9F81BB007D03BB /* Build configuration list for PBXNativeTarget "CorradoManualTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66D9C9971A9F81BB007D03BB /* Debug */,
+				66D9C9981A9F81BB007D03BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		66D9C9771A9F81BB007D03BB /* CorradoManual.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				66D9C9781A9F81BB007D03BB /* CorradoManual.xcdatamodel */,
+			);
+			currentVersion = 66D9C9781A9F81BB007D03BB /* CorradoManual.xcdatamodel */;
+			path = CorradoManual.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 66D9C9651A9F81BB007D03BB /* Project object */;
+}
