@@ -7,10 +7,11 @@
 //
 
 #import "RootTableViewController.h"
+#import "ViewController.h"
 
 @interface RootTableViewController ()
 
-@property NSMutableArray *currentSectionDict;
+@property NSDictionary *currentSectionDict;
 @property NSMutableArray *currentSectionSubSections;
 
 @end
@@ -29,12 +30,15 @@
         NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];//Put data in dictionary
         //NSLog(@"JSON DICTIONARY: %@", jsonDictionary);
         
-        self.currentSectionDict = [jsonDictionary objectForKey:[jsonDictionary objectForKey:@"AASection"]];
+        self.currentSectionDict = jsonDictionary;
         //NSLog(@"CURRENT SECTION DICTIONARY: %@", self.currentSectionDict);
     }
-        
+    //NSLog(@"CURRENT SECTION DICTIONARY: %@", self.currentSectionDict);
+    
+    [self setTitle:[self.currentSectionDict objectForKey:@"AASection"]];
+    
     self.currentSectionSubSections = [NSMutableArray new];
-    for (NSDictionary *dict in self.currentSectionDict) {
+    for (NSDictionary *dict in [self.currentSectionDict objectForKey:[self.currentSectionDict objectForKey:@"AASection"]]) {
         [self.currentSectionSubSections addObject:[dict objectForKey:@"AASection"]];
         //NSLog(@"HIGH LEVEL SECTION: %@", [dict objectForKey:@"AASection"]);
     }
@@ -49,32 +53,65 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     //NSLog(@"%lu",(unsigned long)[self.currentSectionSubSections count]);
-    return [self.currentSectionSubSections count];
+    if (section == 0) {
+        return 1;
+    }else{
+        return [self.currentSectionSubSections count];
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Standard Cell" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    cell.textLabel.text = [self.currentSectionSubSections objectAtIndex:indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+    UITableViewCell *cell = nil;
+    if (indexPath.section == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell" forIndexPath:indexPath];
+        cell.backgroundColor = [UIColor lightGrayColor];
+        self.tableView.rowHeight = 200;
+    }else if (indexPath.section == 1){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Standard Cell" forIndexPath:indexPath];
+        
+        // Configure the cell...
+        cell.textLabel.text = [self.currentSectionSubSections objectAtIndex:indexPath.row];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        self.tableView.rowHeight = 44;
+    }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    RootTableViewController *newTVC = [RootTableViewController new];
-    NSLog(@"!!%@", self.currentSectionDict);
-    [newTVC setCurrentSectionDict:[[self.currentSectionDict objectAtIndex:indexPath.row] objectForKey:(UITableViewCell*)[self.tableView cellForRowAtIndexPath:indexPath].textLabel.text]];
-    [self.navigationController pushViewController:newTVC animated:YES];
+    //NSLog(@"!!%@", self.currentSectionDict);
+    NSDictionary *dictToSend = [[self.currentSectionDict objectForKey:[self.currentSectionDict objectForKey:@"AASection"]]objectAtIndex:indexPath.row];
+    //NSLog(@"DICT TO SEND: %@", dictToSend);
+    if ([dictToSend objectForKey:[dictToSend objectForKey:@"AASection"]] == nil) {
+        ViewController *newVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+        [newVC setCurrentSectionDict:dictToSend];
+        [self.navigationController pushViewController:newVC animated:YES];
+    }else{
+        RootTableViewController *newTVC = [RootTableViewController new];
+        [newTVC setCurrentSectionDict:dictToSend];
+        [self.navigationController pushViewController:newTVC animated:YES];
+    }
 }
+//
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, 100.0, 100.0)];
+//    headerView.backgroundColor = [UIColor yellowColor];
+//    headerView.clipsToBounds = YES;
+//    self.tableView.contentOffset = CGPointMake(0.0, 450.0);
+//
+//    return headerView;
+//}
+//
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+//    
+//    return 400.0;
+//}
 
 /*
 // Override to support conditional editing of the table view.

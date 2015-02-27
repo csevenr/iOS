@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6687835C1AA08E3D009C8A36 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6687835B1AA08E3D009C8A36 /* ViewController.m */; };
 		66D9C9731A9F81BB007D03BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D9C9721A9F81BB007D03BB /* main.m */; };
 		66D9C9761A9F81BB007D03BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D9C9751A9F81BB007D03BB /* AppDelegate.m */; };
 		66D9C9791A9F81BB007D03BB /* CorradoManual.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66D9C9771A9F81BB007D03BB /* CorradoManual.xcdatamodeld */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6687835A1AA08E3D009C8A36 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6687835B1AA08E3D009C8A36 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		66D9C96D1A9F81BB007D03BB /* CorradoManual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CorradoManual.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66D9C9711A9F81BB007D03BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66D9C9721A9F81BB007D03BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				66D9C9751A9F81BB007D03BB /* AppDelegate.m */,
 				66D9C9991A9F8246007D03BB /* RootTableViewController.h */,
 				66D9C99A1A9F8246007D03BB /* RootTableViewController.m */,
+				6687835A1AA08E3D009C8A36 /* ViewController.h */,
+				6687835B1AA08E3D009C8A36 /* ViewController.m */,
 				66D9C99C1A9F82AD007D03BB /* JSON.txt */,
 				66D9C97D1A9F81BB007D03BB /* Main.storyboard */,
 				66D9C9801A9F81BB007D03BB /* Images.xcassets */,
@@ -230,6 +235,7 @@
 				66D9C9731A9F81BB007D03BB /* main.m in Sources */,
 				66D9C9791A9F81BB007D03BB /* CorradoManual.xcdatamodeld in Sources */,
 				66D9C99B1A9F8246007D03BB /* RootTableViewController.m in Sources */,
+				6687835C1AA08E3D009C8A36 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +428,7 @@
 				66D9C9951A9F81BB007D03BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		66D9C9961A9F81BB007D03BB /* Build configuration list for PBXNativeTarget "CorradoManualTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +437,7 @@
 				66D9C9981A9F81BB007D03BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
