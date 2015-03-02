@@ -9,7 +9,9 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController (){
+    UITapGestureRecognizer *doubleTap;
+}
 
 @property NSMutableArray *objects;
 
@@ -30,9 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
-    
+    // Do any additional setup after loading the view, typically from a nib.  
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"StandardCell"];
@@ -45,7 +45,7 @@
         
         self.currentSectionDict = jsonDictionary;
         
-        [self.detailViewController setCurrentSectionDict:self.currentSectionDict];
+//        [self.detailViewController setCurrentSectionDict:self.currentSectionDict];
     }
     
     [self setTitle:[self.currentSectionDict objectForKey:@"AASection"]];
@@ -54,21 +54,26 @@
     for (NSDictionary *dict in [self.currentSectionDict objectForKey:[self.currentSectionDict objectForKey:@"AASection"]]) {
         [self.currentSectionSubSections addObject:[dict objectForKey:@"AASection"]];
     }
-    
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapped)];
-    doubleTap.numberOfTapsRequired = 2;
-    [self.navigationController.navigationBar addGestureRecognizer:doubleTap];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSLog(@"%@", self);
-    NSLog(@"%@", [self.currentSectionDict objectForKey:@"AASection"]);
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    
+    [[(MasterViewController*)[self.navigationController.viewControllers objectAtIndex:0] detailViewController] setCurrentSectionDict:self.currentSectionDict];
+    
+    doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleTapped)];
+    doubleTap.numberOfTapsRequired = 2;
+    [self.navigationController.navigationBar addGestureRecognizer:doubleTap];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar removeGestureRecognizer:doubleTap];
 }
 
 -(void)doubleTapped{
-    NSLog(@"%@", self);
-    NSLog(@"%@", self.currentSectionDict);
     [self performSegueWithIdentifier:@"showD" sender:self.currentSectionDict];
 }
 
@@ -81,11 +86,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showD"]) {
-//        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         [controller setCurrentSectionDict:sender];
-//        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-//        controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
 }
 
@@ -123,7 +125,7 @@
         MasterViewController *newMVC = [mystoryboard instantiateViewControllerWithIdentifier:@"Master"];
         [newMVC setCurrentSectionDict:dictToSend];
         newMVC.view.tag = [self.navigationController.viewControllers count];
-        [self.detailViewController setCurrentSectionDict:dictToSend];
+//        [self.detailViewController setCurrentSectionDict:dictToSend];
         [self.navigationController pushViewController:newMVC animated:YES];
     }
 }

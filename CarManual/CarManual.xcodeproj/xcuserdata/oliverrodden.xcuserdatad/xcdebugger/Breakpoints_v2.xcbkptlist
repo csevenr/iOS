@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarManual/DetailViewController.m"
-            timestampString = "446999588.76559"
+            timestampString = "447007451.591807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "-setCurrentSectionDict:"
             landmarkType = "5">
          </BreakpointContent>

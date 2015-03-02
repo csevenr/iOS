@@ -10,7 +10,7 @@
 
 @interface DetailViewController : UIViewController
 
-@property NSDictionary *currentSectionDict;
+@property (strong, nonatomic) NSDictionary *currentSectionDict;
 
 @property (strong, nonatomic) id detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;

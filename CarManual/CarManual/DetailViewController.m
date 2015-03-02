@@ -17,18 +17,14 @@
 #pragma mark - Managing the detail item
 
 -(void)setCurrentSectionDict:(NSDictionary *)currentSectionDict{
-    NSLog(@"dictionary set");
-//    if (_currentSectionDict != currentSectionDict) {
-        _currentSectionDict = currentSectionDict;
-        
-        // Update the view.
-        [self configureView];
-//    }
+    _currentSectionDict = currentSectionDict;
+    
+    [self configureView];
 }
 
 - (void)configureView {
     // Update the user interface for the detail item.
-    NSLog(@"%@", [self.currentSectionDict objectForKey:@"AASection"]);
+    NSLog(@"do da ting");
     self.detailDescriptionLabel.text = [NSString stringWithFormat:@"Data: %@", [self.currentSectionDict objectForKey:@"Data"]];
 }
 
