@@ -60,7 +60,7 @@
 		662405821A96289500104F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main1.storyboard; sourceTree = "<group>"; };
 		6651AEBC1A69565B000E0D21 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
 		6651AEBD1A69565B000E0D21 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
-		66A43E5C1A274A0D00829313 /* awnty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = awnty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66A43E5C1A274A0D00829313 /* xpand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A43E601A274A0D00829313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A43E611A274A0D00829313 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		66A43E631A274A0D00829313 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		66A43E5D1A274A0D00829313 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				66A43E5C1A274A0D00829313 /* awnty.app */,
+				66A43E5C1A274A0D00829313 /* xpand.app */,
 				66A43E781A274A0D00829313 /* xpandTests.xctest */,
 			);
 			name = Products;
@@ -275,7 +275,7 @@
 			);
 			name = xpand;
 			productName = xpand;
-			productReference = 66A43E5C1A274A0D00829313 /* awnty.app */;
+			productReference = 66A43E5C1A274A0D00829313 /* xpand.app */;
 			productType = "com.apple.product-type.application";
 		};
 		66A43E771A274A0D00829313 /* xpandTests */ = {
@@ -307,6 +307,7 @@
 				TargetAttributes = {
 					66A43E5B1A274A0D00829313 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = TAF7KLCDAQ;
 					};
 					66A43E771A274A0D00829313 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -511,10 +512,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = xpand/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = awnty;
+				PRODUCT_NAME = xpand;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -525,10 +528,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = xpand/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = awnty;
+				PRODUCT_NAME = xpand;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

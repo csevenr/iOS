@@ -69,7 +69,7 @@
 //}
 
 -(void)presentOAuth{
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://xpand.editionthree.com"]];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.instagram.com/oauth/authorize?client_id=71b79c483d0c4bf08713d3f798dc4dec&redirect_uri=https%3A%2F%2Fxpand.today%2Fapi&scope=likes&response_type=code"]];
     [self.authWebView loadRequest:requestObj];
     [self.view bringSubviewToFront:self.authWebView];
     self.authWebView.hidden = NO;
@@ -77,14 +77,14 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     NSString* urlString = [[webView.request URL] absoluteString];
-//
+
 //    NSLog(@"%@", urlString);
     
-    if ([urlString isEqualToString:@"http://xpand.editionthree.com/json.php"]) {
+    if ([urlString isEqualToString:@"https://xpand.today/api/json.php"]) {
         webView.hidden = YES;
 
         NSString *str = [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.textContent"];
-        //    NSLog(@"%@",str);
+//            NSLog(@"%@",str);
         
         NSArray *jsonDictionary=[NSArray arrayWithObject:[NSJSONSerialization JSONObjectWithData:[str dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil]];
         

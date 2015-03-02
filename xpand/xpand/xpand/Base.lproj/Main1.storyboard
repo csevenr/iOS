@@ -715,7 +715,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFg-97-2pv" userLabel="Profile">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEQ-j3-P5o">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEQ-j3-P5o">
                                         <rect key="frame" x="0.0" y="399" width="600" height="201"/>
                                         <color key="backgroundColor" red="0.2941176593" green="0.77647066119999997" blue="0.85882359740000003" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
@@ -791,13 +791,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-h4-g7o" userLabel="Manual">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Et0-Pt-3VI">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Et0-Pt-3VI">
                                         <rect key="frame" x="0.0" y="200" width="600" height="201"/>
                                         <color key="backgroundColor" red="0.2941176593" green="0.77647066119999997" blue="0.85882359740000003" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
                                         <state key="normal" title="Manual">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="-4" y="0.0" width="416" height="268"/>
+                                        </variation>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="v5n-NU-9t2"/>
                                         </connections>
@@ -830,7 +833,8 @@
                                                 <exclude reference="nAl-b8-61k"/>
                                             </mask>
                                         </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
+                                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                            <rect key="frame" x="0.0" y="267" width="408" height="1"/>
                                             <mask key="constraints">
                                                 <include reference="nAl-b8-61k"/>
                                             </mask>
@@ -861,32 +865,33 @@
                                         <exclude reference="l2t-XD-xop"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="5yz-7m-LrV"/>
-                                        <exclude reference="UF3-6S-TCD"/>
-                                        <exclude reference="ug1-oL-X5i"/>
                                         <exclude reference="2fK-Hn-jTZ"/>
                                         <exclude reference="8L3-77-tzh"/>
                                         <exclude reference="JJL-dN-0Kl"/>
                                         <exclude reference="NN9-6S-LkH"/>
+                                        <exclude reference="5yz-7m-LrV"/>
+                                        <exclude reference="UF3-6S-TCD"/>
+                                        <exclude reference="ug1-oL-X5i"/>
                                         <exclude reference="Un6-FX-BOs"/>
                                         <exclude reference="f8a-fw-xxu"/>
                                         <exclude reference="kaz-Yx-CdM"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="-4" y="266" width="408" height="268"/>
                                     <mask key="subviews">
                                         <include reference="Et0-Pt-3VI"/>
                                         <include reference="XMt-FE-EP8"/>
                                         <include reference="l2t-XD-xop"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="5yz-7m-LrV"/>
-                                        <include reference="UF3-6S-TCD"/>
-                                        <include reference="ug1-oL-X5i"/>
                                         <include reference="2fK-Hn-jTZ"/>
                                         <include reference="8L3-77-tzh"/>
                                         <include reference="JJL-dN-0Kl"/>
                                         <include reference="NN9-6S-LkH"/>
+                                        <include reference="5yz-7m-LrV"/>
+                                        <include reference="UF3-6S-TCD"/>
+                                        <include reference="ug1-oL-X5i"/>
                                         <include reference="Un6-FX-BOs"/>
                                         <include reference="f8a-fw-xxu"/>
                                         <include reference="kaz-Yx-CdM"/>
@@ -896,7 +901,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BCf-QU-dwl" userLabel="Auto">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irJ-Vh-IR9">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irJ-Vh-IR9">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="201"/>
                                         <color key="backgroundColor" red="0.29411765933036804" green="0.77647066116333008" blue="0.85882359743118286" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="24"/>
@@ -993,6 +998,7 @@
                                 <exclude reference="BCf-QU-dwl"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="scU-W9-1ni"/>
                                 <exclude reference="8Nb-8h-bFh"/>
                                 <exclude reference="haK-2M-Dng"/>
                                 <exclude reference="mj6-nw-PnH"/>
@@ -1004,7 +1010,6 @@
                                 <exclude reference="qer-Kc-1vP"/>
                                 <exclude reference="sex-Z3-i54"/>
                                 <exclude reference="zRp-f9-3CU"/>
-                                <exclude reference="scU-W9-1ni"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1014,6 +1019,7 @@
                                 <include reference="BCf-QU-dwl"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="scU-W9-1ni"/>
                                 <include reference="8Nb-8h-bFh"/>
                                 <include reference="haK-2M-Dng"/>
                                 <include reference="mj6-nw-PnH"/>
@@ -1025,7 +1031,6 @@
                                 <include reference="qer-Kc-1vP"/>
                                 <include reference="sex-Z3-i54"/>
                                 <include reference="zRp-f9-3CU"/>
-                                <include reference="scU-W9-1ni"/>
                             </mask>
                         </variation>
                     </view>
