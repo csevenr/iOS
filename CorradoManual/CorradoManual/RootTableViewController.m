@@ -21,27 +21,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Standard Cell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"StandardCell"];
     
     if (self.currentSectionDict == nil) {
         NSString* path = [[NSBundle mainBundle] pathForResource:@"JSON" ofType:@"txt"];//Create file path
         NSString* content = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];//Get content of file
         NSData* data = [content dataUsingEncoding:NSUTF8StringEncoding];//Encode to data
         NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];//Put data in dictionary
-        //NSLog(@"JSON DICTIONARY: %@", jsonDictionary);
         
         self.currentSectionDict = jsonDictionary;
-        //NSLog(@"CURRENT SECTION DICTIONARY: %@", self.currentSectionDict);
     }
-    //NSLog(@"CURRENT SECTION DICTIONARY: %@", self.currentSectionDict);
     
     [self setTitle:[self.currentSectionDict objectForKey:@"AASection"]];
     
     self.currentSectionSubSections = [NSMutableArray new];
     for (NSDictionary *dict in [self.currentSectionDict objectForKey:[self.currentSectionDict objectForKey:@"AASection"]]) {
         [self.currentSectionSubSections addObject:[dict objectForKey:@"AASection"]];
-        //NSLog(@"HIGH LEVEL SECTION: %@", [dict objectForKey:@"AASection"]);
     }
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapped)];
+    doubleTap.numberOfTapsRequired = 2;
+    [self.navigationController.navigationBar addGestureRecognizer:doubleTap];
+}
+
+-(void)tapped{
+    [self detailViewController];
+}
+
+-(void)detailViewController{
+    NSDictionary *dictToSend = [[self.currentSectionDict objectForKey:[self.currentSectionDict objectForKey:@"AASection"]]objectAtIndex:0];
+    
+    ViewController *newVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+    [newVC setCurrentSectionDict:dictToSend];
+//    [self.navigationController pushViewController:newVC animated:YES];
+    
+    [self.navigationController showDetailViewController:newVC sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,28 +67,21 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     //NSLog(@"%lu",(unsigned long)[self.currentSectionSubSections count]);
-    if (section == 0) {
-        return 1;
-    }else{
-        return [self.currentSectionSubSections count];
-    }
+    return [self.currentSectionSubSections count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
-    if (indexPath.section == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell" forIndexPath:indexPath];
-        cell.backgroundColor = [UIColor lightGrayColor];
-        self.tableView.rowHeight = 200;
-    }else if (indexPath.section == 1){
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Standard Cell" forIndexPath:indexPath];
+    if (indexPath.section == 0){
+        NSLog(@"StandardCell");
+        cell = [tableView dequeueReusableCellWithIdentifier:@"StandardCell" forIndexPath:indexPath];
         
         // Configure the cell...
         cell.textLabel.text = [self.currentSectionSubSections objectAtIndex:indexPath.row];

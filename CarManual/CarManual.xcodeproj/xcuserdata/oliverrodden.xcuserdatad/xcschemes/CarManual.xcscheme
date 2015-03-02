@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0610"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66A43E5B1A274A0D00829313"
-               BuildableName = "xpand.app"
-               BlueprintName = "xpand"
-               ReferencedContainer = "container:xpand.xcodeproj">
+               BlueprintIdentifier = "661EB22E1AA4825700F505BB"
+               BuildableName = "CarManual.app"
+               BlueprintName = "CarManual"
+               ReferencedContainer = "container:CarManual.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66A43E771A274A0D00829313"
-               BuildableName = "xpandTests.xctest"
-               BlueprintName = "xpandTests"
-               ReferencedContainer = "container:xpand.xcodeproj">
+               BlueprintIdentifier = "661EB24A1AA4825700F505BB"
+               BuildableName = "CarManualTests.xctest"
+               BlueprintName = "CarManualTests"
+               ReferencedContainer = "container:CarManual.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "66A43E771A274A0D00829313"
-               BuildableName = "xpandTests.xctest"
-               BlueprintName = "xpandTests"
-               ReferencedContainer = "container:xpand.xcodeproj">
+               BlueprintIdentifier = "661EB24A1AA4825700F505BB"
+               BuildableName = "CarManualTests.xctest"
+               BlueprintName = "CarManualTests"
+               ReferencedContainer = "container:CarManual.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "66A43E5B1A274A0D00829313"
-            BuildableName = "xpand.app"
-            BlueprintName = "xpand"
-            ReferencedContainer = "container:xpand.xcodeproj">
+            BlueprintIdentifier = "661EB22E1AA4825700F505BB"
+            BuildableName = "CarManual.app"
+            BlueprintName = "CarManual"
+            ReferencedContainer = "container:CarManual.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -75,10 +75,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "66A43E5B1A274A0D00829313"
-            BuildableName = "xpand.app"
-            BlueprintName = "xpand"
-            ReferencedContainer = "container:xpand.xcodeproj">
+            BlueprintIdentifier = "661EB22E1AA4825700F505BB"
+            BuildableName = "CarManual.app"
+            BlueprintName = "CarManual"
+            ReferencedContainer = "container:CarManual.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -93,10 +93,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "66A43E5B1A274A0D00829313"
-            BuildableName = "xpand.app"
-            BlueprintName = "xpand"
-            ReferencedContainer = "container:xpand.xcodeproj">
+            BlueprintIdentifier = "661EB22E1AA4825700F505BB"
+            BuildableName = "CarManual.app"
+            BlueprintName = "CarManual"
+            ReferencedContainer = "container:CarManual.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
