@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "66A43E5B1A274A0D00829313"
-               BuildableName = "awnty.app"
+               BuildableName = "xpand.app"
                BlueprintName = "xpand"
                ReferencedContainer = "container:xpand.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "66A43E5B1A274A0D00829313"
-            BuildableName = "awnty.app"
+            BuildableName = "xpand.app"
             BlueprintName = "xpand"
             ReferencedContainer = "container:xpand.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "66A43E5B1A274A0D00829313"
-            BuildableName = "awnty.app"
+            BuildableName = "xpand.app"
             BlueprintName = "xpand"
             ReferencedContainer = "container:xpand.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "66A43E5B1A274A0D00829313"
-            BuildableName = "awnty.app"
+            BuildableName = "xpand.app"
             BlueprintName = "xpand"
             ReferencedContainer = "container:xpand.xcodeproj">
          </BuildableReference>

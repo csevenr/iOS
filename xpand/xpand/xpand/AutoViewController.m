@@ -19,7 +19,13 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor colorWithRed:20.0 / 255.0 green:20.0 / 255.0 blue:20.0 / 255.0 alpha:1.0];
-        
+    
+    for (UIButton *pillBtn in self.pillBtns) {
+        pillBtn.layer.borderWidth = 2;
+        pillBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+        pillBtn.layer.cornerRadius = 15;
+    }
+    
     self.startBtn.layer.cornerRadius = 4.0;
     
     [self.hashtagTextField setFont:FONT];

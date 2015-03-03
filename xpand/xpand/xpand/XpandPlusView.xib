@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X P A N D +" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGA-85-0yO">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="X P A N D +" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGA-85-0yO">
                     <rect key="frame" x="226" y="26" width="149" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="157" id="Kym-OD-edq"/>
@@ -32,7 +32,7 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sit back, relax and let us do the hard work." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbE-d4-lLy">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sit back, relax and let us do the hard work." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbE-d4-lLy">
                     <rect key="frame" x="10" y="69" width="580" height="93"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="psD-Cg-lWq"/>
@@ -51,7 +51,7 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribing gives you acess to all future features" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnY-LF-fCq">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Subscribing gives you acess to all future features" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnY-LF-fCq">
                     <rect key="frame" x="10" y="259" width="580" height="62"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="gWf-Fg-k3v"/>
@@ -73,7 +73,7 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5 a month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiy-HK-bV1">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="$5 a month" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiy-HK-bV1">
                     <rect key="frame" x="8" y="189" width="584" height="41"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="164" id="GEj-kP-vCr"/>
@@ -95,7 +95,7 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9n9-Cy-jtT">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9n9-Cy-jtT">
                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -186,7 +186,7 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1K9-uN-ARd">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1K9-uN-ARd">
                     <rect key="frame" x="16" y="337" width="568" height="247"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -246,23 +246,23 @@
                     <exclude reference="zEs-Ts-9bP"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="1O1-xB-QMp"/>
-                    <exclude reference="S1E-Ss-pq3"/>
-                    <exclude reference="2br-hP-rr8"/>
-                    <exclude reference="WEi-Ac-YY9"/>
-                    <exclude reference="345-TW-uQ5"/>
-                    <exclude reference="sDK-Ze-KtK"/>
-                    <exclude reference="5F7-Qr-bBs"/>
-                    <exclude reference="APn-Cq-pBG"/>
-                    <exclude reference="PnP-ec-xBL"/>
                     <exclude reference="4zL-3Y-AiU"/>
                     <exclude reference="GD1-1F-prF"/>
+                    <exclude reference="2br-hP-rr8"/>
+                    <exclude reference="WEi-Ac-YY9"/>
                     <exclude reference="60s-oR-dff"/>
                     <exclude reference="ftG-tB-exf"/>
                     <exclude reference="wlc-Dw-Dwt"/>
-                    <exclude reference="3Ns-x7-91a"/>
+                    <exclude reference="1O1-xB-QMp"/>
+                    <exclude reference="S1E-Ss-pq3"/>
+                    <exclude reference="5F7-Qr-bBs"/>
+                    <exclude reference="APn-Cq-pBG"/>
+                    <exclude reference="PnP-ec-xBL"/>
                     <exclude reference="7dI-Al-pMz"/>
                     <exclude reference="WBs-KE-vs0"/>
+                    <exclude reference="345-TW-uQ5"/>
+                    <exclude reference="sDK-Ze-KtK"/>
+                    <exclude reference="3Ns-x7-91a"/>
                     <exclude reference="5sl-3t-G2B"/>
                     <exclude reference="7sc-oS-kA7"/>
                     <exclude reference="EB9-oD-kxn"/>
@@ -276,23 +276,23 @@
                     <include reference="zEs-Ts-9bP"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="1O1-xB-QMp"/>
-                    <include reference="S1E-Ss-pq3"/>
-                    <include reference="2br-hP-rr8"/>
-                    <include reference="WEi-Ac-YY9"/>
-                    <include reference="345-TW-uQ5"/>
-                    <include reference="sDK-Ze-KtK"/>
-                    <include reference="5F7-Qr-bBs"/>
-                    <include reference="APn-Cq-pBG"/>
-                    <include reference="PnP-ec-xBL"/>
                     <include reference="4zL-3Y-AiU"/>
                     <include reference="GD1-1F-prF"/>
+                    <include reference="2br-hP-rr8"/>
+                    <include reference="WEi-Ac-YY9"/>
                     <include reference="60s-oR-dff"/>
                     <include reference="ftG-tB-exf"/>
                     <include reference="wlc-Dw-Dwt"/>
-                    <include reference="3Ns-x7-91a"/>
+                    <include reference="1O1-xB-QMp"/>
+                    <include reference="S1E-Ss-pq3"/>
+                    <include reference="5F7-Qr-bBs"/>
+                    <include reference="APn-Cq-pBG"/>
+                    <include reference="PnP-ec-xBL"/>
                     <include reference="7dI-Al-pMz"/>
                     <include reference="WBs-KE-vs0"/>
+                    <include reference="345-TW-uQ5"/>
+                    <include reference="sDK-Ze-KtK"/>
+                    <include reference="3Ns-x7-91a"/>
                     <include reference="5sl-3t-G2B"/>
                     <include reference="7sc-oS-kA7"/>
                     <include reference="EB9-oD-kxn"/>

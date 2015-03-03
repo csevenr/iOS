@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
 
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *pillBtns;
 - (IBAction)startBtnPressed:(id)sender;
 
 @end
