@@ -23,14 +23,23 @@
 }
 
 - (void)configureView {
-    // Update the user interface for the detail item.
-    NSLog(@"do da ting");
-    self.detailDescriptionLabel.text = [NSString stringWithFormat:@"Data: %@", [self.currentSectionDict objectForKey:@"Data"]];
+    NSMutableString *detailString = [NSMutableString new];
+    for (NSString *key in self.currentSectionDict) {
+        if (![key isEqualToString:@"AASection"] &&
+            ![key isEqualToString:@"Image"] &&
+            ![key isEqualToString:[self.currentSectionDict objectForKey:@"AASection"]]) {
+            [detailString appendString:[NSString stringWithFormat:@"%@: %@ \n\n", key, [self.currentSectionDict objectForKey:key]]];
+        }else if ([key isEqualToString:@"Image"]){
+            self.mainImgView.image = [UIImage imageNamed:[self.currentSectionDict objectForKey:key]];
+        }
+    }
+    self.detailTextView.text = detailString;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
     [self configureView];
 }
 
