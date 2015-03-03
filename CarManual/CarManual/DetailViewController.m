@@ -30,6 +30,7 @@
             ![key isEqualToString:[self.currentSectionDict objectForKey:@"AASection"]]) {
             [detailString appendString:[NSString stringWithFormat:@"%@: %@ \n\n", key, [self.currentSectionDict objectForKey:key]]];
         }else if ([key isEqualToString:@"Image"]){
+            //MAX KNOWN SIZE 752, 440 (@2x = 1504, 880)
             self.mainImgView.image = [UIImage imageNamed:[self.currentSectionDict objectForKey:key]];
         }
     }
