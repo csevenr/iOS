@@ -123,7 +123,7 @@
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-//            NSLog(@"### %@", jsonDictionary);
+            NSLog(@"### %@", jsonDictionary);
             
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                if (userProfile.userName == nil){
@@ -187,6 +187,19 @@
                 [ModelHelper saveManagedObjectContext];
                 [self.delegate userInfoFinished];
             });
+        }
+    }];
+}
+
+-(void)setUpAutoWithHashtag:(NSString*)hastag{
+    NSString *urlForTag = [NSString stringWithFormat:@"https://xpand.today/api/update-hashtag.php?user_id=%@&hashtag=%@",userProfile.userId , @"cars"];
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@"Error 4");
+        } else {
+            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+           NSLog(@"#### %@", jsonDictionary);
         }
     }];
 }

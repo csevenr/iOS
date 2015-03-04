@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MasterViewController.h"
+#import "Insta.h"
 
-@interface AutoViewController : MasterViewController
+@interface AutoViewController : MasterViewController{
+    Insta *insta;
+}
 
 @property (weak, nonatomic) IBOutlet UIView *hashtagTextFieldView;
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;

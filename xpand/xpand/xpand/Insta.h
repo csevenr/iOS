@@ -30,6 +30,7 @@
 - (void)likePost:(Post*)post;
 -(void)getUserInfo;
 -(void)getUserMedia;
+-(void)setUpAutoWithHashtag:(NSString*)hastag;
 -(void)logout;
 
 @end

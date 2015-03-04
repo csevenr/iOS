@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    insta = [Insta new];
+    
     self.view.backgroundColor = [UIColor colorWithRed:20.0 / 255.0 green:20.0 / 255.0 blue:20.0 / 255.0 alpha:1.0];
     
     for (UIButton *pillBtn in self.pillBtns) {
@@ -59,7 +61,7 @@
 */
 
 - (IBAction)startBtnPressed:(id)sender {
-    NSLog(@"%f, %f", self.startBtn.bounds.size.width, self.startBtn.bounds.size.height);
+    [insta setUpAutoWithHashtag:@"cars"];
 }
 
 @end
