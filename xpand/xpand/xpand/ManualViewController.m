@@ -325,12 +325,10 @@
         if (indexPath.section == 0) {
         
             headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader" forIndexPath:indexPath];
-            
-            UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
-            [backBtn setTitle:@"Back" forState:UIControlStateNormal];
+                        
+            UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(14.0, 18.0, 44.0, 44.0)];
+            [backBtn setImage:[UIImage imageNamed:@"backButtonWhitePadding.png"] forState:UIControlStateNormal];
             [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
-            [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-            [backBtn.titleLabel setFont:FONT];
             [backBtn sizeToFit];
             [headerView addSubview:backBtn];
             
@@ -404,7 +402,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return CGSizeMake(200.0, 50.0);
+        return CGSizeMake(200.0, 62.0);
     }else{
         return CGSizeMake(200.0, 70.0);
     }

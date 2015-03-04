@@ -21,8 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    needsLogin = NO;
-    [self login];
     
     // Do any additional setup after loading the view.    
     for (UIView *view in self.viewsToStyle) {
@@ -35,6 +33,9 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    needsLogin = NO;
+    [self login];
+    
     NSTimeInterval secondsBetween = [[NSDate date] timeIntervalSinceDate:userProfile.likeTime];
     if (secondsBetween >= 3600.000001) {
         userProfile.likesInHour = [NSNumber numberWithInt:0];
