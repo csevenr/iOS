@@ -128,7 +128,7 @@
             if ([[[jsonDictionary objectForKey:@"meta"]objectForKey:@"code"] intValue]==200) {
                if (userProfile.userName == nil){
                     userProfile.userName = [[jsonDictionary objectForKey:@"data"]objectForKey:@"username"];
-                    userProfile.userId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
+                    userProfile.instaUserId = [[jsonDictionary objectForKey:@"data"]objectForKey:@"id"];
                 }
                 userProfile.bio = [[jsonDictionary objectForKey:@"data"] objectForKey:@"bio"];
                 userProfile.followers = [NSNumber numberWithInt:[[[[jsonDictionary objectForKey:@"data"]objectForKey:@"counts"] objectForKey:@"followed_by"] intValue]];
@@ -192,14 +192,14 @@
 }
 
 -(void)setUpAutoWithHashtag:(NSString*)hastag{
-    NSString *urlForTag = [NSString stringWithFormat:@"https://xpand.today/api/update-hashtag.php?user_id=%@&hashtag=%@",userProfile.userId , @"cars"];
+    NSString *urlForTag = [NSString stringWithFormat:@"https://xpand.today/api/update-hashtag.php?user_id=%@&hashtag=%@",userProfile.userId , hastag];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@"Error 4");
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-           NSLog(@"#### %@", jsonDictionary);
+           NSLog(@"!!!! %@", jsonDictionary);
         }
     }];
 }

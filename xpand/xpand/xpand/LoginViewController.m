@@ -100,6 +100,7 @@
             userProfile = [UserProfile create];
             userProfile.isActive = [NSNumber numberWithBool:YES];
             userProfile.token = token;
+            userProfile.userId = [[jsonDictionary objectAtIndex:0] objectForKey:@"id"];
         }
         
         Insta *insta = [Insta new];

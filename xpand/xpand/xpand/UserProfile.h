@@ -2,7 +2,7 @@
 //  UserProfile.h
 //  xpand
 //
-//  Created by Oliver Rodden on 16/01/2015.
+//  Created by Oliver Rodden on 04/03/2015.
 //  Copyright (c) 2015 Oliver Rodden. All rights reserved.
 //
 
@@ -29,11 +29,12 @@
 @property (nonatomic, retain) NSNumber * recentLikes;
 @property (nonatomic, retain) NSNumber * recentMostLikes;
 @property (nonatomic, retain) NSNumber * subscriber;
+@property (nonatomic, retain) NSString * token;
 @property (nonatomic, retain) NSNumber * tokenCountUp;
 @property (nonatomic, retain) NSString * userId;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSString * website;
-@property (nonatomic, retain) NSString * token;
+@property (nonatomic, retain) NSString * instaUserId;
 @property (nonatomic, retain) NSSet *likedPosts;
 @end
 

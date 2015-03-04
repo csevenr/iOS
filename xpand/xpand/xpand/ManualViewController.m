@@ -229,6 +229,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    if (!searchIsOpen) {
+    if ([posts count] != 0) {
         if (userProfile.likeTime == nil) {
             userProfile.likeTime = [NSDate date];
         }
@@ -257,7 +258,7 @@
                 [alert show];
             }
         }
-//    }
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -307,8 +308,8 @@
         }
         [postCells addObject:indexPath];
         
-        cell.layer.borderColor = [[UIColor colorWithWhite:1.0 alpha:1.0] CGColor];
-        cell.layer.borderWidth = 2.0;
+//        cell.layer.borderColor = [[UIColor colorWithWhite:1.0 alpha:1.0] CGColor];
+//        cell.layer.borderWidth = 2.0;
     }
     
     return cell;
@@ -342,8 +343,8 @@
                 hashtagTextFieldView = [[UIView alloc]initWithFrame:CGRectMake(30.0, 10, self.view.frame.size.width - 60.0, 50.0)];
 
                 hashtagTextFieldView.backgroundColor = [UIColor whiteColor];
-                hashtagTextFieldView.layer.borderWidth=1.0;
-                hashtagTextFieldView.layer.borderColor=[UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
+//                hashtagTextFieldView.layer.borderWidth=1.0;
+//                hashtagTextFieldView.layer.borderColor=[UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
                 
                 hashtagTextField = [[UITextField alloc]initWithFrame:CGRectMake(20.0, 0.0, hashtagTextFieldView.frame.size.width - 40.0, 50.0)];
                 [hashtagTextField setFont:FONT];
@@ -393,7 +394,11 @@
     if (section == 0) {
         return 1;
     }else{
-        return [posts count];
+        if ([posts count] == 0) {
+            return 1;
+        }else{
+            return [posts count];
+        }
     }
 }
 
@@ -456,19 +461,34 @@
 
 # pragma mark scrollView delegate methods
 
-#define OFFSET 115.0
+#define MAXOFFSET 115.0
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 //    NSLog(@"%f", postCollView.contentOffset.y);
     float offset = postCollView.contentOffset.y - 100;
+    
+    /*--OFFSET BETWEEN 0 & 1--*/
+    offset = offset/MAXOFFSET;
+    if (offset > 1) offset = 1;
+    if (offset < 0) offset = 0;
+    /*------------------------*/
+    
+    /*--OFFSET BETWEEN 0 & MAXOFFSET--
     if (offset > OFFSET) offset = OFFSET;
-
-    hashtagTextField.textColor = [UIColor colorWithWhite:(offset/OFFSET) alpha:0.8];
+    if (offset < 0) offset = 0;
+    ---------------------------------*/
     
-//    headerForLater.backgroundColor = [UIColor colorWithRed:(255.0-185.0*(offset/OFFSET)) / 255.0 green:(255.0-210.0*(offset/OFFSET)) / 255.0 blue:(255.0-181.0*(offset/OFFSET)) / 255.0 alpha:0.8];
-    headerForLater.backgroundColor = [UIColor colorWithRed:(255.0-187.0*(offset/OFFSET)) / 255.0 green:(255.0-223.0*(offset/OFFSET)) / 255.0 blue:(255.0-180.0*(offset/OFFSET)) / 255.0 alpha:0.9];
+    NSLog(@"%f", offset);
     
-    hashtagTextFieldView.layer.borderColor=[UIColor colorWithWhite:0.7 alpha:1.0-(offset/OFFSET)].CGColor;
+    /*--COLOUR CHANGING HEADER--*/
+    //Purple
+//    hashtagTextField.textColor = [UIColor colorWithWhite:(offset/OFFSET) alpha:0.8];
+//    headerForLater.backgroundColor = [UIColor colorWithRed:(255.0-187.0*(offset/OFFSET)) / 255.0 green:(255.0-223.0*(offset/OFFSET)) / 255.0 blue:(255.0-180.0*(offset/OFFSET)) / 255.0 alpha:0.9];
+//    hashtagTextFieldView.layer.borderColor=[UIColor colorWithWhite:0.7 alpha:1.0-(offset/OFFSET)].CGColor;
+    
+    //White
+    headerForLater.backgroundColor = [UIColor colorWithWhite:offset alpha:1.0];
+    /*--------------------------*/
     
     [self loadImagesForOnscreenRows];
 

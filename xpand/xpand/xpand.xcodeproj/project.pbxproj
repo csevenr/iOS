@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6603DD221A9731F600207286 /* back-button-white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6603DD201A9731F600207286 /* back-button-white@3x.png */; };
 		6603DD241A9734F300207286 /* backButtonBlackPadding@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6603DD231A9734F300207286 /* backButtonBlackPadding@3x.png */; };
 		6605A41A1A5C4FAB00A85AA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6605A4191A5C4FAB00A85AA7 /* Images.xcassets */; };
 		661E2EED1A5707AB008A2E27 /* AutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E2EEC1A5707AB008A2E27 /* AutoViewController.m */; };
 		662405831A96289500104F8A /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662405811A96289500104F8A /* Main1.storyboard */; };
-		6651AEBE1A69565B000E0D21 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6651AEBD1A69565B000E0D21 /* UserProfile.m */; };
+		667097661AA73BCE00124D37 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 667097651AA73BCE00124D37 /* UserProfile.m */; };
+		667097681AA7518A00124D37 /* backButtonWhitePadding@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 667097671AA7518A00124D37 /* backButtonWhitePadding@3x.png */; };
 		66A43E621A274A0D00829313 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E611A274A0D00829313 /* main.m */; };
 		66A43E651A274A0D00829313 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E641A274A0D00829313 /* AppDelegate.m */; };
 		66A43E681A274A0D00829313 /* xpand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E661A274A0D00829313 /* xpand.xcdatamodeld */; };
@@ -52,14 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6603DD201A9731F600207286 /* back-button-white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-button-white@3x.png"; sourceTree = "<group>"; };
 		6603DD231A9734F300207286 /* backButtonBlackPadding@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButtonBlackPadding@3x.png"; sourceTree = "<group>"; };
 		6605A4191A5C4FAB00A85AA7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		661E2EEB1A5707AB008A2E27 /* AutoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoViewController.h; sourceTree = "<group>"; };
 		661E2EEC1A5707AB008A2E27 /* AutoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoViewController.m; sourceTree = "<group>"; };
 		662405821A96289500104F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main1.storyboard; sourceTree = "<group>"; };
-		6651AEBC1A69565B000E0D21 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
-		6651AEBD1A69565B000E0D21 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		667097641AA73BCE00124D37 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		667097651AA73BCE00124D37 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
+		667097671AA7518A00124D37 /* backButtonWhitePadding@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButtonWhitePadding@3x.png"; sourceTree = "<group>"; };
 		66A43E5C1A274A0D00829313 /* xpand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A43E601A274A0D00829313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A43E611A274A0D00829313 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				6603DD231A9734F300207286 /* backButtonBlackPadding@3x.png */,
-				6603DD201A9731F600207286 /* back-button-white@3x.png */,
+				667097671AA7518A00124D37 /* backButtonWhitePadding@3x.png */,
 			);
 			name = Artwork;
 			sourceTree = "<group>";
@@ -223,8 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				66A43E661A274A0D00829313 /* xpand.xcdatamodeld */,
-				6651AEBC1A69565B000E0D21 /* UserProfile.h */,
-				6651AEBD1A69565B000E0D21 /* UserProfile.m */,
+				667097641AA73BCE00124D37 /* UserProfile.h */,
+				667097651AA73BCE00124D37 /* UserProfile.m */,
 				66A43E9D1A274E0800829313 /* LikedPost.h */,
 				66A43E9E1A274E0800829313 /* LikedPost.m */,
 				66A43EA01A274E1300829313 /* LikedPost+Helper.h */,
@@ -341,8 +341,8 @@
 			files = (
 				6603DD241A9734F300207286 /* backButtonBlackPadding@3x.png in Resources */,
 				66D04C721A6041EA0037A401 /* LaunchScreen.xib in Resources */,
+				667097681AA7518A00124D37 /* backButtonWhitePadding@3x.png in Resources */,
 				662405831A96289500104F8A /* Main1.storyboard in Resources */,
-				6603DD221A9731F600207286 /* back-button-white@3x.png in Resources */,
 				6605A41A1A5C4FAB00A85AA7 /* Images.xcassets in Resources */,
 				66ED89461A2794C900C05E9D /* NibCell.xib in Resources */,
 				66B43C481A5EAD5F007E7730 /* XpandPlusView.xib in Resources */,
@@ -371,7 +371,7 @@
 				66D8AABD1A56A78000E02CD2 /* ProfileViewController.m in Sources */,
 				66A43E651A274A0D00829313 /* AppDelegate.m in Sources */,
 				66A43EA81A274E1800829313 /* ModelHelper.m in Sources */,
-				6651AEBE1A69565B000E0D21 /* UserProfile.m in Sources */,
+				667097661AA73BCE00124D37 /* UserProfile.m in Sources */,
 				66A43E9F1A274E0800829313 /* LikedPost.m in Sources */,
 				66A43EB31A274F4B00829313 /* MasterViewController.m in Sources */,
 				66A43E901A274BDD00829313 /* Insta.m in Sources */,

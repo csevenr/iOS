@@ -19,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *pillBtns;
+
+
+- (IBAction)pillBtnPressed:(UIButton*)sender;
+
 - (IBAction)startBtnPressed:(id)sender;
 
 @end

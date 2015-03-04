@@ -2,7 +2,7 @@
 //  UserProfile.m
 //  xpand
 //
-//  Created by Oliver Rodden on 16/01/2015.
+//  Created by Oliver Rodden on 04/03/2015.
 //  Copyright (c) 2015 Oliver Rodden. All rights reserved.
 //
 
@@ -28,11 +28,12 @@
 @dynamic recentLikes;
 @dynamic recentMostLikes;
 @dynamic subscriber;
+@dynamic token;
 @dynamic tokenCountUp;
 @dynamic userId;
 @dynamic userName;
 @dynamic website;
-@dynamic token;
+@dynamic instaUserId;
 @dynamic likedPosts;
 
 @end

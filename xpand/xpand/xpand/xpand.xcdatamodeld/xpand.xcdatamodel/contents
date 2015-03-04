@@ -14,6 +14,7 @@
         <attribute name="followers" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="follows" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="instaUserId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="likesInHour" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="likeTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -35,6 +36,6 @@
     </entity>
     <elements>
         <element name="LikedPost" positionX="153" positionY="-7" width="128" height="148"/>
-        <element name="UserProfile" positionX="-54" positionY="0" width="128" height="373"/>
+        <element name="UserProfile" positionX="-54" positionY="0" width="128" height="388"/>
     </elements>
 </model>
