@@ -30,16 +30,10 @@
     
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-//    UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(4.0, 0.0, 100.0, 30.0)];
-//    [backBtn setTitle:@"Back" forState:UIControlStateNormal];
-//    [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
-//    [backBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-//    [backBtn.titleLabel setFont:FONT];
-//    [backBtn sizeToFit];
-//    [self.view addSubview:backBtn];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    insta.delegate = nil;
+    self.loginVc.delegate = nil;
 }
 
 -(void)setUpView{
@@ -76,8 +70,6 @@
     self.leastLikesLbl.text = [NSString stringWithFormat:@"%d",[userProfile.recentLeastLikes intValue]];
     
     if (!updated) {
-//        Insta *insta = [Insta new];
-//        insta.delegate = self;
         [insta getUserInfo];
     }
 }

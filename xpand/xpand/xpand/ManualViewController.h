@@ -12,18 +12,14 @@
 #import "Insta.h"
 #import "ClientController.h"
 
-@class AlertLabel;
 
 @interface ManualViewController : MasterViewController <instaDelegate, loginDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>{
-    
     Insta *insta;
     ClientController *cc;
-
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 @property (weak, nonatomic) IBOutlet UITableView *hashtagTableView;
-@property (nonatomic) AlertLabel *alertLbl;
 @property (nonatomic) IBOutlet UILabel *likeCountLbl;
 @property (nonatomic) IBOutlet UIView *searchContainer;
 

@@ -12,7 +12,6 @@
 #import "UserProfile+Helper.h"
 #import "ModelHelper.h"
 #import "ImageDownloader.h"
-#import "AlertLabel.h"
 #import "FloatingHeaderViewFlowLayout.h"
 #import "CircleProgressBar.h"
 #import "LoginViewController.h"
@@ -51,6 +50,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:20.0 / 255.0 green:20.0 / 255.0 blue:20.0 / 255.0 alpha:1.0];
     
     insta = [Insta new];
+    insta.delegate = self;
     
     searchIsOpen = NO;
     
@@ -63,7 +63,7 @@
     [self.view addSubview:postCollView];
     
     [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"postCell"];
-    [postCollView registerClass:[PostCollectionViewCell class] forCellWithReuseIdentifier:@"spineyCell"];
+    [postCollView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"spineyCell"];
     [postCollView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"blankHeader"];
     [postCollView registerClass:[SearchCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"searchHeader"];
 
@@ -78,6 +78,11 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [likeStatusTimer invalidate];
+    postCollView.delegate = nil;
+    postCollView.dataSource = nil;
+    insta.delegate = nil;
+    hashtagTextField.delegate = nil;
+    hashtagTableView.delegate = nil;
 }
 
 #pragma mark interaction
@@ -121,7 +126,6 @@
         NSString *trimmedReplacement = [[hashtagTextField.text componentsSeparatedByCharactersInSet:charactersToRemove] componentsJoinedByString:@""];
         
         [insta getJsonForHashtag:trimmedReplacement];
-        [insta setDelegate:self];
         hashtagTextField.text = trimmedReplacement;
         [self addHashtagToRecentArray:trimmedReplacement];
     }
@@ -179,11 +183,11 @@
 
 #pragma mark navigation
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
-    if ([segue.identifier isEqualToString:@"login"]){
-        self.loginVc = segue.destinationViewController;
-    }
-}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender{
+//    if ([segue.identifier isEqualToString:@"login"]){
+//        self.loginVc = segue.destinationViewController;
+//    }
+//}
 
 #pragma mark Utils
 
@@ -205,20 +209,6 @@
     NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array];
     userProfile.recentHashtags = arrayData;
     [ModelHelper saveManagedObjectContext];
-}
-
--(void)showAlertLabelWithString:(NSString*)string{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.alertLbl.text=string;
-        if (!alertIsShowing) {
-            alertIsShowing = YES;
-            [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y+50 andAttribute:NSLayoutAttributeTop onSelf:NO];
-            [self animateConstraintsWithDuration:0.3 delay:0.0 andCompletionHandler:nil];
-            
-            [self replaceConstraintOnView:self.alertLbl withConstant:self.alertLbl.frame.origin.y-50 andAttribute:NSLayoutAttributeTop onSelf:NO];
-            [self animateConstraintsWithDuration:0.3 delay:2.0 andCompletionHandler:^{alertIsShowing = NO;}];
-        }
-    });
 }
 
 -(void)performLikeWithPost:(Post*)post{
@@ -266,13 +256,11 @@
     PostCollectionViewCell *cell = nil;
     
     if (indexPath.section == 0){
-        
         static NSString *MyIdentifier = @"spineyCell";
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:MyIdentifier forIndexPath:indexPath];
         
         if (circle == nil) {
             circle = [[CircleProgressBar alloc]initWithFrame:CGRectMake(0.0, 0.0, cell.frame.size.width, cell.frame.size.height)];
-//            circle.value = 1.0;
             
             [self updateLikeStatusLbl];
             
@@ -300,7 +288,7 @@
                     [self startImageDownload:post forIndexPath:indexPath];
                 }
                 // if a download is deferred or in progress, return a placeholder image
-                cell.mainImg.image = nil;
+                cell.mainImg.image = [UIImage new];
                 cell.backgroundColor = [UIColor lightGrayColor];
             }else{
                 cell.mainImg.image = post.thumbnailImg;
@@ -331,6 +319,8 @@
             [backBtn addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
             [backBtn sizeToFit];
             [headerView addSubview:backBtn];
+            
+            [self.view bringSubviewToFront:self.alertLbl];
             
         }else if (indexPath.section == 1) {
     
@@ -376,7 +366,7 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     if (section == 0) {
-        return UIEdgeInsetsMake(0, (self.view.frame.size.width/2)-((self.view.frame.size.width-30)/2), 0, 10.0);
+        return UIEdgeInsetsMake(0, (self.view.frame.size.width/2)-((self.view.frame.size.width-30)/2), 40.0, 10.0);
     }else{
         return UIEdgeInsetsMake(0, 10.0, 0, 10.0);
     }
@@ -476,7 +466,7 @@
     if (offset < 0) offset = 0;
     ---------------------------------*/
     
-    NSLog(@"%f", offset);
+//    NSLog(@"%f", offset);
     
     /*--COLOUR CHANGING HEADER--*/
     //Purple
@@ -485,7 +475,7 @@
 //    hashtagTextFieldView.layer.borderColor=[UIColor colorWithWhite:0.7 alpha:1.0-(offset/OFFSET)].CGColor;
     
     //White
-    headerForLater.backgroundColor = [UIColor colorWithWhite:offset alpha:1.0];
+    headerForLater.backgroundColor = [UIColor colorWithWhite:1.0 alpha:offset];
     /*--------------------------*/
     
     [self loadImagesForOnscreenRows];

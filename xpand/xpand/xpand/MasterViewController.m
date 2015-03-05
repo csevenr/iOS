@@ -10,9 +10,13 @@
 #import "UserProfile+Helper.h"
 #import "LoginViewController.h"
 #import "XpandPlusView.h"
+//#import "AlertLabel.h"
+
+#define ALERTLBLHEIGHT 60
 
 @interface MasterViewController () {
     BOOL needsLogin; //Must attempt login straight away for some screens to have userprofile, but if need a login must be done after the view is loaded so i have the segue
+    XpandPlusView* xView;
 }
 
 @end
@@ -29,10 +33,17 @@
         view.layer.borderColor = [UIColor whiteColor].CGColor;
         view.layer.cornerRadius = 5.0;
     }
+    
+    self.alertLbl = [[AlertLabel alloc]initWithFrame:CGRectMake(0.0, -ALERTLBLHEIGHT, self.view.frame.size.width, ALERTLBLHEIGHT)];
+    self.alertLbl.backgroundColor = [UIColor colorWithRed:64.0 / 255.0 green:159.0 / 255.0 blue:167.0 / 255.0 alpha:1.0];
+    self.alertLbl.textColor = [UIColor whiteColor];
+    [self.alertLbl setFont:FONT];
+    [self.alertLbl setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:self.alertLbl];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     needsLogin = NO;
     [self login];
     
@@ -40,10 +51,19 @@
     if (secondsBetween >= 3600.000001) {
         userProfile.likesInHour = [NSNumber numberWithInt:0];
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     if (needsLogin){
         [self performSegueWithIdentifier:@"login" sender:[NSNumber numberWithBool:YES]];
         needsLogin = NO;
     }
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    xView.delegate = nil;
 }
 
 -(void)login{
@@ -56,7 +76,7 @@
 
 -(void)showXpandPlusView{
     NSArray * allTheViewsInMyNIB = [[NSBundle mainBundle] loadNibNamed:@"XpandPlusView" owner:self options:nil]; // loading nib (might contain more than one view)
-    XpandPlusView* xView = allTheViewsInMyNIB[0]; // getting desired view
+    xView = allTheViewsInMyNIB[0]; // getting desired view
     xView.delegate = self;
     xView.frame = CGRectMake(16.0, self.view.frame.size.height, self.view.frame.size.width - 32.0 ,self.view.frame.size.height - 32.0); //setting the frame
     [self.view addSubview:xView];
@@ -69,6 +89,30 @@
                      }
                      completion:^(BOOL finished){
                      }];
+}
+
+-(void)showAlertLabelWithString:(NSString*)string{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.alertLbl.text=string;
+        
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^(void) {
+                             self.alertLbl.frame = CGRectMake(self.alertLbl.frame.origin.x, self.alertLbl.frame.origin.y + ALERTLBLHEIGHT, self.alertLbl.frame.size.width ,self.alertLbl.frame.size.height);
+                         }
+                         completion:^(BOOL finished){
+                             [UIView animateWithDuration:0.3
+                                                   delay:1.0
+                                                 options:UIViewAnimationOptionCurveEaseInOut
+                                              animations:^(void) {
+                                                  self.alertLbl.frame = CGRectMake(self.alertLbl.frame.origin.x, self.alertLbl.frame.origin.y - ALERTLBLHEIGHT, self.alertLbl.frame.size.width ,self.alertLbl.frame.size.height);
+                                              }
+                                              completion:^(BOOL finished){
+                                                  
+                                              }];
+                         }];
+    });
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -11,7 +11,6 @@
 		6605A41A1A5C4FAB00A85AA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6605A4191A5C4FAB00A85AA7 /* Images.xcassets */; };
 		661E2EED1A5707AB008A2E27 /* AutoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E2EEC1A5707AB008A2E27 /* AutoViewController.m */; };
 		662405831A96289500104F8A /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 662405811A96289500104F8A /* Main1.storyboard */; };
-		667097661AA73BCE00124D37 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 667097651AA73BCE00124D37 /* UserProfile.m */; };
 		667097681AA7518A00124D37 /* backButtonWhitePadding@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 667097671AA7518A00124D37 /* backButtonWhitePadding@3x.png */; };
 		66A43E621A274A0D00829313 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E611A274A0D00829313 /* main.m */; };
 		66A43E651A274A0D00829313 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43E641A274A0D00829313 /* AppDelegate.m */; };
@@ -32,6 +31,7 @@
 		66A43EBD1A27500600829313 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A43EBC1A27500600829313 /* ImageDownloader.m */; };
 		66B43C461A5EA948007E7730 /* XpandPlusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B43C451A5EA948007E7730 /* XpandPlusView.m */; };
 		66B43C481A5EAD5F007E7730 /* XpandPlusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66B43C471A5EAD5F007E7730 /* XpandPlusView.xib */; };
+		66C117D61AA894B3000A11EC /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 66C117D51AA894B3000A11EC /* UserProfile.m */; };
 		66D04C721A6041EA0037A401 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66D04C6E1A6041EA0037A401 /* LaunchScreen.xib */; };
 		66D8AABA1A56973400E02CD2 /* InstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D8AAB91A56973400E02CD2 /* InstagramViewController.m */; };
 		66D8AABD1A56A78000E02CD2 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D8AABC1A56A78000E02CD2 /* ProfileViewController.m */; };
@@ -57,8 +57,6 @@
 		661E2EEB1A5707AB008A2E27 /* AutoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoViewController.h; sourceTree = "<group>"; };
 		661E2EEC1A5707AB008A2E27 /* AutoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoViewController.m; sourceTree = "<group>"; };
 		662405821A96289500104F8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main1.storyboard; sourceTree = "<group>"; };
-		667097641AA73BCE00124D37 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
-		667097651AA73BCE00124D37 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		667097671AA7518A00124D37 /* backButtonWhitePadding@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backButtonWhitePadding@3x.png"; sourceTree = "<group>"; };
 		66A43E5C1A274A0D00829313 /* xpand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xpand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A43E601A274A0D00829313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +96,9 @@
 		66B43C441A5EA948007E7730 /* XpandPlusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XpandPlusView.h; sourceTree = "<group>"; };
 		66B43C451A5EA948007E7730 /* XpandPlusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XpandPlusView.m; sourceTree = "<group>"; };
 		66B43C471A5EAD5F007E7730 /* XpandPlusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XpandPlusView.xib; sourceTree = "<group>"; };
+		66C117D01AA89405000A11EC /* xpand 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "xpand 2.xcdatamodel"; sourceTree = "<group>"; };
+		66C117D41AA894B3000A11EC /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		66C117D51AA894B3000A11EC /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		66D04C6F1A6041EA0037A401 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		66D8AAB81A56973400E02CD2 /* InstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramViewController.h; sourceTree = "<group>"; };
 		66D8AAB91A56973400E02CD2 /* InstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramViewController.m; sourceTree = "<group>"; };
@@ -223,8 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				66A43E661A274A0D00829313 /* xpand.xcdatamodeld */,
-				667097641AA73BCE00124D37 /* UserProfile.h */,
-				667097651AA73BCE00124D37 /* UserProfile.m */,
+				66C117D41AA894B3000A11EC /* UserProfile.h */,
+				66C117D51AA894B3000A11EC /* UserProfile.m */,
 				66A43E9D1A274E0800829313 /* LikedPost.h */,
 				66A43E9E1A274E0800829313 /* LikedPost.m */,
 				66A43EA01A274E1300829313 /* LikedPost+Helper.h */,
@@ -371,7 +372,7 @@
 				66D8AABD1A56A78000E02CD2 /* ProfileViewController.m in Sources */,
 				66A43E651A274A0D00829313 /* AppDelegate.m in Sources */,
 				66A43EA81A274E1800829313 /* ModelHelper.m in Sources */,
-				667097661AA73BCE00124D37 /* UserProfile.m in Sources */,
+				66C117D61AA894B3000A11EC /* UserProfile.m in Sources */,
 				66A43E9F1A274E0800829313 /* LikedPost.m in Sources */,
 				66A43EB31A274F4B00829313 /* MasterViewController.m in Sources */,
 				66A43E901A274BDD00829313 /* Insta.m in Sources */,
@@ -610,9 +611,10 @@
 		66A43E661A274A0D00829313 /* xpand.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				66C117D01AA89405000A11EC /* xpand 2.xcdatamodel */,
 				66A43E671A274A0D00829313 /* xpand.xcdatamodel */,
 			);
-			currentVersion = 66A43E671A274A0D00829313 /* xpand.xcdatamodel */;
+			currentVersion = 66C117D01AA89405000A11EC /* xpand 2.xcdatamodel */;
 			path = xpand.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

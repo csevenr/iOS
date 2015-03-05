@@ -71,13 +71,11 @@
 - (void)likePost:(Post*)post {
     if ([self checkForConnection]) {
 //        NSString *urlForLike = [NSString stringWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", post.postId, [[ClientController sharedInstance] getCurrentTokenForLike:YES]];
-        NSString *urlForLike = [NSString stringWithFormat:@"http://xpand.editionthree.com/like.php?user_id=%@&image_id=%@", userProfile.userId, post.postId];
+//        NSString *urlForLike = [NSString stringWithFormat:@"http://xpand.editionthree.com/like.php?user_id=%@&image_id=%@", userProfile.userId, post.postId];
+        NSString *urlForLike = [NSString stringWithFormat:@"https://xpand.today/api/manual-like.php?user_id=%@&image_id=%@", userProfile.userId, post.postId];
 //        NSLog(@"POSTID: %@", post.postId);
 
         NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlForLike]];
-        [req setHTTPMethod:@"POST"];
-        NSURLConnection *con = [[NSURLConnection alloc]initWithRequest:req delegate:self startImmediately:YES];
-
         [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if (error) {
                 NSLog(@"%@", error);
@@ -162,9 +160,9 @@
 //           NSLog(@"#### %@", jsonDictionary);
             
             //check for at least 10 posts if not alter count
-            int countToUse=10;
+            int countToUse = 10;
             if ([[jsonDictionary objectForKey:@"data"] count]<10) {
-                countToUse=[[jsonDictionary objectForKey:@"data"] count];
+                countToUse = [[jsonDictionary objectForKey:@"data"] count];
             }
             
             int totalLikes=0;
@@ -230,11 +228,12 @@
 -(BOOL)checkForConnection{
     NSURL *scriptUrl = [NSURL URLWithString:@"http://www.google.com"];
     NSData *data = [NSData dataWithContentsOfURL:scriptUrl];
-    if (data)
+    if (data){
         return YES;
-    else
+    }else{
         [self.delegate instaError:@"No internet connection"];
         return NO;
+    }
 }
 
 @end

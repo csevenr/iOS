@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661B0F0C1AA852DF00629383 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 661B0F0B1AA852DF00629383 /* SetUpViewController.m */; };
 		CC4A6CA61A68587200E3D954 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6CA51A68587200E3D954 /* main.m */; };
 		CC4A6CA91A68587200E3D954 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6CA81A68587200E3D954 /* AppDelegate.m */; };
 		CC4A6CAC1A68587200E3D954 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6CAB1A68587200E3D954 /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		661B0F0A1AA852DF00629383 /* SetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUpViewController.h; sourceTree = "<group>"; };
+		661B0F0B1AA852DF00629383 /* SetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUpViewController.m; sourceTree = "<group>"; };
 		CC4A6CA01A68587200E3D954 /* SPENDR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPENDR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC4A6CA41A68587200E3D954 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4A6CA51A68587200E3D954 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,6 +89,8 @@
 			children = (
 				CC4A6CA71A68587200E3D954 /* AppDelegate.h */,
 				CC4A6CA81A68587200E3D954 /* AppDelegate.m */,
+				661B0F0A1AA852DF00629383 /* SetUpViewController.h */,
+				661B0F0B1AA852DF00629383 /* SetUpViewController.m */,
 				CC4A6CAA1A68587200E3D954 /* ViewController.h */,
 				CC4A6CAB1A68587200E3D954 /* ViewController.m */,
 				CC4A6CC91A686C4F00E3D954 /* EntryTableViewCell.h */,
@@ -225,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC4A6CCB1A686C4F00E3D954 /* EntryTableViewCell.m in Sources */,
+				661B0F0C1AA852DF00629383 /* SetUpViewController.m in Sources */,
 				CC4A6CAC1A68587200E3D954 /* ViewController.m in Sources */,
 				CC4A6CA91A68587200E3D954 /* AppDelegate.m in Sources */,
 				CC4A6CA61A68587200E3D954 /* main.m in Sources */,
@@ -420,6 +426,7 @@
 				CC4A6CC51A68587200E3D954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC4A6CC61A68587200E3D954 /* Build configuration list for PBXNativeTarget "SPENDRTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +435,7 @@
 				CC4A6CC81A68587200E3D954 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

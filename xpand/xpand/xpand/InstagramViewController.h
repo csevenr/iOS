@@ -11,7 +11,7 @@
 
 @interface InstagramViewController : MasterViewController
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btnsToStyle;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *mainBtns;
 
 - (IBAction)AutoBtnPressed:(id)sender;
 

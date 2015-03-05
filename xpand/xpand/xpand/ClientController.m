@@ -72,30 +72,6 @@ static ClientController *sharedInstance = nil;
     }
 }
 
-// --OLD--
-/*
--(NSString*)getCurrentTokenForLike:(BOOL)forLike{
-    if (userProfile==nil) [self setUserProfile];
-    
-    if (forLike) count++;
-    if (count==100) count=0;
-    
-    userProfile.tokenCountUp=[NSNumber numberWithInt:count];
-    
-    if (count>=0&&count<25){
-        return userProfile.token1;
-    }else if (count>=25&&count<50){
-        return userProfile.token2;
-    }else if (count>=50&&count<75){
-        return userProfile.token3;
-    }else if (count>=75&&count<100){
-        return userProfile.token4;
-    }else{
-        return userProfile.token1;
-    }
-}
- */
-
 -(NSString*)getCurrentClientId{
     if (count==100) count=0;
     

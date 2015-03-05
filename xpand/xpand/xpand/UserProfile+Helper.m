@@ -99,7 +99,7 @@
 */
 
 +(void)deactivateCurrentUserProfile{
-    [self getActiveUserProfile].isActive=NO;
+    [self getActiveUserProfile].isActive = [NSNumber numberWithBool:NO];
 }
 
 @end

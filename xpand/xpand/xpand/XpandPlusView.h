@@ -10,7 +10,10 @@
 
 @protocol XpandPlusDelegate <NSObject>
 
+@optional
+
 -(void)subscribeBtnPressed;
+-(void)popUpDismissed;
 
 @end
 

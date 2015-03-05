@@ -25,7 +25,16 @@
 }
 
 -(void)subscribeBtnPressed{
+    for (UIButton *btn in self.mainBtns) {
+        [btn setEnabled:NO];
+    }
     [self performSegueWithIdentifier:@"auto" sender:nil];
+}
+
+-(void)popUpDismissed{
+    for (UIButton *btn in self.mainBtns) {
+        [btn setEnabled:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
