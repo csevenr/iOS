@@ -25,9 +25,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.view.backgroundColor = GREEN;
-    self.titleLbl.textColor = ORANGE;
-    self.balaceLbl.textColor = DARKGREEN;
+    self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+    self.titleLbl.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+    self.balaceLbl.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
     self.balaceLbl.text = @"£1660.82";
     self.entryTypeSegCon.tintColor = BLUE;
     self.entryTypeSegCon.selectedSegmentIndex = -1;
@@ -35,8 +35,7 @@
 
     self.formView.layer.cornerRadius = 10.0;
     self.formView.layer.borderWidth = 3.0;
-    self.formView.layer.borderColor = [[UIColor lightGrayColor] CGColor]
-    ;
+    self.formView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
 }
 
 -(EntryTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
