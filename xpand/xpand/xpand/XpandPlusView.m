@@ -7,6 +7,7 @@
 //
 
 #import "XpandPlusView.h"
+#import "XpandIAPHelper.h"
 
 @interface XpandPlusView ()
 
@@ -19,6 +20,8 @@
         self.layer.borderWidth = 1.0;
         self.layer.borderColor = [UIColor whiteColor].CGColor;
         self.layer.cornerRadius = 8.0;
+        
+        [[XpandIAPHelper sharedInstance] requestProductsWithCompletionHandler:nil];
     }
     return self;
 }

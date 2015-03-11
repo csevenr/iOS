@@ -10,16 +10,21 @@
 #import "MasterViewController.h"
 #import "LoginViewController.h"
 #import "UserProfile+Helper.h"
+#import "Stripe.h"
 
 @interface AppDelegate ()
 
 @end
+
+NSString * const StripePublishableKey = @"pk_test_q6k4nN0UxBYKoQGfn4VEooHS";
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Stripe setDefaultPublishableKey:StripePublishableKey];
     
     [UIApplication sharedApplication].applicationIconBadgeNumber=0;
     

@@ -28,7 +28,8 @@
     for (UIButton *btn in self.mainBtns) {
         [btn setEnabled:NO];
     }
-    [self performSegueWithIdentifier:@"auto" sender:nil];
+    [self performSegueWithIdentifier:@"payment" sender:nil];
+//    [self performSegueWithIdentifier:@"auto" sender:nil];
 }
 
 -(void)popUpDismissed{
