@@ -8,11 +8,15 @@
 
 #import "PaymentViewController.h"
 #import "PTKView.h"
+#import "STPAPIClient.h"
+#import "STPCard.h"
 
 @interface PaymentViewController () <PTKViewDelegate> {
     BOOL nameValid;
     BOOL emailValid;
     BOOL cardValid;
+    
+    STPCard *currentCard;
 }
 
 @property (weak, nonatomic) IBOutlet PTKView *paymentView;
@@ -40,6 +44,13 @@
     if (nameValid && emailValid && cardValid) {
         self.subscribeBtn.enabled = YES;        
     }
+    
+    currentCard = [[STPCard alloc] init];
+    currentCard.number = card.number;
+    currentCard.expMonth = card.expMonth;
+    currentCard.expYear = card.expYear;
+    currentCard.cvc = card.cvc;
+    
     // Toggle navigation, for example
 }
 
@@ -54,23 +65,16 @@
 */
 
 - (IBAction)subscribeBtnPressed:(id)sender {
-//    NSString *urlForTag = [NSString stringWithFormat:@"https://api.stripe.com/v1/customers/sk_test_BQokikJOvBiI2HlWgH4olfQ2:",userProfile.userId , hastag];
-//    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//        if (error) {
-//            NSLog(@"Error 4");
-//        } else {
-//            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//            
-//            NSLog(@"!!!! %@", jsonDictionary);
-//        }
-//    }];
-    /*
-     https://api.stripe.com/v1/customers \
-     -u sk_test_BQokikJOvBiI2HlWgH4olfQ2: \
-     -d "description=Customer for test@example.com" \
-     -d card=tok_14d5c12eZvKYlo2CIrrKegI5
-     -d plan=gold
-    */
+    [[STPAPIClient sharedClient] createTokenWithCard:currentCard
+                                          completion:^(STPToken *token, NSError *error) {
+                                              if (error) {
+                                                  NSLog(@"Error 224 %@", error);
+                                              } else {
+                                                  NSLog(@"Card token %@", token);
+                                              }
+                                              
+                                              //[call our api to create customer]
+                                          }];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
