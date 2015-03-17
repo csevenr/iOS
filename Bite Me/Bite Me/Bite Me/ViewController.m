@@ -39,8 +39,10 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    self.topJaw.frame=CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-    self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height/2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+//    NSLog(@"%f, %f, %f, %f",self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+    
+    self.topJaw.frame = CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.view.frame.size.width, (self.view.frame.size.width / 600) * 564);
+    self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height/2.5, self.view.frame.size.width, (self.view.frame.size.width / 600) * 532);
     
     NSLog(@"%f, %f, %f, %f",self.topJaw.frame.origin.x, self.topJaw.frame.origin.y, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
     NSLog(@"%f, %f, %f, %f",self.bottomJaw.frame.origin.x, self.bottomJaw.frame.origin.y, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
@@ -190,6 +192,7 @@
 #pragma mark social shizz
 
 - (IBAction)facebookBtnPressed:(id)sender {
+    
 }
 
 - (IBAction)twitterBtnPressed:(id)sender {

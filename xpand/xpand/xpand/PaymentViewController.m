@@ -7,6 +7,7 @@
 //
 
 #import "PaymentViewController.h"
+#import "Insta.h"
 #import "PTKView.h"
 #import "STPAPIClient.h"
 #import "STPCard.h"
@@ -15,6 +16,10 @@
     BOOL nameValid;
     BOOL emailValid;
     BOOL cardValid;
+    
+    NSString *emailString;
+    
+    Insta *insta;
     
     STPCard *currentCard;
 }
@@ -29,6 +34,8 @@
     [super viewDidLoad];
     self.paymentView.delegate = self;
     self.subscribeBtn.enabled = NO;
+    
+    insta = [Insta new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,7 +80,15 @@
                                                   NSLog(@"Card token %@", token);
                                               }
                                               
-                                              //[call our api to create customer]
+                                              NSString *tokenString = [NSString stringWithFormat:@"%@", token];
+
+                                              
+                                              NSRange range = [tokenString rangeOfString:@" "];
+                                              
+                                              NSString *newString = [tokenString substringWithRange:NSMakeRange(0, range.location)];
+                                              NSLog(@"newstring: %@",newString);
+
+                                              [insta setUpCustomerWithCardToken:newString email:emailString];
                                           }];
 }
 
@@ -87,6 +102,7 @@
     }else{
         //email
         emailValid = [self validateEmailWithString:newString];
+        emailString = newString;
     }
     
     if (nameValid && emailValid && cardValid) {

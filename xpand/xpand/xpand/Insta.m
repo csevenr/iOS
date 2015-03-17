@@ -202,6 +202,22 @@
     }];
 }
 
+-(void)setUpCustomerWithCardToken:(NSString*)tok email:(NSString*)email{
+    NSString *urlForTag = [NSString stringWithFormat:@"https://xpand.today/stripe/index.php?token=%@", tok];
+//    NSString *urlForTag = [NSString stringWithFormat:@"http://192.168.21.210/github/web/php/xpand/stripe/index.php?token=%@", tok];
+    NSMutableURLRequest *req = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:urlForTag]];
+    NSString *str = email;
+    req.HTTPBody = [str dataUsingEncoding:NSUTF8StringEncoding];
+    [req setHTTPMethod:@"POST"];
+    [NSURLConnection sendAsynchronousRequest:req queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@"Error 119: %@", error);
+        } else {
+            NSLog(@"NEW CUSTOMER");
+        }
+    }];
+}
+
 -(void)logout{
     NSString *urlForTag = @"https://instagram.com/accounts/logout/";
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {

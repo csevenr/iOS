@@ -21,7 +21,7 @@
         self.layer.borderColor = [UIColor whiteColor].CGColor;
         self.layer.cornerRadius = 8.0;
         
-        [[XpandIAPHelper sharedInstance] requestProductsWithCompletionHandler:nil];
+//        [[XpandIAPHelper sharedInstance] requestProductsWithCompletionHandler:nil];//+++ remove all this shit
     }
     return self;
 }

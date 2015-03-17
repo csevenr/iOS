@@ -31,6 +31,7 @@
 -(void)getUserInfo;
 -(void)getUserMedia;
 -(void)setUpAutoWithHashtag:(NSString*)hastag;
+-(void)setUpCustomerWithCardToken:(NSString*)tok email:(NSString*)email;
 -(void)logout;
 
 @end
