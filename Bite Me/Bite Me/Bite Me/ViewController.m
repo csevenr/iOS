@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 @interface ViewController (){
     //Game
@@ -206,7 +207,8 @@
 #pragma mark social shizz
 
 - (IBAction)facebookBtnPressed:(id)sender {
-    
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:@"https://developers.facebook.com"];
 }
 
 - (IBAction)twitterBtnPressed:(id)sender {
