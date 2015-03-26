@@ -33,16 +33,30 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    /*------------------UI bits-------------------*/
+    
+    for (UIButton *btn in self.btnsToStlye) {
+        btn.clipsToBounds = NO;
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+        
+        btn.layer.cornerRadius = 10.0;
+        btn.layer.shadowColor = [UIColor colorWithWhite:0.8 alpha:1.0].CGColor;
+        btn.layer.shadowOffset = CGSizeMake(0.0, 2.0);
+        btn.layer.shadowOpacity = 1.0;
+        btn.layer.shadowRadius = 1.0;
+    }
+    
+    /*--------------------------------------------*/
+    
     updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(update) userInfo:nil repeats:YES];    
     
     [self newGame];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-//    NSLog(@"%f, %f, %f, %f",self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-    
-    self.topJaw.frame = CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.view.frame.size.width, (self.view.frame.size.width / 600) * 564);
-    self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height/2.5, self.view.frame.size.width, (self.view.frame.size.width / 600) * 532);
+    self.topJaw.frame=CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+    self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height/2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
     
     NSLog(@"%f, %f, %f, %f",self.topJaw.frame.origin.x, self.topJaw.frame.origin.y, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
     NSLog(@"%f, %f, %f, %f",self.bottomJaw.frame.origin.x, self.bottomJaw.frame.origin.y, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);

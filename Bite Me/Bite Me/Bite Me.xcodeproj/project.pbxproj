@@ -14,7 +14,6 @@
 		66C83FCF1AB852F500010105 /* bottomJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FCC1AB852F500010105 /* bottomJaw.png */; };
 		66C83FD01AB852F500010105 /* mouthBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FCD1AB852F500010105 /* mouthBg.png */; };
 		66C83FD11AB852F500010105 /* topJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FCE1AB852F500010105 /* topJaw.png */; };
-		66C83FD91AB8548B00010105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FD81AB8548B00010105 /* Main.storyboard */; };
 		66E7930D19CC2B4700480521 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7930C19CC2B4700480521 /* Foundation.framework */; };
 		66E7930F19CC2B4700480521 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7930E19CC2B4700480521 /* CoreGraphics.framework */; };
 		66E7931119CC2B4700480521 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7931019CC2B4700480521 /* UIKit.framework */; };
@@ -50,7 +49,6 @@
 		66C83FCC1AB852F500010105 /* bottomJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomJaw.png; sourceTree = "<group>"; };
 		66C83FCD1AB852F500010105 /* mouthBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouthBg.png; sourceTree = "<group>"; };
 		66C83FCE1AB852F500010105 /* topJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topJaw.png; sourceTree = "<group>"; };
-		66C83FD81AB8548B00010105 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		66E7930919CC2B4700480521 /* Bite Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bite Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E7930C19CC2B4700480521 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		66E7930E19CC2B4700480521 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,7 +142,6 @@
 			children = (
 				66E7931B19CC2B4700480521 /* AppDelegate.h */,
 				66E7931C19CC2B4700480521 /* AppDelegate.m */,
-				66C83FD81AB8548B00010105 /* Main.storyboard */,
 				66E7931E19CC2B4700480521 /* Main_iPhone.storyboard */,
 				66E7932119CC2B4700480521 /* Main_iPad.storyboard */,
 				66E7932419CC2B4700480521 /* ViewController.h */,
@@ -269,7 +266,6 @@
 				66C83FD01AB852F500010105 /* mouthBg.png in Resources */,
 				66E7932819CC2B4700480521 /* Images.xcassets in Resources */,
 				66E7932019CC2B4700480521 /* Main_iPhone.storyboard in Resources */,
-				66C83FD91AB8548B00010105 /* Main.storyboard in Resources */,
 				6673853D19CC82E40098BF7A /* topJaw.png in Resources */,
 				6673853B19CC82E40098BF7A /* bottomJaw.png in Resources */,
 				6673853C19CC82E40098BF7A /* mouthBg.png in Resources */,

@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLbl;
 @property (weak, nonatomic) IBOutlet UILabel *highscoreLbl;
 
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *btnsToStlye;
+
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *gameOverCol;
 
 @property (weak, nonatomic) IBOutlet UILabel *charCounter;
