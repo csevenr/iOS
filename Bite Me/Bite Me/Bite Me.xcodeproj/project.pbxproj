@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6641721C1AC4780F00179F42 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6641721B1AC4780F00179F42 /* FBSDKCoreKit.framework */; };
-		6641721E1AC4796D00179F42 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6641721D1AC4796D00179F42 /* FBSDKShareKit.framework */; };
 		6673853B19CC82E40098BF7A /* bottomJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 6673853819CC82E40098BF7A /* bottomJaw.png */; };
 		6673853C19CC82E40098BF7A /* mouthBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6673853919CC82E40098BF7A /* mouthBg.png */; };
 		6673853D19CC82E40098BF7A /* topJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 6673853A19CC82E40098BF7A /* topJaw.png */; };
+		66855F1C1AC5640500F2E757 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66855F1B1AC5640500F2E757 /* Social.framework */; };
 		669CC13219CC2DF20064DBD4 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 669CC13119CC2DF20064DBD4 /* iAd.framework */; };
 		66C83FCF1AB852F500010105 /* bottomJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FCC1AB852F500010105 /* bottomJaw.png */; };
 		66C83FD01AB852F500010105 /* mouthBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FCD1AB852F500010105 /* mouthBg.png */; };
@@ -44,11 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6641721B1AC4780F00179F42 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		6641721D1AC4796D00179F42 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		6673853819CC82E40098BF7A /* bottomJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomJaw.png; sourceTree = "<group>"; };
 		6673853919CC82E40098BF7A /* mouthBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouthBg.png; sourceTree = "<group>"; };
 		6673853A19CC82E40098BF7A /* topJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topJaw.png; sourceTree = "<group>"; };
+		66855F1B1AC5640500F2E757 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		669CC13119CC2DF20064DBD4 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		66C83FCC1AB852F500010105 /* bottomJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomJaw.png; sourceTree = "<group>"; };
 		66C83FCD1AB852F500010105 /* mouthBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouthBg.png; sourceTree = "<group>"; };
@@ -80,9 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6641721C1AC4780F00179F42 /* FBSDKCoreKit.framework in Frameworks */,
+				66855F1C1AC5640500F2E757 /* Social.framework in Frameworks */,
 				669CC13219CC2DF20064DBD4 /* iAd.framework in Frameworks */,
-				6641721E1AC4796D00179F42 /* FBSDKShareKit.framework in Frameworks */,
 				66E7930F19CC2B4700480521 /* CoreGraphics.framework in Frameworks */,
 				66E7931119CC2B4700480521 /* UIKit.framework in Frameworks */,
 				66E7930D19CC2B4700480521 /* Foundation.framework in Frameworks */,
@@ -134,8 +131,7 @@
 		66E7930B19CC2B4700480521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6641721D1AC4796D00179F42 /* FBSDKShareKit.framework */,
-				6641721B1AC4780F00179F42 /* FBSDKCoreKit.framework */,
+				66855F1B1AC5640500F2E757 /* Social.framework */,
 				669CC13119CC2DF20064DBD4 /* iAd.framework */,
 				66E7930C19CC2B4700480521 /* Foundation.framework */,
 				66E7930E19CC2B4700480521 /* CoreGraphics.framework */,
@@ -444,6 +440,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bite Me/Bite Me-Prefix.pch";
 				INFOPLIST_FILE = "Bite Me/Bite Me-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -463,6 +460,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bite Me/Bite Me-Prefix.pch";
 				INFOPLIST_FILE = "Bite Me/Bite Me-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

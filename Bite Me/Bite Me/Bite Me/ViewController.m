@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <FBSDKShareKit/FBSDKShareKit.h>
+#import <Social/Social.h>
 
 @interface ViewController (){
     //Game
@@ -206,13 +206,23 @@
 
 #pragma mark social shizz
 
-- (IBAction)facebookBtnPressed:(id)sender {
-    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    content.contentURL = [NSURL URLWithString:@"https://developers.facebook.com"];
+- (IBAction)facebookBtnPressed:(id)sender { 
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        [controller setInitialText:@"test"];
+        [self presentViewController:controller animated:YES completion:Nil];
+    }
 }
 
 - (IBAction)twitterBtnPressed:(id)sender {
-    
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+    {
+        SLComposeViewController *tweetSheet = [SLComposeViewController
+                                               composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [tweetSheet setInitialText:@"test"];
+        [self presentViewController:tweetSheet animated:YES completion:nil];
+    }
 }
 
 #pragma mark iAd shizz
