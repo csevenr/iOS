@@ -210,7 +210,7 @@
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         
-        [controller setInitialText:@"test"];
+        [controller setInitialText:[NSString stringWithFormat:@"Just scored %d on Bite me! bit.ly/blah", score]];
         [self presentViewController:controller animated:YES completion:Nil];
     }
 }
@@ -220,7 +220,7 @@
     {
         SLComposeViewController *tweetSheet = [SLComposeViewController
                                                composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:@"test"];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"Just scored %d on Bite me! bit.ly/blah", score]];
         [self presentViewController:tweetSheet animated:YES completion:nil];
     }
 }
