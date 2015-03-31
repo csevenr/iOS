@@ -70,7 +70,7 @@
     scoring = NO;
     score = 0;
     self.scoreLbl.text = @"0";
-    biteCountDown = (arc4random()%50)+100;
+    biteCountDown = (arc4random()%80)+80;
 }
 
 -(void)update{
@@ -84,7 +84,7 @@
             biteCountDown--;
             if (biteCountDown<=0) {
                 [self bite];
-                biteCountDown = (arc4random()%50)+100;
+                biteCountDown = (arc4random()%80)+80;
             }
         }
     }

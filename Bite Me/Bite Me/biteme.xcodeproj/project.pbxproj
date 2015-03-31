@@ -29,7 +29,6 @@
 		66E7933019CC2B4700480521 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7930C19CC2B4700480521 /* Foundation.framework */; };
 		66E7933119CC2B4700480521 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7931019CC2B4700480521 /* UIKit.framework */; };
 		66E7933919CC2B4700480521 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66E7933719CC2B4700480521 /* InfoPlist.strings */; };
-		66E7933B19CC2B4700480521 /* Bite_MeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E7933A19CC2B4700480521 /* Bite_MeTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,14 +50,14 @@
 		66C83FCC1AB852F500010105 /* bottomJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomJaw.png; sourceTree = "<group>"; };
 		66C83FCD1AB852F500010105 /* mouthBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouthBg.png; sourceTree = "<group>"; };
 		66C83FCE1AB852F500010105 /* topJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topJaw.png; sourceTree = "<group>"; };
-		66E7930919CC2B4700480521 /* Bite Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bite Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E7930919CC2B4700480521 /* biteme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = biteme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E7930C19CC2B4700480521 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		66E7930E19CC2B4700480521 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		66E7931019CC2B4700480521 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		66E7931419CC2B4700480521 /* Bite Me-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bite Me-Info.plist"; sourceTree = "<group>"; };
+		66E7931419CC2B4700480521 /* biteme-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "biteme-Info.plist"; sourceTree = "<group>"; };
 		66E7931619CC2B4700480521 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		66E7931819CC2B4700480521 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		66E7931A19CC2B4700480521 /* Bite Me-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bite Me-Prefix.pch"; sourceTree = "<group>"; };
+		66E7931A19CC2B4700480521 /* biteme-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "biteme-Prefix.pch"; sourceTree = "<group>"; };
 		66E7931B19CC2B4700480521 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		66E7931C19CC2B4700480521 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		66E7931F19CC2B4700480521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -66,9 +65,9 @@
 		66E7932419CC2B4700480521 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		66E7932519CC2B4700480521 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		66E7932719CC2B4700480521 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		66E7932D19CC2B4700480521 /* Bite MeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bite MeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E7932D19CC2B4700480521 /* bitemeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bitemeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E7932E19CC2B4700480521 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		66E7933619CC2B4700480521 /* Bite MeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bite MeTests-Info.plist"; sourceTree = "<group>"; };
+		66E7933619CC2B4700480521 /* bitemeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bitemeTests-Info.plist"; sourceTree = "<group>"; };
 		66E7933819CC2B4700480521 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		66E7933A19CC2B4700480521 /* Bite_MeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bite_MeTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,8 +121,8 @@
 		66E7930A19CC2B4700480521 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				66E7930919CC2B4700480521 /* Bite Me.app */,
-				66E7932D19CC2B4700480521 /* Bite MeTests.xctest */,
+				66E7930919CC2B4700480521 /* biteme.app */,
+				66E7932D19CC2B4700480521 /* bitemeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,10 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				6673853719CC81910098BF7A /* Images */,
-				66E7931419CC2B4700480521 /* Bite Me-Info.plist */,
+				66E7931419CC2B4700480521 /* biteme-Info.plist */,
 				66E7931519CC2B4700480521 /* InfoPlist.strings */,
 				66E7931819CC2B4700480521 /* main.m */,
-				66E7931A19CC2B4700480521 /* Bite Me-Prefix.pch */,
+				66E7931A19CC2B4700480521 /* biteme-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -183,7 +182,7 @@
 		66E7933519CC2B4700480521 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				66E7933619CC2B4700480521 /* Bite MeTests-Info.plist */,
+				66E7933619CC2B4700480521 /* bitemeTests-Info.plist */,
 				66E7933719CC2B4700480521 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -192,9 +191,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		66E7930819CC2B4700480521 /* Bite Me */ = {
+		66E7930819CC2B4700480521 /* biteme */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 66E7933E19CC2B4700480521 /* Build configuration list for PBXNativeTarget "Bite Me" */;
+			buildConfigurationList = 66E7933E19CC2B4700480521 /* Build configuration list for PBXNativeTarget "biteme" */;
 			buildPhases = (
 				66E7930519CC2B4700480521 /* Sources */,
 				66E7930619CC2B4700480521 /* Frameworks */,
@@ -204,14 +203,14 @@
 			);
 			dependencies = (
 			);
-			name = "Bite Me";
+			name = biteme;
 			productName = "Bite Me";
-			productReference = 66E7930919CC2B4700480521 /* Bite Me.app */;
+			productReference = 66E7930919CC2B4700480521 /* biteme.app */;
 			productType = "com.apple.product-type.application";
 		};
-		66E7932C19CC2B4700480521 /* Bite MeTests */ = {
+		66E7932C19CC2B4700480521 /* bitemeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 66E7934119CC2B4700480521 /* Build configuration list for PBXNativeTarget "Bite MeTests" */;
+			buildConfigurationList = 66E7934119CC2B4700480521 /* Build configuration list for PBXNativeTarget "bitemeTests" */;
 			buildPhases = (
 				66E7932919CC2B4700480521 /* Sources */,
 				66E7932A19CC2B4700480521 /* Frameworks */,
@@ -222,9 +221,9 @@
 			dependencies = (
 				66E7933319CC2B4700480521 /* PBXTargetDependency */,
 			);
-			name = "Bite MeTests";
+			name = bitemeTests;
 			productName = "Bite MeTests";
-			productReference = 66E7932D19CC2B4700480521 /* Bite MeTests.xctest */;
+			productReference = 66E7932D19CC2B4700480521 /* bitemeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -236,12 +235,15 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Oliver Rodden";
 				TargetAttributes = {
+					66E7930819CC2B4700480521 = {
+						DevelopmentTeam = TAF7KLCDAQ;
+					};
 					66E7932C19CC2B4700480521 = {
 						TestTargetID = 66E7930819CC2B4700480521;
 					};
 				};
 			};
-			buildConfigurationList = 66E7930419CC2B4700480521 /* Build configuration list for PBXProject "Bite Me" */;
+			buildConfigurationList = 66E7930419CC2B4700480521 /* Build configuration list for PBXProject "biteme" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -255,8 +257,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				66E7930819CC2B4700480521 /* Bite Me */,
-				66E7932C19CC2B4700480521 /* Bite MeTests */,
+				66E7930819CC2B4700480521 /* biteme */,
+				66E7932C19CC2B4700480521 /* bitemeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,7 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66E7933B19CC2B4700480521 /* Bite_MeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +314,7 @@
 /* Begin PBXTargetDependency section */
 		66E7933319CC2B4700480521 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 66E7930819CC2B4700480521 /* Bite Me */;
+			target = 66E7930819CC2B4700480521 /* biteme */;
 			targetProxy = 66E7933219CC2B4700480521 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -438,10 +439,11 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bite Me/Bite Me-Prefix.pch";
-				INFOPLIST_FILE = "Bite Me/Bite Me-Info.plist";
+				GCC_PREFIX_HEADER = "Bite Me/biteme-Prefix.pch";
+				INFOPLIST_FILE = "Bite Me/biteme-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = biteme;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -458,10 +460,11 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bite Me/Bite Me-Prefix.pch";
-				INFOPLIST_FILE = "Bite Me/Bite Me-Info.plist";
+				GCC_PREFIX_HEADER = "Bite Me/biteme-Prefix.pch";
+				INFOPLIST_FILE = "Bite Me/biteme-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = biteme;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -481,8 +484,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Bite MeTests/Bite MeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Bite MeTests/bitemeTests-Info.plist";
+				PRODUCT_NAME = bitemeTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -499,8 +502,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bite Me/Bite Me-Prefix.pch";
-				INFOPLIST_FILE = "Bite MeTests/Bite MeTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "Bite MeTests/bitemeTests-Info.plist";
+				PRODUCT_NAME = bitemeTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -509,7 +512,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		66E7930419CC2B4700480521 /* Build configuration list for PBXProject "Bite Me" */ = {
+		66E7930419CC2B4700480521 /* Build configuration list for PBXProject "biteme" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66E7933C19CC2B4700480521 /* Debug */,
@@ -518,7 +521,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		66E7933E19CC2B4700480521 /* Build configuration list for PBXNativeTarget "Bite Me" */ = {
+		66E7933E19CC2B4700480521 /* Build configuration list for PBXNativeTarget "biteme" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66E7933F19CC2B4700480521 /* Debug */,
@@ -527,7 +530,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		66E7934119CC2B4700480521 /* Build configuration list for PBXNativeTarget "Bite MeTests" */ = {
+		66E7934119CC2B4700480521 /* Build configuration list for PBXNativeTarget "bitemeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66E7934219CC2B4700480521 /* Debug */,
