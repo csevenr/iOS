@@ -210,7 +210,9 @@
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
         SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         
-        [controller setInitialText:[NSString stringWithFormat:@"Just scored %d on Bite me! bit.ly/blah", score]];
+        [controller setInitialText:[NSString stringWithFormat:@"Just scored %d on Bite me!", score]];
+        [controller addURL:[NSURL URLWithString:@"google.com"]];
+        [controller addImage:[self socialScoreImage]];
         [self presentViewController:controller animated:YES completion:Nil];
     }
 }
@@ -220,9 +222,30 @@
     {
         SLComposeViewController *tweetSheet = [SLComposeViewController
                                                composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:[NSString stringWithFormat:@"Just scored %d on Bite me! bit.ly/blah", score]];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"Just scored %d on Bite me!", score]];
+        [tweetSheet addURL:[NSURL URLWithString:@"google.com"]];
+        [tweetSheet addImage:[self socialScoreImage]];
         [self presentViewController:tweetSheet animated:YES completion:nil];
     }
+}
+
+-(UIImage*)socialScoreImage{
+    UIImage *start = [UIImage imageNamed:@"socialBg.png"];
+    UIImageView *v = [[UIImageView alloc]initWithImage:start];
+    
+    UILabel *myLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, start.size.width, start.size.height)];
+    myLabel.text = self.scoreLbl.text;
+    myLabel.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:200.0];
+    myLabel.textAlignment = NSTextAlignmentCenter;
+    myLabel.textColor = [UIColor whiteColor];
+    [v addSubview:myLabel];
+    
+    UIGraphicsBeginImageContextWithOptions(start.size, NO, 0.0); //retina res
+    [v.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [myLabel.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    return image;
 }
 
 #pragma mark iAd shizz
