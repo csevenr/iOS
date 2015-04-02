@@ -15,7 +15,6 @@
 		66C83FCF1AB852F500010105 /* bottomJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FCC1AB852F500010105 /* bottomJaw.png */; };
 		66C83FD01AB852F500010105 /* mouthBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FCD1AB852F500010105 /* mouthBg.png */; };
 		66C83FD11AB852F500010105 /* topJaw.png in Resources */ = {isa = PBXBuildFile; fileRef = 66C83FCE1AB852F500010105 /* topJaw.png */; };
-		66CFDEB61ACBFC66004E412B /* socialBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 66CFDEB51ACBFC66004E412B /* socialBg.png */; };
 		66E7930D19CC2B4700480521 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7930C19CC2B4700480521 /* Foundation.framework */; };
 		66E7930F19CC2B4700480521 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7930E19CC2B4700480521 /* CoreGraphics.framework */; };
 		66E7931119CC2B4700480521 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7931019CC2B4700480521 /* UIKit.framework */; };
@@ -30,6 +29,7 @@
 		66E7933019CC2B4700480521 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7930C19CC2B4700480521 /* Foundation.framework */; };
 		66E7933119CC2B4700480521 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7931019CC2B4700480521 /* UIKit.framework */; };
 		66E7933919CC2B4700480521 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 66E7933719CC2B4700480521 /* InfoPlist.strings */; };
+		CC2A40E71ACC68E600F5A39F /* socialBg1080.png in Resources */ = {isa = PBXBuildFile; fileRef = CC2A40E61ACC68E600F5A39F /* socialBg1080.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,6 @@
 		66C83FCC1AB852F500010105 /* bottomJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomJaw.png; sourceTree = "<group>"; };
 		66C83FCD1AB852F500010105 /* mouthBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouthBg.png; sourceTree = "<group>"; };
 		66C83FCE1AB852F500010105 /* topJaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topJaw.png; sourceTree = "<group>"; };
-		66CFDEB51ACBFC66004E412B /* socialBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = socialBg.png; sourceTree = "<group>"; };
 		66E7930919CC2B4700480521 /* biteme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = biteme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E7930C19CC2B4700480521 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		66E7930E19CC2B4700480521 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -72,6 +71,7 @@
 		66E7933619CC2B4700480521 /* bitemeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bitemeTests-Info.plist"; sourceTree = "<group>"; };
 		66E7933819CC2B4700480521 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		66E7933A19CC2B4700480521 /* Bite_MeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bite_MeTests.m; sourceTree = "<group>"; };
+		CC2A40E61ACC68E600F5A39F /* socialBg1080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = socialBg1080.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +154,7 @@
 				66C83FCC1AB852F500010105 /* bottomJaw.png */,
 				66C83FCD1AB852F500010105 /* mouthBg.png */,
 				66C83FCE1AB852F500010105 /* topJaw.png */,
-				66CFDEB51ACBFC66004E412B /* socialBg.png */,
+				CC2A40E61ACC68E600F5A39F /* socialBg1080.png */,
 				66E7932719CC2B4700480521 /* Images.xcassets */,
 				66E7931319CC2B4700480521 /* Supporting Files */,
 			);
@@ -274,9 +274,9 @@
 				66C83FD11AB852F500010105 /* topJaw.png in Resources */,
 				66E7932319CC2B4700480521 /* Main_iPad.storyboard in Resources */,
 				66C83FD01AB852F500010105 /* mouthBg.png in Resources */,
+				CC2A40E71ACC68E600F5A39F /* socialBg1080.png in Resources */,
 				66E7932819CC2B4700480521 /* Images.xcassets in Resources */,
 				66E7932019CC2B4700480521 /* Main_iPhone.storyboard in Resources */,
-				66CFDEB61ACBFC66004E412B /* socialBg.png in Resources */,
 				6673853D19CC82E40098BF7A /* topJaw.png in Resources */,
 				6673853B19CC82E40098BF7A /* bottomJaw.png in Resources */,
 				6673853C19CC82E40098BF7A /* mouthBg.png in Resources */,

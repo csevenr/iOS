@@ -11,6 +11,8 @@
 
 @interface ViewController (){
     //Game
+    BOOL instructionsVisable;
+    UILabel *instructions;
     NSTimer *updateTimer;
     BOOL playing;
     
@@ -34,6 +36,22 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    instructionsVisable = NO;
+    
+    if (![[NSUserDefaults standardUserDefaults]objectForKey:@"firstTime"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"firstTime"];
+        instructions = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.width)];
+        instructions.center = self.view.center;
+        instructions.text = @"PRESS AND HOLD TO SCORE";
+        instructions.textColor = [UIColor whiteColor];
+        instructions.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:40.0];
+        instructions.numberOfLines = 0;
+        instructions.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:instructions];
+        
+        instructionsVisable = YES;
+    }
+
     /*------------------UI bits-------------------*/
     
     for (UIButton *btn in self.btnsToStlye) {
@@ -50,7 +68,7 @@
     
     /*--------------------------------------------*/
     
-    updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(update) userInfo:nil repeats:YES];    
+    updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.016 target:self selector:@selector(update) userInfo:nil repeats:YES];
     
     [self newGame];
 }
@@ -92,21 +110,56 @@
 
 -(void)score{
     currentTouchScore++;
-    if (currentTouchScore>0&&currentTouchScore<=15) {
+    if (currentTouchScore > 0 && currentTouchScore <= 20) {
         mod=5;
-    }else if (currentTouchScore>15&&currentTouchScore<=30) {
+    }else if (currentTouchScore == 21) {
         mod=4;
-    }else if (currentTouchScore>30&&currentTouchScore<=45) {
+        [self showMultiplier:2];
+    }else if (currentTouchScore == 41) {
         mod=3;
-    }else if (currentTouchScore>45) {
+        [self showMultiplier:3];
+    }else if (currentTouchScore == 61) {
+        mod=2;
+        [self showMultiplier:4];
+    }else if (currentTouchScore == 81) {
         mod=1;
+        [self showMultiplier:5];
     }
     if (currentTouchScore%mod==0) {
         score++;
     }
 }
 
+-(void)showMultiplier:(NSInteger)multiplier{
+    UILabel *multiplierLbl = [[UILabel alloc]initWithFrame:CGRectMake((int)(arc4random()%((int)self.view.frame.size.width - 50)), self.view.frame.size.height * 0.25, 50.0, 50.0)];
+    multiplierLbl.text = [NSString stringWithFormat:@"X%ld", (long)multiplier];
+    multiplierLbl.textColor = [UIColor whiteColor];
+    multiplierLbl.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:30.0];
+    [self.view addSubview:multiplierLbl];
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         multiplierLbl.frame = CGRectMake(multiplierLbl.frame.origin.x, multiplierLbl.frame.origin.y - 50.0, multiplierLbl.frame.size.width, multiplierLbl.frame.size.height);
+                         multiplierLbl.alpha = 0.0;
+                     }
+                     completion:^(BOOL finished){
+                         [multiplierLbl removeFromSuperview];
+                     }];
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    if (instructionsVisable == YES) {
+        [UIView animateWithDuration:0.2
+                              delay:0.0
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             instructions.alpha = 0.0;
+                         }
+                         completion:^(BOOL finished){
+                             [instructions removeFromSuperview];
+                         }];
+    }
     if (playing) {
         scoring=YES;
         fingerLoc = [(UITouch*)[touches anyObject] locationInView:self.view];
@@ -230,12 +283,12 @@
 }
 
 -(UIImage*)socialScoreImage{
-    UIImage *start = [UIImage imageNamed:@"socialBg.png"];
+    UIImage *start = [UIImage imageNamed:@"socialBg1080.png"];
     UIImageView *v = [[UIImageView alloc]initWithImage:start];
     
     UILabel *myLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, start.size.width, start.size.height)];
     myLabel.text = self.scoreLbl.text;
-    myLabel.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:200.0];
+    myLabel.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:240.0];
     myLabel.textAlignment = NSTextAlignmentCenter;
     myLabel.textColor = [UIColor whiteColor];
     [v addSubview:myLabel];
