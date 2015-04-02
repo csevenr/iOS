@@ -76,9 +76,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     self.topJaw.frame=CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
     self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height/2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
-    
-    NSLog(@"%f, %f, %f, %f",self.topJaw.frame.origin.x, self.topJaw.frame.origin.y, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-    NSLog(@"%f, %f, %f, %f",self.bottomJaw.frame.origin.x, self.bottomJaw.frame.origin.y, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
 }
 
 -(void)newGame{
@@ -131,16 +128,16 @@
 }
 
 -(void)showMultiplier:(NSInteger)multiplier{
-    UILabel *multiplierLbl = [[UILabel alloc]initWithFrame:CGRectMake((int)(arc4random()%((int)self.view.frame.size.width - 50)), self.view.frame.size.height * 0.25, 50.0, 50.0)];
+    UILabel *multiplierLbl = [[UILabel alloc]initWithFrame:CGRectMake(270.0, 6.0, 40.0, 40.0)];
     multiplierLbl.text = [NSString stringWithFormat:@"X%ld", (long)multiplier];
     multiplierLbl.textColor = [UIColor whiteColor];
-    multiplierLbl.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:30.0];
+    multiplierLbl.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:26.0];
     [self.view addSubview:multiplierLbl];
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         multiplierLbl.frame = CGRectMake(multiplierLbl.frame.origin.x, multiplierLbl.frame.origin.y - 50.0, multiplierLbl.frame.size.width, multiplierLbl.frame.size.height);
+                         multiplierLbl.frame = CGRectMake(multiplierLbl.frame.origin.x, multiplierLbl.frame.origin.y - 10.0, multiplierLbl.frame.size.width, multiplierLbl.frame.size.height);
                          multiplierLbl.alpha = 0.0;
                      }
                      completion:^(BOOL finished){
@@ -185,8 +182,8 @@
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                        self.topJaw.frame=CGRectMake(0.0, 0.0, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height /*287.0*/, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                        self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height / 2/*-self.bottomJaw.frame.size.height*/ /*287.0*/, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
                      }
                      completion:^(BOOL finished){
                          [UIView animateWithDuration:speed
@@ -210,8 +207,8 @@
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         self.topJaw.frame=CGRectMake(0.0, 0.0, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height /*287.0*/, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                         self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height / 2 /*-self.bottomJaw.frame.size.height*/ /*287.0*/, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
                          self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y+90.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
                          for (UIView *v in self.gameOverCol) {
                              v.alpha=1.0;
