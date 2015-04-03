@@ -36,6 +36,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    //some layout stuff
+    CGFloat socialBtnY = self.view.frame.size.height - 120;
+    self.facebookBtn.frame = CGRectMake(self.facebookBtn.frame.origin.x, socialBtnY, self.facebookBtn.frame.size.width, self.facebookBtn.frame.size.height);
+    self.twitterBtn.frame = CGRectMake(self.twitterBtn.frame.origin.x, socialBtnY, self.twitterBtn.frame.size.width, self.twitterBtn.frame.size.height);
+    
+    self.textFieldHolder.layer.cornerRadius = 10.0;
+    
     instructionsVisable = NO;
     
     if (![[NSUserDefaults standardUserDefaults]objectForKey:@"firstTime"]) {
@@ -75,7 +82,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     self.topJaw.frame=CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-    self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height/2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+    self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height - self.bottomJaw.frame.size.height / 2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
 }
 
 -(void)newGame{
@@ -161,6 +168,11 @@
         scoring=YES;
         fingerLoc = [(UITouch*)[touches anyObject] locationInView:self.view];
         currentTouchScore=0;
+    }else{
+        if (!CGRectContainsPoint(self.textFieldHolder.frame, [(UITouch*)[touches anyObject] locationInView:self.view])) {
+            [self.nicknameTextField resignFirstResponder];
+        }
+
     }
 }
 
@@ -178,12 +190,13 @@
 
 -(void)bite{
     float speed = ((arc4random()%5)+25)/100.0;
+    NSLog(@"%f", speed);
     [UIView animateWithDuration:speed
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                        self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height / 2/*-self.bottomJaw.frame.size.height*/ /*287.0*/, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                        self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height + 10, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, (self.view.frame.size.height / 2) - 10, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
                      }
                      completion:^(BOOL finished){
                          [UIView animateWithDuration:speed
@@ -192,7 +205,7 @@
                                           animations:^{
                                             if (playing) {
                                                 self.topJaw.frame=CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                                                self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height/2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                                                self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height - self.bottomJaw.frame.size.height / 2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
                                             }
                                           }
                                           completion:nil
@@ -207,9 +220,9 @@
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height / 2 /*-self.bottomJaw.frame.size.height*/ /*287.0*/, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
-                         self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y+90.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
+                         self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height + 10, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, (self.view.frame.size.height / 2) - 10, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                         self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y + 60.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
                          for (UIView *v in self.gameOverCol) {
                              v.alpha=1.0;
                          }
@@ -236,15 +249,73 @@
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          self.topJaw.frame=CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height-self.bottomJaw.frame.size.height/2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height - self.bottomJaw.frame.size.height / 2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
                          
-                         self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y-90.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
+                         self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y - 60.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
                          for (UIView *v in self.gameOverCol) {
                              v.alpha=0.0;
                          }
                      }
                      completion:^(BOOL finished){
                          [self newGame];
+                     }];
+}
+
+- (IBAction)submitScoreBtnPressed:(id)sender {
+    [UIView animateWithDuration:0.2
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.submitScoreView.alpha = 1.0;
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
+
+- (IBAction)submitBtnPressed:(id)sender {
+    if (self.nicknameTextField.text.length == 0){
+        self.nicknameTextField.placeholder = @"You'll need a nickname!!";
+        return;
+    }
+    if ([self checkIfOnlyWhiteSpace:self.nicknameTextField.text]) {
+        self.nicknameTextField.text = @"";
+        self.nicknameTextField.placeholder = @"Something better then that!! ";
+        return;
+    }
+    NSString *urlForTag = [NSString stringWithFormat:@"https://xpand.today/biteme/submitscore.php?nickname=%@&score=%d",self.nicknameTextField.text, score];
+    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@"Error 4 %@", error);
+        } else {
+            NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            NSLog(@"%@", jsonDictionary);
+        }
+    }];
+}
+
+-(BOOL)checkIfOnlyWhiteSpace:(NSString*)string{
+    NSMutableString *stringToCheckAgainst = [NSMutableString stringWithFormat:@""];
+    BOOL notAllWhiteSpace = YES;
+    for (int i = 0; i <= 30; i++){
+        [stringToCheckAgainst appendString:@" "];
+        if ([string isEqualToString:stringToCheckAgainst]){
+            notAllWhiteSpace = NO;
+        }else{
+            notAllWhiteSpace = YES;
+        }
+    }
+    return notAllWhiteSpace;
+}
+
+- (IBAction)submitQuitBtnPressed:(id)sender {
+    [UIView animateWithDuration:0.2
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         self.submitScoreView.alpha = 0.0;
+                     }
+                     completion:^(BOOL finished){
                      }];
 }
 
@@ -296,6 +367,27 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     
     return image;
+}
+
+#pragma mark textField
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    if (newLength > 30){
+        return NO;
+    }
+    
+    
+    NSMutableCharacterSet *allowedCharacters = [NSMutableCharacterSet alphanumericCharacterSet];
+    [allowedCharacters formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    NSCharacterSet *blockedChars = [allowedCharacters invertedSet];
+    return ([string rangeOfCharacterFromSet:blockedChars].location == NSNotFound);
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.nicknameTextField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark iAd shizz

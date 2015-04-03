@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 
-@interface ViewController : UIViewController <ADBannerViewDelegate>
+@interface ViewController : UIViewController <UITextFieldDelegate, ADBannerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *topJaw;
 @property (weak, nonatomic) IBOutlet UIImageView *bottomJaw;
 
@@ -21,5 +21,17 @@
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *gameOverCol;
 
 @property (weak, nonatomic) IBOutlet UILabel *charCounter;
+
+@property (weak, nonatomic) IBOutlet UIButton *facebookBtn;
+@property (weak, nonatomic) IBOutlet UIButton *twitterBtn;
+
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *submitScoreView;
+@property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
+@property (weak, nonatomic) IBOutlet UIView *textFieldHolder;
+
+- (IBAction)submitScoreBtnPressed:(id)sender;
+- (IBAction)submitBtnPressed:(id)sender;
+
+- (IBAction)submitQuitBtnPressed:(id)sender;
 
 @end
