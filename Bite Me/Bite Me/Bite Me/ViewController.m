@@ -279,8 +279,7 @@
         self.nicknameTextField.placeholder = @"You'll need a nickname!!";
         return;
     }
-    if (!
-        [self checkIfNotAllWhiteSpace:self.nicknameTextField.text]) {
+    if (![self checkIfNotAllWhiteSpace:self.nicknameTextField.text]) {
         self.nicknameTextField.text = @"";
         self.nicknameTextField.placeholder = @"Something better then that!! ";
         return;
