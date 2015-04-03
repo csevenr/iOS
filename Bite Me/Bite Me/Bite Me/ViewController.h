@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *charCounter;
 
+@property (weak, nonatomic) IBOutlet UIButton *playAgainButton;
+@property (weak, nonatomic) IBOutlet UIButton *submitScoreBtn;
 @property (weak, nonatomic) IBOutlet UIButton *facebookBtn;
 @property (weak, nonatomic) IBOutlet UIButton *twitterBtn;
 
@@ -33,5 +35,6 @@
 - (IBAction)submitBtnPressed:(id)sender;
 
 - (IBAction)submitQuitBtnPressed:(id)sender;
+- (IBAction)leaderboardBtnPressed:(id)sender;
 
 @end

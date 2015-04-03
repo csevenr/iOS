@@ -38,6 +38,8 @@
     
     //some layout stuff
     CGFloat socialBtnY = self.view.frame.size.height - 120;
+    self.playAgainButton.center = CGPointMake(self.view.center.x, self.view.center.y - 10.0);
+    self.submitScoreBtn.frame = CGRectMake(self.submitScoreBtn.frame.origin.x, socialBtnY - 70, self.submitScoreBtn.frame.size.width, self.submitScoreBtn.frame.size.height);
     self.facebookBtn.frame = CGRectMake(self.facebookBtn.frame.origin.x, socialBtnY, self.facebookBtn.frame.size.width, self.facebookBtn.frame.size.height);
     self.twitterBtn.frame = CGRectMake(self.twitterBtn.frame.origin.x, socialBtnY, self.twitterBtn.frame.size.width, self.twitterBtn.frame.size.height);
     
@@ -317,6 +319,12 @@
                      }
                      completion:^(BOOL finished){
                      }];
+}
+
+- (IBAction)leaderboardBtnPressed:(id)sender {
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"https://xpand.today/biteme"]]){
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://xpand.today/biteme"]];
+    }
 }
 
 - (void)didReceiveMemoryWarning
