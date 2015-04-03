@@ -279,7 +279,8 @@
         self.nicknameTextField.placeholder = @"You'll need a nickname!!";
         return;
     }
-    if ([self checkIfOnlyWhiteSpace:self.nicknameTextField.text]) {
+    if (!
+        [self checkIfNotAllWhiteSpace:self.nicknameTextField.text]) {
         self.nicknameTextField.text = @"";
         self.nicknameTextField.placeholder = @"Something better then that!! ";
         return;
@@ -296,7 +297,7 @@
     }];
 }
 
--(BOOL)checkIfOnlyWhiteSpace:(NSString*)string{
+-(BOOL)checkIfNotAllWhiteSpace:(NSString*)string{
     NSMutableString *stringToCheckAgainst = [NSMutableString stringWithFormat:@""];
     BOOL notAllWhiteSpace = YES;
     for (int i = 0; i <= 30; i++){
