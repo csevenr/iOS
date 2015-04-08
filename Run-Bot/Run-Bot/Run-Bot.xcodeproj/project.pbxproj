@@ -343,9 +343,10 @@
 						DevelopmentTeam = 59SRS4L8V3;
 					};
 					4F4EA8FC18B36ED4004C7236 = {
-						DevelopmentTeam = 59SRS4L8V3;
+						DevelopmentTeam = TAF7KLCDAQ;
 					};
 					4F4EA92018B36ED4004C7236 = {
+						DevelopmentTeam = TAF7KLCDAQ;
 						TestTargetID = 4F4EA8FC18B36ED4004C7236;
 					};
 				};

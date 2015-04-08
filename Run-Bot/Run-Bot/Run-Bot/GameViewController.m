@@ -102,7 +102,7 @@
     _distanceLbl.text=[NSString stringWithFormat:@"%d",(int)distance];
     distanceCountdown=10;
     
-    collidableCountDown=NEWCOLLIDE;//(arc4random()%20)+50;
+    collidableCountDown = NEWCOLLIDE;//(arc4random()%20)+50;
     
     if (gameTimer==nil) {
         gameTimer = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
@@ -132,10 +132,10 @@
 #else
             [self addTree];
 #endif
-              collidableCountDown=NEWCOLLIDE;
+            collidableCountDown = NEWCOLLIDE;
         }
     }else{
-        if ([_collidables count]==0 && _infoBtn.hidden==YES){
+        if ([_collidables count] == 0 && _infoBtn.hidden == YES){
             [_infoBtn setHidden:NO];
         }
     }
