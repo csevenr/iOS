@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *submitScoreView;
 @property (weak, nonatomic) IBOutlet UITextField *nicknameTextField;
 @property (weak, nonatomic) IBOutlet UIView *textFieldHolder;
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
 - (IBAction)submitScoreBtnPressed:(id)sender;
 - (IBAction)submitBtnPressed:(id)sender;

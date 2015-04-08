@@ -60,19 +60,23 @@
         
         instructionsVisable = YES;
     }
+    
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"lastNickname"]) {
+        self.nicknameTextField.text = [[NSUserDefaults standardUserDefaults]objectForKey:@"lastNickname"];
+    }
 
     /*------------------UI bits-------------------*/
     
     for (UIButton *btn in self.btnsToStlye) {
         btn.clipsToBounds = NO;
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        btn.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+        btn.backgroundColor = [UIColor colorWithWhite:0.87 alpha:1.0];
         
         btn.layer.cornerRadius = 10.0;
-        btn.layer.shadowColor = [UIColor colorWithWhite:0.8 alpha:1.0].CGColor;
-        btn.layer.shadowOffset = CGSizeMake(0.0, 2.0);
+        btn.layer.shadowColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
+        btn.layer.shadowOffset = CGSizeMake(0.0, 4.0);
         btn.layer.shadowOpacity = 1.0;
-        btn.layer.shadowRadius = 1.0;
+        btn.layer.shadowRadius = 0.1;
     }
     
     /*--------------------------------------------*/
@@ -246,6 +250,8 @@
 }
 
 - (IBAction)playAgainBtnPressed:(id)sender {
+    self.submitScoreBtn.enabled = YES;
+    self.submitScoreBtn.alpha = 1.0;
     [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
@@ -284,14 +290,44 @@
         self.nicknameTextField.placeholder = @"Something better then that!! ";
         return;
     }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.nicknameTextField.text forKey:@"lastNickname"];
+    
+    [self.nicknameTextField resignFirstResponder];
+    
+    [self.submitBtn setTitle:@"Submitting" forState:UIControlStateNormal];
+    self.submitBtn.enabled = NO;
+    self.submitBtn.alpha = 0.3;
+    
     NSString *urlForTag = [NSString stringWithFormat:@"https://xpand.today/biteme/submitscore.php?nickname=%@&score=%d",self.nicknameTextField.text, score];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
-            NSLog(@"Error 4 %@", error);
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Submission Failed" message:@"Make sure you've got an internet connection and try again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.submitBtn.enabled = YES;
+                self.submitBtn.alpha = 1.0;
+            });
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            NSLog(@"%@", jsonDictionary);
+//            NSLog(@"__%@", jsonDictionary);
+            if ([[jsonDictionary objectForKey:@"code"] integerValue] == 200) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.submitBtn setTitle:@"Successful" forState:UIControlStateNormal];
+                    self.submitBtn.alpha = 0.7;
+                    
+                    self.submitScoreBtn.enabled = NO;
+                    self.submitScoreBtn.alpha = 0.3;
+                });
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Submission Failed" message:@"Sorry, but your score didn't submit, maybe our servers are down. You could always try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.submitBtn.enabled = YES;
+                    self.submitBtn.alpha = 1.0;
+                });
+            }
         }
     }];
 }
@@ -311,6 +347,7 @@
 }
 
 - (IBAction)submitQuitBtnPressed:(id)sender {
+    [self.nicknameTextField resignFirstResponder];
     [UIView animateWithDuration:0.2
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
@@ -318,6 +355,9 @@
                          self.submitScoreView.alpha = 0.0;
                      }
                      completion:^(BOOL finished){
+                         self.submitBtn.enabled = YES;
+                         self.submitBtn.alpha = 1.0;
+                         [self.submitBtn setTitle:@"Submit" forState:UIControlStateNormal];
                      }];
 }
 

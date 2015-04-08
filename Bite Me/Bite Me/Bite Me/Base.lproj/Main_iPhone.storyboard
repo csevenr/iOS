@@ -12,69 +12,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" id="bUY-Gp-aGb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ah5-ro-cdl">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" id="tDL-7P-zvR">
-                                            <rect key="frame" x="20" y="132" width="280" height="46"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Your Nickname" textAlignment="center" minimumFontSize="17" id="KYb-tT-Qko">
-                                                    <rect key="frame" x="8" y="8" width="264" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="vXZ-lx-hvc" id="j2L-vp-qgh"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L9d-um-0lb">
-                                            <rect key="frame" x="40" y="206" width="240" height="53"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-HeavyItalic" family="Avenir Next" pointSize="30"/>
-                                            <state key="normal" title="Submit">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="submitBtnPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SWz-9z-7ZH"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YJd-V6-Qcm">
-                                            <rect key="frame" x="40" y="287" width="240" height="53"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-HeavyItalic" family="Avenir Next" pointSize="30"/>
-                                            <state key="normal" title="Leaderboard">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="leaderboardBtnPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mLE-GV-7Kg"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H3x-Ke-hnl">
-                                            <rect key="frame" x="8" y="8" width="40" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="26"/>
-                                            <state key="normal" title="X">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="submitQuitBtnPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7g9-q0-ien"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mouthBg.png" id="v8D-LV-PjX">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -132,6 +69,69 @@
                                     <action selector="submitScoreBtnPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hEn-le-P2h"/>
                                 </connections>
                             </button>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" id="bUY-Gp-aGb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ah5-ro-cdl">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="tDL-7P-zvR">
+                                            <rect key="frame" x="20" y="132" width="280" height="46"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Your Nickname" textAlignment="center" minimumFontSize="17" id="KYb-tT-Qko">
+                                                    <rect key="frame" x="8" y="8" width="264" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vXZ-lx-hvc" id="j2L-vp-qgh"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L9d-um-0lb">
+                                            <rect key="frame" x="40" y="206" width="240" height="53"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-HeavyItalic" family="Avenir Next" pointSize="30"/>
+                                            <state key="normal" title="Submit">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="submitBtnPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SWz-9z-7ZH"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YJd-V6-Qcm">
+                                            <rect key="frame" x="40" y="287" width="240" height="53"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-HeavyItalic" family="Avenir Next" pointSize="30"/>
+                                            <state key="normal" title="Leaderboard">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="leaderboardBtnPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mLE-GV-7Kg"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H3x-Ke-hnl">
+                                            <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-BoldItalic" family="Avenir Next" pointSize="26"/>
+                                            <state key="normal" title="X">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="submitQuitBtnPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7g9-q0-ien"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vbb-mo-vuw">
                                 <rect key="frame" x="0.0" y="40" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -188,6 +188,7 @@
                         <outlet property="nicknameTextField" destination="KYb-tT-Qko" id="uxv-IX-Tso"/>
                         <outlet property="playAgainButton" destination="JWh-Ky-EoX" id="GmM-Qd-AHC"/>
                         <outlet property="scoreLbl" destination="hcP-lY-jbF" id="2R0-R5-Z4U"/>
+                        <outlet property="submitBtn" destination="L9d-um-0lb" id="Oqd-Zw-M6U"/>
                         <outlet property="submitScoreBtn" destination="3hl-3r-iuE" id="5dO-xp-KVr"/>
                         <outlet property="submitScoreView" destination="bUY-Gp-aGb" id="Hhr-Sq-cz3"/>
                         <outlet property="textFieldHolder" destination="tDL-7P-zvR" id="ZM6-Tn-Vym"/>
