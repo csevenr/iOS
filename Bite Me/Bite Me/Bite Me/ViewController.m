@@ -37,9 +37,16 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     //some layout stuff
-    CGFloat socialBtnY = self.view.frame.size.height - 120;
+    
     self.playAgainButton.center = CGPointMake(self.view.center.x, self.view.center.y - 10.0);
-    self.submitScoreBtn.frame = CGRectMake(self.submitScoreBtn.frame.origin.x, socialBtnY - 70, self.submitScoreBtn.frame.size.width, self.submitScoreBtn.frame.size.height);
+    CGFloat socialBtnY;
+    if (!UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        socialBtnY = self.view.frame.size.height - 120;
+        self.submitScoreBtn.frame = CGRectMake(self.submitScoreBtn.frame.origin.x, socialBtnY - 70.0, self.submitScoreBtn.frame.size.width, self.submitScoreBtn.frame.size.height);
+    }else{
+        socialBtnY = self.view.frame.size.height - 190;
+        self.submitScoreBtn.frame = CGRectMake(self.submitScoreBtn.frame.origin.x, socialBtnY - 140.0, self.submitScoreBtn.frame.size.width, self.submitScoreBtn.frame.size.height);
+    }
     self.facebookBtn.frame = CGRectMake(self.facebookBtn.frame.origin.x, socialBtnY, self.facebookBtn.frame.size.width, self.facebookBtn.frame.size.height);
     self.twitterBtn.frame = CGRectMake(self.twitterBtn.frame.origin.x, socialBtnY, self.twitterBtn.frame.size.width, self.twitterBtn.frame.size.height);
     
@@ -141,11 +148,16 @@
 }
 
 -(void)showMultiplier:(NSInteger)multiplier{
-    UILabel *multiplierLbl = [[UILabel alloc]initWithFrame:CGRectMake(270.0, 6.0, 40.0, 40.0)];
+    CGFloat lblSize;
+    if (!UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) lblSize = 40.0;
+    else lblSize = 80.0;
+    
+    UILabel *multiplierLbl = [[UILabel alloc]initWithFrame:CGRectMake(self.view.frame.size.width - lblSize * 1.25, 6.0, lblSize, lblSize)];
     multiplierLbl.text = [NSString stringWithFormat:@"X%ld", (long)multiplier];
     multiplierLbl.textColor = [UIColor whiteColor];
-    multiplierLbl.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:26.0];
+    multiplierLbl.font = [UIFont fontWithName:@"AvenirNext-HeavyItalic" size:lblSize * 0.65];
     [self.view addSubview:multiplierLbl];
+    
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
@@ -226,9 +238,15 @@
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height + 10, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
-                         self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, (self.view.frame.size.height / 2) - 10, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
-                         self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y + 60.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
+                         if (!UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                             self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height + 10, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                             self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, (self.view.frame.size.height / 2) - 10, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                             self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y + 60.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
+                         }else{
+                             self.topJaw.frame=CGRectMake(0.0, (self.view.frame.size.height / 2) - self.topJaw.frame.size.height + 10, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
+                             self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, (self.view.frame.size.height / 2) - 10, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
+                             self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y + 140.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
+                         }
                          for (UIView *v in self.gameOverCol) {
                              v.alpha=1.0;
                          }
@@ -259,7 +277,11 @@
                          self.topJaw.frame=CGRectMake(0.0, -self.topJaw.frame.size.height*0.66, self.topJaw.frame.size.width, self.topJaw.frame.size.height);
                          self.bottomJaw.frame=CGRectMake(self.bottomJaw.frame.origin.x, self.view.frame.size.height - self.bottomJaw.frame.size.height / 2.5, self.bottomJaw.frame.size.width, self.bottomJaw.frame.size.height);
                          
-                         self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y - 60.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
+                         if (!UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                             self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y - 60.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
+                         }else{
+                             self.scoreLbl.frame=CGRectMake(self.scoreLbl.frame.origin.x, self.scoreLbl.frame.origin.y - 140.0, self.scoreLbl.frame.size.width, self.scoreLbl.frame.size.height);
+                         }
                          for (UIView *v in self.gameOverCol) {
                              v.alpha=0.0;
                          }
