@@ -324,16 +324,18 @@
     NSString *urlForTag = [NSString stringWithFormat:@"https://xpand.today/biteme/submitscore.php?nickname=%@&score=%d",self.nicknameTextField.text, score];
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlForTag]] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Submission Failed" message:@"Make sure you've got an internet connection and try again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
             dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Submission Failed" message:@"Make sure you've got an internet connection and try again!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [alert show];
+
+                [self.submitBtn setTitle:@"Submit" forState:UIControlStateNormal];
                 self.submitBtn.enabled = YES;
                 self.submitBtn.alpha = 1.0;
             });
         } else {
             NSDictionary *jsonDictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-//            NSLog(@"__%@", jsonDictionary);
+            NSLog(@"__%@", jsonDictionary);
             if ([[jsonDictionary objectForKey:@"code"] integerValue] == 200) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.submitBtn setTitle:@"Successful" forState:UIControlStateNormal];
@@ -343,9 +345,10 @@
                     self.submitScoreBtn.alpha = 0.3;
                 });
             }else{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Submission Failed" message:@"Sorry, but your score didn't submit, maybe our servers are down. You could always try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alert show];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Submission Failed" message:@"Sorry, but your score didn't submit, maybe our servers are down. You could always try again" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+
                     self.submitBtn.enabled = YES;
                     self.submitBtn.alpha = 1.0;
                 });
