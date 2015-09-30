@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
 
-    [_bg setSpeed:1.2];
+//    [_bg setSpeed:2.0];
     
 #ifdef EXTREME
     coinDisplay = [CoinDisplay new];
@@ -118,7 +118,7 @@
             distanceCountdown=10;
         }
         _distanceLbl.text=[NSString stringWithFormat:@"%d",(int)distance];
-        [_bg setSpeed:0.6];
+//        [_bg setSpeed:1.8];
         [robot update];//call update on the robot, to avoid multiple timers
         collidableCountDown--;
         if (collidableCountDown==0) {
@@ -166,7 +166,7 @@
 
 -(void)gameOver{
     gameOn=NO;
-    [_bg setSpeed:1.2];
+//    [_bg setSpeed:2.0];
     [robot removeFromSuperview];
     robot = nil;
     

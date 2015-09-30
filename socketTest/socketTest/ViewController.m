@@ -39,7 +39,7 @@
     
     NSData *data = [newString dataUsingEncoding:NSUTF8StringEncoding];
     
-    [udpSocket sendData:data toHost:@"192.168.21.210" port:5005 withTimeout:-1 tag:1];
+    [udpSocket sendData:data toHost:@"192.168.21.115" port:5005 withTimeout:-1 tag:1];
     
     return YES;
 }

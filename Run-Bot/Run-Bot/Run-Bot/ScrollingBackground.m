@@ -21,10 +21,12 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         viewOne = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, -self.frame.size.height, self.frame.size.width, self.frame.size.height)];
+        viewOne.image = [UIImage imageNamed:@"grass1.jpg"];
         viewOne.backgroundColor=[UIColor colorWithRed:0.0 green:1.0 blue:0.0 alpha:1.0];
         [self addSubview:viewOne];
         
         viewTwo = [[UIImageView alloc]initWithFrame:self.frame];
+        viewTwo.image = [UIImage imageNamed:@"grass1.jpg"];
         viewTwo.backgroundColor=[UIColor colorWithRed:0.0 green:0.9 blue:0.0 alpha:1.0];
         [self addSubview:viewTwo];
         
@@ -36,7 +38,7 @@
 -(void)animate{
     viewOne.frame=CGRectMake(0.0, -self.frame.size.height, self.frame.size.width, self.frame.size.height);
     viewTwo.frame=self.frame;
-    [UIView animateWithDuration:_speed
+    [UIView animateWithDuration:1.0
                           delay:0.0
                         options: UIViewAnimationOptionCurveLinear
                      animations:^{

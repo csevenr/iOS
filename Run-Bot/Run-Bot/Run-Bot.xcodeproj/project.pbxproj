@@ -52,6 +52,7 @@
 		4F4EA94518B54A1B004C7236 /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4EA94418B54A1B004C7236 /* Robot.m */; };
 		4F5EE30719424AFB0072A9F7 /* StatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5EE30619424AFB0072A9F7 /* StatController.m */; };
 		4F877A2A1922A94E00EBDFF6 /* V5PRC___.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 4F877A291922A94E00EBDFF6 /* V5PRC___.TTF */; };
+		661850B11B0D296200A1C56F /* grass1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 661850B01B0D296200A1C56F /* grass1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		4F5EE30519424AFB0072A9F7 /* StatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatController.h; sourceTree = "<group>"; };
 		4F5EE30619424AFB0072A9F7 /* StatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatController.m; sourceTree = "<group>"; };
 		4F877A291922A94E00EBDFF6 /* V5PRC___.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "V5PRC___.TTF"; sourceTree = "<group>"; };
+		661850B01B0D296200A1C56F /* grass1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass1.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 		4F4EA90618B36ED4004C7236 /* Run-Bot */ = {
 			isa = PBXGroup;
 			children = (
+				661850B01B0D296200A1C56F /* grass1.jpg */,
 				4F2EC992192D39E800097E28 /* RunBotConstants.h */,
 				4F877A2B1922A95900EBDFF6 /* Resources */,
 				4F4EA90F18B36ED4004C7236 /* AppDelegate.h */,
@@ -390,6 +393,7 @@
 			files = (
 				4F4EA91718B36ED4004C7236 /* Main_iPad.storyboard in Resources */,
 				4F4EA91C18B36ED4004C7236 /* Images.xcassets in Resources */,
+				661850B11B0D296200A1C56F /* grass1.jpg in Resources */,
 				4F4EA91418B36ED4004C7236 /* Main_iPhone.storyboard in Resources */,
 				4F877A2A1922A94E00EBDFF6 /* V5PRC___.TTF in Resources */,
 				4F4EA90B18B36ED4004C7236 /* InfoPlist.strings in Resources */,
