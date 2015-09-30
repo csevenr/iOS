@@ -15,11 +15,19 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
+<<<<<<< HEAD:toolset/toolset/toolset/Info.plist
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>5</string>
+=======
+	<string>0.4</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>4</string>
+>>>>>>> 160c80aba688065ca0f2ec67b5b51a928845b516:Bite Me/Bite Me/Bite Me/biteme-Info.plist
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
